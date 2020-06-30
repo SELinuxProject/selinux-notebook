@@ -1,0 +1,413 @@
+#
+# MLS Kernel Policy Language policy - Kernel objects only
+#
+# This policy has been generated using the initial_sids, security_classes
+# and access_vectors flask files from: ../flask-files
+
+class security
+class process
+class system
+class capability
+class filesystem
+class file
+class dir
+class fd
+class lnk_file
+class chr_file
+class blk_file
+class sock_file
+class fifo_file
+class socket
+class tcp_socket
+class udp_socket
+class rawip_socket
+class node
+class netif
+class netlink_socket
+class packet_socket
+class key_socket
+class unix_stream_socket
+class unix_dgram_socket
+class sem
+class msg
+class msgq
+class shm
+class ipc
+class netlink_route_socket
+class obsolete_netlink_firewall_socket
+class netlink_tcpdiag_socket
+class netlink_nflog_socket
+class netlink_xfrm_socket
+class netlink_selinux_socket
+class netlink_audit_socket
+class obsolete_netlink_ip6fw_socket
+class netlink_dnrt_socket
+class association
+class netlink_kobject_uevent_socket
+class appletalk_socket
+class packet
+class key
+class dccp_socket
+class memprotect
+class peer
+class capability2
+class kernel_service
+class tun_socket
+class binder
+class netlink_iscsi_socket
+class netlink_fib_lookup_socket
+class netlink_connector_socket
+class netlink_netfilter_socket
+class netlink_generic_socket
+class netlink_scsitransport_socket
+class netlink_rdma_socket
+class netlink_crypto_socket
+class infiniband_pkey
+class infiniband_endport
+class cap_userns
+class cap2_userns
+class sctp_socket
+class icmp_socket
+class ax25_socket
+class ipx_socket
+class netrom_socket
+class atmpvc_socket
+class x25_socket
+class rose_socket
+class decnet_socket
+class atmsvc_socket
+class rds_socket
+class irda_socket
+class pppox_socket
+class llc_socket
+class can_socket
+class tipc_socket
+class bluetooth_socket
+class iucv_socket
+class rxrpc_socket
+class isdn_socket
+class phonet_socket
+class ieee802154_socket
+class caif_socket
+class alg_socket
+class nfc_socket
+class vsock_socket
+class kcm_socket
+class qipcrtr_socket
+class smc_socket
+class process2
+class bpf
+class xdp_socket
+class perf_event
+class lockdown
+
+sid kernel
+sid security
+sid unlabeled
+sid fs
+sid file
+sid file_labels
+sid init
+sid any_socket
+sid port
+sid netif
+sid netmsg
+sid node
+sid igmp_packet
+sid icmp_socket
+sid tcp_socket
+sid sysctl_modprobe
+sid sysctl
+sid sysctl_fs
+sid sysctl_kernel
+sid sysctl_net
+sid sysctl_net_unix
+sid sysctl_vm
+sid sysctl_dev
+sid kmod
+sid policy
+sid scmp_packet
+sid devnull
+
+common file {ioctl read write create getattr setattr lock relabelfrom relabelto append map unlink link rename execute quotaon mounton audit_access open execmod watch watch_mount watch_sb watch_with_perm watch_reads }
+common socket {ioctl read write create getattr setattr lock relabelfrom relabelto append map bind connect listen accept getopt setopt shutdown recvfrom sendto name_bind }
+common ipc {create destroy getattr setattr read write associate unix_read unix_write }
+common database {create drop getattr setattr relabelfrom relabelto }
+common x_device {getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy }
+common cap {chown dac_override dac_read_search fowner fsetid kill setgid setuid setpcap linux_immutable net_bind_service net_broadcast net_admin net_raw ipc_lock ipc_owner sys_module sys_rawio sys_chroot sys_ptrace sys_pacct sys_admin sys_boot sys_nice sys_resource sys_time sys_tty_config mknod lease audit_write audit_control setfcap }
+common cap2 {mac_override mac_admin syslog wake_alarm block_suspend audit_read }
+
+class security { compute_av compute_create compute_member check_context load_policy compute_relabel compute_user setenforce setbool setsecparam setcheckreqprot read_policy validate_trans }
+class process { fork transition sigchld sigkill sigstop signull signal ptrace getsched setsched getsession getpgid setpgid getcap setcap share getattr setexec setfscreate noatsecure siginh setrlimit rlimitinh dyntransition setcurrent execmem execstack execheap setkeycreate setsockcreate getrlimit }
+class system { ipc_info syslog_read syslog_mod syslog_console module_request module_load halt reboot status start stop enable disable reload }
+class capability inherits cap
+class filesystem { mount remount unmount getattr relabelfrom relabelto associate quotamod quotaget watch }
+class file inherits file { execute_no_trans entrypoint }
+class dir inherits file { add_name remove_name reparent search rmdir }
+class fd { use }
+class lnk_file inherits file
+class chr_file inherits file
+class blk_file inherits file
+class sock_file inherits file
+class fifo_file inherits file
+class socket inherits socket
+class tcp_socket inherits socket { node_bind name_connect }
+class udp_socket inherits socket { node_bind }
+class rawip_socket inherits socket { node_bind }
+class node { recvfrom sendto }
+class netif { ingress egress }
+class netlink_socket inherits socket
+class packet_socket inherits socket
+class key_socket inherits socket
+class unix_stream_socket inherits socket { connectto }
+class unix_dgram_socket inherits socket
+class sem inherits ipc
+class msg { send receive }
+class msgq inherits ipc { enqueue }
+class shm inherits ipc { lock }
+class ipc inherits ipc
+class netlink_route_socket inherits socket { nlmsg_read nlmsg_write }
+class obsolete_netlink_firewall_socket inherits socket { nlmsg_read nlmsg_write }
+class netlink_tcpdiag_socket inherits socket { nlmsg_read nlmsg_write }
+class netlink_nflog_socket inherits socket
+class netlink_xfrm_socket inherits socket { nlmsg_read nlmsg_write }
+class netlink_selinux_socket inherits socket
+class netlink_audit_socket inherits socket { nlmsg_read nlmsg_write nlmsg_relay nlmsg_readpriv nlmsg_tty_audit }
+class obsolete_netlink_ip6fw_socket inherits socket { nlmsg_read nlmsg_write }
+class netlink_dnrt_socket inherits socket
+class association { sendto recvfrom setcontext polmatch }
+class netlink_kobject_uevent_socket inherits socket
+class appletalk_socket inherits socket
+class packet { send recv relabelto forward_in forward_out }
+class key { view read write search link setattr create }
+class dccp_socket inherits socket { node_bind name_connect }
+class memprotect { mmap_zero }
+class peer { recv }
+class capability2 inherits cap2
+class kernel_service { use_as_override create_files_as }
+class tun_socket inherits socket { attach_queue }
+class binder { impersonate call set_context_mgr transfer }
+class netlink_iscsi_socket inherits socket
+class netlink_fib_lookup_socket inherits socket
+class netlink_connector_socket inherits socket
+class netlink_netfilter_socket inherits socket
+class netlink_generic_socket inherits socket
+class netlink_scsitransport_socket inherits socket
+class netlink_rdma_socket inherits socket
+class netlink_crypto_socket inherits socket
+class infiniband_pkey { access }
+class infiniband_endport { manage_subnet }
+class cap_userns inherits cap
+class cap2_userns inherits cap2
+class sctp_socket inherits socket { node_bind name_connect association }
+class icmp_socket inherits socket { node_bind }
+class ax25_socket inherits socket
+class ipx_socket inherits socket
+class netrom_socket inherits socket
+class atmpvc_socket inherits socket
+class x25_socket inherits socket
+class rose_socket inherits socket
+class decnet_socket inherits socket
+class atmsvc_socket inherits socket
+class rds_socket inherits socket
+class irda_socket inherits socket
+class pppox_socket inherits socket
+class llc_socket inherits socket
+class can_socket inherits socket
+class tipc_socket inherits socket
+class bluetooth_socket inherits socket
+class iucv_socket inherits socket
+class rxrpc_socket inherits socket
+class isdn_socket inherits socket
+class phonet_socket inherits socket
+class ieee802154_socket inherits socket
+class caif_socket inherits socket
+class alg_socket inherits socket
+class nfc_socket inherits socket
+class vsock_socket inherits socket
+class kcm_socket inherits socket
+class qipcrtr_socket inherits socket
+class smc_socket inherits socket
+class process2 { nnp_transition nosuid_transition }
+class bpf { map_create map_read map_write prog_load prog_run }
+class xdp_socket inherits socket
+class perf_event { open cpu kernel tracepoint read write }
+class lockdown { integrity confidentiality }
+
+sensitivity s0;
+sensitivity s1;
+dominance { s0 s1 }
+category c0;
+category c1;
+level s0:c0.c1;
+level s1:c0.c1;
+
+# checkpolicy always wants an mlsconstrain or fails to build.
+# This is a simple one:
+mlsconstrain { filesystem } { relabelto } (l2 eq h2 and h1 dom h2);
+
+#
+# Set this policycap statement
+policycap network_peer_controls;
+
+#
+# Disable X-Windows SELinux manager to stop Xwayland core dumps
+bool xserver_object_manager false;
+
+type unconfined_t;
+role unconfined_r;
+role unconfined_r types { unconfined_t };
+
+allow unconfined_t unconfined_t:security *;
+allow unconfined_t unconfined_t:process *;
+allow unconfined_t unconfined_t:system *;
+allow unconfined_t unconfined_t:capability *;
+allow unconfined_t unconfined_t:filesystem *;
+allow unconfined_t unconfined_t:file *;
+allow unconfined_t unconfined_t:dir *;
+allow unconfined_t unconfined_t:fd *;
+allow unconfined_t unconfined_t:lnk_file *;
+allow unconfined_t unconfined_t:chr_file *;
+allow unconfined_t unconfined_t:blk_file *;
+allow unconfined_t unconfined_t:sock_file *;
+allow unconfined_t unconfined_t:fifo_file *;
+allow unconfined_t unconfined_t:socket *;
+allow unconfined_t unconfined_t:tcp_socket *;
+allow unconfined_t unconfined_t:udp_socket *;
+allow unconfined_t unconfined_t:rawip_socket *;
+allow unconfined_t unconfined_t:node *;
+allow unconfined_t unconfined_t:netif *;
+allow unconfined_t unconfined_t:netlink_socket *;
+allow unconfined_t unconfined_t:packet_socket *;
+allow unconfined_t unconfined_t:key_socket *;
+allow unconfined_t unconfined_t:unix_stream_socket *;
+allow unconfined_t unconfined_t:unix_dgram_socket *;
+allow unconfined_t unconfined_t:sem *;
+allow unconfined_t unconfined_t:msg *;
+allow unconfined_t unconfined_t:msgq *;
+allow unconfined_t unconfined_t:shm *;
+allow unconfined_t unconfined_t:ipc *;
+allow unconfined_t unconfined_t:netlink_route_socket *;
+allow unconfined_t unconfined_t:obsolete_netlink_firewall_socket *;
+allow unconfined_t unconfined_t:netlink_tcpdiag_socket *;
+allow unconfined_t unconfined_t:netlink_nflog_socket *;
+allow unconfined_t unconfined_t:netlink_xfrm_socket *;
+allow unconfined_t unconfined_t:netlink_selinux_socket *;
+allow unconfined_t unconfined_t:netlink_audit_socket *;
+allow unconfined_t unconfined_t:obsolete_netlink_ip6fw_socket *;
+allow unconfined_t unconfined_t:netlink_dnrt_socket *;
+allow unconfined_t unconfined_t:association *;
+allow unconfined_t unconfined_t:netlink_kobject_uevent_socket *;
+allow unconfined_t unconfined_t:appletalk_socket *;
+allow unconfined_t unconfined_t:packet *;
+allow unconfined_t unconfined_t:key *;
+allow unconfined_t unconfined_t:dccp_socket *;
+allow unconfined_t unconfined_t:memprotect *;
+allow unconfined_t unconfined_t:peer *;
+allow unconfined_t unconfined_t:capability2 *;
+allow unconfined_t unconfined_t:kernel_service *;
+allow unconfined_t unconfined_t:tun_socket *;
+allow unconfined_t unconfined_t:binder *;
+allow unconfined_t unconfined_t:netlink_iscsi_socket *;
+allow unconfined_t unconfined_t:netlink_fib_lookup_socket *;
+allow unconfined_t unconfined_t:netlink_connector_socket *;
+allow unconfined_t unconfined_t:netlink_netfilter_socket *;
+allow unconfined_t unconfined_t:netlink_generic_socket *;
+allow unconfined_t unconfined_t:netlink_scsitransport_socket *;
+allow unconfined_t unconfined_t:netlink_rdma_socket *;
+allow unconfined_t unconfined_t:netlink_crypto_socket *;
+allow unconfined_t unconfined_t:infiniband_pkey *;
+allow unconfined_t unconfined_t:infiniband_endport *;
+allow unconfined_t unconfined_t:cap_userns *;
+allow unconfined_t unconfined_t:cap2_userns *;
+allow unconfined_t unconfined_t:sctp_socket *;
+allow unconfined_t unconfined_t:icmp_socket *;
+allow unconfined_t unconfined_t:ax25_socket *;
+allow unconfined_t unconfined_t:ipx_socket *;
+allow unconfined_t unconfined_t:netrom_socket *;
+allow unconfined_t unconfined_t:atmpvc_socket *;
+allow unconfined_t unconfined_t:x25_socket *;
+allow unconfined_t unconfined_t:rose_socket *;
+allow unconfined_t unconfined_t:decnet_socket *;
+allow unconfined_t unconfined_t:atmsvc_socket *;
+allow unconfined_t unconfined_t:rds_socket *;
+allow unconfined_t unconfined_t:irda_socket *;
+allow unconfined_t unconfined_t:pppox_socket *;
+allow unconfined_t unconfined_t:llc_socket *;
+allow unconfined_t unconfined_t:can_socket *;
+allow unconfined_t unconfined_t:tipc_socket *;
+allow unconfined_t unconfined_t:bluetooth_socket *;
+allow unconfined_t unconfined_t:iucv_socket *;
+allow unconfined_t unconfined_t:rxrpc_socket *;
+allow unconfined_t unconfined_t:isdn_socket *;
+allow unconfined_t unconfined_t:phonet_socket *;
+allow unconfined_t unconfined_t:ieee802154_socket *;
+allow unconfined_t unconfined_t:caif_socket *;
+allow unconfined_t unconfined_t:alg_socket *;
+allow unconfined_t unconfined_t:nfc_socket *;
+allow unconfined_t unconfined_t:vsock_socket *;
+allow unconfined_t unconfined_t:kcm_socket *;
+allow unconfined_t unconfined_t:qipcrtr_socket *;
+allow unconfined_t unconfined_t:smc_socket *;
+allow unconfined_t unconfined_t:process2 *;
+allow unconfined_t unconfined_t:bpf *;
+allow unconfined_t unconfined_t:xdp_socket *;
+allow unconfined_t unconfined_t:perf_event *;
+allow unconfined_t unconfined_t:lockdown *;
+
+user unconfined_u roles { unconfined_r } level s0 range s0 - s1:c0.c1;
+user system_u roles { unconfined_r } level s0 range s0 - s1:c0.c1;
+
+sid kernel system_u:unconfined_r:unconfined_t:s0
+sid security system_u:object_r:unconfined_t:s0
+sid unlabeled system_u:object_r:unconfined_t:s0
+sid fs system_u:object_r:unconfined_t:s0
+sid file system_u:object_r:unconfined_t:s0
+sid file_labels system_u:object_r:unconfined_t:s0
+sid init system_u:object_r:unconfined_t:s0
+sid any_socket system_u:object_r:unconfined_t:s0
+sid port system_u:object_r:unconfined_t:s0
+sid netif system_u:object_r:unconfined_t:s0
+sid netmsg system_u:object_r:unconfined_t:s0
+sid node system_u:object_r:unconfined_t:s0
+sid igmp_packet system_u:object_r:unconfined_t:s0
+sid icmp_socket system_u:object_r:unconfined_t:s0
+sid tcp_socket system_u:object_r:unconfined_t:s0
+sid sysctl_modprobe system_u:object_r:unconfined_t:s0
+sid sysctl system_u:object_r:unconfined_t:s0
+sid sysctl_fs system_u:object_r:unconfined_t:s0
+sid sysctl_kernel system_u:object_r:unconfined_t:s0
+sid sysctl_net system_u:object_r:unconfined_t:s0
+sid sysctl_net_unix system_u:object_r:unconfined_t:s0
+sid sysctl_vm system_u:object_r:unconfined_t:s0
+sid sysctl_dev system_u:object_r:unconfined_t:s0
+sid kmod system_u:object_r:unconfined_t:s0
+sid policy system_u:object_r:unconfined_t:s0
+sid scmp_packet system_u:object_r:unconfined_t:s0
+sid devnull system_u:object_r:unconfined_t:s0
+
+fs_use_xattr ext2 system_u:object_r:unconfined_t:s0;
+fs_use_xattr ext3 system_u:object_r:unconfined_t:s0;
+fs_use_xattr ext4 system_u:object_r:unconfined_t:s0;
+fs_use_xattr jfs system_u:object_r:unconfined_t:s0;
+fs_use_xattr xfs system_u:object_r:unconfined_t:s0;
+fs_use_xattr reiserfs system_u:object_r:unconfined_t:s0;
+fs_use_xattr jffs2 system_u:object_r:unconfined_t:s0;
+
+fs_use_task pipefs system_u:object_r:unconfined_t:s0;
+fs_use_task sockfs system_u:object_r:unconfined_t:s0;
+
+fs_use_trans mqueue system_u:object_r:unconfined_t:s0;
+fs_use_trans devpts system_u:object_r:unconfined_t:s0;
+fs_use_trans hugetlbfs system_u:object_r:unconfined_t:s0;
+fs_use_trans tmpfs system_u:object_r:unconfined_t:s0;
+fs_use_trans shm system_u:object_r:unconfined_t:s0;
+
+genfscon selinuxfs / system_u:object_r:unconfined_t:s0
+genfscon proc / system_u:object_r:unconfined_t:s0
+genfscon sysfs / system_u:object_r:unconfined_t:s0
+genfscon debugfs / system_u:object_r:unconfined_t:s0
+genfscon tracefs / system_u:object_r:unconfined_t:s0
+genfscon pstore / system_u:object_r:unconfined_t:s0
+genfscon cgroup / system_u:object_r:unconfined_t:s0
+genfscon cgroup2 / system_u:object_r:unconfined_t:s0

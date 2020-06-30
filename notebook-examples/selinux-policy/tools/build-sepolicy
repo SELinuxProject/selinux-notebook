@@ -1,0 +1,893 @@
+#!/usr/bin/python -E
+#
+# build-sepolicy - Build a basic SELinux policy using the Reference Policy
+#                  security_classes, access_vector and initial_sids files.
+#
+# The program will output either CIL or kernel policy language formats
+# suitable for building basic non-MLS and MLS binary policies.
+#
+# It uses the Reference Policy source tree /policy/flask/initial_sids,
+# /policy/flask/security_classes and /policy/flask/access_vectors files
+# to build the basic policy. The -r parameter will point to the base
+# of the source tree, for example to build an MLS CIL policy:
+#
+#  build-sepolicy -c -M -r /etc/selinux/targeted/src/policy -o base.cil
+#
+# The policies should build the same binary with:
+#    users - unconfined_u and system_u
+#    roles - unconfined_r and object_r
+#    types - unconfined_t
+#
+# Note that the code has been adapted from the Python script "flask.py" written
+# by Caleb Case <ccase@tresys.com> that is supplied with the Reference Policy
+# to build the libselinux header files.
+#
+
+import getopt
+import os
+import sys
+import re
+
+class ParseError(Exception):
+    def __init__(self, type, file, line):
+        self.type = type
+        self.file = file
+        self.line = line
+    def __str__(self):
+        typeS = self.type
+        if type(self.type) is not str: typeS = Flask.CONSTANT_S[self.type]
+        return "Parse Error: Unexpected %s on line %d of %s." % (typeS, self.line, self.file)
+
+class DuplicateError(Exception):
+    def __init__(self, type, file, line, symbol):
+        self.type = type
+        self.file = file
+        self.line = line
+        self.symbol = symbol
+    def __str__(self):
+        typeS = self.type
+        if type(self.type) is not str: typeS = Flask.CONSTANT_S[self.type]
+        return "Duplicate Error: Duplicate %s '%s' on line %d of %s." % (typeS, self.symbol, self.line, self.file)
+
+class UndefinedError(Exception):
+    def __init__(self, type, file, line, symbol):
+        self.type = type
+        self.file = file
+        self.line = line
+        self.symbol = symbol
+    def __str__(self):
+        typeS = self.type
+        if type(self.type) is not str: typeS = Flask.CONSTANT_S[self.type]
+        return "Undefined Error: %s '%s' is not defined but used on line %d of %s." % (typeS, self.symbol, self.line, self.file)
+
+class UnusedError(Exception):
+    def __init__(self, info):
+        self.info = info
+    def __str__(self):
+        return "Unused Error: %s" % self.info
+
+class Flask:
+    '''
+    FLASK container class with utilities for parsing definition
+    files and creating source policy files (CIL and policy language versions).
+    '''
+
+    #Constants used in definitions parsing.
+    WHITE    = re.compile(r'^\s*$')
+    COMMENT  = re.compile(r'^\s*#')
+    USERFLAG = re.compile(r'# userspace')
+    CLASS    = re.compile(r'^class (?P<name>\w+)')
+    COMMON   = re.compile(r'^common (?P<name>\w+)')
+    INHERITS = re.compile(r'^inherits (?P<name>\w+)')
+    OPENB    = re.compile(r'^{')
+    VECTOR   = re.compile(r'^\s*(?P<name>\w+)')
+    CLOSEB   = re.compile(r'^}')
+    SID      = re.compile(r'^sid (?P<name>\w+)')
+    EOF      = "end of file"
+
+    #Constants used in header generation.
+    USERSPACE = 0
+    KERNEL    = 1
+
+    CONSTANT_S = { \
+        #parsing constants
+        WHITE    : "whitespace", \
+        COMMENT  : "comment", \
+        USERFLAG : "userspace flag", \
+        CLASS    : "class definition", \
+        COMMON   : "common definition", \
+        INHERITS : "inherits definition", \
+        OPENB    : "'{'", \
+        VECTOR   : "access vector definition", \
+        CLOSEB   : "'}'", \
+        SID      : "security identifier", \
+        EOF      : "end of file", \
+        #generation constants
+        USERSPACE : "userspace mode", \
+        KERNEL    : "kernel mode", \
+    }
+
+    def __init__(self):
+        self.commons   = []
+        self.user_commons = []
+        self.common    = {}
+        self.classes   = []
+        self.vectors   = []
+        self.vector    = {}
+        self.userspace = {}
+        self.sids      = []
+        self.inherits  = {}
+
+    def parseClasses(self, path):
+        '''
+        Parses security class definitions from the given path.
+        '''
+        classes = []
+        input = open(path, 'r')
+
+        number = 0
+        for line in input:
+            number += 1
+            m = self.COMMENT.search(line)
+            if m: continue
+
+            m = self.WHITE.search(line)
+            if m: continue
+
+            m = self.CLASS.search(line)
+            if m:
+                g = m.groupdict()
+                c = g['name']
+                if c in classes: raise DuplicateError (self.CLASS, path, number, c)
+                classes.append(c)
+                if self.USERFLAG.search(line):
+                    self.userspace[c] = True
+                else:
+                    self.userspace[c] = False
+                continue
+
+            raise ParseError ("data.  Was expecting either a comment, whitespace, or class definition. ", path, number)
+
+        self.classes = classes
+        return classes
+
+
+    def parseSids(self, path):
+        '''
+        Parses initial SID definitions from the given path.
+        '''
+        sids = []
+        input = open(path, 'r')
+        for line in input:
+            m = self.COMMENT.search(line)
+            if m: continue
+
+            m = self.WHITE.search(line)
+            if m: continue
+
+            m = self.SID.search(line)
+            if m:
+                g = m.groupdict()
+                s = g['name']
+                if s in sids: raise DuplicateError (self.SID, path, number, s)
+                sids.append(s)
+                continue
+
+            raise ParseError ("data. Was expecting either a comment, whitespace, or security identifier. ", path, number)
+
+        self.sids = sids
+        return sids
+
+    def parseVectors(self, path):
+        '''
+        Parses access vector definitions from the given path.
+        '''
+        vectors = []
+        vector  = {}
+        commons = []
+        common = {}
+        inherits = {}
+        user_commons = {}
+        input = open(path, 'r')
+
+        # states
+        NONE    = 0
+        COMMON  = 1
+        CLASS   = 2
+        INHERIT = 3
+        OPEN    = 4
+
+        state = NONE
+        state2 = NONE
+        number = 0
+        for line in input:
+            number += 1
+            m = self.COMMENT.search(line)
+            if m: continue
+
+            m = self.WHITE.search(line)
+            if m:
+                if state == INHERIT:
+                    state = NONE
+                continue
+
+            m = self.COMMON.search(line)
+            if m:
+                if state != NONE: raise ParseError (self.COMMON, path, number)
+                g = m.groupdict()
+                c = g['name']
+                if c in commons: raise DuplicateError (self.COMMON, path, number, c)
+                commons.append(c)
+                common[c] = []
+                user_commons[c] = True
+                state = COMMON
+                continue
+
+            m = self.CLASS.search(line)
+            if m:
+                if state != NONE: raise ParseError (self.CLASS, number)
+                g = m.groupdict()
+                c = g['name']
+                if c in vectors: raise DuplicateError (self.CLASS, path, number, c)
+                if c not in self.classes: raise UndefinedError (self.CLASS, path, number, c)
+                vectors.append(c)
+                vector[c] = []
+                state = CLASS
+                continue
+
+            m = self.INHERITS.search(line)
+            if m:
+                if state != CLASS: raise ParseError (self.INHERITS, number)
+                g = m.groupdict()
+                i = g['name']
+                if c in inherits: raise DuplicateError (self.INHERITS, path, number, c)
+                if i not in common: raise UndefinedError (self.COMMON, path, number, i)
+                inherits[c] = i
+                state = INHERIT
+                if not self.userspace[c]: user_commons[i] = False
+                continue
+
+            m = self.OPENB.search(line)
+            if m:
+                if (state != CLASS \
+                and state != INHERIT \
+                and state != COMMON) \
+                or state2 != NONE:
+                    raise ParseError (self.OPENB, path, number)
+                state2 = OPEN
+                continue
+
+            m = self.VECTOR.search(line)
+            if m:
+                if state2 != OPEN: raise ParseError (self.VECTOR, path, number)
+                g = m.groupdict()
+                v = g['name']
+                if state == CLASS or state == INHERIT:
+                    if v in vector[c]: raise DuplicateError (self.VECTOR, path, number, v)
+                    vector[c].append(v)
+                elif state == COMMON:
+                    if v in common[c]: raise DuplicateError (self.VECTOR, path, number, v)
+                    common[c].append(v)
+                continue
+
+            m = self.CLOSEB.search(line)
+            if m:
+                if state2 != OPEN: raise ParseError (self.CLOSEB, path, number)
+                state = NONE
+                state2 = NONE
+                c = None
+                continue
+
+            raise ParseError ("data", path, number)
+
+        if state != NONE and state2 != NONE: raise ParseError (self.EOF, path, number)
+
+        cvdiff = set(self.classes) - set(vectors)
+        if cvdiff: raise UnusedError ("Not all security classes were used in access vectors: %s" % cvdiff) # the inverse of this will be caught as an undefined class error
+
+# These arrays contain the classes, permissions and initial SIDs after
+# processing the Reference Policy security_classes, access_vector and
+# initial_sids files. The build Policy Routines will then output the
+# requested policy file.
+        self.commons = commons
+        self.user_commons = user_commons
+        self.common = common
+        self.vectors = vectors
+        self.vector = vector
+        self.inherits = inherits
+        return vector
+
+#
+# Create a CIL Policy
+#
+    def createCilPolicy(self, mode = USERSPACE):
+        '''
+        Creates a CIL language formatted policy file for processing by the CIL compiler.
+        '''
+        results = []
+        if mls:
+            results.append(";\n; MLS CIL policy ")
+        else:
+            results.append(";\n; CIL policy ")
+
+        if mode == self.KERNEL:
+            results.append("- Kernel objects only\n\n")
+        else:
+            results.append("- Kernel + Userspace objects\n\n")
+
+        results.append("; This policy has been generated using the initial_sids, security_classes\n; and access_vectors flask files from: %s \n" % (flask_dir))
+        #
+        results.append("\n(handleunknown allow)\n")
+        results.append("(policycap network_peer_controls)\n\n")
+
+	# MUST disable X-Windows SELinux manager - See kernel policy build for reason.
+        results.append("; Disable X-Windows SELinux manager to stop Xwayland core dumps\n(boolean xserver_object_manager false)\n\n")
+
+        #
+        # Set up the required default MLS information. This will be discarded
+        # by the CIL policy build process for a non-MLS policy. It will
+        # allow the generation of a suitable default context.
+        #
+        if mls:
+            results.append("(mls true)\n")
+        else:
+            results.append("(mls false)\n")
+
+        results.append("(category c0)\n")
+        results.append("(category c1)\n")
+        results.append("(categoryorder (c0 c1))\n")
+        results.append("(sensitivity s0)\n")
+        results.append("(sensitivity s1)\n")
+        results.append("(sensitivityorder (s0 s1))\n")
+        results.append("(sensitivitycategory s0 (c0 c1))\n")
+        results.append("(sensitivitycategory s1 (c0 c1))\n")
+        results.append("(level systemlow (s0))\n")
+        results.append("(level systemhigh (s1 (range c0 c1)))\n")
+        results.append("(levelrange low_low (systemlow systemlow))\n")
+        results.append("(levelrange low_high (systemlow systemhigh))\n\n")
+
+        results.append("(type unconfined_t)\n\n")
+        # Add object_r
+        results.append("; Declare users and roles:\n(role  object_r)\n")
+        results.append("(role unconfined_r)\n")
+        results.append("(roletype unconfined_r unconfined_t)\n")
+        results.append("(roletype object_r unconfined_t)\n")
+
+        results.append("(user unconfined_u)\n")
+        results.append("(userrole unconfined_u unconfined_r)\n")
+        results.append("(userrole unconfined_u object_r)\n")
+        results.append("(userrange unconfined_u (systemlow systemhigh))\n")
+        results.append("(userlevel unconfined_u systemlow)\n")
+
+        results.append("(user system_u)\n")
+        results.append("(userrole system_u unconfined_r)\n")
+        results.append("(userrole system_u object_r)\n")
+        results.append("(userrange system_u (systemlow systemhigh))\n")
+        results.append("(userlevel system_u systemlow)\n\n")
+
+        # The context strings
+        results.append("(context system_context (system_u unconfined_r unconfined_t low_low))\n")
+        results.append("(context object_context (system_u object_r unconfined_t low_low))\n\n")
+        results.append("; CIL outputs these filecon statements in file_contexts file.\n")
+        results.append("(filecon \"/.*\" any object_context)\n")
+        results.append("(filecon \"/\" any object_context)\n\n")
+
+        results.append("; checkpolicy wants an mlsconstrain, CIL does not - add to build same policy:\n")
+        results.append("(mlsconstrain (filesystem (relabelto)) (and (eq l2 h2) (dom h1 h2)))\n\n")
+
+        # print out the sids
+        for s in self.sids:
+            results.append("(sid %s)\n" % (s))
+        results.append("\n")
+
+        results.append("(sidorder (")
+        for s in self.sids:
+            results.append("%s " % (s))
+        results.append("))\n\n")
+
+        # print out the commons
+        for c in self.commons:
+            results.append("(common %s (" % c)
+            count = 0
+            ps = []
+            ps += self.common[c]
+            for p in ps:
+                results.append("%s " % ps[count])
+                count += 1
+            results.append("))\n")
+        results.append("\n")
+
+        # print out classorder
+        results.append("(classorder (")
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                results.append("%s " % c)
+        results.append("))\n\n")
+
+        # print out the classes + permissions
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                if c in self.inherits:
+                    # Inherited so do (classcommon class inherit class)
+                    ps = []
+                    ps += self.common[self.inherits[c]]
+                    results.append("(classcommon %s %s)\n" % (c, self.inherits[c]))
+                    # Now only fill in non-inherited perms
+                    count = 0
+                    all_perms = []
+                    all_perms += self.vector[c]
+                    for a in all_perms:
+                        if count == 0:
+                            results.append("(class %s (%s " % (c, all_perms[count]))
+                        else:
+                            results.append("%s " % all_perms[count])
+                        count += 1
+
+                    if count == 0:
+                        results.append("(class %s ())\n" % c)
+                    else:
+                        results.append("))\n")
+                else:
+                    # Do (class %s ( perm...)) that do not use inherited perms
+                    count = 0
+                    ps = []
+                    results.append("(class %s (" % c)
+                    ps += self.vector[c]
+                    for p in ps:
+                        results.append("%s " % ps[count])
+                        count += 1
+                    results.append("))\n")
+            results.append("\n")
+
+        # print out an allow all rule for each class
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                results.append("(allow unconfined_t self (%s (all)))\n" % (c))
+
+        results.append("\n")
+
+        # Initial sids with contexts
+        for s in self.sids:
+            if s == "kernel":
+                results.append("(sidcontext %s system_context)\n" % (s))
+            else:
+                results.append("(sidcontext %s object_context)\n" % (s))
+        results.append("\n")
+
+        results.append("(fsuse xattr ext2 object_context)\n")
+        results.append("(fsuse xattr ext3 object_context)\n")
+        results.append("(fsuse xattr ext4 object_context)\n")
+        results.append("(fsuse xattr jfs object_context)\n")
+        results.append("(fsuse xattr xfs object_context)\n")
+        results.append("(fsuse xattr reiserfs object_context)\n")
+        results.append("(fsuse xattr jffs2 object_context)\n\n")
+
+        results.append("(fsuse task pipefs object_context)\n")
+        results.append("(fsuse task sockfs object_context)\n\n")
+
+        results.append("(fsuse trans mqueue object_context)\n")
+        results.append("(fsuse trans devpts object_context)\n")
+        results.append("(fsuse trans hugetlbfs object_context)\n")
+        results.append("(fsuse trans tmpfs object_context)\n")
+        results.append("(fsuse trans shm object_context)\n\n")
+
+        results.append("(genfscon selinuxfs / object_context)\n")
+        results.append("(genfscon proc / object_context)\n")
+        results.append("(genfscon sysfs / object_context)\n")
+        results.append("(genfscon debugfs / object_context)\n")
+        results.append("(genfscon tracefs / object_context)\n")
+        results.append("(genfscon pstore / object_context)\n")
+        results.append("(genfscon cgroup / object_context)\n")
+        results.append("(genfscon cgroup2 / object_context)\n\n")
+
+        results.append(";\n;;;;;;;;;;;;;;;;;;;;;;; End CIL Policy ;;;;;;;;;;;;;;;;;;;;;\n;\n")
+        return results
+
+#
+# Create initial SID statements for a CIL Policy
+#
+    def createCilInitialSIDS(self, mode = USERSPACE):
+        '''
+        Create the initial SID statements for a CIL Policy.
+        '''
+        results = []
+
+        results.append("; This file has been generated using the initial_sids flask file from:\n;\t%s\n" % (flask_dir))
+        results.append(";\n; Create the initial SID statements and their order for a CIL Policy.\n;\n\n")
+
+        results.append(";\n;;;;;;;;;;;;; Initial SIDs order from initial_sids ;;;;;;;;;;;;;\n;\n")
+        results.append("(sidorder (")
+        for s in self.sids:
+            results.append("%s " % (s))
+        results.append("))\n\n")
+
+        # print out the sids
+        results.append(";\n;;;;;;;;;;;;; Initial SIDs ;;;;;;;;;;;;;\n;\n")
+        for s in self.sids:
+            results.append("(sid %s)\n" % (s))
+        results.append("\n")
+
+        return results
+
+#
+# Create the classes, permissions and classpermissionset statements for a CIL Policy
+#
+    def createCilClassPerms(self, mode = USERSPACE):
+        '''
+        Create the classes, permissions and classpermissionset statements for a CIL Policy.
+        '''
+        results = []
+
+        if mode == self.KERNEL:
+            results.append("; Kernel classes only\n;\n")
+        else:
+            results.append("; Kernel + Userspace classes\n;\n")
+
+        results.append("; This file has been generated using the security_classes and access_vectors\n; flask files from: %s\n" % (flask_dir))
+        results.append(";\n; Create the classes, permissions and classpermissionset statements for a CIL Policy.\n; The classpermissionsets generated are for all the permissions within each class i.e.:\n;\t(classpermission security_all_perms)\n;\t(classpermissionset security_all_perms (security (all)))\n;\n\n")
+
+        # print out classorder
+        results.append(";\n;;;;;;;;;;;;; Class order from security_classes ;;;;;;;;;;;;;\n;\n")
+        results.append("(classorder (")
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                results.append("%s " % c)
+        results.append("))\n\n")
+
+        # print out the commons
+        results.append(";\n;;;;;;;;;;;;; Common permissions ;;;;;;;;;;;;;\n;\n")
+        for c in self.commons:
+            results.append("(common %s (" % c)
+            count = 0
+            ps = []
+            ps += self.common[c]
+            for p in ps:
+                results.append("%s " % ps[count])
+                count += 1
+            results.append("))\n")
+        results.append("\n")
+
+        # print out the classes + permissions
+        results.append(";\n;;;;;;;;;; Classes, permissions and classpermissionsets ;;;;;;;;;;\n;\n")
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                if c in self.inherits:
+                    # Inherited so do (classcommon class inherit class)
+                    ps = []
+                    ps += self.common[self.inherits[c]]
+                    results.append("(classcommon %s %s)\n" % (c, self.inherits[c]))
+                    # Now only fill in non-inherited perms
+                    count = 0
+                    all_perms = []
+                    all_perms += self.vector[c]
+                    for a in all_perms:
+                        if count == 0:
+                            results.append("(class %s (%s " % (c, all_perms[count]))
+                        else:
+                            results.append("%s " % all_perms[count])
+                        count += 1
+
+                    if count == 0:
+                        results.append("(class %s ())\n" % c)
+                    else:
+                        results.append("))\n")
+                else:
+                    # Do (class %s ( perm...)) that do not use inherited perms
+                    count = 0
+                    ps = []
+                    results.append("(class %s (" % c)
+                    ps += self.vector[c]
+                    for p in ps:
+                        results.append("%s " % ps[count])
+                        count += 1
+                    results.append("))\n")
+                results.append("(classpermission %s_all_perms)\n" % c)
+                results.append("(classpermissionset %s_all_perms (%s (all)))\n" % (c, c))
+            results.append("\n")
+        return results
+
+#
+# Create a Kernel Policy Language Policy
+#
+    def createPolicy(self, mode = USERSPACE):
+        '''
+        Creates a non-MLS or MLS Kernel Policy Language file for processing by checkpolicy
+        '''
+        results = []
+        se_user = "unconfined_u"
+        se_role = "unconfined_r"
+        se_type = "unconfined_t"
+        sys_user = "system_u"
+        obj_role = "object_r"
+        system_low = "s0"
+        system_high = "s1:c0.c1"
+        if mls:
+            results.append("#\n# MLS Kernel Policy Language policy ")
+        else:
+            results.append("#\n# Kernel Policy Language policy ")
+
+        if mode == self.KERNEL:
+            results.append("- Kernel objects only\n#\n")
+        else:
+            results.append("- Kernel + Userspace objects\n#\n")
+
+        results.append("# This policy has been generated using the initial_sids, security_classes\n# and access_vectors flask files from: %s\n\n" % (flask_dir))
+
+        # print out the classes
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                results.append("class %s\n" % c)
+
+        results.append("\n")
+
+        # print out the sids
+        for s in self.sids:
+            results.append("sid %s\n" % (s))
+        results.append("\n")
+
+        # print out the commons
+        for c in self.commons:
+            results.append("common %s {" % c)
+            count = 0
+            ps = []
+            ps += self.common[c]
+            for p in ps:
+                results.append("%s " % ps[count])
+                count += 1
+            results.append("}\n")
+        results.append("\n")
+
+        # print out the classes + permissions
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                if c in self.inherits:
+                    # Inherited so do (classcommon class inherit class)
+                    ps = []
+                    ps += self.common[self.inherits[c]]
+                    results.append("class %s inherits %s" % (c, self.inherits[c]))
+                    # Now only fill in non-inherited perms
+                    count = 0
+                    all_perms = []
+                    all_perms += self.vector[c]
+                    for a in all_perms:
+                        if count == 0:
+                            results.append(" { %s " % all_perms[count])
+                        else:
+                            results.append("%s " % all_perms[count])
+                        count += 1
+
+                    if count == 0:
+                        results.append("\n")
+                    else:
+                        results.append("}\n")
+                else:
+                    # Do (class %s ( perm...)) that do not use inherited perms
+                    count = 0
+                    ps = []
+                    results.append("class %s { " % c)
+                    ps += self.vector[c]
+                    for p in ps:
+                        results.append("%s " % ps[count])
+                        count += 1
+                    results.append("}\n")
+
+        # Check for MLS policy
+        if mls:
+            results.append("\nsensitivity s0;\n")
+            results.append("sensitivity s1;\n")
+            results.append("dominance { s0 s1 }\n")
+            results.append("category c0;\n")
+            results.append("category c1;\n")
+            results.append("level s0:c0.c1;\n")
+            results.append("level s1:c0.c1;\n\n")
+            results.append("# checkpolicy always wants an mlsconstrain or fails to build.\n")
+            results.append("mlsconstrain { filesystem } { relabelto } (l2 eq h2 and h1 dom h2);\n\n")
+
+        # Example policycap
+        results.append("#\n# Set this policycap statement\npolicycap network_peer_controls;\n\n")
+
+	# MUST disable X-Windows SELinux manager as it will core dump on Fedora 32:
+	#   AbortServer (Xwayland + 0x1b8f49)
+	#   ...
+	#   security_compute_av_flags_raw (libselinux.so.1 + 0xcd1f)
+	#   avc_has_perm_noaudit (libselinux.so.1 + 0xa56e)
+	#   avc_has_perm (libselinux.so.1 + 0xa649)
+	#   SELinuxDoCheck.part.0 (Xwayland + 0xc578a)
+	#   SELinuxResource (Xwayland + 0xc6ebc)
+        results.append("#\n# Disable X-Windows SELinux manager to stop Xwayland core dumps\nbool xserver_object_manager false;\n\n")
+
+        # types and roles
+        results.append("type %s;\n" % (se_type))
+        results.append("role %s;\n" % (se_role))
+        results.append("role %s types { %s };\n\n" % (se_role, se_type))
+
+        # print out allow rules
+        for c in self.classes:
+            if mode == self.KERNEL and self.userspace[c]:
+                continue
+            else:
+                results.append("allow %s %s:%s *;\n" % (se_type, se_type, c))
+        results.append("\n")
+
+        #  print out user statements
+        if mls:
+            results.append("user %s roles { %s } level %s range %s - %s;\n" % (se_user, se_role, system_low, system_low, system_high))
+            results.append("user %s roles { %s } level %s range %s - %s;\n" % (sys_user, se_role, system_low, system_low, system_high))
+        else:
+            results.append("user %s roles { %s };\n" % (se_user, se_role))
+            results.append("user %s roles { %s };\n" % (sys_user, se_role))
+        results.append("\n");
+
+        if mls:
+            # Initial sids with contexts
+            count = 0
+            for s in self.sids:
+                count += 1
+                if s == "kernel":
+                    results.append("sid %s %s:%s:%s:s0\n" % (s, sys_user, se_role, se_type))
+                else:
+                    results.append("sid %s %s:%s:%s:s0\n" % (s, sys_user, obj_role, se_type))
+
+            results.append("\n")
+
+            results.append("fs_use_xattr ext2 %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr ext3 %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr ext4 %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr jfs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr xfs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr reiserfs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr jffs2 %s:%s:%s:s0;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("fs_use_task pipefs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_task sockfs %s:%s:%s:s0;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("fs_use_trans mqueue %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans devpts %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans hugetlbfs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans tmpfs %s:%s:%s:s0;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans shm %s:%s:%s:s0;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("genfscon selinuxfs / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon proc / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon sysfs / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon debugfs / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon tracefs / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon pstore / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon cgroup / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon cgroup2 / %s:%s:%s:s0\n" % (sys_user, obj_role, se_type))
+        else:
+            # default sids
+            count = 0
+            for s in self.sids:
+                count += 1
+                if s == "kernel":
+                    results.append("sid %s %s:%s:%s\n" % (s, sys_user, se_role, se_type))
+                else:
+                    results.append("sid %s %s:%s:%s\n" % (s, sys_user, obj_role, se_type))
+            results.append("\n")
+            results.append("fs_use_xattr ext2 %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr ext3 %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr ext4 %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr jfs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr xfs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr reiserfs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_xattr jffs2 %s:%s:%s;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("fs_use_task pipefs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_task sockfs %s:%s:%s;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("fs_use_trans mqueue %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans devpts %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans hugetlbfs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans tmpfs %s:%s:%s;\n" % (sys_user, obj_role, se_type))
+            results.append("fs_use_trans shm %s:%s:%s;\n\n" % (sys_user, obj_role, se_type))
+
+            results.append("genfscon selinuxfs / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon proc / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon sysfs / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon debugfs / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon tracefs / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon pstore / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon cgroup / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+            results.append("genfscon cgroup2 / %s:%s:%s\n" % (sys_user, obj_role, se_type))
+        return results
+
+
+def usage():
+    '''
+    Returns the usage string.
+    '''
+    usage  = 'Usage: %s [-k] [-M] [-c|-p|-s] -d flask_directory -o output_file\n' % os.path.basename(sys.argv[0])
+    usage += '\n'
+    usage += ' -k\tOutput kernel classes only (exclude # userspace entries in the\n\tsecurity_classes file).\n'
+    usage += ' -M\tOutput an MLS policy.\n'
+    usage += ' -c\tOutput a policy in CIL language (otherwise gererate a kernel policy\n\tlanguage policy).\n'
+    usage += ' -p\tOutput a file containing class and classpermissionsets + their order\n\tfor use by CIL policies.\n'
+    usage += ' -s\tOutput a file containing initial SIDs + their order for use by\n\tCIL policies.\n'
+    usage += ' -o\tThe output file that will contain the policy source or header file.\n'
+    usage += ' -d\tDirectory containing the initial_sids, security_classes and\n\taccess_vectors Flask files.\n\n'
+    return usage
+
+########## MAIN ##########
+if __name__ == '__main__':
+
+    # Parse command line args
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'o:d:Mckhps')
+    except getopt.GetoptError:
+        print(usage())
+        sys.exit(2)
+
+    mls = 0
+    cil = 0
+    class_perm = 0
+    sids = 0
+    flask_dir = None
+    outf = None
+    mode = None
+    for o, a in opts:
+        if o in ('-h'):
+            print(usage())
+            sys.exit(0)
+        elif o in ('-M'):
+            mls = 1
+        elif o in ('-c'):
+            cil = 1
+        elif o in ('-p'):
+            class_perm = 1
+        elif o in ('-s'):
+            sids = 1
+        elif o in ('-o'):
+            outf = a
+        elif o in ('-d'):
+            flask_dir = a
+        elif o in ('-k'):
+            mode = Flask.KERNEL
+        else:
+            print(usage())
+            sys.exit(2)
+
+    if    flask_dir == None or \
+        outf == None:
+        print(usage())
+        sys.exit(2)
+
+    try:
+        f = Flask()
+        f.parseSids(flask_dir + "/initial_sids")
+        f.parseClasses(flask_dir + "/security_classes")
+        f.parseVectors(flask_dir + "/access_vectors")
+
+        # Open the file and then create the requested policy source file
+        of = open(outf, 'w')
+        if cil == 1:
+            of.writelines(f.createCilPolicy(mode))
+            print("Output CIL policy")
+        elif class_perm == 1:
+            of.writelines(f.createCilClassPerms(mode))
+            print("Output CIL class permission sets")
+        elif sids == 1:
+            of.writelines(f.createCilInitialSIDS(mode))
+            print("Output CIL initial SIDs")
+        else:
+            of.writelines(f.createPolicy(mode))
+            print("Output Kernel Language policy")
+        of.close()
+
+    except Exception (e):
+        print(e)
+        sys.exit(2)

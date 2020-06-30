@@ -1,0 +1,5 @@
+client * system_u:object_r:unconfined_t:s0
+property * system_u:object_r:unconfined_t:s0
+extension * system_u:object_r:unconfined_t:s0
+selection * system_u:object_r:unconfined_t:s0
+event * system_u:object_r:unconfined_t:s0

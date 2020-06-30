@@ -1,0 +1,1059 @@
+#
+# Define common prefixes for access vectors
+#
+# common common_name { permission_name ... }
+
+
+#
+# Define a common prefix for file access vectors.
+#
+
+common file
+{
+	ioctl
+	read
+	write
+	create
+	getattr
+	setattr
+	lock
+	relabelfrom
+	relabelto
+	append
+	map
+	unlink
+	link
+	rename
+	execute
+	quotaon
+	mounton
+	audit_access
+	open
+	execmod
+	watch
+	watch_mount
+	watch_sb
+	watch_with_perm
+	watch_reads
+}
+
+
+#
+# Define a common prefix for socket access vectors.
+#
+
+common socket
+{
+# inherited from file
+	ioctl
+	read
+	write
+	create
+	getattr
+	setattr
+	lock
+	relabelfrom
+	relabelto
+	append
+	map
+# socket-specific
+	bind
+	connect
+	listen
+	accept
+	getopt
+	setopt
+	shutdown
+	recvfrom
+	sendto
+	name_bind
+}
+
+#
+# Define a common prefix for ipc access vectors.
+#
+
+common ipc
+{
+	create
+	destroy
+	getattr
+	setattr
+	read
+	write
+	associate
+	unix_read
+	unix_write
+}
+
+#
+#  Define a common prefix for userspace database object access vectors.
+#
+
+common database
+{
+	create
+	drop
+	getattr
+	setattr
+	relabelfrom
+	relabelto
+}
+
+#
+# Define a common prefix for pointer and keyboard access vectors.
+#
+
+common x_device
+{
+	getattr
+	setattr
+	use
+	read
+	write
+	getfocus
+	setfocus
+	bell
+	force_cursor
+	freeze
+	grab
+	manage
+	list_property
+	get_property
+	set_property
+	add
+	remove
+	create
+	destroy
+}
+
+#
+# Define a common for capability access vectors.
+#
+common cap
+{
+	# The capabilities are defined in include/linux/capability.h
+	# Capabilities >= 32 are defined in the cap2 common.
+	# Care should be taken to ensure that these are consistent with
+	# those definitions. (Order matters)
+
+	chown
+	dac_override
+	dac_read_search
+	fowner
+	fsetid
+	kill
+	setgid
+	setuid
+	setpcap
+	linux_immutable
+	net_bind_service
+	net_broadcast
+	net_admin
+	net_raw
+	ipc_lock
+	ipc_owner
+	sys_module
+	sys_rawio
+	sys_chroot
+	sys_ptrace
+	sys_pacct
+	sys_admin
+	sys_boot
+	sys_nice
+	sys_resource
+	sys_time
+	sys_tty_config
+	mknod
+	lease
+	audit_write
+	audit_control
+	setfcap
+}
+
+common cap2
+{
+	mac_override	# unused by SELinux
+	mac_admin
+	syslog
+	wake_alarm
+	block_suspend
+	audit_read
+}
+
+#
+# Define the access vectors.
+#
+# class class_name [ inherits common_name ] { permission_name ... }
+
+
+#
+# Define the access vector interpretation for file-related objects.
+#
+
+class filesystem
+{
+	mount
+	remount
+	unmount
+	getattr
+	relabelfrom
+	relabelto
+	associate
+	quotamod
+	quotaget
+	watch
+}
+
+class dir
+inherits file
+{
+	add_name
+	remove_name
+	reparent
+	search
+	rmdir
+}
+
+class file
+inherits file
+{
+	execute_no_trans
+	entrypoint
+}
+
+class lnk_file
+inherits file
+
+class chr_file
+inherits file
+
+class blk_file
+inherits file
+
+class sock_file
+inherits file
+
+class fifo_file
+inherits file
+
+class fd
+{
+	use
+}
+
+
+#
+# Define the access vector interpretation for network-related objects.
+#
+
+class socket
+inherits socket
+
+class tcp_socket
+inherits socket
+{
+	node_bind
+	name_connect
+}
+
+class udp_socket
+inherits socket
+{
+	node_bind
+}
+
+class rawip_socket
+inherits socket
+{
+	node_bind
+}
+
+class node
+{
+	recvfrom
+	sendto
+}
+
+class netif
+{
+	ingress
+	egress
+}
+
+class netlink_socket
+inherits socket
+
+class packet_socket
+inherits socket
+
+class key_socket
+inherits socket
+
+class unix_stream_socket
+inherits socket
+{
+	connectto
+}
+
+class unix_dgram_socket
+inherits socket
+
+#
+# Define the access vector interpretation for process-related objects
+#
+
+class process
+{
+	fork
+	transition
+	sigchld # commonly granted from child to parent
+	sigkill # cannot be caught or ignored
+	sigstop # cannot be caught or ignored
+	signull # for kill(pid, 0)
+	signal  # all other signals
+	ptrace
+	getsched
+	setsched
+	getsession
+	getpgid
+	setpgid
+	getcap
+	setcap
+	share
+	getattr
+	setexec
+	setfscreate
+	noatsecure
+	siginh
+	setrlimit
+	rlimitinh
+	dyntransition
+	setcurrent
+	execmem
+	execstack
+	execheap
+	setkeycreate
+	setsockcreate
+	getrlimit
+}
+
+class process2
+{
+	nnp_transition
+	nosuid_transition
+}
+
+#
+# Define the access vector interpretation for ipc-related objects
+#
+
+class ipc
+inherits ipc
+
+class sem
+inherits ipc
+
+class msgq
+inherits ipc
+{
+	enqueue
+}
+
+class msg
+{
+	send
+	receive
+}
+
+class shm
+inherits ipc
+{
+	lock
+}
+
+
+#
+# Define the access vector interpretation for the security server.
+#
+
+class security
+{
+	compute_av
+	compute_create
+	compute_member
+	check_context
+	load_policy
+	compute_relabel
+	compute_user
+	setenforce     # was avc_toggle in system class
+	setbool
+	setsecparam
+	setcheckreqprot
+	read_policy
+	validate_trans
+}
+
+
+#
+# Define the access vector interpretation for system operations.
+#
+
+class system
+{
+	ipc_info
+	syslog_read
+	syslog_mod
+	syslog_console
+	module_request
+	module_load
+
+	# these are overloaded userspace
+	# permissions from systemd
+	halt
+	reboot
+	status
+	start
+	stop
+	enable
+	disable
+	reload
+}
+
+#
+# Define the access vector interpretation for controlling capabilities
+#
+
+class capability
+inherits cap
+
+class capability2
+inherits cap2
+
+#
+# Define the access vector interpretation for controlling
+# changes to passwd information.
+#
+class passwd
+{
+	passwd	# change another user passwd
+	chfn	# change another user finger info
+	chsh	# change another user shell
+	rootok  # pam_rootok check (skip auth)
+	crontab # crontab on another user
+}
+
+#
+# SE-X Windows stuff
+#
+class x_drawable
+{
+	create
+	destroy
+	read
+	write
+	blend
+	getattr
+	setattr
+	list_child
+	add_child
+	remove_child
+	list_property
+	get_property
+	set_property
+	manage
+	override
+	show
+	hide
+	send
+	receive
+}
+
+class x_screen
+{
+	getattr
+	setattr
+	hide_cursor
+	show_cursor
+	saver_getattr
+	saver_setattr
+	saver_hide
+	saver_show
+}
+
+class x_gc
+{
+	create
+	destroy
+	getattr
+	setattr
+	use
+}
+
+class x_font
+{
+	create
+	destroy
+	getattr
+	add_glyph
+	remove_glyph
+	use
+}
+
+class x_colormap
+{
+	create
+	destroy
+	read
+	write
+	getattr
+	add_color
+	remove_color
+	install
+	uninstall
+	use
+}
+
+class x_property
+{
+	create
+	destroy
+	read
+	write
+	append
+	getattr
+	setattr
+}
+
+class x_selection
+{
+	read
+	write
+	getattr
+	setattr
+}
+
+class x_cursor
+{
+	create
+	destroy
+	read
+	write
+	getattr
+	setattr
+	use
+}
+
+class x_client
+{
+	destroy
+	getattr
+	setattr
+	manage
+}
+
+class x_device
+inherits x_device
+
+class x_server
+{
+	getattr
+	setattr
+	record
+	debug
+	grab
+	manage
+}
+
+class x_extension
+{
+	query
+	use
+}
+
+class x_resource
+{
+	read
+	write
+}
+
+class x_event
+{
+	send
+	receive
+}
+
+class x_synthetic_event
+{
+	send
+	receive
+}
+
+#
+# Extended Netlink classes
+#
+class netlink_route_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+}
+
+class obsolete_netlink_firewall_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+}
+
+class netlink_tcpdiag_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+}
+
+class netlink_nflog_socket
+inherits socket
+
+class netlink_xfrm_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+}
+
+class netlink_selinux_socket
+inherits socket
+
+class netlink_audit_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+	nlmsg_relay
+	nlmsg_readpriv
+	nlmsg_tty_audit
+}
+
+class obsolete_netlink_ip6fw_socket
+inherits socket
+{
+	nlmsg_read
+	nlmsg_write
+}
+
+class netlink_dnrt_socket
+inherits socket
+
+# Define the access vector interpretation for controlling
+# access and communication through the D-BUS messaging
+# system.
+#
+class dbus
+{
+	acquire_svc
+	send_msg
+}
+
+# Define the access vector interpretation for controlling
+# access through the name service cache daemon (nscd).
+#
+class nscd
+{
+	getpwd
+	getgrp
+	gethost
+	getstat
+	admin
+	shmempwd
+	shmemgrp
+	shmemhost
+	getserv
+	shmemserv
+}
+
+# Define the access vector interpretation for controlling
+# access to IPSec network data by association
+#
+class association
+{
+	sendto
+	recvfrom
+	setcontext
+	polmatch
+}
+
+# Updated Netlink class for KOBJECT_UEVENT family.
+class netlink_kobject_uevent_socket
+inherits socket
+
+class appletalk_socket
+inherits socket
+
+class packet
+{
+	send
+	recv
+	relabelto
+	forward_in
+	forward_out
+}
+
+class key
+{
+	view
+	read
+	write
+	search
+	link
+	setattr
+	create
+}
+
+class context
+{
+	unused_perm
+	contains
+}
+
+class dccp_socket
+inherits socket
+{
+	node_bind
+	name_connect
+}
+
+class memprotect
+{
+	mmap_zero
+}
+
+class db_database
+inherits database
+{
+	access
+	install_module
+	load_module
+	get_param	# deprecated
+	set_param	# deprecated
+}
+
+class db_table
+inherits database
+{
+	select
+	update
+	insert
+	delete
+	lock
+}
+
+class db_procedure
+inherits database
+{
+	execute
+	entrypoint
+	install
+}
+
+class db_column
+inherits database
+{
+	select
+	update
+	insert
+}
+
+class db_tuple
+{
+	relabelfrom
+	relabelto
+	use
+	select
+	update
+	insert
+	delete
+}
+
+class db_blob
+inherits database
+{
+	read
+	write
+	import
+	export
+}
+
+class db_exception
+inherits database
+{
+	use
+}
+
+class db_datatype
+inherits database
+{
+	use
+}
+
+# network peer labels
+class peer
+{
+	recv
+}
+
+class x_application_data
+{
+	paste
+	paste_after_confirm
+	copy
+}
+
+class kernel_service
+{
+	use_as_override
+	create_files_as
+}
+
+class tun_socket
+inherits socket
+{
+	attach_queue
+}
+
+class binder
+{
+	impersonate
+	call
+	set_context_mgr
+	transfer
+}
+
+class netlink_iscsi_socket
+inherits socket
+
+class netlink_fib_lookup_socket
+inherits socket
+
+class netlink_connector_socket
+inherits socket
+
+class netlink_netfilter_socket
+inherits socket
+
+class netlink_generic_socket
+inherits socket
+
+class netlink_scsitransport_socket
+inherits socket
+
+class netlink_rdma_socket
+inherits socket
+
+class netlink_crypto_socket
+inherits socket
+
+class x_pointer
+inherits x_device
+
+class x_keyboard
+inherits x_device
+
+class db_schema
+inherits database
+{
+	search
+	add_name
+	remove_name
+}
+
+class db_view
+inherits database
+{
+	expand
+}
+
+class db_sequence
+inherits database
+{
+	get_value
+	next_value
+	set_value
+}
+
+class infiniband_pkey
+{
+	access
+}
+
+class infiniband_endport
+{
+	manage_subnet
+}
+
+class db_language
+inherits database
+{
+	implement
+	execute
+}
+
+class service
+{
+	start
+	stop
+	status
+	reload
+	enable
+	disable
+}
+
+#
+# Define the access vector interpretation for controlling capabilities
+# in user namespaces
+#
+class cap_userns
+inherits cap
+
+class cap2_userns
+inherits cap2
+
+#
+# Define the access vector interpretation for the new socket classes
+# enabled by the extended_socket_class policy capability.
+#
+
+#
+# The next two classes were previously mapped to rawip_socket and therefore
+# have the same definition as rawip_socket (until further permissions
+# are defined).
+#
+class sctp_socket
+inherits socket
+{
+	node_bind
+	name_connect
+	association
+}
+
+class icmp_socket
+inherits socket
+{
+	node_bind
+}
+
+#
+# The remaining network socket classes were previously
+# mapped to the socket class and therefore have the
+# same definition as socket.
+#
+
+class ax25_socket
+inherits socket
+
+class ipx_socket
+inherits socket
+
+class netrom_socket
+inherits socket
+
+class atmpvc_socket
+inherits socket
+
+class x25_socket
+inherits socket
+
+class rose_socket
+inherits socket
+
+class decnet_socket
+inherits socket
+
+class atmsvc_socket
+inherits socket
+
+class rds_socket
+inherits socket
+
+class irda_socket
+inherits socket
+
+class pppox_socket
+inherits socket
+
+class llc_socket
+inherits socket
+
+class can_socket
+inherits socket
+
+class tipc_socket
+inherits socket
+
+class bluetooth_socket
+inherits socket
+
+class iucv_socket
+inherits socket
+
+class rxrpc_socket
+inherits socket
+
+class isdn_socket
+inherits socket
+
+class phonet_socket
+inherits socket
+
+class ieee802154_socket
+inherits socket
+
+class caif_socket
+inherits socket
+
+class alg_socket
+inherits socket
+
+class nfc_socket
+inherits socket
+
+class vsock_socket
+inherits socket
+
+class kcm_socket
+inherits socket
+
+class qipcrtr_socket
+inherits socket
+
+class smc_socket
+inherits socket
+
+class bpf
+{
+	map_create
+	map_read
+	map_write
+	prog_load
+	prog_run
+}
+
+class xdp_socket
+inherits socket
+
+class perf_event
+{
+	open
+	cpu
+	kernel
+	tracepoint
+	read
+	write
+}
+
+class lockdown
+{
+    integrity
+    confidentiality
+}

@@ -1,0 +1,515 @@
+;
+; MLS CIL policy - Kernel objects only
+
+; This policy has been generated using the initial_sids, security_classes
+; and access_vectors flask files from: ../flask-files
+
+(handleunknown allow)
+(policycap network_peer_controls)
+
+; Disable X-Windows SELinux manager to stop Xwayland core dumps
+(boolean xserver_object_manager false)
+
+(mls true)
+(category c0)
+(category c1)
+(categoryorder (c0 c1))
+(sensitivity s0)
+(sensitivity s1)
+(sensitivityorder (s0 s1))
+(sensitivitycategory s0 (c0 c1))
+(sensitivitycategory s1 (c0 c1))
+(level systemlow (s0))
+(level systemhigh (s1 (range c0 c1)))
+(levelrange low_low (systemlow systemlow))
+(levelrange low_high (systemlow systemhigh))
+
+(type unconfined_t)
+
+; Declare users and roles:
+(role  object_r)
+(role unconfined_r)
+(roletype unconfined_r unconfined_t)
+(roletype object_r unconfined_t)
+(user unconfined_u)
+(userrole unconfined_u unconfined_r)
+(userrole unconfined_u object_r)
+(userrange unconfined_u (systemlow systemhigh))
+(userlevel unconfined_u systemlow)
+(user system_u)
+(userrole system_u unconfined_r)
+(userrole system_u object_r)
+(userrange system_u (systemlow systemhigh))
+(userlevel system_u systemlow)
+
+(context system_context (system_u unconfined_r unconfined_t low_low))
+(context object_context (system_u object_r unconfined_t low_low))
+
+; CIL outputs these filecon statements in file_contexts file.
+(filecon "/" any object_context)
+(filecon "/.*" any object_context)
+
+; checkpolicy wants an mlsconstrain, CIL does not - add to build same policy:
+(mlsconstrain (filesystem (relabelto)) (and (eq l2 h2) (dom h1 h2)))
+
+(sid kernel)
+(sid security)
+(sid unlabeled)
+(sid fs)
+(sid file)
+(sid file_labels)
+(sid init)
+(sid any_socket)
+(sid port)
+(sid netif)
+(sid netmsg)
+(sid node)
+(sid igmp_packet)
+(sid icmp_socket)
+(sid tcp_socket)
+(sid sysctl_modprobe)
+(sid sysctl)
+(sid sysctl_fs)
+(sid sysctl_kernel)
+(sid sysctl_net)
+(sid sysctl_net_unix)
+(sid sysctl_vm)
+(sid sysctl_dev)
+(sid kmod)
+(sid policy)
+(sid scmp_packet)
+(sid devnull)
+
+(sidorder (kernel security unlabeled fs file file_labels init any_socket port netif netmsg node igmp_packet icmp_socket tcp_socket sysctl_modprobe sysctl sysctl_fs sysctl_kernel sysctl_net sysctl_net_unix sysctl_vm sysctl_dev kmod policy scmp_packet devnull ))
+
+(common file (ioctl read write create getattr setattr lock relabelfrom relabelto append map unlink link rename execute quotaon mounton audit_access open execmod watch watch_mount watch_sb watch_with_perm watch_reads ))
+(common socket (ioctl read write create getattr setattr lock relabelfrom relabelto append map bind connect listen accept getopt setopt shutdown recvfrom sendto name_bind ))
+(common ipc (create destroy getattr setattr read write associate unix_read unix_write ))
+(common database (create drop getattr setattr relabelfrom relabelto ))
+(common x_device (getattr setattr use read write getfocus setfocus bell force_cursor freeze grab manage list_property get_property set_property add remove create destroy ))
+(common cap (chown dac_override dac_read_search fowner fsetid kill setgid setuid setpcap linux_immutable net_bind_service net_broadcast net_admin net_raw ipc_lock ipc_owner sys_module sys_rawio sys_chroot sys_ptrace sys_pacct sys_admin sys_boot sys_nice sys_resource sys_time sys_tty_config mknod lease audit_write audit_control setfcap ))
+(common cap2 (mac_override mac_admin syslog wake_alarm block_suspend audit_read ))
+
+(classorder (security process system capability filesystem file dir fd lnk_file chr_file blk_file sock_file fifo_file socket tcp_socket udp_socket rawip_socket node netif netlink_socket packet_socket key_socket unix_stream_socket unix_dgram_socket sem msg msgq shm ipc netlink_route_socket obsolete_netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket netlink_selinux_socket netlink_audit_socket obsolete_netlink_ip6fw_socket netlink_dnrt_socket association netlink_kobject_uevent_socket appletalk_socket packet key dccp_socket memprotect peer capability2 kernel_service tun_socket binder netlink_iscsi_socket netlink_fib_lookup_socket netlink_connector_socket netlink_netfilter_socket netlink_generic_socket netlink_scsitransport_socket netlink_rdma_socket netlink_crypto_socket infiniband_pkey infiniband_endport cap_userns cap2_userns sctp_socket icmp_socket ax25_socket ipx_socket netrom_socket atmpvc_socket x25_socket rose_socket decnet_socket atmsvc_socket rds_socket irda_socket pppox_socket llc_socket can_socket tipc_socket bluetooth_socket iucv_socket rxrpc_socket isdn_socket phonet_socket ieee802154_socket caif_socket alg_socket nfc_socket vsock_socket kcm_socket qipcrtr_socket smc_socket process2 bpf xdp_socket perf_event lockdown ))
+
+(class security (compute_av compute_create compute_member check_context load_policy compute_relabel compute_user setenforce setbool setsecparam setcheckreqprot read_policy validate_trans ))
+
+(class process (fork transition sigchld sigkill sigstop signull signal ptrace getsched setsched getsession getpgid setpgid getcap setcap share getattr setexec setfscreate noatsecure siginh setrlimit rlimitinh dyntransition setcurrent execmem execstack execheap setkeycreate setsockcreate getrlimit ))
+
+(class system (ipc_info syslog_read syslog_mod syslog_console module_request module_load halt reboot status start stop enable disable reload ))
+
+(classcommon capability cap)
+(class capability ())
+
+(class filesystem (mount remount unmount getattr relabelfrom relabelto associate quotamod quotaget watch ))
+
+(classcommon file file)
+(class file (execute_no_trans entrypoint ))
+
+(classcommon dir file)
+(class dir (add_name remove_name reparent search rmdir ))
+
+(class fd (use ))
+
+(classcommon lnk_file file)
+(class lnk_file ())
+
+(classcommon chr_file file)
+(class chr_file ())
+
+(classcommon blk_file file)
+(class blk_file ())
+
+(classcommon sock_file file)
+(class sock_file ())
+
+(classcommon fifo_file file)
+(class fifo_file ())
+
+(classcommon socket socket)
+(class socket ())
+
+(classcommon tcp_socket socket)
+(class tcp_socket (node_bind name_connect ))
+
+(classcommon udp_socket socket)
+(class udp_socket (node_bind ))
+
+(classcommon rawip_socket socket)
+(class rawip_socket (node_bind ))
+
+(class node (recvfrom sendto ))
+
+(class netif (ingress egress ))
+
+(classcommon netlink_socket socket)
+(class netlink_socket ())
+
+(classcommon packet_socket socket)
+(class packet_socket ())
+
+(classcommon key_socket socket)
+(class key_socket ())
+
+(classcommon unix_stream_socket socket)
+(class unix_stream_socket (connectto ))
+
+(classcommon unix_dgram_socket socket)
+(class unix_dgram_socket ())
+
+(classcommon sem ipc)
+(class sem ())
+
+(class msg (send receive ))
+
+(classcommon msgq ipc)
+(class msgq (enqueue ))
+
+(classcommon shm ipc)
+(class shm (lock ))
+
+(classcommon ipc ipc)
+(class ipc ())
+
+(classcommon netlink_route_socket socket)
+(class netlink_route_socket (nlmsg_read nlmsg_write ))
+
+(classcommon obsolete_netlink_firewall_socket socket)
+(class obsolete_netlink_firewall_socket (nlmsg_read nlmsg_write ))
+
+(classcommon netlink_tcpdiag_socket socket)
+(class netlink_tcpdiag_socket (nlmsg_read nlmsg_write ))
+
+(classcommon netlink_nflog_socket socket)
+(class netlink_nflog_socket ())
+
+(classcommon netlink_xfrm_socket socket)
+(class netlink_xfrm_socket (nlmsg_read nlmsg_write ))
+
+(classcommon netlink_selinux_socket socket)
+(class netlink_selinux_socket ())
+
+(classcommon netlink_audit_socket socket)
+(class netlink_audit_socket (nlmsg_read nlmsg_write nlmsg_relay nlmsg_readpriv nlmsg_tty_audit ))
+
+(classcommon obsolete_netlink_ip6fw_socket socket)
+(class obsolete_netlink_ip6fw_socket (nlmsg_read nlmsg_write ))
+
+(classcommon netlink_dnrt_socket socket)
+(class netlink_dnrt_socket ())
+
+(class association (sendto recvfrom setcontext polmatch ))
+
+(classcommon netlink_kobject_uevent_socket socket)
+(class netlink_kobject_uevent_socket ())
+
+(classcommon appletalk_socket socket)
+(class appletalk_socket ())
+
+(class packet (send recv relabelto forward_in forward_out ))
+
+(class key (view read write search link setattr create ))
+
+(classcommon dccp_socket socket)
+(class dccp_socket (node_bind name_connect ))
+
+(class memprotect (mmap_zero ))
+
+(class peer (recv ))
+
+(classcommon capability2 cap2)
+(class capability2 ())
+
+(class kernel_service (use_as_override create_files_as ))
+
+(classcommon tun_socket socket)
+(class tun_socket (attach_queue ))
+
+(class binder (impersonate call set_context_mgr transfer ))
+
+(classcommon netlink_iscsi_socket socket)
+(class netlink_iscsi_socket ())
+
+(classcommon netlink_fib_lookup_socket socket)
+(class netlink_fib_lookup_socket ())
+
+(classcommon netlink_connector_socket socket)
+(class netlink_connector_socket ())
+
+(classcommon netlink_netfilter_socket socket)
+(class netlink_netfilter_socket ())
+
+(classcommon netlink_generic_socket socket)
+(class netlink_generic_socket ())
+
+(classcommon netlink_scsitransport_socket socket)
+(class netlink_scsitransport_socket ())
+
+(classcommon netlink_rdma_socket socket)
+(class netlink_rdma_socket ())
+
+(classcommon netlink_crypto_socket socket)
+(class netlink_crypto_socket ())
+
+(class infiniband_pkey (access ))
+
+(class infiniband_endport (manage_subnet ))
+
+(classcommon cap_userns cap)
+(class cap_userns ())
+
+(classcommon cap2_userns cap2)
+(class cap2_userns ())
+
+(classcommon sctp_socket socket)
+(class sctp_socket (node_bind name_connect association ))
+
+(classcommon icmp_socket socket)
+(class icmp_socket (node_bind ))
+
+(classcommon ax25_socket socket)
+(class ax25_socket ())
+
+(classcommon ipx_socket socket)
+(class ipx_socket ())
+
+(classcommon netrom_socket socket)
+(class netrom_socket ())
+
+(classcommon atmpvc_socket socket)
+(class atmpvc_socket ())
+
+(classcommon x25_socket socket)
+(class x25_socket ())
+
+(classcommon rose_socket socket)
+(class rose_socket ())
+
+(classcommon decnet_socket socket)
+(class decnet_socket ())
+
+(classcommon atmsvc_socket socket)
+(class atmsvc_socket ())
+
+(classcommon rds_socket socket)
+(class rds_socket ())
+
+(classcommon irda_socket socket)
+(class irda_socket ())
+
+(classcommon pppox_socket socket)
+(class pppox_socket ())
+
+(classcommon llc_socket socket)
+(class llc_socket ())
+
+(classcommon can_socket socket)
+(class can_socket ())
+
+(classcommon tipc_socket socket)
+(class tipc_socket ())
+
+(classcommon bluetooth_socket socket)
+(class bluetooth_socket ())
+
+(classcommon iucv_socket socket)
+(class iucv_socket ())
+
+(classcommon rxrpc_socket socket)
+(class rxrpc_socket ())
+
+(classcommon isdn_socket socket)
+(class isdn_socket ())
+
+(classcommon phonet_socket socket)
+(class phonet_socket ())
+
+(classcommon ieee802154_socket socket)
+(class ieee802154_socket ())
+
+(classcommon caif_socket socket)
+(class caif_socket ())
+
+(classcommon alg_socket socket)
+(class alg_socket ())
+
+(classcommon nfc_socket socket)
+(class nfc_socket ())
+
+(classcommon vsock_socket socket)
+(class vsock_socket ())
+
+(classcommon kcm_socket socket)
+(class kcm_socket ())
+
+(classcommon qipcrtr_socket socket)
+(class qipcrtr_socket ())
+
+(classcommon smc_socket socket)
+(class smc_socket ())
+
+(class process2 (nnp_transition nosuid_transition ))
+
+(class bpf (map_create map_read map_write prog_load prog_run ))
+
+(classcommon xdp_socket socket)
+(class xdp_socket ())
+
+(class perf_event (open cpu kernel tracepoint read write ))
+
+(class lockdown (integrity confidentiality ))
+
+(allow unconfined_t self (security (all)))
+(allow unconfined_t self (process (all)))
+(allow unconfined_t self (system (all)))
+(allow unconfined_t self (capability (all)))
+(allow unconfined_t self (filesystem (all)))
+(allow unconfined_t self (file (all)))
+(allow unconfined_t self (dir (all)))
+(allow unconfined_t self (fd (all)))
+(allow unconfined_t self (lnk_file (all)))
+(allow unconfined_t self (chr_file (all)))
+(allow unconfined_t self (blk_file (all)))
+(allow unconfined_t self (sock_file (all)))
+(allow unconfined_t self (fifo_file (all)))
+(allow unconfined_t self (socket (all)))
+(allow unconfined_t self (tcp_socket (all)))
+(allow unconfined_t self (udp_socket (all)))
+(allow unconfined_t self (rawip_socket (all)))
+(allow unconfined_t self (node (all)))
+(allow unconfined_t self (netif (all)))
+(allow unconfined_t self (netlink_socket (all)))
+(allow unconfined_t self (packet_socket (all)))
+(allow unconfined_t self (key_socket (all)))
+(allow unconfined_t self (unix_stream_socket (all)))
+(allow unconfined_t self (unix_dgram_socket (all)))
+(allow unconfined_t self (sem (all)))
+(allow unconfined_t self (msg (all)))
+(allow unconfined_t self (msgq (all)))
+(allow unconfined_t self (shm (all)))
+(allow unconfined_t self (ipc (all)))
+(allow unconfined_t self (netlink_route_socket (all)))
+(allow unconfined_t self (obsolete_netlink_firewall_socket (all)))
+(allow unconfined_t self (netlink_tcpdiag_socket (all)))
+(allow unconfined_t self (netlink_nflog_socket (all)))
+(allow unconfined_t self (netlink_xfrm_socket (all)))
+(allow unconfined_t self (netlink_selinux_socket (all)))
+(allow unconfined_t self (netlink_audit_socket (all)))
+(allow unconfined_t self (obsolete_netlink_ip6fw_socket (all)))
+(allow unconfined_t self (netlink_dnrt_socket (all)))
+(allow unconfined_t self (association (all)))
+(allow unconfined_t self (netlink_kobject_uevent_socket (all)))
+(allow unconfined_t self (appletalk_socket (all)))
+(allow unconfined_t self (packet (all)))
+(allow unconfined_t self (key (all)))
+(allow unconfined_t self (dccp_socket (all)))
+(allow unconfined_t self (memprotect (all)))
+(allow unconfined_t self (peer (all)))
+(allow unconfined_t self (capability2 (all)))
+(allow unconfined_t self (kernel_service (all)))
+(allow unconfined_t self (tun_socket (all)))
+(allow unconfined_t self (binder (all)))
+(allow unconfined_t self (netlink_iscsi_socket (all)))
+(allow unconfined_t self (netlink_fib_lookup_socket (all)))
+(allow unconfined_t self (netlink_connector_socket (all)))
+(allow unconfined_t self (netlink_netfilter_socket (all)))
+(allow unconfined_t self (netlink_generic_socket (all)))
+(allow unconfined_t self (netlink_scsitransport_socket (all)))
+(allow unconfined_t self (netlink_rdma_socket (all)))
+(allow unconfined_t self (netlink_crypto_socket (all)))
+(allow unconfined_t self (infiniband_pkey (all)))
+(allow unconfined_t self (infiniband_endport (all)))
+(allow unconfined_t self (cap_userns (all)))
+(allow unconfined_t self (cap2_userns (all)))
+(allow unconfined_t self (sctp_socket (all)))
+(allow unconfined_t self (icmp_socket (all)))
+(allow unconfined_t self (ax25_socket (all)))
+(allow unconfined_t self (ipx_socket (all)))
+(allow unconfined_t self (netrom_socket (all)))
+(allow unconfined_t self (atmpvc_socket (all)))
+(allow unconfined_t self (x25_socket (all)))
+(allow unconfined_t self (rose_socket (all)))
+(allow unconfined_t self (decnet_socket (all)))
+(allow unconfined_t self (atmsvc_socket (all)))
+(allow unconfined_t self (rds_socket (all)))
+(allow unconfined_t self (irda_socket (all)))
+(allow unconfined_t self (pppox_socket (all)))
+(allow unconfined_t self (llc_socket (all)))
+(allow unconfined_t self (can_socket (all)))
+(allow unconfined_t self (tipc_socket (all)))
+(allow unconfined_t self (bluetooth_socket (all)))
+(allow unconfined_t self (iucv_socket (all)))
+(allow unconfined_t self (rxrpc_socket (all)))
+(allow unconfined_t self (isdn_socket (all)))
+(allow unconfined_t self (phonet_socket (all)))
+(allow unconfined_t self (ieee802154_socket (all)))
+(allow unconfined_t self (caif_socket (all)))
+(allow unconfined_t self (alg_socket (all)))
+(allow unconfined_t self (nfc_socket (all)))
+(allow unconfined_t self (vsock_socket (all)))
+(allow unconfined_t self (kcm_socket (all)))
+(allow unconfined_t self (qipcrtr_socket (all)))
+(allow unconfined_t self (smc_socket (all)))
+(allow unconfined_t self (process2 (all)))
+(allow unconfined_t self (bpf (all)))
+(allow unconfined_t self (xdp_socket (all)))
+(allow unconfined_t self (perf_event (all)))
+(allow unconfined_t self (lockdown (all)))
+
+(sidcontext kernel system_context)
+(sidcontext security object_context)
+(sidcontext unlabeled object_context)
+(sidcontext fs object_context)
+(sidcontext file object_context)
+(sidcontext file_labels object_context)
+(sidcontext init object_context)
+(sidcontext any_socket object_context)
+(sidcontext port object_context)
+(sidcontext netif object_context)
+(sidcontext netmsg object_context)
+(sidcontext node object_context)
+(sidcontext igmp_packet object_context)
+(sidcontext icmp_socket object_context)
+(sidcontext tcp_socket object_context)
+(sidcontext sysctl_modprobe object_context)
+(sidcontext sysctl object_context)
+(sidcontext sysctl_fs object_context)
+(sidcontext sysctl_kernel object_context)
+(sidcontext sysctl_net object_context)
+(sidcontext sysctl_net_unix object_context)
+(sidcontext sysctl_vm object_context)
+(sidcontext sysctl_dev object_context)
+(sidcontext kmod object_context)
+(sidcontext policy object_context)
+(sidcontext scmp_packet object_context)
+(sidcontext devnull object_context)
+
+(fsuse xattr ext2 object_context)
+(fsuse xattr ext3 object_context)
+(fsuse xattr ext4 object_context)
+(fsuse xattr jfs object_context)
+(fsuse xattr xfs object_context)
+(fsuse xattr reiserfs object_context)
+(fsuse xattr jffs2 object_context)
+
+(fsuse task pipefs object_context)
+(fsuse task sockfs object_context)
+
+(fsuse trans mqueue object_context)
+(fsuse trans devpts object_context)
+(fsuse trans hugetlbfs object_context)
+(fsuse trans tmpfs object_context)
+(fsuse trans shm object_context)
+
+(genfscon selinuxfs / object_context)
+(genfscon proc / object_context)
+(genfscon sysfs / object_context)
+(genfscon debugfs / object_context)
+(genfscon tracefs / object_context)
+(genfscon pstore / object_context)
+(genfscon cgroup / object_context)
+(genfscon cgroup2 / object_context)
+
+;
+;;;;;;;;;;;;;;;;;;;;;;; End CIL Policy ;;;;;;;;;;;;;;;;;;;;;
+;

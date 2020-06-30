@@ -1,0 +1,38 @@
+# setkey -f configuration file entries for MANUAL SA configuration
+#
+#
+# Flush the SAD and SPD
+flush;
+spdflush;
+
+#
+########## Security Association Database entries #################
+#
+# Authentication Header info
+# AH SAs using 128 bit long keys
+
+add 127.0.0.1 127.0.0.1 ah 0x300
+-ctx 1 1 "unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023"
+-A hmac-md5 0x96358c90783bbfa3d7b196ceabe0536b;
+#
+# Encapsulated Security Payload info
+# The -ctx context MUST be exact else get "connect: No such process"
+# message when running client:
+# ESP SAs using 192 bit long keys (168 + 24 parity)
+
+add 127.0.0.1 127.0.0.1 esp 0x301
+-ctx 1 1 "unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023"
+-E 3des-cbc 0xf6ddb555acfd9d77b03ea3843f2653255afe8eb5573965df;
+
+#
+########### Security Policy Database entries ##########################
+#
+spdadd 127.0.0.1 127.0.0.1 tcp
+-ctx 1 1 "system_u:object_r:ipsec_spd_t:s0"
+-P out ipsec esp/transport//require
+ah/transport//require;
+
+spdadd 127.0.0.1 127.0.0.1 tcp
+-ctx 1 1 "system_u:object_r:ipsec_spd_t:s0"
+-P in ipsec esp/transport//require
+ah/transport//require;
