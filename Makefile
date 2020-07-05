@@ -74,8 +74,8 @@ FILE_LIST = \
 	reference_policy.md \
 	implementing_seaware_apps.md \
 	seandroid.md \
-	libselinux_functions.md \
 	object_classes_permissions.md \
+	libselinux_functions.md \
 	selinux_cmds.md \
 	debug_policy_hints.md \
 	policy_validation_example.md
