@@ -8,17 +8,18 @@ IMAGES = ../images
 EXAMPLES = ../notebook-examples
 HTMLDIR ?= $(CWD)/html
 PDFDIR ?= $(CWD)/pdf
-TMPDIR ?= $(CWD)/tmp
+TMPDIR ?= $(CWD)/.tmp
 
-PDFIMAGE=$(subst /,\/,${CWD}/images)
+PDFIMAGE=$(subst /,\/,$(CWD)/images)
 PDF_OUT=SELinux_Notebook.pdf
 HTML_OUT=SELinux_Notebook.html
 SED = sed
 PANDOC = pandoc
-PANDOC_OPTS=-V geometry:margin=.75in -V linkcolor:blue -V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
+PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
 
 # These are in README.md index order
-FILE_LIST = README.md \
+FILE_LIST = \
+	README.md \
 	terminology.md \
 	selinux_overview.md \
 	core_components.md \
@@ -83,58 +84,49 @@ TMP_FILE_LIST = $(addprefix $(TMPDIR)/,$(FILE_LIST))
 
 all: html pdf
 
+.PHONY: pdf
 pdf: $(FILE_LIST)
-	mkdir -p $(PDFDIR)
-	mkdir -p $(TMPDIR)
-	cp -f $(FILE_LIST) $(TMPDIR)/
-	# Chop its nuts off and add page break for PDF output:
+	mkdir -p $(TMPDIR)/pdf $(PDFDIR)
+	cp -f $(FILE_LIST) $(TMPDIR)/pdf
 	for i in $(FILE_LIST) ; do \
-		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/$$i ; \
-		# --pdf-engine=weasyprint requires this for page breaks: \
-		echo "<div style='page-break-after:always'></div>" >> $(TMPDIR)/$$i ; \
-		# --pdf-engine=xelatex requires this for page breaks: \
-		# echo "\newpage" >> $(TMPDIR)/$$i ; \
+		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/pdf/$$i ; \
+		echo "<div style='page-break-after:always'></div>" \
+			>> $(TMPDIR)/pdf/$$i ; \
 	done
-	# Make one file
-	cat $(TMP_FILE_LIST) > $(TMPDIR)/full_document.md
+	cat $(addprefix $(TMPDIR)/pdf/,$(FILE_LIST)) \
+		> $(TMPDIR)/pdf/full_document.md
 	# Embed the images into the PDF
-	$(SED) -i 's/!\[].*\images/!\[]('"$(PDFIMAGE)"'/' $(TMPDIR)/full_document.md
-	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/full_document.md
+	$(SED) -i 's/!\[].*\images/!\[]('"$(PDFIMAGE)"'/' \
+		$(TMPDIR)/pdf/full_document.md
+	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/pdf/full_document.md
 	# Remove the section file name from all HTML links
-	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/full_document.md
-	# Add style for table lines
-	$(SED) -i '1i <head>\n<style>\ntable {\n  border-collapse: collapse;\n}\ntable, td, tr, th {\n  border: 1px solid black;\n}\n</style>\n</head>\n' $(TMPDIR)/full_document.md
-	$(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) --standalone $(TMPDIR)/full_document.md -o $(PDFDIR)/W-$(PDF_OUT)
-	$(PANDOC) --pdf-engine=xelatex $(PANDOC_OPTS) --standalone $(TMPDIR)/full_document.md -o $(PDFDIR)/X-$(PDF_OUT)
-	ln -s $(EXAMPLES) $(PDFDIR)/notebook-examples
+	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/pdf/full_document.md
+	[ -e $(PDFDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(PDFDIR)
+	$(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) \
+		--css=styles_pdf.css --self-contained \
+		$(TMPDIR)/pdf/full_document.md -o $(PDFDIR)/$(PDF_OUT)
 
+.PHONY: html
 html: $(FILE_LIST)
-	mkdir -p $(TMPDIR)
-	mkdir -p $(HTMLDIR)
-	cp -f $(FILE_LIST) $(TMPDIR)/
-	# Chop its nuts off and add page break for PDF output:
+	mkdir -p $(TMPDIR)/html $(HTMLDIR)
+	cp -f $(FILE_LIST) $(TMPDIR)/html
 	for i in $(FILE_LIST) ; do \
-		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/$$i ; \
-		# --pdf-engine=weasyprint requires this for page breaks: \
-		echo "<div style='page-break-after:always'></div>" >> $(TMPDIR)/$$i ; \
-		# --pdf-engine=xelatex requires this for page breaks: \
-		# echo "\newpage" >> $(TMPDIR)/$$i ; \
+		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/html/$$i ; \
+		echo "<div style='page-break-after:always'></div>" \
+			>> $(TMPDIR)/html/$$i ; \
 	done
-	# Make one file
-	cat $(TMP_FILE_LIST) > $(TMPDIR)/full_document.md
+	cat $(addprefix $(TMPDIR)/html/,$(FILE_LIST)) \
+		> $(TMPDIR)/html/full_document.md
 	# Remove the section file name from all MD links
-	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/full_document.md
+	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/html/full_document.md
 	# Remove the section file name from all HTML links
-	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/full_document.md
-	# Add style for table lines
-	$(SED) -i '1i <head>\n<style>\ntable {\n  border-collapse: collapse;\n}\ntable, td, tr, th {\n  border: 1px solid black;\n}\n</style>\n</head>\n' $(TMPDIR)/full_document.md
-	$(PANDOC) -t html $(TMPDIR)/full_document.md -o $(HTMLDIR)/$(HTML_OUT)
-	ln -s $(IMAGES) $(HTMLDIR)/images
-	ln -s $(EXAMPLES) $(HTMLDIR)/notebook-examples
-	$(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) --standalone $(HTMLDIR)/$(HTML_OUT) -o $(HTMLDIR)/W-$(PDF_OUT)
-	$(PANDOC) --pdf-engine=xelatex $(PANDOC_OPTS) --standalone $(HTMLDIR)/$(HTML_OUT) -o $(HTMLDIR)/X-$(PDF_OUT)
+	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/html/full_document.md
+	[ -e $(HTMLDIR)/images ] || ln -s $(IMAGES) $(HTMLDIR)
+	[ -e $(HTMLDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(HTMLDIR)
+	$(PANDOC) $(PANDOC_OPTS) \
+		--css=styles_html.css --self-contained \
+		$(TMPDIR)/html/full_document.md -o $(HTMLDIR)/$(HTML_OUT)
 
+.PHONY: clean
 clean:
-	rm -rf $(HTMLDIR)
-	rm -rf $(PDFDIR)
-	rm -rf $(TMPDIR)
+	rm -rf $(TMPDIR) $(HTMLDIR) $(PDFDIR)

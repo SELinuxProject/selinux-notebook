@@ -1,0 +1,34 @@
+
+@page {
+	/* pdf page size defaults */
+	size: Letter;
+	margin: 0.75in 0.75in 0.75in 0.75in;
+}
+
+html {
+	/* 1em is specified as 16pt, 75% should be 12pt */
+	font-size: 100%;
+}
+
+a {
+	color: blue;
+}
+
+table {
+	/* limit to 95% page width */
+	max-width: 95%;
+	/* combine table borders when they are adjacent */
+	border-collapse: collapse;
+}
+table tr, th, td {
+	border: 1px solid black;
+	word-wrap: break-word;
+}
+
+img {
+	/* center and limit to 95% page width */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 95%;
+}
