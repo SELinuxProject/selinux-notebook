@@ -21,7 +21,8 @@ PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
 
 # These are in README.md index order
 FILE_LIST = \
-	README.md \
+	title.md \
+	toc.md \
 	terminology.md \
 	selinux_overview.md \
 	core_components.md \
