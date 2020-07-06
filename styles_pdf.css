@@ -1,9 +1,30 @@
 
+@page :first {
+	/* printed page - 1st page */
+
+	/* header and footer */
+	@top-center {
+		content: "";
+		width: 100%;
+		border-bottom: 1px solid black;
+		margin-bottom: 1em;
+	}
+	@bottom-right {
+		content: "";
+		width: 100%;
+		border-top: 1px solid black;
+		margin-top: 1em;
+	}
+}
+
 @page {
-	/* pdf page size defaults */
+	/* printed page - defaults */
+
+	/* page size defaults */
 	size: Letter;
 	margin: 0.75in 0.75in 0.75in 0.75in;
 
+	/* header and footer */
 	@top-center {
 		content: "The SELinux Notebook";
 		width: 100%;
