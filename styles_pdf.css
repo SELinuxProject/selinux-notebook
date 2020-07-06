@@ -24,6 +24,10 @@
 	size: Letter;
 	margin: 0.75in 0.75in 0.75in 0.75in;
 
+	/* widow/orphan control */
+	widows: 3;
+	orphans: 3;
+
 	/* header and footer */
 	@top-center {
 		content: "The SELinux Notebook";
