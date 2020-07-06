@@ -1,10 +1,4 @@
 
-@page {
-	/* pdf page size defaults */
-	size: Letter;
-	margin: 0.75in 0.75in 0.75in 0.75in;
-}
-
 .title {
 	/* pandoc generates the h1 title with the "title" class */
 	display: none;

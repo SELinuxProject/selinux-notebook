@@ -3,6 +3,19 @@
 	/* pdf page size defaults */
 	size: Letter;
 	margin: 0.75in 0.75in 0.75in 0.75in;
+
+	@top-center {
+		content: "The SELinux Notebook";
+		width: 100%;
+		border-bottom: 1px solid black;
+		margin-bottom: 1em;
+	}
+	@bottom-right {
+		content: "Page " counter(page);
+		width: 100%;
+		border-top: 1px solid black;
+		margin-top: 1em;
+	}
 }
 
 .title {
