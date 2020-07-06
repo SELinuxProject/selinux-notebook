@@ -4,19 +4,19 @@
 #
 
 CWD ?= $(shell pwd)
-IMAGES = ../images
-EXAMPLES = ../notebook-examples
+SRCDIR = $(CWD)/src
 HTMLDIR ?= $(CWD)/html
 PDFDIR ?= $(CWD)/pdf
+IMAGES = $(SRCDIR)/images
+EXAMPLES = $(SRCDIR)/notebook-examples
+METADATA = $(SRCDIR)/metadata.yaml
 
 HTML_OUT = SELinux_Notebook.html
 PDF_OUT = SELinux_Notebook.pdf
-PDFIMAGE=$(subst /,\/,$(CWD)/images)
+
 SED = sed
 PANDOC = pandoc
 PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
-
-METADATA = src/metadata.yaml
 
 # These are in README.md index order
 FILE_LIST = \
@@ -96,15 +96,16 @@ pdf: $(DEP_FILE_LIST) $(METADATA)
 			>> $(PDFDIR)/.full_document.md; \
 	done
 	# Embed the images into the PDF
-	$(SED) -i 's/!\[].*\images/!\[]('"$(PDFIMAGE)"'/' \
+	$(SED) -i 's/!\[].*\images/!\[]('"$(subst /,\/,./images)"'/' \
 		$(PDFDIR)/.full_document.md
 	$(SED) -i 's/](.*\.md#/](#/' $(PDFDIR)/.full_document.md
 	# Remove the section file name from all HTML links
 	$(SED) -i 's/href=.*\.md#/href="#/' $(PDFDIR)/.full_document.md
+	[ -e $(PDFDIR)/images ] || ln -s $(IMAGES) $(PDFDIR)
 	[ -e $(PDFDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(PDFDIR)
-	$(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) \
-		--css=src/styles_pdf.css --self-contained \
-		$(PDFDIR)/.full_document.md -o $(PDFDIR)/$(PDF_OUT)
+	(cd $(PDFDIR); $(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) \
+		--css=$(SRCDIR)/styles_pdf.css --self-contained \
+		$(PDFDIR)/.full_document.md -o $(PDFDIR)/$(PDF_OUT))
 
 .PHONY: html
 html: $(DEP_FILE_LIST) $(METADATA)
@@ -122,9 +123,9 @@ html: $(DEP_FILE_LIST) $(METADATA)
 	$(SED) -i 's/href=.*\.md#/href="#/' $(HTMLDIR)/.full_document.md
 	[ -e $(HTMLDIR)/images ] || ln -s $(IMAGES) $(HTMLDIR)
 	[ -e $(HTMLDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(HTMLDIR)
-	$(PANDOC) $(PANDOC_OPTS) \
-		--css=src/styles_html.css --self-contained \
-		$(HTMLDIR)/.full_document.md -o $(HTMLDIR)/$(HTML_OUT)
+	(cd $(HTMLDIR); $(PANDOC) $(PANDOC_OPTS) \
+		--css=$(SRCDIR)/styles_html.css --self-contained \
+		$(HTMLDIR)/.full_document.md -o $(HTMLDIR)/$(HTML_OUT))
 
 .PHONY: clean
 clean:

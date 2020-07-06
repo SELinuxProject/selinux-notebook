@@ -1,6 +1,6 @@
 # The SELinux Notebook
 
-![](./images/logo.png)
+![](./src/images/logo.png)
 
 
 ## Introduction
