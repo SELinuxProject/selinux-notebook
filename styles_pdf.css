@@ -5,6 +5,11 @@
 	margin: 0.75in 0.75in 0.75in 0.75in;
 }
 
+.title {
+	/* pandoc generates the h1 title with the "title" class */
+	display: none;
+}
+
 html {
 	/* 1em is specified as 16pt, 75% should be 12pt */
 	font-size: 75%;

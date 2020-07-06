@@ -10,12 +10,14 @@ HTMLDIR ?= $(CWD)/html
 PDFDIR ?= $(CWD)/pdf
 TMPDIR ?= $(CWD)/.tmp
 
+HTML_OUT = SELinux_Notebook.html
+PDF_OUT = SELinux_Notebook.pdf
 PDFIMAGE=$(subst /,\/,$(CWD)/images)
-PDF_OUT=SELinux_Notebook.pdf
-HTML_OUT=SELinux_Notebook.html
 SED = sed
 PANDOC = pandoc
 PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
+
+METADATA = metadata.yaml
 
 # These are in README.md index order
 FILE_LIST = \
@@ -85,7 +87,7 @@ TMP_FILE_LIST = $(addprefix $(TMPDIR)/,$(FILE_LIST))
 all: html pdf
 
 .PHONY: pdf
-pdf: $(FILE_LIST)
+pdf: $(FILE_LIST) $(METADATA)
 	mkdir -p $(TMPDIR)/pdf $(PDFDIR)
 	cp -f $(FILE_LIST) $(TMPDIR)/pdf
 	for i in $(FILE_LIST) ; do \
@@ -93,8 +95,9 @@ pdf: $(FILE_LIST)
 		echo "<div style='page-break-after:always'></div>" \
 			>> $(TMPDIR)/pdf/$$i ; \
 	done
+	cat $(METADATA) > $(TMPDIR)/pdf/full_document.md
 	cat $(addprefix $(TMPDIR)/pdf/,$(FILE_LIST)) \
-		> $(TMPDIR)/pdf/full_document.md
+		>> $(TMPDIR)/pdf/full_document.md
 	# Embed the images into the PDF
 	$(SED) -i 's/!\[].*\images/!\[]('"$(PDFIMAGE)"'/' \
 		$(TMPDIR)/pdf/full_document.md
@@ -107,7 +110,7 @@ pdf: $(FILE_LIST)
 		$(TMPDIR)/pdf/full_document.md -o $(PDFDIR)/$(PDF_OUT)
 
 .PHONY: html
-html: $(FILE_LIST)
+html: $(FILE_LIST) $(METADATA)
 	mkdir -p $(TMPDIR)/html $(HTMLDIR)
 	cp -f $(FILE_LIST) $(TMPDIR)/html
 	for i in $(FILE_LIST) ; do \
@@ -115,8 +118,9 @@ html: $(FILE_LIST)
 		echo "<div style='page-break-after:always'></div>" \
 			>> $(TMPDIR)/html/$$i ; \
 	done
+	cat $(METADATA) > $(TMPDIR)/html/full_document.md
 	cat $(addprefix $(TMPDIR)/html/,$(FILE_LIST)) \
-		> $(TMPDIR)/html/full_document.md
+		>> $(TMPDIR)/html/full_document.md
 	# Remove the section file name from all MD links
 	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/html/full_document.md
 	# Remove the section file name from all HTML links
