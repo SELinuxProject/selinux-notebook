@@ -8,7 +8,6 @@ IMAGES = ../images
 EXAMPLES = ../notebook-examples
 HTMLDIR ?= $(CWD)/html
 PDFDIR ?= $(CWD)/pdf
-TMPDIR ?= $(CWD)/.tmp
 
 HTML_OUT = SELinux_Notebook.html
 PDF_OUT = SELinux_Notebook.pdf
@@ -17,7 +16,7 @@ SED = sed
 PANDOC = pandoc
 PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
 
-METADATA = metadata.yaml
+METADATA = src/metadata.yaml
 
 # These are in README.md index order
 FILE_LIST = \
@@ -82,55 +81,51 @@ FILE_LIST = \
 	debug_policy_hints.md \
 	policy_validation_example.md
 
-TMP_FILE_LIST = $(addprefix $(TMPDIR)/,$(FILE_LIST))
+DEP_FILE_LIST = $(addprefix src/,$(FILE_LIST))
 
 all: html pdf
 
 .PHONY: pdf
-pdf: $(FILE_LIST) $(METADATA)
-	mkdir -p $(TMPDIR)/pdf $(PDFDIR)
-	cp -f $(FILE_LIST) $(TMPDIR)/pdf
-	for i in $(FILE_LIST) ; do \
-		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/pdf/$$i ; \
+pdf: $(DEP_FILE_LIST) $(METADATA)
+	mkdir -p $(PDFDIR)
+	cat $(METADATA) > $(PDFDIR)/.full_document.md
+	for i in $(DEP_FILE_LIST); do \
+		$(SED) '/<!-- Cut Here -->/Q' $$i \
+			>> $(PDFDIR)/.full_document.md; \
 		echo "<div style='page-break-after:always'></div>" \
-			>> $(TMPDIR)/pdf/$$i ; \
+			>> $(PDFDIR)/.full_document.md; \
 	done
-	cat $(METADATA) > $(TMPDIR)/pdf/full_document.md
-	cat $(addprefix $(TMPDIR)/pdf/,$(FILE_LIST)) \
-		>> $(TMPDIR)/pdf/full_document.md
 	# Embed the images into the PDF
 	$(SED) -i 's/!\[].*\images/!\[]('"$(PDFIMAGE)"'/' \
-		$(TMPDIR)/pdf/full_document.md
-	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/pdf/full_document.md
+		$(PDFDIR)/.full_document.md
+	$(SED) -i 's/](.*\.md#/](#/' $(PDFDIR)/.full_document.md
 	# Remove the section file name from all HTML links
-	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/pdf/full_document.md
+	$(SED) -i 's/href=.*\.md#/href="#/' $(PDFDIR)/.full_document.md
 	[ -e $(PDFDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(PDFDIR)
 	$(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) \
-		--css=styles_pdf.css --self-contained \
-		$(TMPDIR)/pdf/full_document.md -o $(PDFDIR)/$(PDF_OUT)
+		--css=src/styles_pdf.css --self-contained \
+		$(PDFDIR)/.full_document.md -o $(PDFDIR)/$(PDF_OUT)
 
 .PHONY: html
-html: $(FILE_LIST) $(METADATA)
-	mkdir -p $(TMPDIR)/html $(HTMLDIR)
-	cp -f $(FILE_LIST) $(TMPDIR)/html
-	for i in $(FILE_LIST) ; do \
-		$(SED) -i '/<!-- Cut Here -->/Q' $(TMPDIR)/html/$$i ; \
+html: $(DEP_FILE_LIST) $(METADATA)
+	mkdir -p $(HTMLDIR)
+	cat $(METADATA) > $(HTMLDIR)/.full_document.md
+	for i in $(DEP_FILE_LIST); do \
+		$(SED) '/<!-- Cut Here -->/Q' $$i \
+			>> $(HTMLDIR)/.full_document.md; \
 		echo "<div style='page-break-after:always'></div>" \
-			>> $(TMPDIR)/html/$$i ; \
+			>> $(HTMLDIR)/.full_document.md; \
 	done
-	cat $(METADATA) > $(TMPDIR)/html/full_document.md
-	cat $(addprefix $(TMPDIR)/html/,$(FILE_LIST)) \
-		>> $(TMPDIR)/html/full_document.md
 	# Remove the section file name from all MD links
-	$(SED) -i 's/](.*\.md#/](#/' $(TMPDIR)/html/full_document.md
+	$(SED) -i 's/](.*\.md#/](#/' $(HTMLDIR)/.full_document.md
 	# Remove the section file name from all HTML links
-	$(SED) -i 's/href=.*\.md#/href="#/' $(TMPDIR)/html/full_document.md
+	$(SED) -i 's/href=.*\.md#/href="#/' $(HTMLDIR)/.full_document.md
 	[ -e $(HTMLDIR)/images ] || ln -s $(IMAGES) $(HTMLDIR)
 	[ -e $(HTMLDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(HTMLDIR)
 	$(PANDOC) $(PANDOC_OPTS) \
-		--css=styles_html.css --self-contained \
-		$(TMPDIR)/html/full_document.md -o $(HTMLDIR)/$(HTML_OUT)
+		--css=src/styles_html.css --self-contained \
+		$(HTMLDIR)/.full_document.md -o $(HTMLDIR)/$(HTML_OUT)
 
 .PHONY: clean
 clean:
-	rm -rf $(TMPDIR) $(HTMLDIR) $(PDFDIR)
+	rm -rf $(HTMLDIR) $(PDFDIR)
