@@ -177,7 +177,7 @@ Options:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

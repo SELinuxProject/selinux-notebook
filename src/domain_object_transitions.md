@@ -278,7 +278,7 @@ drwxr-xr-x root root system_u:object_r:unconfined_t ..
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

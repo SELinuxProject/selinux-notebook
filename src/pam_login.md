@@ -116,7 +116,7 @@ configuration file perform the following functions:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -415,7 +415,7 @@ xguest:exclusive
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

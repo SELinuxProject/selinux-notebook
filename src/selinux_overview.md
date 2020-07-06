@@ -127,7 +127,7 @@ The following maybe useful in providing a practical view of SELinux:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

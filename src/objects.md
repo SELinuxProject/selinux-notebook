@@ -299,7 +299,7 @@ associated with the file.<a href="#fnobj1" class="footnote-back">↩</a></p></li
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

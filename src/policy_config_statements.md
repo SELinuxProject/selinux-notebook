@@ -65,7 +65,7 @@ policycap network_peer_controls;
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

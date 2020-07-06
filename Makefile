@@ -4,6 +4,7 @@
 #
 
 CWD ?= $(shell pwd)
+SCRIPTS = $(CWD)/scripts
 SRCDIR = $(CWD)/src
 HTMLDIR ?= $(CWD)/html
 PDFDIR ?= $(CWD)/pdf
@@ -90,16 +91,17 @@ pdf: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(PDFDIR)
 	cat $(METADATA) > $(PDFDIR)/.full_document.md
 	for i in $(DEP_FILE_LIST); do \
-		$(SED) '/<!-- Cut Here -->/Q' $$i \
+		cat $$i | $(SCRIPTS)/macros_section.sh \
 			>> $(PDFDIR)/.full_document.md; \
-		echo "<div style='page-break-after:always'></div>" \
+		echo '<!-- %PAGEBREAK% -->' \
 			>> $(PDFDIR)/.full_document.md; \
 	done
-	# Embed the images into the PDF
+	$(SCRIPTS)/macros_doc.sh $(PDFDIR)/.full_document.md
+	# embed the images into the PDF
 	$(SED) -i 's/!\[].*\images/!\[]('"$(subst /,\/,./images)"'/' \
 		$(PDFDIR)/.full_document.md
 	$(SED) -i 's/](.*\.md#/](#/' $(PDFDIR)/.full_document.md
-	# Remove the section file name from all HTML links
+	# remove the section file name from all HTML links
 	$(SED) -i 's/href=.*\.md#/href="#/' $(PDFDIR)/.full_document.md
 	[ -e $(PDFDIR)/images ] || ln -s $(IMAGES) $(PDFDIR)
 	[ -e $(PDFDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(PDFDIR)
@@ -112,14 +114,15 @@ html: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(HTMLDIR)
 	cat $(METADATA) > $(HTMLDIR)/.full_document.md
 	for i in $(DEP_FILE_LIST); do \
-		$(SED) '/<!-- Cut Here -->/Q' $$i \
+		cat $$i | $(SCRIPTS)/macros_section.sh \
 			>> $(HTMLDIR)/.full_document.md; \
-		echo "<div style='page-break-after:always'></div>" \
+		echo '<!-- %PAGEBREAK% -->' \
 			>> $(HTMLDIR)/.full_document.md; \
 	done
-	# Remove the section file name from all MD links
+	$(SCRIPTS)/macros_doc.sh $(HTMLDIR)/.full_document.md
+	# remove the section file name from all MD links
 	$(SED) -i 's/](.*\.md#/](#/' $(HTMLDIR)/.full_document.md
-	# Remove the section file name from all HTML links
+	# remove the section file name from all HTML links
 	$(SED) -i 's/href=.*\.md#/href="#/' $(HTMLDIR)/.full_document.md
 	[ -e $(HTMLDIR)/images ] || ln -s $(IMAGES) $(HTMLDIR)
 	[ -e $(HTMLDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(HTMLDIR)

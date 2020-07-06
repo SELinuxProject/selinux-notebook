@@ -57,7 +57,7 @@ domain_entry_file(test_stat_domain, ls_exec_t)
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

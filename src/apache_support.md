@@ -133,7 +133,7 @@ the context strings and the denied class and permissions.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

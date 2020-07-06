@@ -722,7 +722,7 @@ policy statement would be [**`permissive`**](type_statements.md#permissive).
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

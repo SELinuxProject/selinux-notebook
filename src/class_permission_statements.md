@@ -248,7 +248,7 @@ class db_blob inherits database { read write import export }
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

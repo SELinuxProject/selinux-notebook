@@ -27,7 +27,7 @@ Some policies, for example Android, only make use of one user called `u`.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

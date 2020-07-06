@@ -383,7 +383,7 @@ quoted (some SELinux utilities give both version numbers).
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

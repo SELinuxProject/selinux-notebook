@@ -151,7 +151,7 @@ statement that allows a domain to run in permissive mode while the others are st
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -116,7 +116,7 @@ unconfined_u:object_r:out_file_t Message-11
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

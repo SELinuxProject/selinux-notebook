@@ -120,7 +120,7 @@ core SELinux infrastructure.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

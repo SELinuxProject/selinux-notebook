@@ -526,7 +526,7 @@ mlsvalidatetrans { dir file lnk_file chr_file blk_file sock_file fifo_file }
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

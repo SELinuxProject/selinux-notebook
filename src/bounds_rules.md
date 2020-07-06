@@ -93,7 +93,7 @@ allow httpd_child_t etc_t : file { read write };
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

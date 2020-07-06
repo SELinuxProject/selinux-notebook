@@ -25,7 +25,7 @@ access via user, role and domain type association.*
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

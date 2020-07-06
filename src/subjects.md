@@ -48,7 +48,7 @@ under `semanage_t`).
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

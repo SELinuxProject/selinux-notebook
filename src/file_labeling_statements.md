@@ -321,7 +321,7 @@ genfscon proc /kmsg system_u:object_r:proc_kmsg_t:s15:c0.c255
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

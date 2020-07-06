@@ -493,7 +493,7 @@ KVM and Xen.<a href="#fnvms1" class="footnote-back">↩</a></p></li>
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

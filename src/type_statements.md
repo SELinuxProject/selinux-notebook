@@ -777,7 +777,7 @@ type_member sysadm_t user_home_dir_t:dir user_home_dir_t;
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

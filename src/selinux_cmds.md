@@ -155,7 +155,7 @@ has a page that details all the available tools and commands at:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

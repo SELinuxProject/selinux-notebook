@@ -59,7 +59,7 @@ functions are only available from *libselinux* 2.0.99, with Linux kernel
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

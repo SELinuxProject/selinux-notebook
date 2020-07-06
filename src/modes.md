@@ -45,7 +45,7 @@ domain or object manager enforcement modes.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

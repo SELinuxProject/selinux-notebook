@@ -1095,7 +1095,7 @@ The appropriate ***man**(3)* pages should consulted for detailed usage.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

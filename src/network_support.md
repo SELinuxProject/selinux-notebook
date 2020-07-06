@@ -461,7 +461,7 @@ The *selinux-testsuite tools/nfs.sh* tests labeled NFS using various labels.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -361,7 +361,7 @@ An interesting point:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

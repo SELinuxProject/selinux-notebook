@@ -216,7 +216,7 @@ neverallow { domain -mmap_low_domain_type } self:memprotect mmap_zero;
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

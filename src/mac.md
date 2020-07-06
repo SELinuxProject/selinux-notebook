@@ -65,7 +65,7 @@ application separation, for example SELinux enabled:
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -325,7 +325,7 @@ Label device tree nodes.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

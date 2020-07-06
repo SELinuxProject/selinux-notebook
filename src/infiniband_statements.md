@@ -182,7 +182,7 @@ ibendportcon mlx4_0 2 system_u:object_r:opensm_ibendport_t:s0
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -165,7 +165,7 @@ sepol_context_to_sid().
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

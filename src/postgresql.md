@@ -262,7 +262,7 @@ objoid|classoid|objsubid|objtype|objnamespace|  objname     | provider| label
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

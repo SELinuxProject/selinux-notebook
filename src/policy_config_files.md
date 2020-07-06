@@ -1262,7 +1262,7 @@ in the ***selinux_users_path**(3)*.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -387,7 +387,7 @@ terminal=/dev/pts/0 res=failed'
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

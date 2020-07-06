@@ -233,7 +233,7 @@ The polyinstantiation of X-Windows objects (*x_selection* and
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -104,7 +104,7 @@ section defines the `typebounds` rule and also gives a summary of the
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

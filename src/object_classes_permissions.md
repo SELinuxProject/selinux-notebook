@@ -3878,7 +3878,7 @@ explains the objects, their permissions and how they should be used in detail.
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

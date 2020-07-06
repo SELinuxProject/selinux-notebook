@@ -158,7 +158,7 @@ user mque_u prefix user;
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

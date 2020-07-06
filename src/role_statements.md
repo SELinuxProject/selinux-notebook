@@ -454,7 +454,7 @@ dominance { role message_filter_r { role unconfined_r };}
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

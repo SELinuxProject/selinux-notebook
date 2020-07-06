@@ -354,7 +354,7 @@ portcon udp 1234 system_u:object_r:reserved_port_t:s0
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

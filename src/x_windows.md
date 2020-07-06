@@ -405,7 +405,7 @@ a value unless one has been set the the appropriate function (1, 5, 8,
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

@@ -329,7 +329,7 @@ default_range db_table glblub;
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>

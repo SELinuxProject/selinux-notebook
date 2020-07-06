@@ -260,7 +260,7 @@ if (read_untrusted_content) {
 
 <br>
 
-<!-- Cut Here -->
+<!-- %CUTHERE% -->
 
 <table>
 <tbody>
