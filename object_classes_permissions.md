@@ -191,8 +191,6 @@ inherited by a number of object classes.
 </tbody>
 </table>
 
-# Appendix A - Object Classes and Permissions
-
 ### Common Socket Permissions
 
 The following table describes the common socket permissions that
