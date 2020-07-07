@@ -65,6 +65,5 @@ Logo designed by [*Máirín Duffy*](http://pookstar.deviantart.com/)
 
 ## Building HTML/PDF Versions
 
-The [**BUILD.md**](BUILD.md) file describes how to build these, however
-the best way to view is using a browser with a
-[**Markdown Viewer**](BUILD.md) addon.
+The [**BUILD.md**](BUILD.md) file has more information on building HTML and PDF
+versions of the notebook as well as alternate ways to view the source markdown.
