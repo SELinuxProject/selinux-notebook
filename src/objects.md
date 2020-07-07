@@ -301,22 +301,5 @@ associated with the file.<a href="#fnobj1" class="footnote-back">↩</a></p></li
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="subjects.md#subjects" title="Subjects"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="computing_security_contexts.md#computing-security-contexts" title="Computing Security Contexts"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](subjects.md)** **[[ TOP ]](#)** **[[ NEXT ]](computing_security_contexts.md)**

@@ -739,22 +739,5 @@ Notes:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="pam_login.md#pam-login-process" title="PAM Login Process"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="userspace_libraries.md#selinux-userspace-libraries" title="SELinux Userspace Libraries"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](pam_login.md)** **[[ TOP ]](#)** **[[ NEXT ]](userspace_libraries.md)**

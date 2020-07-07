@@ -59,22 +59,5 @@ domain_entry_file(test_stat_domain, ls_exec_t)
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="policy_config_files.md#policy-configuration-files" title="Policy Configuration Files"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="cil_overview.md#cil-overview" title="CIL Policy Language"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](policy_config_files.md)** **[[ TOP ]](#)** **[[ NEXT ]](cil_overview.md)**

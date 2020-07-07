@@ -25,6 +25,21 @@ DEP_FILE_LIST = $(addprefix src/,$(FILE_LIST))
 
 all: html pdf
 
+.PHONY: navlinks
+navlinks:
+	for i in $(DEP_FILE_LIST); do \
+		file=$$(basename $$i); \
+		prev=$$(sed -n "/$$file/{x;p;d;}; x" src/section_list.txt); \
+		next=$$(sed -n "/$$file/{n;p;}" src/section_list.txt); \
+		sed "/<!-- %CUTHERE% -->/q" -i $$i; \
+		echo "" >> $$i; \
+		echo "---" >> $$i; \
+		[[ "x$$prev" != "x" ]] && echo -n "**[[ PREV ]]($$prev)**" >> $$i; \
+		echo -n " **[[ TOP ]](#)** " >> $$i; \
+		[[ "x$$next" != "x" ]] && echo -n "**[[ NEXT ]]($$next)**" >> $$i; \
+		echo "" >> $$i; \
+	done
+
 .PHONY: pdf
 pdf: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(PDFDIR)

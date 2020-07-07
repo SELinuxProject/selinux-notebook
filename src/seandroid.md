@@ -1594,22 +1594,5 @@ USERDEBUG : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="implementing_seaware_apps.md#implementing-selinux-aware-applications" title="Implementing SELinux-aware Applications"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href=href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="object_classes_permissions.md#appendix-a---object-classes-and-permissions" title="Appendix A - Object Classes and Permissions"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](implementing_seaware_apps.md)** **[[ TOP ]](#)** **[[ NEXT ]](object_classes_permissions.md)**

@@ -29,22 +29,5 @@ Some policies, for example Android, only make use of one user called `u`.
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="mac.md#mandatory-access-control" title="Mandatory Access Control (MAC)"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="rbac.md#role-based-access-control" title=""> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](mac.md)** **[[ TOP ]](#)** **[[ NEXT ]](rbac.md)**

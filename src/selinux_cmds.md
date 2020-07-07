@@ -157,23 +157,5 @@ has a page that details all the available tools and commands at:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="libselinux_functions.md#appendix-b---libselinux-api-summary" title="Appendix B - `libselinux` API Summary"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="debug_policy_hints.md#appendix-d---debugging-policy---hints-and-tips" title="Appendix D - Debugging Policy - Hints and Tips"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
-
+---
+**[[ PREV ]](libselinux_functions.md)** **[[ TOP ]](#)** **[[ NEXT ]](debug_policy_hints.md)**

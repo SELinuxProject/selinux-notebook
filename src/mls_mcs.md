@@ -363,22 +363,5 @@ An interesting point:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="domain_object_transitions.md#domain-and-object-transitions" title="Domain and Object Transitions"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="types_of_policy.md#types-of-selinux-policy" title="Types of SELinux Policy"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](domain_object_transitions.md)** **[[ TOP ]](#)** **[[ NEXT ]](types_of_policy.md)**

@@ -385,22 +385,5 @@ quoted (some SELinux utilities give both version numbers).
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="mls_mcs.md#multi-level-and-multi-category-security" title="Multi-Level Security and Multi-Category Security"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="modes.md#selinux-permissive-and-enforcing-modes" title="Permissive and Enforcing Modes"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](mls_mcs.md)** **[[ TOP ]](#)** **[[ NEXT ]](modes.md)**

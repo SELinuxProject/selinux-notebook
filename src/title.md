@@ -84,17 +84,5 @@ classes and permissions.
 
 <!-- %CUTHERE% -->
 
-
-<table>
-<tbody>
-<td><center>
-<p><a href="toc.md" title="Abbreviations and Terminology"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+ **[[ TOP ]](#)** **[[ NEXT ]](toc.md)**

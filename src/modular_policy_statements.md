@@ -270,22 +270,5 @@ optional {
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="xen_statements.md#xen-statements" title="XEN Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="reference_policy.md#the-reference-policy" title="The Reference Policy"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](xen_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](reference_policy.md)**

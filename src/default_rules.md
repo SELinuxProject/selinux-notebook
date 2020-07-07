@@ -331,22 +331,5 @@ default_range db_table glblub;
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="policy_config_statements.md#policy-configuration-statements" title="Policy Configuration Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="user_statements.md#user-statements" title="User Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](policy_config_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](user_statements.md)**

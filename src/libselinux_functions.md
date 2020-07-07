@@ -1097,22 +1097,5 @@ The appropriate ***man**(3)* pages should consulted for detailed usage.
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="object_classes_permissions.md#appendix-a---object-classes-and-permissions" title="Appendix A - Object Classes and Permissions"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="selinux_cmds.md#appendix-c---selinux-commands" title="Appendix C - SELinux Commands"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](object_classes_permissions.md)** **[[ TOP ]](#)** **[[ NEXT ]](selinux_cmds.md)**

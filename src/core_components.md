@@ -153,22 +153,5 @@ statement that allows a domain to run in permissive mode while the others are st
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><a href="selinux_overview.md#selinux-overview" title="SELinux Overview"> <strong>Previous</strong></a></p></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="mac.md#mandatory-access-control" title="Mandatory Access Control"> <strong>Next</strong></a></p>
-</center></td>
-</tr>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](selinux_overview.md)** **[[ TOP ]](#)** **[[ NEXT ]](mac.md)**

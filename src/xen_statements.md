@@ -327,22 +327,5 @@ Label device tree nodes.
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="infiniband_statements.md#infiniband-labeling-statements" title="InfiniBand Labeling Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="modular_policy_statements.md#modular-policy-support-statements" title="Modular Policy Support Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](infiniband_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](modular_policy_statements.md)**

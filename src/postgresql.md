@@ -264,22 +264,5 @@ objoid|classoid|objsubid|objtype|objnamespace|  objname     | provider| label
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="x_windows.md#x-windows-selinux-support" title="SELinux X-Windows Support"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="apache_support.md#apache-selinux-support" title="Apache-Plus Support"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](x_windows.md)** **[[ TOP ]](#)** **[[ NEXT ]](apache_support.md)**

@@ -67,22 +67,5 @@ application separation, for example SELinux enabled:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="core_components.md#core-selinux-components" title="Core SELinux Components"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="users.md#selinux-users" title="SELinux Users"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](core_components.md)** **[[ TOP ]](#)** **[[ NEXT ]](users.md)**

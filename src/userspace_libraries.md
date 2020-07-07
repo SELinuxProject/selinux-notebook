@@ -167,22 +167,5 @@ sepol_context_to_sid().
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<tr>
-<td><p><a href="lsm_selinux.md#linux-security-module-and-selinux" title="Linux Security Module and SELinux"> <strong>Previous</strong></a></p></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="network_support.md#selinux-networking-support" title="SELinux Networking Support"> <strong>Next</strong></a></p>
-</center></td>
-</tr>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](lsm_selinux.md)** **[[ TOP ]](#)** **[[ NEXT ]](network_support.md)**

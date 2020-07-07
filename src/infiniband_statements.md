@@ -184,22 +184,5 @@ ibendportcon mlx4_0 2 system_u:object_r:opensm_ibendport_t:s0
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="network_statements.md#network-labeling-statements" title="Network Labeling Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="xen_statements.md#xen-statements" title="XEN Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](network_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](xen_statements.md)**

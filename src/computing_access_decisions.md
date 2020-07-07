@@ -61,22 +61,5 @@ functions are only available from *libselinux* 2.0.99, with Linux kernel
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="computing_security_contexts.md#computing-security-contexts" title="Computing Security Contexts"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="domain_object_transitions.md#domain-and-object-transitions" title="Domain and Object Transitions"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](computing_security_contexts.md)** **[[ TOP ]](#)** **[[ NEXT ]](domain_object_transitions.md)**

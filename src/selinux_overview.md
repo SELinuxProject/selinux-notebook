@@ -129,22 +129,5 @@ The following maybe useful in providing a practical view of SELinux:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<tr>
-<td><center><p><a href="terminology.md#abbreviations-and-terminology" title="Abbreviations and Terminology"> <strong>Previous</strong></a></p></center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="core_components.md#core-selinux-components" title="Core SELinux Components"> <strong>Next</strong></a></p>
-</center></td>
-</tr>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](terminology.md)** **[[ TOP ]](#)** **[[ NEXT ]](core_components.md)**

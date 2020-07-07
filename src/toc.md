@@ -65,17 +65,5 @@
 
 <!-- %CUTHERE% -->
 
-
-<table>
-<tbody>
-<td><center>
-<p><a href="terminology.md#abbreviations-and-terminology" title="Abbreviations and Terminology"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](title.md)** **[[ TOP ]](#)** **[[ NEXT ]](terminology.md)**

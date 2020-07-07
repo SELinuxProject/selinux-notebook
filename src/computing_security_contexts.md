@@ -518,22 +518,5 @@ following notes also apply:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="objects.md#objects" title="Objects"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="computing_access_decisions.md#computing-access-decisions" title="Computing Access Decisions"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](objects.md)** **[[ TOP ]](#)** **[[ NEXT ]](computing_access_decisions.md)**

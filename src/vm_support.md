@@ -495,22 +495,5 @@ KVM and Xen.<a href="#fnvms1" class="footnote-back">↩</a></p></li>
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="network_support.md#selinux-networking-support" title="SELinux Networking Support"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="x_windows.md#x-windows-selinux-support" title="SELinux X-Windows Support"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](network_support.md)** **[[ TOP ]](#)** **[[ NEXT ]](x_windows.md)**

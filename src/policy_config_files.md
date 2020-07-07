@@ -1264,22 +1264,5 @@ in the ***selinux_users_path**(3)*.
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="policy_store_config_files.md#policy-store-configuration-files" title="Policy Store Configuration Files"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="policy_languages.md#the-selinux-policy-languages" title="The SELinux Policy Languages"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](policy_store_config_files.md)** **[[ TOP ]](#)** **[[ NEXT ]](policy_languages.md)**

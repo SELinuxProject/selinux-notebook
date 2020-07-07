@@ -407,22 +407,5 @@ a value unless one has been set the the appropriate function (1, 5, 8,
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="vm_support.md#selinux-virtual-machine-support" title="SELinux Virtual Machine Support"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="postgresql.md#postgresql-selinux-support" title="SE-PostgreSQL Support"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](vm_support.md)** **[[ TOP ]](#)** **[[ NEXT ]](postgresql.md)**

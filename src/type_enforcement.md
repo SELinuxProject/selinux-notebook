@@ -106,22 +106,5 @@ section defines the `typebounds` rule and also gives a summary of the
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="rbac.md#role-based-access-control" title="Role-Based Access Control (RBAC)"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="security_context.md#security-context" title="Security Context"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](rbac.md)** **[[ TOP ]](#)** **[[ NEXT ]](security_context.md)**

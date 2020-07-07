@@ -323,22 +323,5 @@ genfscon proc /kmsg system_u:object_r:proc_kmsg_t:s15:c0.c255
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="sid_statement.md#security-id-sid-statement" title="Security ID (SID) Statement"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="network_statements.md#network-labeling-statements" title="Network Labeling Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](sid_statement.md)** **[[ TOP ]](#)** **[[ NEXT ]](network_statements.md)**

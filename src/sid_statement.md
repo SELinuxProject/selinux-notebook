@@ -152,22 +152,5 @@ sid unlabeled system_u:object_r:unlabeled_t:s15:c0.c255
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="mls_statements.md#mls-statements" title="MLS Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="file_labeling_statements.md#file-system-labeling-statements" title="File System Labeling Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](mls_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](file_labeling_statements.md)**

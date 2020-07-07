@@ -118,22 +118,5 @@ configuration file perform the following functions:
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="polyinstantiation.md#polyinstantiation-support" title="Polyinstantiation Support"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="lsm_selinux.md#linux-security-module-and-selinux" title="Linux Security Module and SELinux"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](polyinstantiation.md)** **[[ TOP ]](#)** **[[ NEXT ]](lsm_selinux.md)**

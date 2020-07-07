@@ -67,22 +67,5 @@ policycap network_peer_controls;
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="kernel_policy_language.md#kernel-policy-language" title="Kernel Policy Language"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="default_rules.md#default-object-rules" title="Default Rules"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](kernel_policy_language.md)** **[[ TOP ]](#)** **[[ NEXT ]](default_rules.md)**

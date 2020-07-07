@@ -528,22 +528,5 @@ mlsvalidatetrans { dir file lnk_file chr_file blk_file sock_file fifo_file }
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="conditional_statements.md#conditional-policy-statements" title="Conditional Policy Statements"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="mls_statements.md#mls-statements" title="MLS Statements"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](conditional_statements.md)** **[[ TOP ]](#)** **[[ NEXT ]](mls_statements.md)**

@@ -724,22 +724,5 @@ policy statement would be [**`permissive`**](type_statements.md#permissive).
 
 <!-- %CUTHERE% -->
 
-<table>
-<tbody>
-<td><center>
-<p><a href="global_config_files.md#global-configuration-files" title="Global Configuration Files"> <strong>Previous</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="README.md#the-selinux-notebook" title="The SELinux Notebook"> <strong>Home</strong></a></p>
-</center></td>
-<td><center>
-<p><a href="policy_config_files.md#policy-configuration-files" title="Policy Configuration Files"> <strong>Next</strong></a></p>
-</center></td>
-</tbody>
-</table>
-
-<head>
-    <style>table { border-collapse: collapse; }
-    table, td, th { border: 1px solid black; }
-    </style>
-</head>
+---
+**[[ PREV ]](global_config_files.md)** **[[ TOP ]](#)** **[[ NEXT ]](policy_config_files.md)**
