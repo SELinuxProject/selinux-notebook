@@ -2,7 +2,6 @@
 
 ![](./src/images/logo.png)
 
-
 ## Introduction
 
 This Notebook should help with explaining:
@@ -48,6 +47,13 @@ Android.
 
 **Object Classes and Permissions** - Describes the SELinux object
 classes and permissions.
+
+## Viewing the Notebook Directly on GitHub
+
+The SELinux Notebook can be viewed directly on GitHub, one section at a time,
+starting with the table of contents at the link below:
+
+* [The SELinux Notebook](src/toc.md)
 
 ## Copyright Information
 
