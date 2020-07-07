@@ -1,6 +1,5 @@
-#
-# This is work in progress as the PDF files produced have issues
-# rendering complex tables and/or images to fit a page.
+##
+# The SELinux Notebook
 #
 
 CWD ?= $(shell pwd)
@@ -23,8 +22,14 @@ PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
 FILE_LIST = $(shell cat src/section_list.txt)
 DEP_FILE_LIST = $(addprefix src/,$(FILE_LIST))
 
+help:
+	@echo "targets:"
+	@grep "^#@ " Makefile | cut -c4-
+
+#@   all             build both the PDF and HTML versions
 all: html pdf
 
+#@   navlinks        update the navigation links in the markdown sources
 .PHONY: navlinks
 navlinks:
 	for i in $(DEP_FILE_LIST); do \
@@ -40,6 +45,7 @@ navlinks:
 		echo "" >> $$i; \
 	done
 
+#@   pdf             build both the PDF version
 .PHONY: pdf
 pdf: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(PDFDIR)
@@ -63,6 +69,7 @@ pdf: $(DEP_FILE_LIST) $(METADATA)
 		--css=$(SRCDIR)/styles_pdf.css --self-contained \
 		$(PDFDIR)/.full_document.md -o $(PDFDIR)/$(PDF_OUT))
 
+#@   html            build both the HTML version
 .PHONY: html
 html: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(HTMLDIR)
@@ -84,6 +91,7 @@ html: $(DEP_FILE_LIST) $(METADATA)
 		--css=$(SRCDIR)/styles_html.css --self-contained \
 		$(HTMLDIR)/.full_document.md -o $(HTMLDIR)/$(HTML_OUT))
 
+#@   clean           clean any build artifacts
 .PHONY: clean
 clean:
 	rm -rf $(HTMLDIR) $(PDFDIR)
