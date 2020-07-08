@@ -122,7 +122,6 @@ section that follows.
 </tr>
 <tr>
 <td>daddr</td>
-
 </tr>
 <tr>
 <td>dest</td>
@@ -173,9 +172,10 @@ mode.</td>
 Example *audit.log* denied and granted events are shown in the following
 examples:
 
+This is an example **denied** message - note that there are two
+`type=AVC` calls, but only one corresponding `type=SYSCALL` entry.
+
 ```
-# This is an example **denied** message - note that there are two
-# type=AVC calls, but only one corresponding type=SYSCALL entry.
 type=AVC msg=audit(1242575005.122:101): avc: denied { rename } for
 pid=2508 comm="canberra-gtk-pl"
 name="c73a516004b572d8c845c74c49b2511d:runtime.tmp" dev=dm-0 ino=188999
@@ -196,8 +196,9 @@ exe="/usr/bin/canberra-gtk-play"
 subj=test_u:staff_r:oddjob_mkhomedir_t:s0 key=(null)
 ```
 
+These are example X-Windows object manager audit message:
+
 ```
-# These are example X-Windows object manager audit message:
 type=USER_AVC msg=audit(1267534171.023:18): user pid=1169 uid=0
 auid=4294967295 ses=4294967295
 subj=system_u:unconfined_r:unconfined_t msg='avc: denied { getfocus }
@@ -216,8 +217,9 @@ tcontext=unconfined_u:unconfined_r:unconfined_t tclass=x_resource :
 exe="/usr/bin/Xorg" sauid=0 hostname=? addr=? terminal=?'
 ```
 
+This is an example **granted** audit message:
+
 ```
-# This is an example **granted** audit message:
 type=AVC msg=audit(1239116352.727:311): avc: granted { transition } for
 pid=7687 comm="bash" path="/usr/move_file/move_file_c" dev=dm-0
 ino=402139 scontext=unconfined_u:unconfined_r:unconfined_t
@@ -301,7 +303,7 @@ subj=unconfined_u:unconfined_r:setsebool_t:s0-s0:c0.c1023 key=(null)
 
 NetLabel - *MAC_UNLBL_STCADD* - Generated when adding a static
 non-mapped label. There are many other NetLabel events possible, such
-as: *MAC_MAP_DEL*, *MAC_CIPSOV4_DEL* *...*
+as: *MAC_MAP_DEL*, *MAC_CIPSOV4_DEL*, ...
 
 ```
 type=MAC_UNLBL_STCADD msg=audit(1336664587.640:413): netlabel: auid=0
