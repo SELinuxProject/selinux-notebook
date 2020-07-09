@@ -68,41 +68,37 @@ consist of multiple lines of information that are formatted as follows:
 </tbody>
 </table>
 
-The */etc/pam.d/gdm-password* PAM configuration file for the Gnome login
+The */etc/pam.d/sshd* PAM configuration file for the OpenSSH
 service is as follows:
 
 ```
-auth     [success=done ignore=ignore default=bad] pam_selinux_permit.so
-auth        substack      password-auth
-auth        optional      pam_gnome_keyring.so
-auth        include       postlogin
+#%PAM-1.0
 
-account     required      pam_nologin.so
-account     include       password-auth
-
-password    substack       password-auth
--password   optional       pam_gnome_keyring.so use_authtok
-
-session     required      pam_selinux.so close
-session     required      pam_loginuid.so
-session     optional      pam_console.so
-session     required      pam_selinux.so open
-session     optional      pam_keyinit.so force revoke
-session     required      pam_namespace.so
-session     include       password-auth
-session     optional      pam_gnome_keyring.so auto_start
-session     include       postlogin
+auth       substack     password-auth
+auth       include      postlogin
+account    required     pam_sepermit.so
+account    required     pam_nologin.so
+account    include      password-auth
+password   include      password-auth
+session    required     pam_selinux.so close
+session    required     pam_loginuid.so
+session    required     pam_selinux.so open
+session    required     pam_namespace.so
+session    optional     pam_keyinit.so force revoke
+session    optional     pam_motd.so
+session    include      password-auth
+session    include      postlogin
 ```
 
 The core services are provided by PAM, however other library modules can
 be written to manage specific services such as support for SELinux. The
-SELinux PAM modules use the *libselinux* API to obtain its configuration
-information and the three SELinux PAM entries highlighted in the above
-configuration file perform the following functions:
+***pam_sepermit**(8)* and ***pam_selinux**(8)* SELinux PAM modules use
+the *libselinux* API to obtain its configuration information and the
+three SELinux PAM entries highlighted in the above configuration file
+perform the following functions:
 
--   ***pam_selinux_permit.so*** - Allows pre-defined users the ability to
-    logon without a password provided that SELinux is in enforcing mode (see
-    the
+-   ***pam_sepermit.so*** - Allows pre-defined users the ability to
+    logon provided that SELinux is in enforcing mode (see the
     [*/etc/security/sepermit.conf*](global_config_files.md#etcsecuritysepermit.conf)
     section).
 -   ***pam_selinux.so open*** - Allows a security context to be set up for
