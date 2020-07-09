@@ -161,6 +161,12 @@ section that follows.
 <td>tclass</td>
 <td>The object class of the target or object.</td>
 </tr>
+<tr>
+<td>permissive</td>
+<td>Keyword introduced in Linux 4.17 to indicate whether the event
+was denied or granted due to global or per-domain permissive
+mode.</td>
+</tr>
 </tbody>
 </table>
 
