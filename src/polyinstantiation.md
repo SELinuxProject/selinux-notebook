@@ -54,6 +54,7 @@ files to be configured:
     login configuration file (e.g. login, sshd, gdm etc.). Fedora
     already has these entries configured, with an example
     */etc/pam.d/gdm-password* file being:
+
 ```
 auth     [success=done ignore=ignore default=bad] pam_selinux_permit.so
 auth        substack      password-auth
@@ -84,7 +85,6 @@ session     include       postlogin
     [*namespace.conf*](#namespace.conf-configuration-file) section,
     with the default entries in Fedora being (note that the entries are
     commented out in the distribution):
-
 ```
 # polydir  instance-prefix     method  list_of_uids
 /tmp       /tmp-inst/          level   root,adm

@@ -1509,6 +1509,7 @@ The basic steps are:
 1.  Edit the *build.conf* file to reflect the policy to be built (as
     this is an earlier version of the Reference Policy it has less
     options than the current Reference Policy):
+
 ```
 ############################################
 # Policy build options
