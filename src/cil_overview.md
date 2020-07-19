@@ -135,6 +135,17 @@ Usage: build-sepolicy [-k] [-M] [-c|-p|-s] -d flask_directory -o output_file
 -d    Directory containing the initial_sids, security_classes and access_vectors Flask files.
 -o    The output file that will contain the policy source or header file.
 ```
+There is another CIL policy in the notebook examples called
+"cil-policy" that takes a slightly different approach where the goal
+is to keep the policy as simple as possible. It requires `semodule`,
+Linux 5.7, SELinux 3.1 and can be installed by executing
+`make install`. It leverages some modern SELinux features, most
+notably where the requirement for ordered security classes is lifted.
+With this you are no longer expected to be aware of all the access
+vectors managed by Linux in order to align your security class
+declarations with the order in which they are declared in the kernel.
+A module store is created by `semodule` to give easy access to the
+source and that allows for full control over the policy.
 
 <br>
 

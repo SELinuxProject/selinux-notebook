@@ -2,6 +2,8 @@
 
 This area contains the following directories:
 
+***cil-policy*** - Contains info to build and install simple CIL policy.
+
 ***network*** - Contains CIPSO, CALIPSO and IPSEC examples.
 
 ***selinux-policy*** - Contains info to build simple kernel and CIL policy.

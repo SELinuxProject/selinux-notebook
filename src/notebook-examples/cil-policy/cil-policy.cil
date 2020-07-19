@@ -1,0 +1,448 @@
+;; -*- mode: CIL; fill-column: 79; indent-tabs-mode: nil; -*-
+;; SPDX-License-Identifier: Unlicense
+
+;;
+;; Policy configuration.
+;;
+;; By allowing unknown access vectors we can start with a reduced number
+;; of declared security classes and access vector permissions. Use
+;; `dmesg | grep -i selinux` to see which security classes and access vector
+;; permissions managed by Linux can be leveraged in the policy.
+;;
+
+(handleunknown allow)
+
+;;
+;; Policy configuration.
+;;
+;; Disable the MLS security model support for simplicity, but CIL still
+;; requires us to write our policy with minimal MLS-awareness. Remember that we
+;; can always add full or partial Multi-level security support later.
+;;
+
+(mls false)
+
+;;
+;; Access vector declarations and (un)ordering.
+;;
+;; SELinux requires that the process security class, transition and
+;; dyntransition access vector permissions are declared. CIL requires at least
+;; one declared access vector and access vector rule as well so this is a good
+;; starting point. All security classes can be "unordered" with
+;; Linux 5.7/SELinux 3.1 but we are still required to use the classorder
+;; statement to do so.
+;;
+
+(class process (dyntransition transition))
+(classorder (unordered process))
+
+;;
+;; Access vector declarations and (un)ordering.
+;;
+;; To be able to associate roles with files we leverage defaultrole rules that
+;; require file security classes to be declared. Their associated access vector
+;; permissions are omitted for simplicity and to allow one to pick and choose
+;; permissions that one may want to leverage in the policy.
+;;
+
+(class blk_file ())
+(classorder (unordered blk_file))
+
+(class chr_file ())
+(classorder (unordered chr_file))
+
+(class dir ())
+(classorder (unordered dir))
+
+(class fifo_file ())
+(classorder (unordered fifo_file))
+
+(class file ())
+(classorder (unordered file))
+
+(class lnk_file ())
+(classorder (unordered lnk_file))
+
+(class sock_file ())
+(classorder (unordered sock_file))
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The devnull initial security identifier is used to associate a specified
+;; security context with "fixed" null device objects used to enforce access
+;; control on file operations, for example read.
+;;
+
+(sid devnull)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The file initial security identifier is used to associate a specified
+;; security context with objects that have no label, for example formatted
+;; filesystems that are not labeled.
+;;
+
+(sid file)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The kernel initial security identifier is used to associate a specified
+;; security context with processes that were initialized before SELinux was
+;; initialized, for example kernel threads.
+;;
+
+(sid kernel)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The netif initial security identifier is used to associate a specified
+;; security context with "fixed" network interface objects used to enforce
+;; access control on network operations, for example egress.
+;;
+
+(sid netif)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The netmsg initial security identifier is used to associate a specified
+;; security context with "fixed" network peer objects used to enforce access
+;; control on network operations, for example recv.
+;;
+
+(sid netmsg)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The node initial security identifier is used to associate a specified
+;; security context with "fixed" network node objects used to enforce access
+;; control on network operations, for example node_bind.
+;;
+
+(sid node)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The port initial security identifier is used to associate a specified
+;; security context with "fixed" network port objects used to enforce access
+;; control on network operations, for example name_connect.
+;;
+
+(sid port)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The security initial security identifier is used to associate a specified
+;; security context with "fixed" SELinux objects used to enforce access
+;; control on SELinux operations, for example setenforce.
+;;
+
+(sid security)
+
+;;
+;; Initial security identifier declarations.
+;;
+;; The unlabeled initial security identifier is used to associate a specified
+;; security context with entities that had their security context invalidated,
+;; for example due to modifications to policy at runtime.
+;;
+
+(sid unlabeled)
+
+;;
+;; Initial security identifier declarations (unused).
+;;
+;; The following initial security identifiers are unused but they have to be
+;; declared because they are referenced for required SID ordering next.
+;;
+
+(sid any_socket)
+(sid file_labels)
+(sid fs)
+(sid icmp_socket)
+(sid igmp_packet)
+(sid init)
+(sid kmod)
+(sid policy)
+(sid scmp_packet)
+(sid sysctl)
+(sid sysctl_dev)
+(sid sysctl_fs)
+(sid sysctl_kernel)
+(sid sysctl_modprobe)
+(sid sysctl_net)
+(sid sysctl_net_unix)
+(sid sysctl_vm)
+(sid tcp_socket)
+
+;;
+;; Initial security identifier ordering.
+;;
+;; Even though most initial security identifiers we declared are no longer in
+;; use we still have to retain a very specific order to stay compatible with
+;; the kernel.
+;;
+
+(sidorder
+ (kernel security unlabeled fs file file_labels init any_socket port
+         netif netmsg node igmp_packet icmp_socket tcp_socket sysctl_modprobe
+         sysctl sysctl_fs sysctl_kernel sysctl_net sysctl_net_unix
+         sysctl_vm sysctl_dev kmod policy scmp_packet devnull))
+
+;;
+;; Security identifier declarations.
+;;
+;; Security contexts are identifiers that are combinations of security
+;; attribute and security identifier key value pairs corresponding to security
+;; models.
+;;
+;; The s0 security identifier is associated with the sensitivity attribute in a
+;; security context used to enforce confidentiality with the Multi-level
+;; security model. We only declare one sensitivity for simplicity and to
+;; satisfy CIL.
+;;
+
+(sensitivity s0)
+
+;;
+;; Security identifier declarations.
+;;
+;; Security contexts are identifiers that are combinations of security
+;; attribute and security identifier key value pairs corresponding to security
+;; models.
+;;
+;; The c0 security identifier is associated with the category attribute in a
+;; security context used to enforce compartmentalization with the Multi-level
+;; security model. We only declare one compartment for simplicity and to
+;; satisfy CIL.
+;;
+
+(category c0)
+
+;;
+;; Security identifier declarations.
+;;
+;; Security contexts are identifiers that are combinations of security
+;; attribute and security identifier key value pairs corresponding to security
+;; models.
+;;
+;; The sys.id security identifier is associated with the user attribute in a
+;; security context used to associate with Linux DAC, role and level security
+;; identifiers with the Identity-based access control security model.
+;;
+;; Note that we leverage a simple CIL container identified by "sys" here.
+;;
+
+(block sys (user id))
+
+;;
+;; Security identifier declarations.
+;;
+;; Security contexts are identifiers that are combinations of security
+;; attribute and security identifier key value pairs corresponding to security
+;; models.
+;;
+;; The sys.role security identifier is associated with the role attribute in a
+;; security context used to associate with types with the Role-based
+;; access control security model.
+;;
+;; Note that we insert into the previously defined "sys" CIL container here.
+;;
+
+(in sys (role role))
+
+;;
+;; Security identifier declarations.
+;;
+;; Security contexts are identifiers that are combinations of security
+;; attribute and security identifier key value pairs corresponding to security
+;; models.
+;;
+;; The sys.isid security identifier is associated with the type attribute in a
+;; security context used to enforce integrity with the Type-enforcement
+;; security model.
+;;
+;; Note that we insert into the previously defined "sys" CIL container here.
+;;
+
+(in sys (type isid))
+
+;;
+;; Sensitivity ordering.
+;;
+;; Usually there are multiple sensitivities declared. Sensitivities represent
+;; a hierarchy. Since we only have one sensitivity our sensitivity order is
+;; simple.
+;;
+
+(sensitivityorder (s0))
+
+;;
+;; Category ordering.
+;;
+;; Usually there are multiple categories declared. Categories represent
+;; a hierarchy. Since we only have one category our category order is
+;; simple.
+;;
+
+(categoryorder (c0))
+
+;;
+;; Security identifier authorizations.
+;;
+;; The individually declared security identifiers have to be authorized to
+;; associate to be able to combine into valid security contexts.
+;;
+;; Authorize the s0 sensitivity with c0 category association.
+;;
+
+(sensitivitycategory s0 (range c0 c0))
+
+;;
+;; Security identifier authorizations.
+;;
+;; The individually declared security identifiers have to be authorized to
+;; associate to be able to combine into valid security contexts.
+;;
+;; Authorize the sys.id user with sys.role role association.
+;;
+
+(userrole sys.id sys.role)
+
+;;
+;; Security identifier authorizations.
+;;
+;; The individually declared security identifiers have to be authorized to
+;; associate to be able to combine into valid security contexts.
+;;
+;; Authorize the sys.role role with sys.isid type association.
+;;
+
+(roletype sys.role sys.isid)
+
+;;
+;; Security identifier authorizations.
+;;
+;; The individually declared security identifiers have to be authorized to
+;; associate to be able to combine into valid security contexts.
+;;
+;; Authorize the sys.id user with s0 lavel association.
+;;
+
+(userlevel sys.id (s0))
+
+;;
+;; Security identifier authorizations.
+;;
+;; The individually declared security identifiers have to be authorized to
+;; associate to be able to combine into valid security contexts.
+;;
+;; Authorize the sys.id user with s0-s0:c0.c0 range association.
+;;
+
+(userrange sys.id ((s0)(s0 (range c0 c0))))
+
+;;
+;; Security context specifications.
+;;
+;; Leverage role security identifiers associated with files by specifying that
+;; role identifiers associated with file security classes should be inherited
+;; from the source.
+;;
+
+(defaultrole blk_file source)
+(defaultrole chr_file source)
+(defaultrole dir source)
+(defaultrole fifo_file source)
+(defaultrole file source)
+(defaultrole lnk_file source)
+(defaultrole sock_file source)
+
+;;
+;; Security context specifications.
+;;
+;; Associate our valid security context sys.id:sys.role:sys.isid:s0-s0 with
+;; the used initial security identifiers.
+;;
+
+(sidcontext devnull (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext file (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext kernel (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext netif (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext netmsg (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext node (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext port (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext security (sys.id sys.role sys.isid ((s0)(s0))))
+(sidcontext unlabeled (sys.id sys.role sys.isid ((s0)(s0))))
+
+;;
+;; Security context specifications
+;;
+;; Associate our valid security context sys.id:sys.role:sys.isid:s0-s0 with
+;; locations on the filesystems so that they can be associated with inodes on
+;; filesystems that support security extended attributes.
+;;
+
+(filecon "/" dir (sys.id sys.role sys.isid ((s0)(s0))))
+(filecon "/.*" any (sys.id sys.role sys.isid ((s0)(s0))))
+
+;;
+;; Access vector rule.
+;;
+;; CIL requires us to specify at least one AVC rule and since we were required
+;; to at least declare the process security class, its dyntransition and
+;; transition access vector permissions, let's add a AVC rule allowing
+;; entities associated with our sys.isid type identifier access to all the
+;; process operations.
+;;
+
+(allow sys.isid self (process (all)))
+
+;;
+;; Tidy some loose ends.
+;;
+;; Address hardcoded references in Red Hat's and Debian's package managers
+;; with the typealiase statement.
+;;
+
+(typealias dpkg_script_t)
+(typealiasactual dpkg_script_t sys.isid)
+
+(typealias rpm_script_t)
+(typealiasactual rpm_script_t sys.isid)
+
+;;
+;; Tidy some loose ends.
+;;
+;; Generate a /etc/selinux/cil-policy/seusers file with a __default__ fall back
+;; entry so that Linux users are associated with the sys.id SELinux
+;; identity and the s0-s0 level.
+;;
+
+(selinuxuserdefault sys.id ((s0)(s0)))
+
+;;
+;; Tidy some loose ends.
+;;
+;; Leverage the userprefix statement to associate valid role identifiers with
+;; files generated by the genhomedircon command.
+;;
+
+(userprefix sys.id sys.role)
+
+;;
+;; Tidy some loose ends.
+;;
+;; At the least /dev and /dev/pts should be assumed to exist and be set up
+;; for labeling so that terminals can be relabeled.
+;;
+
+(fsuse trans "devpts" (sys.id sys.role sys.isid ((s0)(s0))))
+(fsuse trans "devtmpfs" (sys.id sys.role sys.isid ((s0)(s0))))
