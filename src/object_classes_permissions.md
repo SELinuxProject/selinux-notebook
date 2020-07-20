@@ -421,7 +421,7 @@ inherited by a number of object classes.
 <td>Allows opening of raw sockets and packet sockets.</td>
 </tr>
 <tr>
-<td>netbroadcast</td>
+<td>net_broadcast</td>
 <td>Grant network broadcasting and listening to incoming multicasts.</td>
 </tr>
 <tr>
@@ -496,11 +496,16 @@ inherited by a number of object classes.
 <tbody>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;">Description (6 permissions)</td>
+<td style="background-color:#F2F2F2;">Description (8 permissions)</td>
 </tr>
 <tr>
 <td>audit_read</td>
 <td>Allow reading audits logs.</td>
+</tr>
+<tr>
+<td>bpf</td>
+<td><p>Create maps, do other <em>sys_bpf()</em> commands and load 'SK_REUSEPORT' progs.</p>
+<p>Note that loading tracing programs also requires 'CAP_PERFMON' and that loading networking programs also requires 'CAP_NET_ADMIN'.</p></td>
 </tr>
 <tr>
 <td>block_suspend</td>
@@ -514,6 +519,11 @@ inherited by a number of object classes.
 <tr>
 <td>mac_override</td>
 <td>Allow MAC policy to be overridden. (not used)</td>
+</tr>
+<tr>
+<tr>
+<td>perfmon</td>
+<td>Allow system performance monitoring and observability operations.</td>
 </tr>
 <tr>
 <td>syslog</td>
@@ -2015,7 +2025,7 @@ implementation.
 
 ## IPC Object Classes
 
-### `ipc`
+### `ipc` (Deprecated)
 
 <table>
 <tbody>
@@ -2600,11 +2610,11 @@ Note that while this is defined as a kernel object class, the userspace
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 6 permissions)</td>
+<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 8 permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-capability2-permissions"><strong>Common Capability2 Permissions<strong></td>
-<td style="background-color:#F2F2F2;">audit_read, block_suspend, mac_admin, mac_override, syslog, wake_alarm</td>
+<td style="background-color:#F2F2F2;">audit_read, bpf, block_suspend, mac_admin, mac_override, perfmon, syslog, wake_alarm</td>
 </tr>
 </tbody>
 </table>
@@ -2638,11 +2648,11 @@ Note that while this is defined as a kernel object class, the userspace
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 6 permissions)</td>
+<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 8 permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-capability2-permissions"><strong>Common Capability2 Permissions<strong></td>
-<td style="background-color:#F2F2F2;">audit_read, block_suspend, mac_admin, mac_override, syslog, wake_alarm</td>
+<td style="background-color:#F2F2F2;">audit_read, bpf, block_suspend, mac_admin, mac_override, perfmon, syslog, wake_alarm</td>
 </tr>
 </tbody>
 </table>
