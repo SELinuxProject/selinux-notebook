@@ -676,6 +676,11 @@ interface, it is not recommended - use the **libselinux** or **libsepol** librar
 <td>Enables the use of separate socket security classes for all network address families rather than the generic socket class.</td>
 </tr>
 <tr>
+<td>genfs_seclabel_symlinks</td>
+<td>-r--r--r--</td>
+<td>Enables fine-grained labeling of symlinks in pseudo filesystems based on genfscon rules.</td>
+</tr>
+<tr>
 <td>network_peer_controls</td>
 <td>-r--r--r--</td>
 <td><p>If true the following network_peer_controls are enabled:</p>
