@@ -110,14 +110,20 @@ objects is managed by the system and generally unseen by the users
 (until labeling goes wrong !!). As processes and objects are created and
 destroyed, they either:
 
-1.  Inherit their labels from the parent process or object.
+1.  Inherit their labels from the parent process or object. The policy
+    default user, type, role and range statements can be used to
+	change the behavior as discussed in the [**Default Rules**](default_rules.md#default-object-rules)
+    section.
 2.  The policy type, role and range transition statements allow a
     different label to be assigned as discussed in the
     [**Domain and Object Transitions**](domain_object_transitions.md#domain-and-object-transitions)
     section.
-3.  SELinux-aware applications can enforce a new label (with the
-    policies approval of course) using the **libselinux** API
-    functions.
+3.  SELinux-aware applications can assign a new label (with the
+    policy's approval of course) using the **libselinux** API
+    functions. The `process setfscreate` permission can be used to
+    allow subjects to create files with a new label programmatically
+    using the ***setfscreatecon**(3)* function, overriding default
+    rules and transition statements.
 4.  An object manager (OM) can enforce a default label that can either
     be built into the OM or obtained via a configuration file (such as
     those used by
@@ -268,6 +274,36 @@ and manage their scope:
 and manage their transition:
 
 `type_transition`, `role_transition` and `range_transition`
+
+SELinux-aware applications can assign a new label (with the policy's
+approval of course) using the **libselinux** API functions. The
+`process setexec`, `process setkeycreate` and `process setsockcreate`
+permissions can be used to allow subjects to label processes,
+kernel keyrings, and sockets programmatically using the
+***setexec**(3)*, ***setkeycreatecon**(3)* and
+***setsockcreatecon**(3)* functions respectively, overriding
+transition statements.
+
+The `kernel` **initial security identifier** is used to associate
+a specified label with kernel objects, including kernel threads
+(both those that are created during initialization but also kernel
+threads created later), kernel-private sockets and synthetic objects
+representing kernel resources (e.g. the "system" class).
+
+It is true that processes created prior to initial policy load will
+also be in the kernel SID until/unless there is a policy loaded and
+either a policy-defined transition or an explicit setcon or
+setexeccon+execve, but that's just the typical default inheritance
+from creating task behavior for processes.
+
+The context associated with the `unlabeled`
+**initial security identifier** is used as the fallback context for
+both subjects and objects when their label is invalidated by a policy
+reload (their SID is unchanged but the SID is transparently remapped
+to the unlabeled context). It is also assigned as the initial state
+for various objects e.g. inodes, superblocks, etc until they reach a
+point where a more specific label can be determined e.g. from an
+xattr or from policy.
 
 ### Object Reuse
 
