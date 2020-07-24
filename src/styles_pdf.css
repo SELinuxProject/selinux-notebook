@@ -62,12 +62,16 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
-	table-layout: fixed;
 	/* combine table borders when they are adjacent */
 	border-collapse: collapse;
+	/* TODO: once we finish the HTML->Markdown conversion we should
+	 *       revaluate the 'table-layout: fixed' hack below */
+	table-layout: fixed;
 }
 table tr, th, td {
 	border: 1px solid black;
+	/* TODO: once we finish the HTML->Markdown conversion we should
+	 *       revaluate the 'word-wrap: break-word' hack below */
 	word-wrap: break-word;
 }
 
