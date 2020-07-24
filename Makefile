@@ -16,7 +16,8 @@ PDF_OUT = SELinux_Notebook.pdf
 
 SED = sed
 PANDOC = pandoc
-PANDOC_OPTS=-V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
+PANDOC_OPTS  = --from markdown+pipe_tables
+PANDOC_OPTS += -V mainfont='DejaVu Serif' -V monofont='DejaVu Sans Mono'
 
 # the individual section files, in order
 FILE_LIST = $(shell cat src/section_list.txt)
