@@ -1,10 +1,9 @@
 # SELinux Virtual Machine Support
 
-SELinux support is available in the KVM/QEMU and Xen virtual machine
-(VM) technologies<a href="#fnv1" class="footnote-ref" id="fnvms1"><strong><sup>1</sup></strong></a>
-(that are discussed in the sections that follow, however the package
-documentation should be read for how these products actually work and how they
-are configured.
+SELinux support is available in the KVM/QEMU and Xen virtual machine (VM)
+technologies[^fn_vms_1] that are discussed in the sections that follow, however
+the package documentation should be read for how these products actually work
+and how they are configured.
 
 Currently the main SELinux support for virtualisation is via *libvirt*
 that is an open-source virtualisation API used to dynamically load guest
@@ -22,8 +21,6 @@ to configure VMs, then an overview of the Xen implementation follows.
 To ensure all dependencies are installed run:
 
 `dnf install libvirt qemu virt-manager`
-
-<br>
 
 ## KVM / QEMU Support
 
@@ -51,7 +48,6 @@ configure these and their VM image files.
 QEMU provides the hardware emulation services for the guest
 operating systems. Note that KVM requires CPU virtualisation support.*
 
-
 ## *libvirt* Support
 
 The Svirt project added security hooks into the *libvirt* library that
@@ -65,13 +61,11 @@ that will load and manage the images. The SELinux implementation
 supports four methods of labeling VM images, processes and their
 resources with support from the Reference Policy *modules/services/virt*
 loadable module. To support this labeling, *libvirt* requires an MCS or MLS
-enabled policy as the [**`level`**](security_context.md#security-context)
+enabled policy as the [***level***](security_context.md#security-context)
 entry of the security context is used (*user:role:type:level*).
 
 The link <http://libvirt.org/drvqemu.html#securityselinux> has details
 regarding the QEMU driver and the SELinux confinement modes it supports.
-
-<br>
 
 ## VM Image Labeling
 
@@ -109,33 +103,12 @@ implemented as follows:
     The following example shows two running VM sessions each having
     different labels:
 
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>VM Image Name<strong></td>
-<td><strong>Object<strong></td>
-<td><strong>Dynamically assigned security context<strong></td>
-</tr>
-<tr>
-<td rowspan="2"><strong>Dynamic_VM1</strong></td>
-<td><code>process</code></td>
-<td><code>system_u:system_r:svirt_tcg_t:s0:c585,c813</code></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>system_u:system_r:svirt_image_t:s0:c585,c813</code></td>
-</tr>
-<tr>
-<td rowspan="2"><strong>Dynamic_VM2</strong></td>
-<td><code>process</code></td>
-<td>s<code>ystem_u:system_r:svirt_tcg_t:s0:c535,c601<code></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>system_u:system_r:svirt_image_t:s0:c535,c601</code></td>
-</tr>
-</tbody>
-</table>
+| VM Image    | Object    | Dynamically assigned security context             |
+| ------------| --------- | ------------------------------------------------- |
+| Dynamic_VM1 | *process* | *system_u:system_r:svirt_tcg_t:s0:c585,c813*      |
+|             | *file*    | *system_u:system_r:svirt_image_t:s0:c585,c813*    |
+| Dynamic_VM2 | *process* | *system_u:system_r:svirt_tcg_t:s0:c535,c601*      |
+|             | *file*    | *system_u:system_r:svirt_image_t:s0:c535,c601*    |
 
 The running image *ls -Z* and *ps -eZ* are as follows, and for
 completeness an *ls -Z* is shown when both VMs have been stopped:
@@ -162,8 +135,6 @@ ls -Z /var/lib/libvirt/images
 system_u:object_r:virt_image_t:s0 Dynamic_VM1.img
 system_u:object_r:virt_image_t:s0 Dynamic_VM2.img
 ```
-
-<br>
 
 ### Shared Image
 
@@ -253,30 +224,12 @@ initialisation process will take place:
     The following example shows each VM having the same file label but
     different process labels:
 
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>VM Image Name</strong></td>
-<td><strong>Object</strong></td>
-<td><strong>Security context</strong></td>
-</tr>
-<tr>
-<td><strong>Shareable_VM</strong></td>
-<td><code>process</code></td>
-<td><code>system_u:system_r:svirt_tcg_t:s0:c231,c245</code></td>
-</tr>
-<tr>
-<td><strong>Shareable_VM-clone</strong></td>
-<td><code>process</code></td>
-<td><code>system_u:system_r:svirt_tcg_t:s0:c695,c894</code></td>
-</tr>
-<tr>
-<td></td>
-<td><code>file</code></td>
-<td><code>system_u:system_r:svirt_image_t:s0</code></td>
-</tr>
-</tbody>
-</table>
+
+| VM Image           | Object    | Security context                             |
+| -------------------| ----------| -------------------------------------------- |
+| Shareable_VM       | *process* | *system_u:system_r:svirt_tcg_t:s0:c231,c245* |
+| Shareable_VM-clone | *process* | *system_u:system_r:svirt_tcg_t:s0:c695,c894* |
+|                    | *file*    | *system_u:system_r:svirt_image_t:s0*         |
 
 The running image *ls -Z* and *ps -eZ* are as follows and for
 completeness an *ls -Z* is shown when both VMs have been stopped:
@@ -391,35 +344,12 @@ was possible because the 's*etsebool -P virt_transition_userdomain
 on*'* *boolean was set that allows *virtd_t* domain to transition to a
 user domain (e.g. *unconfined_t*).
 
-
-
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>VM Image Name<strong></td>
-<td><strong>Object<strong></td>
-<td><strong>Static security context<strong></td>
-</tr>
-<tr>
-<td rowspan="2"><strong>Static_VM1</strong></td>
-<td><code>process</code></td>
-<td><code>system_u:system_r:svirt_t:s0:c1022,c1023</code></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>system_u:system_r:svirt_image_t:s0:c1022,c1023</code></td>
-</tr>
-<tr>
-<td rowspan="2"><strong>Static_VM2</strong></td>
-<td><code>process</code></td>
-<td><code>system_u:system_r:unconfined_t:s0:c11,c22</code></td>
-</tr>
-<tr>
-<td><code>file</code></td>
-<td><code>system_u:system_r:virt_image_t:s0</code></td>
-</tr>
-</tbody>
-</table>
+| VM Image   | Object    | Static security context                            |
+| -----------| --------- | -------------------------------------------------- |
+| Static_VM1 | *process* | *system_u:system_r:svirt_t:s0:c1022,c1023*         |
+|            | *file*    | *system_u:system_r:svirt_image_t:s0:c1022,c1023*   |
+| Static_VM2 | *process* | *system_u:system_r:unconfined_t:s0:c11,c22*        |
+|            | *file*    | *system_u:system_r:virt_image_t:s0*                |
 
 The running image *ls -Z* and *ps -eZ* are as follows, and for
 completeness an *ls -Z* is shown when both VMs have been stopped:
@@ -445,8 +375,6 @@ system_u:system_r:unconfined_t:s0:c11,c22 6796 ? 00:00:26 qemu-system-x86
 system_u:object_r:svirt_image_t:s0:c1022,c1023 Static_VM1.img
 system_u:object_r:virt_image_t:s0 Static_VM2.img
 ```
-
-<br>
 
 ## Xen Support
 
@@ -479,19 +407,10 @@ For reference, the Xen policy supports additional policy language
 statements that defined in the
 [**Xen Statements**](xen_statements.md#xen-statements) section.
 
-<br>
-
-<section class="footnotes">
-<ol>
-<li id="fnv1"><p>KVM (Kernel-based Virtual Machine) and Xen are classed as 'bare metal' hypervisors and they
-rely on other services to manage the overall VM environment. QEMU (Quick Emulator) is an
-emulator that emulates the BIOS and I/O device functionality and can be used standalone or with
-KVM and Xen.<a href="#fnvms1" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
-
-
-<br>
+[^fn_vms_1]: KVM (Kernel-based Virtual Machine) and Xen are classed as 'bare
+metal' hypervisors and they rely on other services to manage the overall VM
+environment. QEMU (Quick Emulator) is an emulator that emulates the BIOS and
+I/O device functionality and can be used standalone or with KVM and Xen.
 
 <!-- %CUTHERE% -->
 
