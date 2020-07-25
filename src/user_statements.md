@@ -1,6 +1,6 @@
 # User Statements
 
-## `user`
+## *user*
 
 The user statement declares an SELinux user identifier within the policy
 and associates it to one or more roles. The statement also allows an
@@ -17,73 +17,58 @@ Or for MCS/MLS Policy:
 
 `user seuser_id roles role_id level mls_level range mls_range;`
 
-
 Where:
 
-<table>
-<tbody>
-<tr>
-<td><code>user</code></td>
-<td>The <code>user</code> keyword.</td>
-</tr>
-<tr>
-<td><code>seuser_id</code></td>
-<td>The SELinux user identifier.</td>
-</tr>
-<tr>
-<td><code>roles</code></td>
-<td>The <code>roles</code> keyword.</td>
-</tr>
-<tr>
-<td><code>role_id</code></td>
-<td>One or more previously declared <code>role</code> or <code>attribute_role<code> identifiers. Multiple <code>role</code> identifiers consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>level</code></td>
-<td>If MLS is configured, the MLS <code>level</code> keyword.</td>
-</tr>
-<tr>
-<td><code>mls_level</code></td>
-<td><p>The users default MLS security level that has been previously declared with a <code>level</code> statement</em></em>.</p>
-<p>Note that the compiler only accepts the <code>sensitivity</code> component of the <code>level</code> (e.g. s0).</p></td>
-</tr>
-<tr>
-<td><code>range</code></td>
-<td>If MLS is configured, the MLS <code>range</code> keyword.</td>
-</tr>
-<tr>
-<td><code>mls_range</code></td>
-<td>The range of security levels that the user can run. The format is described in the <a href="mls_statements.md#mls-range-definition">"MLS <code>range</code> Definition"</a> section.</td>
-</tr>
-</tbody>
-</table>
+*user*
+
+The *user* keyword.
+
+*seuser_id*
+
+The SELinux user identifier.
+
+*roles*
+
+The *roles* keyword.
+
+*role_id*
+
+One or more previously declared *role* or *attribute_role* identifiers.
+Multiple *role* identifiers consist of a space separated list enclosed in
+braces '{}'.
+
+*level*
+
+If MLS is configured, the MLS *level* keyword.
+
+*mls_level*
+
+The users default MLS security level that has been previously declared with a
+*level* statement. Note that the compiler only accepts the *sensitivity*
+component of the *level* (e.g. s0).
+
+*range*
+
+If MLS is configured, the MLS *range* keyword.
+
+*mls_range*
+
+The range of security levels that the user can run. The format is described in
+the ["MLS *range* Definition"](mls_statements.md#mls-range-definition) section.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | Yes                     |
 
 **Examples:**
 
@@ -155,8 +140,6 @@ user mque_u prefix user;
 
 user mque_u prefix user;
 ```
-
-<br>
 
 <!-- %CUTHERE% -->
 
