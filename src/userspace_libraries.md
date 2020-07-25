@@ -11,8 +11,6 @@ source code are available at:
 
 <https://github.com/SELinuxProject/selinux/wiki>
 
-<br>
-
 ## libselinux Library
 
 *libselinux* contains all the SELinux functions necessary to build
@@ -29,91 +27,77 @@ The library hides the low level functionality of (but not limited to):
     associated to files, sockets etc. - see ***attr**(5)*.
 -   The SELinux policy and its associated configuration files.
 
-The general category of functions available in *libselinux* are shown in
-**Table 1: libselinux function types**, with
-[**Appendix B - `libselinux` API Summary**](libselinux_functions.md#appendix-b---libselinux-api-summary)
+The general category of functions available in *libselinux* are shown below,
+with [**Appendix B - `libselinux` API Summary**](libselinux_functions.md#appendix-b---libselinux-api-summary)
 giving a complete list of functions.
 
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Function Category</strong></td>
-<td><strong>Description</strong></td>
-</tr>
-<tr>
-<td>Access Vector Cache Services</td>
-<td>Allow access decisions to be cached and audited. </td>
-</tr>
-<tr>
-<td>Boolean Services</td>
-<td>Manage booleans.</td>
-</tr>
-<tr>
-<td>Class and Permission Management</td>
-<td>Class / permission string conversion and mapping.</td>
-</tr>
-<tr>
-<td>Compute Access Decisions</td>
-<td>Determine if access is allowed or denied.</td>
-</tr>
-<tr>
-<td>Compute Labeling</td>
-<td>Compute labels to be applied to new instances of on object.</td>
-</tr>
-<tr>
-<td>Default File Labeling</td>
-<td>Obtain default contexts for file operations.</td>
-</tr>
-<tr>
-<td>File Creation Labeling </td>
-<td>Get and set file creation contexts.</td>
-</tr>
-<tr>
-<td>File Labeling</td>
-<td>Get and set file and file descriptor extended attributes.</td>
-</tr>
-<tr>
-<td>General Context Management</td>
-<td>Check contexts are valid, get and set context components.</td>
-</tr>
-<tr>
-<td>Key Creation Labeling </td>
-<td>Get and set kernel key creation contexts.</td>
-</tr>
-<tr>
-<td>Label Translation Management </td>
-<td>Translate to/from, raw/readable contexts.</td>
-</tr>
-<tr>
-<td>Netlink Services</td>
-<td>Used to detect policy reloads and enforcement changes.</td>
-</tr>
-<tr>
-<td>Process Labeling </td>
-<td>Get and set process contexts.</td>
-</tr>
-<tr>
-<td>SELinux Management Services</td>
-<td>Load policy, set enforcement mode, obtain SELinux configuration information.</td>
-</tr>
-<tr>
-<td>SELinux-aware Application Labeling</td>
-<td>Retrieve default contexts for applications such as database and X-Windows. </td>
-</tr>
-<tr>
-<td>Socket Creation Labeling </td>
-<td>Get and set socket creation contexts.</td>
-</tr>
-<tr>
-<td>User Session Management</td>
-<td>Retrieve default contexts for user sessions.</td>
-</tr>
-</tbody>
-</table>
+**Access Vector Cache Services**
 
-**Table 1: libselinux function types**
+Allow access decisions to be cached and audited.
 
-<br>
+**Boolean Services**
+
+Manage booleans.
+
+**Class and Permission Management**
+
+Class / permission string conversion and mapping.
+
+**Compute Access Decisions**
+
+Determine if access is allowed or denied.
+
+**Compute Labeling**
+
+Compute labels to be applied to new instances of on object.
+
+**Default File Labeling**
+
+Obtain default contexts for file operations.
+
+**File Creation Labeling**
+
+Get and set file creation contexts.
+
+**File Labeling**
+
+Get and set file and file descriptor extended attributes.
+
+**General Context Management**
+
+Check contexts are valid, get and set context components.
+
+**Key Creation Labeling**
+
+Get and set kernel key creation contexts.
+
+**Label Translation Management**
+
+Translate to/from, raw/readable contexts.
+
+**Netlink Services**
+
+Used to detect policy reloads and enforcement changes.
+
+**Process Labeling**
+
+Get and set process contexts.
+
+**SELinux Management Services**
+
+Load policy, set enforcement mode, obtain SELinux configuration information.
+
+**SELinux-aware Application Labeling**
+
+Retrieve default contexts for applications such as database and X-Windows.
+
+**Socket Creation Labeling**
+
+Get and set socket creation contexts.
+
+**User Session Management**
+
+Retrieve default contexts for user sessions.
 
 The *libselinux* functions make use of a number of files within the
 SELinux sub-system:
@@ -141,8 +125,6 @@ There is a static version of the library that is not installed by default:
 
 `dnf install libselinux-static`
 
-<br>
-
 ## libsepol Library
 
 *libsepol* - To build and manipulate the contents of SELinux kernel
@@ -157,13 +139,8 @@ as they require access to functions that are not available in the dynamic
 library (such as sepol_compute_av(), sepol_compute_av_reason() and
 sepol_context_to_sid().
 
-<br>
-
 ## libsemanage Library
 *libsemanage* - To manage the policy infrastructure.
-
-
-<br>
 
 <!-- %CUTHERE% -->
 
