@@ -1,5 +1,13 @@
 # PostgreSQL SELinux Support
 
+-   [**sepgsql Overview**](#sepgsql-overview)
+-   [**Installing SE-PostgreSQL**](#installing-se-postgresql)
+-   [***SECURITY LABEL* SQL Command**](#security-label-sql-command)
+-   [**Additional SQL Functions**](#additional-sql-functions)
+-   [***postgresql.conf* Entries**](#postgresql.conf-entries)
+-   [**Logging Security Events**](#logging-security-events)
+-   [**Internal Tables**](#internal-tables)
+
 This section gives an overview of PostgreSQL version 11.x with the
 *sepgsql* extension to support SELinux. It assumes some basic knowledge
 of PostgreSQL that can be found at:
@@ -22,23 +30,29 @@ document:
 
 <https://www.postgresql.org/docs/11/sepgsql.html>
 
-
 ## sepgsql Overview
 
 The *sepgsql* extension adds SELinux mandatory access controls (MAC) to
 database objects such as tables, columns, views, functions, schemas and
-sequences. **Figure 24: Database Security Context Information** shows a simple
-database with one table, two columns and three rows, each with their object
-class and associated security context (the [**Internal Tables**](#internal-tables)
+sequences. **Table 1: Database Security Context Information** shows a simple
+database with one table and two columns, each with their object class and
+associated security context (the [**Internal Tables**](#internal-tables)
 section shows these entries from the *testdb* database in the
 [**Notebook sepgsql Example**](notebook-examples/sepgsql/testdb-example.sql).
 The database object classes and permissions are described in
 [**Appendix A - Object Classes and Permissions**](object_classes_permissions.md#database-object-classes).
 
-![](./images/24-database-table.png)
+|       |
+| :---: |
+| **database** (*db_database*) - context = 'unconfined_u:object_r:postgresql_db_t:s0' This context is inherited from the database directory label -  ls -Z /var/lib/pgsql/data |
+| **schema** (*db_schema*) - security_label = 'unconfined_u:object_r:sepgsql_schema_t:s0:c10' |
+| **table** (*db_table*)   - security_label = 'unconfined_u:object_r:sepgsql_table_t:s0:c20'  |
 
-**Figure 24: Database Security Context Information** - *Showing the security
-contexts that can be associated to a schema, table and columns.*
+|       |       |
+| :---: | :---: |
+| **column 1** (*db_column*) - security_label = 'unconfined_u:object_r:sepgsql_table_t:s0:c30' | **column 2** - (*db_column*) security_label = 'unconfined_u:object_r:sepgsql_table_t:s0:c40' |
+
+**Table 1: Database Security Context Information** - *Showing the security contexts that can be associated to a schema, table and columns.*
 
 To use SE-PostgreSQL each Linux user must have a valid PostgreSQL
 database role (not to be confused with an SELinux role). The default
@@ -68,9 +82,7 @@ with AVC audits being logged via the standard PostgreSQL logfile as
 described in the [**Logging Security Events**](#logging-security-events)
 section.
 
-<br>
-
-### Installing SE-PostgreSQL
+## Installing SE-PostgreSQL
 
 The [**https://www.postgresql.org/docs/11/sepgsql.html**](https://www.postgresql.org/docs/11/sepgsql.html)
 page contains all the information required to install the *sepgsql* extension.
@@ -79,7 +91,7 @@ There are also instructions in the
 [**Notebook sepgsql Example - README**](notebook-examples/sepgsql/README.md)
 that describes building the example database used in the sections below.
 
-### *SECURITY LABEL* SQL Command
+## *SECURITY LABEL* SQL Command
 
 The '*SECURITY LABEL*' SQL command has been added to PostgreSQL to allow
 security providers to label or change a label on database objects.
@@ -102,34 +114,32 @@ SECURITY LABEL ON COLUMN test_ns.info.email_addr IS
 'unconfined_u:object_r:sepgsql_table_t:s0:c40';
 ```
 
-### Additional SQL Functions
+## Additional SQL Functions
 
 The following functions have been added:
 
-<table>
-<tbody>
-<tr>
-<td><code>sepgsql_getcon()</code></td>
-<td>Returns the client security context.</td>
-</tr>
-<tr>
-<td><code>sepgsql_mcstrans_in(text con)</code></td>
-<td>Translates the readable <em>range</em> of the context into raw format provided the <em>mcstransd</em> daemon is running.</td>
-</tr>
-<tr>
-<td><code>sepgsql_mcstrans_out(text con)</code></td>
-<td>Translates the raw <em>range</em> of the context into readable format provided the <em>mcstransd</em> daemon is running.</td>
-</tr>
-<tr>
-<td><code>sepgsql_restorecon(text specfile)</code></td>
-<td>Sets security contexts on all database objects (must be superuser) according to the <em>specfile</em>. This is normally used for initialisation of the database by the <em>sepgsql.sql</em> script. If the parameter is NULL, then the default <em>sepgsql_contexts</em> file is used. See <em><strong>selabel_db</strong>(5)</em> details.</td>
-</tr>
-</tbody>
-</table>
+*sepgsql_getcon()*
 
-<br>
+Returns the client security context.
 
-### *postgresql.conf* Entries
+*sepgsql_mcstrans_in(text con)*
+
+Translates the readable *range* of the context into raw format provided the
+***mcstransd**(8)* daemon is running.
+
+*sepgsql_mcstrans_out(text con)*
+
+Translates the raw *range* of the context into readable format provided the
+***mcstransd**(8)* daemon is running.
+
+*sepgsql_restorecon(text specfile)*
+
+Sets security contexts on all database objects (must be superuser) according
+to the *specfile*. This is normally used for initialisation of the database
+by the *sepgsql.sql* script. If the parameter is NULL, then the default
+*sepgsql_contexts* file is used. See ***selabel_db**(5)* details.
+
+## *postgresql.conf* Entries
 
 The *postgresql.conf* file supports the following additional entries to
 enable and manage SE-PostgreSQL:
@@ -167,9 +177,7 @@ on
 (1 row)
 ```
 
-<br>
-
-### Logging Security Events
+## Logging Security Events
 
 SE-PostgreSQL manages its own AVC audit entries in the standard
 PostgreSQL log normally located within the */var/lib/pgsql/data/pg_log*
@@ -177,9 +185,7 @@ directory and by default only errors are logged (Note that there are no
 SE-PostgreSQL AVC entries added to the standard *audit.log*). The
 '*sepgsql.debug_audit = on*' can be set to log all audit events.
 
-<br>
-
-### Internal Tables
+## Internal Tables
 
 To support the overall database operation PostgreSQL has internal tables
 in the system catalog that hold information relating to databases,
@@ -188,46 +194,15 @@ that holds the security label and other references. The *pg_seclabel*
 is shown in the table below and has been taken from
 <http://www.postgresql.org/docs/11/static/catalog-pg-seclabel.html>.
 
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Name</strong></td>
-<td><strong>Type</strong></td>
-<td><strong>References</strong></td>
-<td><strong>Comments</strong></td>
-</tr>
-<tr>
-<td><code>objoid</code></td>
-<td><code>oid</code></td>
-<td>any OID column</td>
-<td>The OID of the object this security label pertains to.</td>
-</tr>
-<tr>
-<td><code>classoid</code></td>
-<td><code>oid</code></td>
-<td><a href="http://www.postgresql.org/docs/11/static/catalog-pg-class.html">pg_class</a>.oid</td>
-<td>The OID of the system catalog this object appears in.</td>
-</tr>
-<tr>
-<td><code>objsubid</code></td>
-<td>int4</td>
-<td></td>
-<td>For a security label on a table column, this is the column number (the <em>objoid</em> and <em>classoid</em> refer to the table itself). For all other objects this column is zero.</td>
-</tr>
-<tr>
-<td><code>provider</code></td>
-<td>text</td>
-<td></td>
-<td>The label provider associated with this label. Currently only SELinux is supported.</td>
-</tr>
-<tr>
-<td><code>label</code></td>
-<td>text</td>
-<td></td>
-<td>The security label applied to this object.</td>
-</tr>
-</tbody>
-</table>
+
+| **Name** | **Type** | **References** | **Comments** |
+| -------- | -------- | -------------- | ------------ |
+| objoid   |   oid    | any OID column | The OID of the object this security label pertains to. |
+| classoid |   oid    | pg_class.oid   | The OID of the system catalog this object appears in.  |
+| objsubid |  int4    |                | For a security label on a table column, this is the column number (the *objoid* and *classoid* refer to the table itself). For all other objects this column is zero. |
+| provider |  text    |                 | The label provider associated with this label. Currently only SELinux is supported. |
+| label    |  text    |                 | The security label applied to this object. |
+
 
 These are entries taken from a '*SELECT * FROM pg_seclabel;*' command
 that refers to the example *testdb* database built using the
@@ -259,8 +234,6 @@ objoid|classoid|objsubid|objtype|objnamespace|  objname     | provider| label
 16391 | 1259   |    2   | column| 16390      | test_ns.info.| selinux | unconfined_u:object_r:sepgsql_table_t:s0:c40
       |        |        |       |            | email_addr   |         |
 ```
-
-<br>
 
 <!-- %CUTHERE% -->
 
