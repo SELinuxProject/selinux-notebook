@@ -23,7 +23,6 @@ Some policies, for example Android, only make use of one role called `r`.
 access via user, role and domain type association.*
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

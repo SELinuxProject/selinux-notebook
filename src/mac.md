@@ -29,7 +29,6 @@ chain for DAC and MAC are shown in **Figure 3**.
 **Figure 3: Processing a System Call** - *The DAC checks are carried out
 first, if they pass then the Security Server is consulted for a decision.*
 
-<br>
 
 SELinux supports two forms of MAC:
 
@@ -63,7 +62,6 @@ application separation, for example SELinux enabled:
     [**Security Enhancements for Android - Computing a Context**](seandroid.md#computing-process-context-examples) section).
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

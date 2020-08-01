@@ -8,7 +8,6 @@ overview of the SELinux IB implementation can be found at:
 
 Note that there are no terminating semi-colons ';' on these statements.
 
-<br>
 
 ## `ibpkeycon`
 
@@ -94,7 +93,6 @@ in the default `<SELINUXTYPE>` policy store and then activate the policy:
 ibpkeycon fe80:: 0xFFFF system_u:object_r:default_ibpkey_t:s0
 ```
 
-<br>
 
 ## `ibendportcon`
 
@@ -180,7 +178,6 @@ This command will produce the following file
 ibendportcon mlx4_0 2 system_u:object_r:opensm_ibendport_t:s0
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

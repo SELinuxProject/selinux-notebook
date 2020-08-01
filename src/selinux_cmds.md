@@ -153,7 +153,6 @@ has a page that details all the available tools and commands at:
 </table>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

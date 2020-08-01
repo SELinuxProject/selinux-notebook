@@ -61,14 +61,12 @@ the circumstances, there can be one level defined or a
 **Table 1: Sensitivity and Category = Security Level** - *this table shows
 the meanings depending on the context being discussed.*
 
-<br>
 
 To make the security levels more meaningful, it is possible to use the
 setransd daemon to translate these to human readable formats. The
 **semanage**(8) command will allow this mapping to be defined as discussed
 in the [**setrans.conf**](policy_config_files.md#setrans.conf) section.
 
-<br>
 
 #### MLS range Definition
 
@@ -100,7 +98,6 @@ discussed at the start of the [**MLS section**](#mls-statements).
 </tbody>
 </table>
 
-<br>
 
 ## `sensitivity`
 
@@ -179,7 +176,6 @@ sensitivity s15;
 sensitivity s0 alias secret wellmaybe ornot;
 ```
 
-<br>
 
 ## `dominance`
 
@@ -242,7 +238,6 @@ The statement is valid in:
 dominance { s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 }
 ```
 
-<br>
 
 ## `category`
 
@@ -321,7 +316,6 @@ category c255;
 category c0 alias planning development benefits;
 ```
 
-<br>
 
 ## `level`
 
@@ -395,7 +389,6 @@ level s0:c0.c255;
 level s15:c0.c255;
 ```
 
-<br>
 
 ## `range_transition`
 
@@ -484,7 +477,6 @@ range_transition initrc_t auditd_exec_t:process s15:c0.c255;
 range_transition initrc_t cupsd_exec_t:process s15:c0.c255;
 ```
 
-<br>
 
 ## `mlsconstrain`
 
@@ -492,7 +484,6 @@ This is decribed in the
 [**Constraint Statements - `mlsconstrain`**](constraint_statements.md#mlsconstrain)
 section.
 
-<br>
 
 ## `mlsvalidatetrans`
 
@@ -500,7 +491,6 @@ This is decribed in the
 [**Constraint Statements - `mlsvalidatetrans`**](constraint_statements.md#mlsvalidatetrans)
 section.
 
-<br>
 
 <!-- %CUTHERE% -->
 

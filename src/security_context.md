@@ -114,7 +114,6 @@ unconfined_u:object_r:out_file_t Message-11
 # (see the process example above). The role remained as object_r.
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

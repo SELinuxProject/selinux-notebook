@@ -12,7 +12,6 @@ NOT enforced by the SELinux kernel services). The
 [**CIL Reference Guide**](notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 gives details.
 
-<br>
 
 ## `typebounds`
 
@@ -91,7 +90,6 @@ allow httpd_t etc_t : file { getattr read };
 allow httpd_child_t etc_t : file { read write };
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

@@ -147,7 +147,6 @@ declarations with the order in which they are declared in the kernel.
 A module store is created by `semodule` to give easy access to the
 source and that allows for full control over the policy.
 
-<br>
 
 <!-- %CUTHERE% -->
 

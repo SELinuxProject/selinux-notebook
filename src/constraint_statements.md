@@ -170,7 +170,6 @@ constrain { dir file lnk_file sock_file fifo_file chr_file blk_file } { create r
 	(u1 == u2 or t1 == can_change_object_identity);
 ```
 
-<br>
 
 ## `validatetrans`
 
@@ -269,7 +268,6 @@ Note there are no `validatetrans` statements specified within the
 
 `validatetrans { file } { t1 == unconfined_t );`
 
-<br>
 
 ## `mlsconstrain`
 
@@ -394,7 +392,6 @@ mlsconstrain dir search
 	( t2 == mlstrustedobject ));
 ```
 
-<br>
 
 ## `mlsvalidatetrans`
 
@@ -524,7 +521,6 @@ mlsvalidatetrans { dir file lnk_file chr_file blk_file sock_file fifo_file }
 	(( t3 == mlsfiledowngrade ) and ( h1 incomp h2 ))));
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

@@ -33,7 +33,6 @@ as follows:
     viewing the currently loaded policy using tools such as
     ***apol**(1)* (e.g. *apol /sys/fs/selinux/policy*).
 
-<br>
 
 ## The Policy Store
 
@@ -149,7 +148,6 @@ already available, the following message will be given: "*A higher
 priority &lt;name&gt; module exists at priority &lt;999&gt; and will
 override the module currently being installed at priority &lt;111&gt;*".
 
-<br>
 
 ## Converting policy packages to CIL
 
@@ -175,7 +173,6 @@ Options:
 -h, --help print this message and exit
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

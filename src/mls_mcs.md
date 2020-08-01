@@ -111,7 +111,6 @@ The format used in the policy language statements is fully described in
 the [MLS Statements](mls_statements.md#mls-statements) section, however
 a brief overview follows.
 
-<br>
 
 #### MLS / MCS Range Format
 
@@ -146,7 +145,6 @@ user:role:type:sensitivity[:category,...]  -  sensitivity [:category,...]
 </tbody>
 </table>
 
-<br>
 
 #### Translating Levels
 
@@ -163,7 +161,6 @@ command can be used to set up this translation and is shown in the
 [**setrans.conf**](policy_config_files.md#setrans.conf) configuration file
 section.
 
-<br>
 
 ### Managing Security Levels via Dominance Rules
 
@@ -282,13 +279,11 @@ the `mlsconstrain` statement as illustrated in
 **Table 2: MLS Security Levels** - *Showing the scope of a process running
 at a security range of `s0 - s3:c1.c5`.*
 
-<br>
 
 ![](./images/9-mls-constrain.png)
 
 **Figure 9: Showing the mlsconstrain Statements controlling Read Down & Write Up** - *This ties in with* **Table 2: MLS Security Levels** *that shows a process running with a security range of s0 - s3:c1.c5.*
 
-<br>
 
 Using **Figure 9: `mlsconstrain` Statements controlling Read Down & Write Up**:
 
@@ -359,7 +354,6 @@ An interesting point:
     evaluated.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

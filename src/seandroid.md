@@ -42,7 +42,6 @@ The sections that follow cover:
 8.  Logging and auditing
 9.  Configuration file formats
 
-<br>
 
 ## SE for Android Project Updates
 
@@ -198,7 +197,6 @@ Build information for each device that includes device specific policy as
 discussed in the [**The SELinux Policy**](#the-selinux-policy) and
 [**Managing Device Policy Files**](#managing-device-policy-files) sections.
 
-<br>
 
 ## Kernel LSM / SELinux Support
 
@@ -222,7 +220,6 @@ Kernel 5.0+ supports Dynamically Allocated Binder Devices, therefore
 configuring specific devices (e.g. **CONFIG_ANDROID_BINDER_DEVICES="binder"**)
 is no longer required (use ***CONFIG_ANDROID_BINDERFS=y*** instead).
 
-<br>
 
 ## Android Classes & Permissions
 
@@ -466,7 +463,6 @@ not all are required for Android.
 </tbody>
 </table>
 
-<br>
 
 ## SELinux Commands
 
@@ -529,7 +525,6 @@ for example:
 </tbody>
 </table>
 
-<br>
 
 ## SELinux Public Methods
 
@@ -633,7 +628,6 @@ TV package *AboutFragment.java* calls **SELinux.isSELinuxEnabled()**.
 </tbody>
 </table>
 
-<br>
 
 ## Android Init Language SELinux Extensions
 
@@ -680,7 +674,6 @@ service ueventd /system/bin/ueventd
     restorecon --recursive --skip-ce /data
 ```
 
-<br>
 
 ## The SELinux Policy
 
@@ -978,7 +971,6 @@ domains (not allowed) and `neverallow` assertions
 **version_policy** - Takes the given public platform policy, a private policy
 and a version number to produced a combined "versioned" policy file.
 
-<br>
 
 ## Logging and Auditing
 
@@ -1002,7 +994,6 @@ in the kernel buffers that can be read using ***dmesg**(1)*:
 
 `adb shell dmesg`
 
-<br>
 
 ## Policy File Formats
 
@@ -1117,7 +1108,6 @@ example taken from *device/generic/goldfish/fstab.ranchu*:
 /dev/block/pci/pci0000:00/0000:00:06.0/by-name/metadata /metadata ext4 .....
 ```
 
-<br>
 
 ### ***seapp_contexts***
 
@@ -1367,7 +1357,6 @@ LABEL                                    USER    PID  PPID NAME
 u:r:untrusted_app:s0:c149,c256,c512,c768 u0_a149 1138 64   com.example.myapplication
 ```
 
-<br>
 
 ### ***property_contexts***
 
@@ -1410,7 +1399,6 @@ ro.telephony.call_ring.multiple   u:object_r:telephony_config_prop:s0 exact bool
 ro.telephony.default_cdma_sub     u:object_r:telephony_config_prop:s0 exact int
 ```
 
-<br>
 
 ### ***service_contexts***
 
@@ -1460,7 +1448,6 @@ manager                 u:object_r:service_manager_vndservice:s0
 *                       u:object_r:default_android_vndservice:s0
 ```
 
-<br>
 
 ### ***mac_permissions.xml***
 
@@ -1548,7 +1535,6 @@ file:
      </signer>
 ```
 
-<br>
 
 ### ***keys.conf***
 
@@ -1590,7 +1576,6 @@ USERDEBUG : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 ```
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

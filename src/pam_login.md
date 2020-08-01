@@ -110,7 +110,6 @@ perform the following functions:
     to the context defined in the policy.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

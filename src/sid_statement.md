@@ -71,7 +71,6 @@ sid unlabeled
 sid fs
 ```
 
-<br>
 
 ## `sid context`
 
@@ -148,7 +147,6 @@ sid unlabeled
 sid unlabeled system_u:object_r:unlabeled_t:s15:c0.c255
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

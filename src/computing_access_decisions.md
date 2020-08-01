@@ -57,7 +57,6 @@ require kernel system call over-heads once set up. Note that these
 functions are only available from *libselinux* 2.0.99, with Linux kernel
 2.6.37 and above.
 
-<br>
 
 <!-- %CUTHERE% -->
 

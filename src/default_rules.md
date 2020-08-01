@@ -77,7 +77,6 @@ default_user file target;
 default_user { x_selection x_property } source;
 ```
 
-<br>
 
 ## `default_role`
 
@@ -152,7 +151,6 @@ default_role file target;
 default_role { x_selection x_property } source;
 ```
 
-<br>
 
 ## `default_type`
 
@@ -227,7 +225,6 @@ default_type file target;
 default_type { x_selection x_property } source;
 ```
 
-<br>
 
 ## `default_range`
 
@@ -327,7 +324,6 @@ default_type { x_selection x_property } source low_high;
 default_range db_table glblub;
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

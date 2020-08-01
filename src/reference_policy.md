@@ -26,7 +26,6 @@ In most documentation the policy name is defined using the
 */etc/selinux/config* file entry **SELINUXTYPE=**. This part of the Notebook
 uses both forms.
 
-<br>
 
 ### Reference Policy Overview
 
@@ -70,7 +69,6 @@ section explains a simple build from source.
 
 **Figure 26: The Reference Policy Source Tree** - *When building a modular policy, files are added to the policy store. For monolithic builds the policy store is not used.*
 
-<br>
 
 The Reference Policy can be used to build two policy types:
 
@@ -93,7 +91,6 @@ forming a single 'base' source file.
 The Reference Policy relies heavily on the ***m4**(1)* macro processor
 as the majority of supporting services are m4 macros.
 
-<br>
 
 ### Distributing Policies
 
@@ -135,7 +132,6 @@ The selinux-policy-sandbox rpm contains the sandbox module for use by the
 *policycoreutils-sandbox* package. This will be installed as a module for
 one of the three main policies described above.
 
-<br>
 
 ### Policy Functionality
 
@@ -150,7 +146,6 @@ the *SELINUXTYPE* entry of the *build.conf* as shown in
     and can also confine other areas and users.
 -   mls - MLS policy for server based systems.
 
-<br>
 
 ### Reference Policy Module Files
 
@@ -313,7 +308,6 @@ interface(`ada_run',`
 /usr/libexec/gcc(/.*)?/gnat1	--	gen_context(system_u:object_r:ada_exec_t,s0)
 ```
 
-<br>
 
 ### Reference Policy Documentation
 
@@ -342,7 +336,6 @@ the ada module interfaces.
 
 **Figure 27: Example Documentation Screen Shot**
 
-<br>
 
 ## Reference Policy Source
 
@@ -356,7 +349,6 @@ updated with the authors comments as necessary). There is also a VERSION
 file that contains the Reference Policy release date, this can then be used to
 obtain a change list <https://github.com/SELinuxProject/refpolicy/releases>.
 
-<br>
 
 ### Source Layout
 
@@ -382,7 +374,6 @@ The
 section then describes how the initial source is installed and
 configured to allow a policy to be built.
 
-<br>
 
 ### Reference Policy Files and Directories
 
@@ -542,14 +533,12 @@ modular policy is being built. This file is explained in the
 
 **Table 1: The Reference Policy Files and Directories**
 
-<br>
 
 ### Source Configuration Files
 
 There are two major configuration files (build.conf and modules.conf)
 that define the policy to be built and are detailed in this section.
 
-<br>
 
 #### Reference Policy Build Options - build.conf
 
@@ -656,7 +645,6 @@ policy is built with examples shown in the
 
 **Table 2:** *build.conf* **Entries**
 
-<br>
 
 <table>
 <tbody>
@@ -715,7 +703,6 @@ policy is built with examples shown in the
 
 **Table 3: m4 parameters set at build time** - *These have been extracted from the Reference Policy Makefile.*
 
-<br>
 
 #### Reference Policy Build Options - policy/modules.conf
 
@@ -917,7 +904,6 @@ reference policy are different)
 
 **Table 4: Mandatory modules.conf Entries**
 
-<br>
 
 ##### Building the modules.conf File
 
@@ -931,7 +917,6 @@ As will be seen in the
 pre-configured files that are used to produce the required policy including
 multiple versions of the *modules.conf* file.
 
-<br>
 
 ### Source Installation and Build Make Options
 
@@ -1065,7 +1050,6 @@ taken from the *README* file.
 
 **Table 7: Monolithic Policy Build Make Targets**
 
-<br>
 
 ### Booleans, Global Booleans and Tunable Booleans
 
@@ -1093,7 +1077,6 @@ built and used as follows:
 </tbody>
 </table>
 
-<br>
 
 ### Modular Policy Build Structure
 
@@ -1222,7 +1205,6 @@ in **Table 9: Module Build**.
 
 **Table 8: Base Module Build** - *This shows the temporary build files used to build the base module 'base.conf' as a part of the 'make' process. Note that the modules marked as base in modules.conf are built here.*
 
-<br>
 
 <table>
 <tbody>
@@ -1260,7 +1242,6 @@ in **Table 9: Module Build**.
 
 **Table 9: Module Build** - *This shows the module files and the temporary build files used to build each module as a part of the 'make' process (i.e. those modules marked as module in modules.conf).*
 
-<br>
 
 ### Creating Additional Layers
 
@@ -1284,7 +1265,6 @@ completed:
 
 `<summary>ABC modules for the XYZ components.</summary>`
 
-<br>
 
 ## Installing and Building the Reference Policy Source
 
@@ -1294,7 +1274,6 @@ the Fedora targeted policy. The Fedora version of the targeted
 policy build is discussed but building without using the rpm spec file
 is more complex.
 
-<br>
 
 ### Building Standard Reference Policy
 
@@ -1435,7 +1414,6 @@ WERROR = n
     as ***apol**(8)* or loaded by editing the */etc/selinux/config*
     file, running '*touch /.autorelabel*' and rebooting the system.
 
-<br>
 
 ### Building the Fedora Policy
 
@@ -1605,7 +1583,6 @@ QUIET = n
     '*touch /.autorelabel*' and rebooting the system. It should have the
     same number of rules, types, classes etc. as the original release.
 
-<br>
 
 ## Reference Policy Headers
 
@@ -1642,7 +1619,6 @@ source two steps are required:
 -   Copy the module interface files (*.if*) to the relevant module
     directories at: */usr/share/selinux/&lt;SELINUXTYPE&gt;/include/modules*.
 
-<br>
 
 ### Using the Reference Policy Headers
 
@@ -1711,7 +1687,6 @@ modules built from headers.
 
 **Table 10: Header Policy Build Make Targets**
 
-<br>
 
 ### Using Fedora Supplied Headers
 
@@ -1727,7 +1702,6 @@ manner as Fedora installs:
 -   The documentation is installed in the
     */usr/share/doc/selinux-policy/html* directory.
 
-<br>
 
 ## Reference Policy Support Macros
 
@@ -1876,7 +1850,6 @@ Incorrect:
 
 `policy_module (ftp, 1.7.0)`
 
-<br>
 
 ### Loadable Policy Macros
 
@@ -1961,7 +1934,6 @@ require {
 }
 ```
 
-<br>
 
 #### `gen_require` Macro
 
@@ -2025,7 +1997,6 @@ require {
 }
 ```
 
-<br>
 
 #### `optional_policy` Macro
 
@@ -2193,7 +2164,6 @@ optional {
 } # end optional
 ```
 
-<br>
 
 #### `gen_tunable` Macro
 
@@ -2271,7 +2241,6 @@ gen_tunable(allow_ftpd_use_nfs, false)
 
 bool allow_ftpd_use_nfs false;
 ```
-<br>
 
 #### `tunable_policy` Macro
 
@@ -2349,7 +2318,6 @@ if (allow_ftpd_use_nfs && allow_ftpd_anon_write) {
 } # end allow_ftpd_use_nfs && allow_ftpd_anon_write
 ```
 
-<br>
 
 #### `interface` Macro
 
@@ -2470,7 +2438,6 @@ optional {
 } # end optional
 ```
 
-<br>
 
 #### `template` Macro
 
@@ -2624,7 +2591,6 @@ template(`djbdns_daemontools_domain_template',`
 ##### end djbdns_daemontools_domain_template(dnscache) depth: 0
 ```
 
-<br>
 
 ### Miscellaneous Macros
 
@@ -2693,7 +2659,6 @@ where it is used to set the files security context.
 /dev/\.tmp-block-.*  -c  system_u:object_r:fixed_disk_device_t:s15:c0.c1023
 ```
 
-<br>
 
 #### `gen_user` Macro
 
@@ -2790,7 +2755,6 @@ user root roles { sysadm_r staff_r secadm_r auditadm_r } level s0 range s0 - s15
 user root prefix sysadm;
 ```
 
-<br>
 
 #### `gen_bool` Macro
 
@@ -2924,7 +2888,6 @@ if( ! secure_mode_insmod ) {
 }
 ```
 
-<br>
 
 ### MLS and MCS Macros
 
@@ -2997,7 +2960,6 @@ category c1;
 category c1023;
 ```
 
-<br>
 
 #### `gen_sens` Macro
 
@@ -3066,7 +3028,6 @@ sensitivity s1;
 sensitivity s15;
 ```
 
-<br>
 
 #### `gen_levels` Macro
 
@@ -3137,7 +3098,6 @@ level s1:c0.c1023;
 level s15:c0.c1023;
 ```
 
-<br>
 
 #### System High/Low Parameters
 
@@ -3183,14 +3143,12 @@ s0:c0.c1023
 c0.c1023
 ```
 
-<br>
 
 ### `ifdef` / `ifndef` Parameters
 
 This section contains examples of the common `ifdef` / `ifndef`
 parameters that can be used in module source files.
 
-<br>
 
 #### `hide_broken_symptoms`
 
@@ -3212,7 +3170,6 @@ ifdef(`hide_broken_symptoms',`
 ')
 ```
 
-<br>
 
 #### `enable_mls` and `enable_mcs`
 
@@ -3241,7 +3198,6 @@ ifdef(`enable_mcs',`
 ')
 ```
 
-<br>
 
 #### `enable_ubac`
 
@@ -3272,7 +3228,6 @@ define(`basic_ubac_conditions',`
 ')
 ```
 
-<br>
 
 #### `direct_sysadm_daemon`
 
@@ -3296,7 +3251,6 @@ ifndef(`direct_sysadm_daemon',`
 ')
 ```
 
-<br>
 
 ## Module Expansion Process
 
@@ -3326,7 +3280,6 @@ section.
 **Figure 29: The expansion process**
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

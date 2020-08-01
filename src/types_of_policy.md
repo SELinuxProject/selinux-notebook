@@ -31,7 +31,6 @@ The type of SELinux policy can described in a number of ways:
 As can be seen the description of a policy can vary depending on the
 context.
 
-<br>
 
 ## Reference Policy
 
@@ -57,7 +56,6 @@ number of RPMs.
 The Reference Policy can be built as a Monolithic policy or as a Modular policy
 that has a 'base module' with zero or more optional 'loadable modules'.
 
-<br>
 
 ## Policy Functionality Based on Name or Type
 
@@ -95,7 +93,6 @@ The *NAME* and *TYPE* entries are defined in the reference policy
 [**Source Configuration Files**](reference_policy.md#source-configuration-files)
 section.
 
-<br>
 
 ## Custom Policy
 
@@ -121,7 +118,6 @@ classes/permissions (see kernel *Documentation/admin-guide/LSM/SELinux.rst*
 for build instructions, also the
 [**Notebook Sample Policy - README**](./notebook-examples/selinux-policy/README.md)).
 
-<br>
 
 ## Monolithic Policy
 
@@ -137,7 +133,6 @@ The Reference Policy supports building of monolithic policies.
 
 In some cases the kernel policy binary file is also called a monolithic policy.
 
-<br>
 
 ## Loadable Module Policy
 
@@ -171,7 +166,6 @@ into the final [**binary policy**](#policy-versions) for loading into
 the kernel, see
 "[**SELinux Policy Module Primer**](http://securityblog.org/brindle/2006/07/05/selinux-policy-module-primer/)".
 
-<br>
 
 ### Optional Policy
 
@@ -180,7 +174,6 @@ The loadable module policy infrastructure supports an
 allows policy rules to be defined but only enabled in the binary policy once
 the conditions have been satisfied.
 
-<br>
 
 ## Conditional Policy
 
@@ -204,7 +197,6 @@ the state of the boolean value or values. See the
 [**Conditional Policy Statements**](conditional_statements.md#conditional-policy-statements)
 section.
 
-<br>
 
 ## Binary Policy
 
@@ -233,7 +225,6 @@ is supported by Fedora):
 
 */etc/selinux/targeted/policy/policy.32*
 
-<br>
 
 ## Policy Versions
 
@@ -381,7 +372,6 @@ quoted (some SELinux utilities give both version numbers).
 **Table 1: Policy version descriptions**
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

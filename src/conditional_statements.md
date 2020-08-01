@@ -56,7 +56,6 @@ getsebool -a
 getsebool allow_daemons_use_tty
 ```
 
-<br>
 
 ## bool
 
@@ -133,7 +132,6 @@ bool allow_execheap false;
 bool allow_execstack true;
 ```
 
-<br>
 
 ### if
 
@@ -258,7 +256,6 @@ if (read_untrusted_content) {
 }
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

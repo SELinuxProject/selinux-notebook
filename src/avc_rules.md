@@ -77,7 +77,6 @@ section.
 </tbody>
 </table>
 
-<br>
 
 ## `allow`
 
@@ -138,7 +137,6 @@ allow bootloader_t system_dbusd_t:dbus { acquire_svc send_msg };
 allow files_unconfined_type file_type:{ file chr_file } ~execmod;
 ```
 
-<br>
 
 ## `dontaudit`
 
@@ -158,7 +156,6 @@ also helps to manage the audit log by excluding known events.
 dontaudit traceroute_t { port_type -port_t }:tcp_socket name_bind;
 ```
 
-<br>
 
 ## `auditallow`
 
@@ -176,7 +173,6 @@ to grant permission.
 auditallow ada_t self:process execstack;
 ```
 
-<br>
 
 ## `neverallow`
 
@@ -207,7 +203,6 @@ neverallow ~can_read_shadow_passwords shadow_t:file read;
 neverallow { domain -mmap_low_domain_type } self:memprotect mmap_zero;
 ```
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -216,7 +211,6 @@ neverallow { domain -mmap_low_domain_type } self:memprotect mmap_zero;
 </ol>
 </section>
 
-<br>
 
 <!-- %CUTHERE% -->
 

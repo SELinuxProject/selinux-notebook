@@ -16,7 +16,6 @@ There are two variants of the `class` statement for writing policy:
     [**Associating Permissions to a Class**](#associating-permissions-to-a-class)
     section.
 
-<br>
 
 ## `class`
 
@@ -75,7 +74,6 @@ definition:
 class db_tuple
 ```
 
-<br>
 
 ### Associating Permissions to a Class
 
@@ -90,7 +88,6 @@ Permissions can be defined within policy in two ways:
 A list of classes and their permissions used by the **Reference Policy**
 can be found in the *./policy/flask/access_vectors* file.
 
-<br>
 
 ## `common`
 
@@ -154,7 +151,6 @@ The statement definition is:
 common database { create drop getattr setattr relabelfrom relabelto }
 ```
 
-<br>
 
 ## `class`
 
@@ -246,7 +242,6 @@ class db_blob inherits database
 class db_blob inherits database { read write import export }
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

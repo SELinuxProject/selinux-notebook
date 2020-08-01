@@ -91,7 +91,6 @@ Where:
 </tbody>
 </table>
 
-<br>
 
 ![](./images/6-allow-rule.png)
 
@@ -322,7 +321,6 @@ process itself should clear or shred the information before releasing
 the object (which can be difficult in some cases unless the source code
 is available).
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -333,7 +331,6 @@ associated with the file.<a href="#fnobj1" class="footnote-back">↩</a></p></li
 </section>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

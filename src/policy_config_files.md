@@ -29,7 +29,6 @@ additional two files are required:
     SELinux.
 -   *./context/x_contexts* - To allow the X-Windows service to run under SELinux.
 
-<br>
 
 ## *seusers*
 
@@ -75,7 +74,6 @@ __default__:user_u:s0-s0
 -   ***getseuser**(3)*
 -   ***getseuserbyname**(3)*
 
-<br>
 
 ## *booleans*
 ## *booleans.local*
@@ -123,7 +121,6 @@ Note that if *SETLOCALDEFS* is set in the SELinux
 in the ***selinux_booleans_path**(3)*, and also a *local.users* file
 in the ***selinux_users_path**(3)*.
 
-<br>
 
 ## *booleans.subs_dist*
 
@@ -168,7 +165,6 @@ Supporting libselinux API functions are:
 -   ***security_get_boolean_names**(3)*
 -   ***security_set_boolean**(3)*
 
-<br>
 
 ## setrans.conf
 
@@ -226,7 +222,6 @@ Supporting libselinux API functions are:
 -   ***selinux_raw_to_trans_context**(3)*
 -   ***selinux_trans_to_raw_context**(3)*
 
-<br>
 
 ## *secolor.conf*
 
@@ -319,7 +314,6 @@ user : role : type : range
 black white white black tan orange black green
 ```
 
-<br>
 
 ## *policy/policy.&lt;ver&gt;*
 
@@ -336,7 +330,6 @@ discussed in the
 [**Types of SELinux Policy - Policy Versions**](types_of_policy.md#policy-versions)
 section.
 
-<br>
 
 ## *contexts/customizable_types*
 
@@ -377,7 +370,6 @@ sysadm_untrusted_content_tmp_t
 -   ***selinux_customizable_types_path**(3)*
 -   ***selinux_context_path**(3)*
 
-<br>
 
 ## *contexts/default_contexts*
 
@@ -464,7 +456,6 @@ The login process could now set the context correctly to
 *contexts/users/unconfined_u* configuration file instead could also have
 achieved this.
 
-<br>
 
 ## *contexts/dbus_contexts*
 
@@ -492,7 +483,6 @@ information at:
 
 -   ***selinux_context_path**(3)*
 
-<br>
 
 ## *contexts/default_type*
 
@@ -530,7 +520,6 @@ user_r:user_t
 -   ***selinux_default_type_path**(3)*
 -   ***get_default_type**(3)*
 
-<br>
 
 ## *contexts/failsafe_context*
 
@@ -572,7 +561,6 @@ sysadm_r:sysadm_t:s0
 -   ***get_ordered_context_list**(3)*
 -   ***get_ordered_context_list_with_level**(3)*
 
-<br>
 
 ## *contexts/initrc_context*
 
@@ -609,7 +597,6 @@ system_u:system_r:initrc_t:s0-s15:c0.c255
 
 -   ***selinux_context_path**(3)*
 
-<br>
 
 ## *contexts/lxc_contexts*
 
@@ -665,7 +652,6 @@ sandbox_lxc_process = "system_u:system_r:container_t:s0"
 -   ***selinux_context_path**(3)*
 -   ***selinux_lxc_context_path**(3)*
 
-<br>
 
 ## *contexts/netfilter_contexts* - Obsolete
 
@@ -677,7 +663,6 @@ matching of network packets - Never been used.
 -   ***selinux_context_path**(3)*
 -   ***selinux_netfilter_context_path**(3)*
 
-<br>
 
 ## *contexts/openrc_contexts*
 
@@ -694,7 +679,6 @@ matching of network packets - Never been used.
 -   ***selinux_context_path**(3)*
 -   ***selinux_openrc_contexts_path**(3)*
 
-<br>
 
 ## *contexts/openssh_contexts*
 
@@ -712,7 +696,6 @@ matching of network packets - Never been used.
 -   ***selinux_context_path**(3)*
 -   ***selinux_openssh_contexts_path**(3)*
 
-<br>
 
 ## *contexts/removable_context*
 
@@ -745,7 +728,6 @@ system_u:object_r:removable_t:s0
 
 -   ***selinux_removable_context_path**(3)*
 
-<br>
 
 ## *contexts/sepgsql_contexts*
 
@@ -786,7 +768,6 @@ db_database        *        system_u:object_r:sepgsql_db_t:s0
 db_schema         *.*       system_u:object_r:sepgsql_schema_t:s0
 ```
 
-<br>
 
 ## *contexts/snapperd_contexts*
 
@@ -804,7 +785,6 @@ db_schema         *.*       system_u:object_r:sepgsql_schema_t:s0
 -   ***selinux_context_path**(3)*
 -   ***selinux_snapperd_contexts_path**(3)*
 
-<br>
 
 ## *contexts/securetty_types*
 
@@ -838,7 +818,6 @@ staff_tty_device_t
 
 -   ***selinux_securetty_types_path**(3)*
 
-<br>
 
 ## *contexts/systemd_contexts*
 
@@ -874,7 +853,6 @@ runtime=system_u:object_r:systemd_runtime_unit_file_t:s0
 -   ***selinux_context_path**(3)*
 -   ***selinux_systemd_contexts_path**(3)*
 
-<br>
 
 ## *contexts/userhelper_context*
 
@@ -906,7 +884,6 @@ system_u:sysadm_r:sysadm_t:s0
 
 -   ***selinux_context_path**(3)*
 
-<br>
 
 ## *contexts/virtual_domain_context*
 
@@ -927,7 +904,6 @@ system_u:system_r:svirt_tcg_t:s0
 
 -   ***selinux_virtual_domain_context_path**(3)*
 
-<br>
 
 ## *contexts/virtual_image_context*
 
@@ -948,7 +924,6 @@ system_u:object_r:virt_content_t:s0
 
 -   ***selinux_virtual_image_context_path**(3)*
 
-<br>
 
 ## *contexts/x_contexts*
 
@@ -993,7 +968,6 @@ selection      PRIMARY	   system_u:object_r:clipboard_xselection_t:s0
 -   ***selabel_lookup**(3)*
 -   ***selabel_stats**(3)*
 
-<br>
 
 ## *contexts/files/file_contexts*
 
@@ -1027,7 +1001,6 @@ compatible regular expression (PCRE) internal format.
 -   ***selabel_lookup**(3)*
 -   ***selabel_stats**(3)*
 
-<br>
 
 ## *contexts/files/file_contexts.local*
 
@@ -1040,7 +1013,6 @@ file section to allow locally defined files to be labeled correctly. The
 
 -   ***selinux_file_context_local_path**(3)*
 
-<br>
 
 ## *contexts/files/file_contexts.homedirs*
 
@@ -1066,7 +1038,6 @@ Perl compatible regular expression (PCRE) internal format.
 -   ***selinux_file_context_homedir_path**(3)*
 -   ***selinux_homedir_context_path**(3)*
 
-<br>
 
 ## contexts/files/file_contexts.subs
 ## contexts/files/file_contexts.subs_dist
@@ -1097,7 +1068,6 @@ with */var/www*, with the final result being:
 -   ***matchpathcon**(3)* (deprecated)
 -   ***matchpathcon_index**(3)* (deprecated)
 
-<br>
 
 ## *contexts/files/media*
 
@@ -1137,7 +1107,6 @@ disk system_u:object_r:fixed_disk_device_t:s0
 
 -   ***selinux_media_context_path**(3)*
 
-<br>
 
 ## *contexts/users/[seuser_id]*
 
@@ -1176,7 +1145,6 @@ system_r:init_t:s0		unconfined_r:unconfined_t:s0
 -   ***get_ordered_context_list**(3)*
 -   ***get_ordered_context_list_with_level**(3)*
 
-<br>
 
 ## *logins/&lt;linuxuser_id&gt;*
 
@@ -1230,7 +1198,6 @@ another_service:unconfined_u:s0
 
 -   ***getseuser**(3)*
 
-<br>
 
 ## users/local.users
 
@@ -1251,7 +1218,6 @@ Note that if *SETLOCALDEFS* is set in the SELinux
 in the ***selinux_booleans_path**(3)*, and also a *local.users* file
 in the ***selinux_users_path**(3)*.
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -1260,7 +1226,6 @@ in the ***selinux_users_path**(3)*.
 </section>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 
