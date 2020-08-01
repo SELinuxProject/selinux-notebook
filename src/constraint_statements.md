@@ -8,7 +8,9 @@ source and target types, roles and users as described in the examples.
 
 **The statement definition is:**
 
-`constrain class perm_set expression;`
+```
+constrain class perm_set expression;
+```
 
 **Where:**
 
@@ -185,7 +187,9 @@ Note there are no `validatetrans` statements specified within the
 
 **The statement definition is:**
 
-`validatetrans class expression;`
+```
+validatetrans class expression;
+```
 
 **Where:**
 
@@ -266,7 +270,9 @@ Note there are no `validatetrans` statements specified within the
 
 **Example:**
 
-`validatetrans { file } { t1 == unconfined_t );`
+```
+validatetrans { file } { t1 == unconfined_t );
+```
 
 
 ## `mlsconstrain`
@@ -278,7 +284,9 @@ in the examples.
 
 **The statement definition is:**
 
-`mlsconstrain class perm_set expression;`
+```
+mlsconstrain class perm_set expression;
+```
 
 **Where:**
 
@@ -405,7 +413,9 @@ third `u3.r3.t3` is the context of the process performing the transition.
 
 **The statement definition is:**
 
-`mlsvalidatetrans class expression;`
+```
+mlsvalidatetrans class expression;
+```
 
 **Where:**
 

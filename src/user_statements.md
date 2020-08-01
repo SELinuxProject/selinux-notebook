@@ -11,11 +11,15 @@ previously declared within the policy.
 
 **The statement definition is:**
 
-`user seuser_id roles role_id;`
+```
+user seuser_id roles role_id;
+```
 
 Or for MCS/MLS Policy:
 
-`user seuser_id roles role_id level mls_level range mls_range;`
+```
+user seuser_id roles role_id level mls_level range mls_range;
+```
 
 Where:
 

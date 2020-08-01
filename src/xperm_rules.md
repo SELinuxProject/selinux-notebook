@@ -12,7 +12,9 @@ libsepol 2.7 minimum is required).
 
 **The common format for Extended Access Vector Rules are:**
 
-`rule_name source_type target_type : class operation xperm_set;`
+```
+rule_name source_type target_type : class operation xperm_set;
+```
 
 **Where:**
 
@@ -82,7 +84,9 @@ versions &lt; 30 only controls whether an *ioctl* permission is allowed
 or not, for example this rule allows the object class *tcp_socket* the
 *ioctl* permission:
 
-`allow src_t tgt_t : tcp_socket ioctl;`
+```
+allow src_t tgt_t : tcp_socket ioctl;
+```
 
 From Policy version 30 it is possible to control ***ioctl**(2)*
 '*request*' parameters provided the *ioctl* permission is also allowed,

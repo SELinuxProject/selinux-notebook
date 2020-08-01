@@ -124,7 +124,9 @@ language statement as they are mounted, they are based on the filesystem
 type name (e.g. `ext4`) and their behaviour (e.g. `xattr`). For example
 if the policy specifies the following:
 
-`fs_use_task pipefs system_u:object_r:fs_t:s0`
+```
+fs_use_task pipefs system_u:object_r:fs_t:s0
+```
 
 then as the `pipefs` filesystem is being mounted, the SELinux LSM
 security hook `selinux_set_mnt_opts` will call `security_fs_use`

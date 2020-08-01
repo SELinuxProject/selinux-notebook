@@ -37,7 +37,9 @@ section and also the ***sepermit.conf**(5)*.
 The main login service related PAM configuration files (e.g. *gdm*)
 consist of multiple lines of information that are formatted as follows:
 
-`service type control module-path arguments`
+```
+service type control module-path arguments
+```
 
 **Where:**
 

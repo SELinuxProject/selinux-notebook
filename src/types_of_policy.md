@@ -188,7 +188,9 @@ The boolean flag status is held in kernel and can be changed using the
 temporarily (i.e. only valid until a re-boot). The following example
 shows a persistent conditional policy change:
 
-`setsebool -P ext_gateway_audit false`
+```
+setsebool -P ext_gateway_audit false
+```
 
 The conditional policy language statements are the `bool` Statement
 that defines the boolean flag identifier and its initial status, and the

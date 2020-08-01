@@ -107,7 +107,9 @@ to set the correct file contexts.
 
 Each line in the namespace.conf file is formatted as follows:
 
-`polydir instance_prefix method list_of_uids`
+```
+polydir instance_prefix method list_of_uids
+```
 
 Where:
 

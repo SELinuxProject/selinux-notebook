@@ -22,7 +22,9 @@ There are two variants of the `class` statement for writing policy:
 Object classes are declared within a policy with the following statement
 definition:
 
-`class class_id`
+```
+class class_id
+```
 
 **Where:**
 
@@ -95,7 +97,9 @@ Declare a `common` identifier and associate one or more `common` permissions.
 
 The statement definition is:
 
-`common common_id { perm_set }`
+```
+common common_id { perm_set }
+```
 
 **Where:**
 
@@ -158,7 +162,9 @@ Inherit and / or associate permissions to a perviously declared `class` identifi
 
 **The statement definition is:**
 
-`class class_id [ inherits common_set ] [ { perm_set } ]`
+```
+class class_id [ inherits common_set ] [ { perm_set } ]
+```
 
 **Where:**
 

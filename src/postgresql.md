@@ -147,7 +147,9 @@ enable and manage SE-PostgreSQL:
 1.  This entry is mandatory to enable the *sepgsql* extension to be
     loaded:
 
-`shared_preload_libraries = 'sepgsql'`
+```
+shared_preload_libraries = 'sepgsql'
+```
 
 2.  These entries are optional and default to '*off*'.
 

@@ -66,7 +66,9 @@ initial state (`true` or `false`) that can then be used with the
 
 **The statement definition is:**
 
-`bool bool_id default_value;`
+```
+bool bool_id default_value;
+```
 
 **Where:**
 
@@ -148,7 +150,9 @@ are:
 
 **The statement definition is:**
 
-`if (conditional_expression) { true_list } [ else { false_list } ]`
+```
+if (conditional_expression) { true_list } [ else { false_list } ]
+```
 
 **Where:**
 

@@ -15,11 +15,15 @@ types with the role.
 
 **The statement definition to declare a role is:**
 
-`role role_id;`
+```
+role role_id;
+```
 
 **The statement definition to associate a role to one or more types is:**
 
-`role role_id types type_id;`
+```
+role role_id types type_id;
+```
 
 **Where:**
 
@@ -99,7 +103,9 @@ can then be used to refer to a group of roles.
 
 **The statement definition is:**
 
-`attribute_role attribute_id;`
+```
+attribute_role attribute_id;
+```
 
 **Where:**
 
@@ -162,7 +168,9 @@ declared roles to one or more previously declared <code>attribute_roles</code>.
 
 **The statement definition is:**
 
-`roleattribute role_id attribute_id;`
+```
+roleattribute role_id attribute_id;
+```
 
 **Where:**
 
@@ -235,7 +243,9 @@ Note that the role allow rule has the same keyword as the allow AV rule.
 
 **The statement definition is:**
 
-`allow from_role_id to_role_id;`
+```
+allow from_role_id to_role_id;
+```
 
 **Where:**
 
@@ -303,11 +313,15 @@ version 25, the `class` can now be defined.
 
 **The statement definition is:**
 
-`role_transition current_role_id type_id new_role_id;`
+```
+role_transition current_role_id type_id new_role_id;
+```
 
 Or from Policy version 25:
 
-`role_transition current_role_id type_id : class new_role_id;`
+```
+role_transition current_role_id type_id : class new_role_id;
+```
 
 **Where:**
 
@@ -365,7 +379,9 @@ Or from Policy version 25:
 
 **Example:**
 
-`role_transition system_r unconfined_exec_t:process unconfined_r;`
+```
+role_transition system_r unconfined_exec_t:process unconfined_r;
+```
 
 
 ## `dominance` - Deprecated
@@ -386,7 +402,9 @@ Notes:
 
 **The statement definition is:**
 
-`dominance { role dom_role_id { role role_id; } }`
+```
+dominance { role dom_role_id { role role_id; } }
+```
 
 Where:
 

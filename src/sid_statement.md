@@ -14,7 +14,9 @@ the start of a policy source file.
 
 **The statement definition is:**
 
-`sid sid_id`
+```
+sid sid_id
+```
 
 **Where:**
 
@@ -79,7 +81,9 @@ context to the SID.
 
 **The statement definition is:**
 
-`sid sid_id context`
+```
+sid sid_id context
+```
 
 **Where:**
 

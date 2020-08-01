@@ -21,7 +21,9 @@ component of the [**Security Context**](security_context.md#security-context).
 
 **The statement definition is:**
 
-`type type_id [alias alias_id] [, attribute_id];`
+```
+type type_id [alias alias_id] [, attribute_id];
+```
 
 **Where:**
 
@@ -126,7 +128,9 @@ refer to a group of *type* identifiers.
 
 **The statement definition is:**
 
-`attribute attribute_id;`
+```
+attribute attribute_id;
+```
 
 **Where:**
 
@@ -171,7 +175,9 @@ declared types to one or more previously declared attributes.
 
 **The statement definition is:**
 
-`typeattribute type_id attribute_id;`
+```
+typeattribute type_id attribute_id;
+```
 
 **Where:**
 
@@ -243,7 +249,9 @@ The *typealias* statement allows the association of a previously declared
 
 **The statement definition is:**
 
-`typealias type_id alias alias_id;`
+```
+typealias type_id alias alias_id;
+```
 
 **Where:**
 
@@ -311,7 +319,9 @@ policy denial.
 
 **The statement definition is:**
 
-`permissive type_id;`
+```
+permissive type_id;
+```
 
 **Where:**
 
@@ -381,12 +391,16 @@ the transition.
 
 **The statement definitions are:**
 
-`type_transition source_type target_type : class default_type;`
+```
+type_transition source_type target_type : class default_type;
+```
 
 Policy versions 25 and above also support a 'name transition' rule
 however, this is only appropriate for the file classes:
 
-`type_transition source_type target_type : class default_type object_name;`
+```
+type_transition source_type target_type : class default_type object_name;
+```
 
 **Where:**
 
@@ -510,7 +524,9 @@ section for more details.
 
 **The statement definition is:**
 
-`type_change source_type target_type : class change_type;`
+```
+type_change source_type target_type : class change_type;
+```
 
 **Where:**
 
@@ -579,7 +595,9 @@ section for more details.
 
 **The statement definition is:**
 
-`member_type source_type target_type : class member_type;`
+```
+member_type source_type target_type : class member_type;
+```
 
 **Where:**
 

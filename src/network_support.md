@@ -40,16 +40,22 @@ SELinux filesystem as shown in the
 To support peer labeling, CIPSO and CALIPSO the NetLabel tools need to
 be installed:
 
-`dnf install netlabel_tools`
+```
+dnf install netlabel_tools
+```
 
 To support Labeled IPSec the IPSec tools need to be installed:
 
-`dnf install ipsec-tools`
+```
+dnf install ipsec-tools
+```
 
 It is also possible to use an alternative Labeled IPSec service that was
 OpenSwan but is now distributed as LibreSwan:
 
-`dnf install libreswan`
+```
+dnf install libreswan
+```
 
 It is important to note that the kernel must be configured to support
 these services. The Fedora kernels are configured to handle all the above
@@ -246,7 +252,9 @@ the LSM infrastructure. The implementation supports:
     show in **Figure 15**).
 -   Note that CALIPSO only supports this option, and an example
     ***netlabelctl**(8)* command setting a DOI of 16 is:
-    `netlabelctl calipso add pass doi:16`
+```
+netlabelctl calipso add pass doi:16
+```
 
 ![](./images/15-mls1.png)
 
@@ -395,7 +403,9 @@ echo 0 > /proc/sys/net/ipv4/conf/lo/disable_policy
 By default Fedora does not enable IPSEC via its default firewall configuration,
 therefore the server side requires the following command:
 
-`firewall-cmd --add-service ipsec`
+```
+firewall-cmd --add-service ipsec
+```
 
 There are two simple examples in the
 [***notebook-examples/network/ipsec***](notebook-examples/network/README.md)
@@ -434,11 +444,15 @@ Version 4.2 of NFS supports labeling between client/server and requires
 the ***exports**(5)* / ***exportfs**(8)* '*security_label*' option to
 be set:
 
-`exportfs -o rw,no_root_squash,security_label localhost:$MOUNT`
+```
+exportfs -o rw,no_root_squash,security_label localhost:$MOUNT
+```
 
 Labeled NFS requires kernel 3.14 and the following package installed:
 
-`dnf install nfs-utils`
+```
+dnf install nfs-utils
+```
 
 Labeled NFS clients must use a consistent security policy.
 

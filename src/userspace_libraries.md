@@ -123,7 +123,9 @@ SELinux sub-system:
 
 There is a static version of the library that is not installed by default:
 
-`dnf install libselinux-static`
+```
+dnf install libselinux-static
+```
 
 ## libsepol Library
 
@@ -132,7 +134,9 @@ binary policy files.
 
 There is a static version of the library that is not installed by default:
 
-`dnf install libsepol-static`
+```
+dnf install libsepol-static
+```
 
 This is used by commands such as ***audit2allow**(8)* and ***checkpolicy**(8)*
 as they require access to functions that are not available in the dynamic

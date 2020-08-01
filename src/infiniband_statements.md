@@ -19,7 +19,9 @@ the policy using the ***semanage ibpkey*** command that will associate the
 
 **The statement definition is:**
 
-`ibpkeycon subnet pkey pkey_context`
+```
+ibpkeycon subnet pkey pkey_context
+```
 
 **Where:**
 
@@ -80,7 +82,9 @@ ibpkeycon fe80:: 0-0x10 system_u:object_r:public_ibpkey_t:s0
 
 ***semanage**(8)* **Command example:**
 
-`semanage ibpkey -a -t default_ibpkey_t -x fe80:: 0xFFFF`
+```
+semanage ibpkey -a -t default_ibpkey_t -x fe80:: 0xFFFF
+```
 
 The above command will produce the following file:
 */var/lib/selinux/&lt;SELINUXTYPE&gt;/active/ibpkeys.local*
@@ -104,7 +108,9 @@ end port to a security context.
 
 **The statement definition is:**
 
-`ibendportcon device_id port_number port_context`
+```
+ibendportcon device_id port_number port_context
+```
 
 **Where:**
 
@@ -165,7 +171,9 @@ ibendportcon mlx5_0 1 system_u:object_r:opensm_ibendport_t:s0
 
 ***semanage**(8)* **Command example:**
 
-`semanage ibendport -a -t opensm_ibendport_t -z mlx4_0 2`
+```
+semanage ibendport -a -t opensm_ibendport_t -z mlx4_0 2
+```
 
 This command will produce the following file
 */var/lib/selinux/&lt;SELINUXTYPE&gt;/active/ibendports.local* in the default

@@ -471,7 +471,9 @@ and are listed in . Some are available as Toolbox or Toybox commands (see
 *system/core/shell_and_utilities/README.md*) and can be run via *adb shell*,
 for example:
 
-`adb shell pm list permissions -g`
+```
+adb shell pm list permissions -g
+```
 
 ### SELinux enabled commands
 
@@ -854,7 +856,9 @@ will help sort out ordering issues.
 Example *BoardConfig.mk* usage from the Tuna device
 *device/samsung/tuna/BoardConfig.mk*:
 
-`BOARD_VENDOR_SEPOLICY_DIRS += device/samsung/tuna/sepolicy`
+```
+BOARD_VENDOR_SEPOLICY_DIRS += device/samsung/tuna/sepolicy
+```
 
 Additionally, OEMs can specify BOARD_SEPOLICY_M4DEFS to pass arbitrary m4
 definitions during the build. A definition consists of a string in the form
@@ -977,7 +981,9 @@ and a version number to produced a combined "versioned" policy file.
 Android supports auditing of SELinux events via the AOSP logger
 service that can be viewed using *logcat*, for example:
 
-`adb logcat > logcat.log`
+```
+adb logcat > logcat.log
+```
 
 Example SELinux audit events (avc denials) are:
 
@@ -992,7 +998,9 @@ dmesg   : type=1400 audit(0.0:198): avc: denied { syslog_read } for scontext=u:r
 Note that before the auditing daemon is loaded, messages will be logged
 in the kernel buffers that can be read using ***dmesg**(1)*:
 
-`adb shell dmesg`
+```
+adb shell dmesg
+```
 
 
 ## Policy File Formats
@@ -1018,7 +1026,9 @@ devices to specify their entries as described in the
 
 Each line within the file consists of the following:
 
-`pathname_regexp [file_type] security_context`
+```
+pathname_regexp [file_type] security_context
+```
 
 Where:
 
@@ -1369,7 +1379,9 @@ allowing vendors to specify their entries.
 
 The file format is:
 
-`property_key security_context type value`
+```
+property_key security_context type value
+```
 
 type = prefix or exact
 value = int, double, bool or string
@@ -1413,7 +1425,9 @@ devices to specify their entries.
 
 The file format is:
 
-`service_key security_context`
+```
+service_key security_context
+```
 
 Example *service_contexts* Entries:
 

@@ -224,7 +224,9 @@ The class configuration file is at:
 and each entry must be added to the end of the file in the following
 format:
 
-`class object_name   # userspace`
+```
+class object_name   # userspace
+```
 
 Where ***class*** is the class keyword and *object_name* is the name of
 the object. The `# userspace` is used by build scripts to detect userspace
