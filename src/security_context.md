@@ -64,10 +64,10 @@ However note that:
 
 The [**Computing Security Contexts**](computing_security_contexts.md#computing-security-contexts)
 section decribes how SELinux computes the security context components based
-on a `source context`, `target context` and object `class`.
+on a *source context*, *target context* and object *class*.
 
 The examples below show security contexts for processes, directories and files
-(note that the policy did not support MCS or MLS, therefore no `level` field):
+(note that the policy did not support MCS or MLS, therefore no *level* field):
 
 **Example Process Security Context:**
 

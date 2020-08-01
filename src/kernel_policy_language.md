@@ -213,7 +213,7 @@ within:
 
 1.   [**Conditional Policy**](conditional_statements.md#conditional-policy-statements)
      rules that are part of the kernel policy language.
-2.   `optional` and `require` rules that are NOT part of the kernel policy
+2.   *optional* and *require* rules that are NOT part of the kernel policy
      language, but **Reference Policy** ***m4**(1)* macros used to control
      policy builds (see the
      [**Modular Policy Support Statements**](modular_policy_statements.md#modular-policy-support-statements)
@@ -483,8 +483,8 @@ same).
 
 **Table 3** shows what policy language statements and rules are allowed
 within each type of policy source file, and whether the statement is valid
-within an `if/else` construct, `optional {rule_list}`, or
-`require {rule_list}` statement.
+within an *if/else* construct, *optional {rule_list}*, or
+*require {rule_list}* statement.
 
 <table>
 <tbody>
@@ -945,8 +945,8 @@ within an `if/else` construct, `optional {rule_list}`, or
 each type of policy source file** - *The left hand side of the table shows
 what Policy Language Statements and Rules are allowed within each type of
 policy source file. The right hand side of the table shows whether the
-statement is valid within the `if/else` construct, `optional {rule_list}`,
-or `require {rule_list}` statement.*
+statement is valid within the *if/else* construct, *optional {rule_list}*,
+or *require {rule_list}* statement.*
 
 
 ## Section Contents

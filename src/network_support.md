@@ -15,22 +15,22 @@ system. There are three types supported: Labeled IPSec, CIPSO
 IPv6 Security Option)
 
 There are two policy capability options that can be set within policy
-using the `policycap` statement that affect networking configuration:
+using the *policycap* statement that affect networking configuration:
 
-**`network_peer_controls`** - This is always enabled in the latest
+***network_peer_controls*** - This is always enabled in the latest
 Reference Policy source. **Figure 14: Fallback Labeling** shows the difference
 between the policy capability being set to 0 and 1.
 
-**`always_check_network`** - This capability would normally be
+***always_check_network*** - This capability would normally be
 set to false. If true SECMARK and NetLabel peer labeling are always
 enabled even if there are no SECMARK, NetLabel or Labeled IPsec rules
-configured. This forces checking of the `packet` class to protect the
+configured. This forces checking of the *packet* class to protect the
 system should any rules fail to load or they get maliciously flushed.
 Requires kernel 3.13 minimum.
 
-**`extended_socket_class`** - Enable separate security classes for all
-network address families previously mapped to the `socket` class and for
-ICMP and SCTP sockets previously mapped to the `rawip_socket` class.
+***extended_socket_class*** - Enable separate security classes for all
+network address families previously mapped to the *socket* class and for
+ICMP and SCTP sockets previously mapped to the *rawip_socket* class.
 Requires kernel 4.11+.
 
 The policy capability settings are available in userspace via the
@@ -63,8 +63,8 @@ services.
 
 The Linux networking package *iproute* has an SELinux aware socket
 statistics command ***ss**(8)* that will show the SELinux context of
-network processes (`-Z` or `--context` option) and network sockets (`-z`
-or `--contexts` option). Note that the socket contexts are taken from
+network processes (*-Z* or *--context* option) and network sockets (*-z*
+or *--contexts* option). Note that the socket contexts are taken from
 the inode associated to the socket and not from the actual kernel socket
 structure (as currently there is no standard kernel/userspace interface
 to achieve this).
@@ -95,7 +95,7 @@ this Notebook, there are tutorials available. The
 **Figure 13: SECMARK Processing** shows the basic structure with the process
 working as follows:
 
--   A table called the `security table` is used to define the parameters
+-   A table called the *security table* is used to define the parameters
     that identify and 'mark' packets that can then be tracked as the
     packet travels through the networking sub-system. These 'marks' are
     called SECMARK and CONNSECMARK.
@@ -119,7 +119,7 @@ ip/nftables domain to relabel the security table entries unless permissive
 mode is enabled (i.e. the tables must have the relabel permission for each
 entry in the table).
 
- An ipv4 `security table` *iptables* entry is as follows:
+ An ipv4 *security table* *iptables* entry is as follows:
 
 ```
 # Flush the security table.
@@ -143,7 +143,7 @@ iptables -t security -A INPUT -i lo -p udp --dport 65535 -j SECMARK --selctx sys
 iptables -t security -A OUTPUT -o lo -p udp --sport 65535 -j SECMARK --selctx system_u:object_r:test_server_packet_t:s0
 ```
 
-The equivalent *nftable* entry for an ipv6 `security table` is as follows:
+The equivalent *nftable* entry for an ipv6 *security table* is as follows:
 
 ```
 add table ip6 security
@@ -194,15 +194,15 @@ that explains their usage, the ***netlabelctl**(8)* man page is
 also a useful reference.
 
 The network peer controls have been extended to support an additional
-object class of `peer` that is enabled by default in the Fedora policy as
-the `network_peer_controls` in */sys/fs/selinux/policy_capabilities* is
+object class of *peer* that is enabled by default in the Fedora policy as
+the *network_peer_controls* in */sys/fs/selinux/policy_capabilities* is
 set to '*1*'. **Figure 14: Fallback Labeling** shows the differences between
-the policy capability `network_peer_controls` being set to 0 and 1.
+the policy capability *network_peer_controls* being set to 0 and 1.
 
 ![](./images/14-fallback.png)
 
 **Figure 14: Fallback Labeling** - *Showing the differences between the
-policy capability **`network_peer_controls`** set to 0 and 1.*
+policy capability ***network_peer_controls*** set to 0 and 1.*
 
 
 The *selinux-testsuite inet_socket* and *sctp* tests have examples of
@@ -268,7 +268,7 @@ netlabelctl calipso add pass doi:16
     definitions for labels or information can be exchanged over different
     networks (for example using an SELinux enabled gateway as a guard as
     shown in **Figure 16**. An example ***netlabelctl**(8)* command setting
-    a DOI of 8 is: `netlabelctl cipsov4 add pass doi:8 tags:5`
+    a DOI of 8 is: *netlabelctl cipsov4 add pass doi:8 tags:5*
 
 ![](./images/16-mls2.png)
 

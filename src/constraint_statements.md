@@ -1,6 +1,6 @@
 # Constraint Statements
 
-## `constrain`
+## *constrain*
 
 The constrain statement allows further restriction on permissions for
 the specified object classes by using boolean expressions covering:
@@ -173,16 +173,16 @@ constrain { dir file lnk_file sock_file fifo_file chr_file blk_file } { create r
 ```
 
 
-## `validatetrans`
+## *validatetrans*
 
 This statement is used to control the ability to change the objects
 security context.
 
-The first context `u1.r1.t1` is the context before the transition, the
-second context `u2.r2.t2` is the context after the transition, and the
-third `u3.r3.t3` is the context of the process performing the transition.
+The first context *u1.r1.t1* is the context before the transition, the
+second context *u2.r2.t2* is the context after the transition, and the
+third *u3.r3.t3* is the context of the process performing the transition.
 
-Note there are no `validatetrans` statements specified within the
+Note there are no *validatetrans* statements specified within the
 **Reference Policy** source.
 
 **The statement definition is:**
@@ -275,7 +275,7 @@ validatetrans { file } { t1 == unconfined_t );
 ```
 
 
-## `mlsconstrain`
+## *mlsconstrain*
 
 The mlsconstrain statement allows further restriction on permissions for
 the specified object classes by using boolean expressions covering:
@@ -401,15 +401,15 @@ mlsconstrain dir search
 ```
 
 
-## `mlsvalidatetrans`
+## *mlsvalidatetrans*
 
-The `mlsvalidatetrans` is the MLS equivalent of the `validatetrans`
+The *mlsvalidatetrans* is the MLS equivalent of the *validatetrans*
 statement where it is used to control the ability to change the objects
 security context.
 
-The first context `u1.r1.t1` is the context before the transition, the
-second context `u2.r2.t2` is the context after the transition, and the
-third `u3.r3.t3` is the context of the process performing the transition.
+The first context *u1.r1.t1* is the context before the transition, the
+second context *u2.r2.t2* is the context after the transition, and the
+third *u3.r3.t3* is the context of the process performing the transition.
 
 **The statement definition is:**
 

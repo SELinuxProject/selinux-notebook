@@ -91,16 +91,16 @@ section.
 The OM / XACE services support polyinstantiation of properties and
 selections allowing these to be grouped into different membership areas
 so that one group does not know of the exsistance of the others. To
-implement polyinstantiation the `poly_` keyword is used in the
+implement polyinstantiation the *poly_* keyword is used in the
 [***x_contexts***](policy_config_files.md#contextsx_contexts) for the required
 selections and properties, there would then be a corresponding
-[**`type_member`**](type_statements.md#type_member) in the policy to enforce
+[***type_member***](type_statements.md#type_member) in the policy to enforce
 the separation by computing a new context with either
 ***security_compute_member**(3)* or ***avc_compute_member**(3)*.
 
 Note that the current Reference Policy does not implement
 polyinstantiation, instead the MLS policy uses
-[**`mlsconstrain`**](constraint_statements.md#mlsconstrain) to limit the scope
+[***mlsconstrain***](constraint_statements.md#mlsconstrain) to limit the scope
 of properties and selections.
 
 ## Configuration Information
@@ -196,16 +196,16 @@ or for polyinstantiation support:
 poly_selection   PRIMARY      system_u:object_r:clipboard_xselection_t:s0
 ```
 
-The `object_name` can contain '\*' for 'any' or '?' for 'substitute'.
+The *object_name* can contain '\*' for 'any' or '?' for 'substitute'.
 
 The OM uses the ***selabel**(3)* functions (such as ***selabel_lookup**(3)*)
 that are a part of *libselinux* to fetch the relevant information from the
 *x_contexts* file.
 
-The valid `object_type` entries are `client`, `property`,
-`poly_property`, `extension`, `selection`, `poly_selection` and `events`.
+The valid *object_type* entries are *client*, *property*,
+*poly_property*, *extension*, *selection*, *poly_selection* and *events*.
 
-The `object_name` entries can be any valid X-server resource name
+The *object_name* entries can be any valid X-server resource name
 that is defined in the X-server source code and can typically be found
 in the *protocol.txt* and *BuiltInAtoms* source files (in the *dix*
 directory of the **xorg-server** source package), or user generated via

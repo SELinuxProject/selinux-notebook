@@ -28,9 +28,9 @@ compute the security context.
 The kernel policy language statements that influence a computed security
 context are:
 
-`type_transition`, `role_transition`, `range_transition`,
-`type_member` and `type_change`, `default_user`, `default_role`,
-`default_type` and `default_range` statements (their corresponding CIL
+*type_transition*, *role_transition*, *range_transition*,
+*type_member* and *type_change*, *default_user*, *default_role*,
+*default_type* and *default_range* statements (their corresponding CIL
 statements).
 
 The sections that follow give an overview of how security contexts are
@@ -51,21 +51,21 @@ section.
 
 The initial task starts with the kernel security context, but the
 "init" process will typically transition into its own unique context
-(e.g. `init_t`) when the init binary is executed after the policy has
+(e.g. *init_t*) when the init binary is executed after the policy has
 been loaded. Some init programs re-exec themselves after loading policy,
 while in other cases the initial policy load is performed by the
-`initrd`/`initramfs` script prior to mounting the real root and
+*initrd*/*initramfs* script prior to mounting the real root and
 executing the real init program.
 
 Processes inherit their security context as follows:
 
 1.  On fork a process inherits the security context of its
     creator/parent.
-2.  On `exec`, a process may transition to another security context
-    based on policy statements: `type_transition`, `range_transition`,
-    `role_transition` (policy version 26), `default_user`,
-    `default_role`, `default_range` (policy versions 27) and
-    `default_type` (policy version 28) or if a security-aware process,
+2.  On *exec*, a process may transition to another security context
+    based on policy statements: *type_transition*, *range_transition*,
+    *role_transition* (policy version 26), *default_user*,
+    *default_role*, *default_range* (policy versions 27) and
+    *default_type* (policy version 28) or if a security-aware process,
     by calling ***setexeccon**(3)* if permitted by policy prior to
     invoking exec.
 3.  At any time, a security-aware process may invoke ***setcon**(3)* to
@@ -82,20 +82,20 @@ fifo's and block/character) upon creation for any filesystem type that
 supports labeling is as follows:
 
 1.  The user component is inherited from the creating process (policy
-    version 27 allows a `default_user` of source or target to be
+    version 27 allows a *default_user* of source or target to be
     defined for each object class).
-2.  The role component generally defaults to the `object_r` role
-    (policy version 26 allows a `role_transition` and version 27 allows
-    a `default_role` of source or target to be defined for each object
+2.  The role component generally defaults to the *object_r* role
+    (policy version 26 allows a *role_transition* and version 27 allows
+    a *default_role* of source or target to be defined for each object
     class).
 3.  The type component defaults to the type of the parent directory if
-    no matching `type_transition` rule was specified in the policy
-    (policy version 25 allows a filename `type_transition` rule and
-    version 28 allows a `default_type` of source or target to be
+    no matching *type_transition* rule was specified in the policy
+    (policy version 25 allows a filename *type_transition* rule and
+    version 28 allows a *default_type* of source or target to be
     defined for each object class).
-4.  The `range`/`level` component defaults to the low/current level of
-    the creating process if no matching `range_transition` rule was
-    specified in the policy (policy version 27 allows a `default_range`
+4.  The *range*/*level* component defaults to the low/current level of
+    the creating process if no matching *range_transition* rule was
+    specified in the policy (policy version 27 allows a *default_range*
     of source or target with the selected range being low, high or
     low-high to be defined for each object class).
 
@@ -103,12 +103,12 @@ Security-aware applications can override this default behavior by
 calling ***setfscreatecon**(3)* prior to creating the file, if permitted
 by policy.
 
-For existing files the label is determined from the `xattr` value
-associated with the file. If there is no `xattr` value set on the file,
+For existing files the label is determined from the *xattr* value
+associated with the file. If there is no *xattr* value set on the file,
 then the file is treated as being labeled with the default file security
 context for the filesystem. By default, this is the "*file*" initial
 SID, which is mapped to a context by the policy. This default may be
-overridden via the `defcontext=` mount option on a per-mount basis as
+overridden via the *defcontext=* mount option on a per-mount basis as
 described in ***mount**(8)*.
 
 
@@ -119,55 +119,55 @@ Inherits the label of its creator/parent.
 
 ### Filesystems
 
-Filesystems are labeled using the appropriate `fs_use` kernel policy
+Filesystems are labeled using the appropriate *fs_use* kernel policy
 language statement as they are mounted, they are based on the filesystem
-type name (e.g. `ext4`) and their behaviour (e.g. `xattr`). For example
+type name (e.g. *ext4*) and their behaviour (e.g. *xattr*). For example
 if the policy specifies the following:
 
 ```
 fs_use_task pipefs system_u:object_r:fs_t:s0
 ```
 
-then as the `pipefs` filesystem is being mounted, the SELinux LSM
-security hook `selinux_set_mnt_opts` will call `security_fs_use`
+then as the *pipefs* filesystem is being mounted, the SELinux LSM
+security hook *selinux_set_mnt_opts* will call *security_fs_use*
 that will:
 
--  Look for the filesystem name within the policy (`pipefs`)
--  If present, obtain its behaviour (`fs_use_task`)
--  Then obtain the allocated security context (`system_u:object_r:fs_t:s0`)
+-  Look for the filesystem name within the policy (*pipefs*)
+-  If present, obtain its behaviour (*fs_use_task*)
+-  Then obtain the allocated security context (*system_u:object_r:fs_t:s0*)
 
-Should the behaviour be defined as `fs_use_task`, then the filesystem
+Should the behaviour be defined as *fs_use_task*, then the filesystem
 will be labeled as follows:
 
 1.  The user component is inherited from the creating process (policy
-    version 27 allows a `default_user` of source or target to be
+    version 27 allows a *default_user* of source or target to be
     defined).
-2.  The role component generally defaults to the `object_r` role
-    (policy version 26 allows a `role_transition` and version 27 allows
-    a `default_role` of source or target to be defined).
+2.  The role component generally defaults to the *object_r* role
+    (policy version 26 allows a *role_transition* and version 27 allows
+    a *default_role* of source or target to be defined).
 3.  The type component defaults to the type of the target type if no
-    matching `type_transition` rule was specified in the policy (policy
-    version 28 allows a `default_type` of source or target to be
+    matching *type_transition* rule was specified in the policy (policy
+    version 28 allows a *default_type* of source or target to be
     defined).
-4.  The `range`/`level` component defaults to the low/current level of
-    the creating process if no matching `range_transition` rule was
-    specified in the policy (policy version 27 allows a `default_range`
+4.  The *range*/*level* component defaults to the low/current level of
+    the creating process if no matching *range_transition* rule was
+    specified in the policy (policy version 27 allows a *default_range*
     of source or target with the selected range being low, high or
     low-high to be defined).
 
 Notes:
 
-1.  Filesystems that support `xattr` extended attributes can be
-    identified via the mount command as there will be a '`seclabel`'
+1.  Filesystems that support *xattr* extended attributes can be
+    identified via the mount command as there will be a '*seclabel*'
     keyword present.
 2.  There are mount options for allocating various context types:
-    `context=`, `fscontext=`, `defcontext=` and `rootcontext=`. They are
+    *context=*, *fscontext=*, *defcontext=* and *rootcontext=*. They are
     fully described in the ***mount**(8)* man page.
 
 
 ### Network File System (nfsv4.2)
 
-If labeled NFS is implemented with `xattr` support, then the creation of
+If labeled NFS is implemented with *xattr* support, then the creation of
 inodes are treated as described in the [Files](#files)
 section.
 
@@ -178,19 +178,19 @@ If a socket is created by the ***socket**(3)* call they are labeled as
 follows:
 
 1.  The user component is inherited from the creating process (policy
-    version 27 allows a `default_user` of source or target to be
+    version 27 allows a *default_user* of source or target to be
     defined for each socket object class).
 2.  The role component is inherited from the creating process (policy
-    version 26 allows a `role_transition` and version 27 allows a
-    `default_role` of source or target to be defined for each socket
+    version 26 allows a *role_transition* and version 27 allows a
+    *default_role* of source or target to be defined for each socket
     object class).
 3.  The type component is inherited from the creating process if no
-    matching `type_transition` rule was specified in the policy and
-    version 28 allows a `default_type` of source or target to be
+    matching *type_transition* rule was specified in the policy and
+    version 28 allows a *default_type* of source or target to be
     defined for each socket object class).
-4.  The `range`/`level` component is inherited from the creating process
-    if no matching `range_transition` rule was specified in the policy
-    (policy version 27 allows a `default_range` of source or target
+4.  The *range*/*level* component is inherited from the creating process
+    if no matching *range_transition* rule was specified in the policy
+    (policy version 27 allows a *default_range* of source or target
     with the selected range being low, high or low-high to be defined
     for each socket object class).
 
@@ -217,19 +217,19 @@ that is unlabeled, compute a new label based on the current process and
 the message queue it will be stored in as follows:
 
 1.  The user component is inherited from the sending process (policy
-    version 27 allows a `default_user` of source or target to be
+    version 27 allows a *default_user* of source or target to be
     defined for the message object class).
 2.  The role component is inherited from the sending process (policy
-    version 26 allows a `role_transition` and version 27 allows a
-    `default_role` of source or target to be defined for the message
+    version 26 allows a *role_transition* and version 27 allows a
+    *default_role* of source or target to be defined for the message
     object class).
 3.  The type component is inherited from the sending process if no
-    matching `type_transition` rule was specified in the policy and
-    version 28 allows a `default_type` of source or target to be
+    matching *type_transition* rule was specified in the policy and
+    version 28 allows a *default_type* of source or target to be
     defined for the message object class).
-4.  The `range`/`level` component is inherited from the sending process
-    if no matching `range_transition` rule was specified in the policy
-    (policy version 27 allows a `default_range` of source or target
+4.  The *range*/*level* component is inherited from the sending process
+    if no matching *range_transition* rule was specified in the policy
+    (policy version 27 allows a *default_range* of source or target
     with the selected range being low, high or low-high to be defined
     for the message object class).
 
@@ -257,31 +257,31 @@ explicitly label keys they create if permitted by policy.
 ### *avc_compute_create* and *security_compute_create*
 
 **Table 1** below shows how the components from the source context
-`scon`, target context `tcon` and class `tclass` are used to compute the
-new context `newcon` (referenced by SIDs for
+*scon*, target context *tcon* and class *tclass* are used to compute the
+new context *newcon* (referenced by SIDs for
 ***avc_compute_create**(3)*). The following notes also apply:
 
-1.  Any valid policy `role_transition`, `type_transition` and
-    `range_transition` enforcement rules will influence the final
+1.  Any valid policy *role_transition*, *type_transition* and
+    *range_transition* enforcement rules will influence the final
     outcome as shown.
 2.  For kernels less than 2.6.39 the context generated will depend on
-    whether the class is `process` or any other class.
+    whether the class is *process* or any other class.
 3.  For kernels 2.6.39 and above the following also applies:
--   Those classes suffixed by `socket` will also be included in the `process`
+-   Those classes suffixed by *socket* will also be included in the *process*
     class outcome.
--   If a valid `role_transition` rule for `tclass`, then use that
-    instead of the default `object_r`. Also requires policy version
+-   If a valid *role_transition* rule for *tclass*, then use that
+    instead of the default *object_r*. Also requires policy version
     26 or greater - see ***security_policyvers**(3)*.
--   If the `type_transition` rule is classed as the 'file name
-    transition rule' (i.e. it has an `object_name` parameter), then
+-   If the *type_transition* rule is classed as the 'file name
+    transition rule' (i.e. it has an *object_name* parameter), then
     provided the object name in the rule matches the last component of
     the objects name (in this case a file or directory name), then use
-    the rules `default_type`. Also requires policy version 25 or greater.
+    the rules *default_type*. Also requires policy version 25 or greater.
 4.  For kernels 3.5 and above with policy version 27 or greater, the
-    `default_user`, `default_role`, `default_range` statements will
-    influence the `user`, `role` and `range` of the computed context for
-    the specified class `tclass`. With policy version 28 or greater the
-    `default_type` statement can also influence the `type` in the
+    *default_user*, *default_role*, *default_range* statements will
+    influence the *user*, *role* and *range* of the computed context for
+    the specified class *tclass*. With policy version 28 or greater the
+    *default_type* statement can also influence the *type* in the
     computed context.
 
 <table>
@@ -353,21 +353,21 @@ new context `newcon` (referenced by SIDs for
 ### *avc_compute_member* and *security_compute_member*
 
 **Table 2** shows how the components from the source context,
-`scon` target context, `tcon` and class, `tclass` are used to compute
-the new context `newcon` (referenced by SIDs for
+*scon* target context, *tcon* and class, *tclass* are used to compute
+the new context *newcon* (referenced by SIDs for
 ***avc_compute_member**(3)*). The following notes also apply:
 
-1.  Any valid policy `type_member` enforcement rules will influence the
+1.  Any valid policy *type_member* enforcement rules will influence the
     final outcome as shown.
 2.  For kernels less than 2.6.39 the context generated will depend on
-    whether the class is `process` or any other class.
-3.  For kernels 2.6.39 and above, those classes suffixed by `socket` are
-    also included in the `process` class outcome.
+    whether the class is *process* or any other class.
+3.  For kernels 2.6.39 and above, those classes suffixed by *socket* are
+    also included in the *process* class outcome.
 4.  For kernels 3.5 and above with policy version 28 or greater, the
-    `default_role`, `default_range` statements will influence the
-    `role` and `range` of the computed context for the specified class
-    `tclass`. With policy version 28 or greater the `default_type`
-    statement can also influence the `type` in the computed context.
+    *default_role*, *default_range* statements will influence the
+    *role* and *range* of the computed context for the specified class
+    *tclass*. With policy version 28 or greater the *default_type*
+    statement can also influence the *type* in the computed context.
 
 <table>
 <tbody>
@@ -428,21 +428,21 @@ the new context `newcon` (referenced by SIDs for
 ### *security_compute_relabel*
 
 **Table 3** below shows how the components from the source context,
-`scon` target context, `tcon` and class, `tclass` are used to compute
-the new context `newcon` for ***security_compute_relabel**(3)*. The
+*scon* target context, *tcon* and class, *tclass* are used to compute
+the new context *newcon* for ***security_compute_relabel**(3)*. The
 following notes also apply:
 
-1.  Any valid policy `type_change` enforcement rules will influence the
+1.  Any valid policy *type_change* enforcement rules will influence the
     final outcome shown in the table.
 2.  For kernels less than 2.6.39 the context generated will depend on
-    whether the class is `process` or any other class.
-3.  For kernels 2.6.39 and above, those classes suffixed by `socket`
-    are also included in the `process` class outcome.
+    whether the class is *process* or any other class.
+3.  For kernels 2.6.39 and above, those classes suffixed by *socket*
+    are also included in the *process* class outcome.
 4.  For kernels 3.5 and above with policy version 28 or greater, the
-    `default_user`, `default_role`, `default_range` statements will
-    influence the `user`, `role` and `range` of the computed context for
-    the specified class `tclass`. With policy version 28 or greater the
-    `default_type` statement can also influence the `type` in the
+    *default_user*, *default_role*, *default_range* statements will
+    influence the *user*, *role* and *range* of the computed context for
+    the specified class *tclass*. With policy version 28 or greater the
+    *default_type* statement can also influence the *type* in the
     computed context.
 
 <table>

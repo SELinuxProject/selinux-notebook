@@ -103,7 +103,7 @@ low_level [ - high_level ]
 </table>
 
 
-## `sensitivity`
+## *sensitivity*
 
 The sensitivity statement defines the MLS policy sensitivity identifies
 and optional alias identifiers.
@@ -183,10 +183,10 @@ sensitivity s0 alias secret wellmaybe ornot;
 ```
 
 
-## `dominance`
+## *dominance*
 
-When more than one [`sensitivity`](#sensitivity)
-statemement is defined within a policy, then a `dominance` statement is
+When more than one [*sensitivity*](#sensitivity)
+statemement is defined within a policy, then a *dominance* statement is
 required to define the actual hierarchy between all sensitivities.
 
 **The statement definition is:**
@@ -247,9 +247,9 @@ dominance { s0 s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 }
 ```
 
 
-## `category`
+## *category*
 
-The `category` statement defines the MLS policy category
+The *category* statement defines the MLS policy category
 identifiers and optional alias identifiers.
 
 **The statement definition is:**
@@ -327,13 +327,13 @@ category c0 alias planning development benefits;
 ```
 
 
-## `level`
+## *level*
 
-The `level` statement enables the previously declared sensitivity and
+The *level* statement enables the previously declared sensitivity and
 category identifiers to be combined into a Security Level.
 
-Note there must only be one `level` statement for each
-[`sensitivity`](#sensitivity) statemement.
+Note there must only be one *level* statement for each
+[*sensitivity*](#sensitivity) statemement.
 
 **The statement definition is:**
 
@@ -402,9 +402,9 @@ level s15:c0.c255;
 ```
 
 
-## `range_transition`
+## *range_transition*
 
-The `range_transition` statement is primarily used by the init process or
+The *range_transition* statement is primarily used by the init process or
 administration commands to ensure processes run with their correct MLS
 range (for example *init* would run at **SystemHigh** and needs to initialise
 / run other processes at their correct MLS range). The statement was
@@ -494,17 +494,17 @@ range_transition initrc_t cupsd_exec_t:process s15:c0.c255;
 ```
 
 
-## `mlsconstrain`
+## *mlsconstrain*
 
 This is decribed in the
-[**Constraint Statements - `mlsconstrain`**](constraint_statements.md#mlsconstrain)
+[**Constraint Statements - *mlsconstrain***](constraint_statements.md#mlsconstrain)
 section.
 
 
-## `mlsvalidatetrans`
+## *mlsvalidatetrans*
 
 This is decribed in the
-[**Constraint Statements - `mlsvalidatetrans`**](constraint_statements.md#mlsvalidatetrans)
+[**Constraint Statements - *mlsvalidatetrans***](constraint_statements.md#mlsvalidatetrans)
 section.
 
 

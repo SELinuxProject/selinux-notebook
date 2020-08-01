@@ -761,7 +761,7 @@ failsafe (for objects that would not otherwise have a valid label).
 
 *private/policy_capabilities*
 -   Contains the policy capabilities enabled for the kernel policy (see
-[**`policycap`**](policy_config_statements.md#policy-configuration-statements)
+[***policycap***](policy_config_statements.md#policy-configuration-statements)
 statement).
 
 \*.te
@@ -801,10 +801,10 @@ contained within them.
     for processing files.
 
 *mac_permissions.xml*
--   The Middleware Mandatory Access Control (MMAC) file assigns an `seinfo` tag
+-   The Middleware Mandatory Access Control (MMAC) file assigns an *seinfo* tag
     to apps based on their signature and optionally their package name.
-    The `seinfo` tag can then be used as a key in the *seapp_contexts* file to
-    assign a specific label to all apps with that `seinfo` tag. The configuration
+    The *seinfo* tag can then be used as a key in the *seapp_contexts* file to
+    assign a specific label to all apps with that *seinfo* tag. The configuration
     file is read by *system_server* during start-up. The main code for the
     service is *frameworks/base/services/java/com/android/server/pm/SELinuxMMAC.java*,
     however it does hook into other Android services such as *PackageManagerService.java*.
@@ -821,9 +821,9 @@ different device vendors whose policy files would be located in
 the *device/&lt;vendor&gt;/&lt;board&gt;/sepolicy* directory.
 
 Important Note: Android policy has a number of
-[**`neverallow`**](avc_rules.md#neverallow) rules defined in
+[***neverallow***](avc_rules.md#neverallow) rules defined in
 the core policy to ensure that
-[**`allow`**](avc_rules.md#allow) rules are never added
+[***allow***](avc_rules.md#allow) rules are never added
 to domains that would weaken security. However developers may need to
 customise their device policies, and as a consequence they may fail one
 or more of these rules.
@@ -862,7 +862,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/samsung/tuna/sepolicy
 
 Additionally, OEMs can specify BOARD_SEPOLICY_M4DEFS to pass arbitrary m4
 definitions during the build. A definition consists of a string in the form
-of `macro-name=value`. Spaces must NOT be present. This is useful for building
+of *macro-name=value*. Spaces must NOT be present. This is useful for building
 modular policies, policy generation, conditional file paths, etc. It is
 supported in the following file types:
  * All \*.te and SE Linux policy files as passed to checkpolicy
@@ -969,8 +969,8 @@ Usage:
 ```
 
 **sepolicy-analyze** - A tool for performing various kinds of analysis on a
-sepolicy file. During policy build it is used to check for any `permissive`
-domains (not allowed) and `neverallow` assertions
+sepolicy file. During policy build it is used to check for any *permissive*
+domains (not allowed) and *neverallow* assertions
 
 **version_policy** - Takes the given public platform policy, a private policy
 and a version number to produced a combined "versioned" policy file.
@@ -1372,7 +1372,7 @@ u:r:untrusted_app:s0:c149,c256,c512,c768 u0_a149 1138 64   com.example.myapplica
 
 This file holds property service keys and their contexts that are
 processes by *system/core/init/property_service.cpp*. This service will also
-resolve the special keywords: `prefix string`, `exact bool` etc.
+resolve the special keywords: *prefix string*, *exact bool* etc.
 
 The build process supports additional *property_contexts* files
 allowing vendors to specify their entries.
@@ -1466,7 +1466,7 @@ manager                 u:object_r:service_manager_vndservice:s0
 ### ***mac_permissions.xml***
 
 The *mac_permissions.xml* file is used to configure Run/Install-time MMAC
-policy and provides x.509 certificate to `seinfo` string mapping so that
+policy and provides x.509 certificate to *seinfo* string mapping so that
 Zygote spawns an app in the correct domain. See the
 [**Computing Process Context Examples**](#computing-process-context-examples)
 section for how this is achieved using information also contained in the
@@ -1509,14 +1509,14 @@ file:
 1.  A signature is a hex encoded X.509 certificate or a tag defined in
     *keys.conf* and is required for each signer tag. The signature can
     either appear as a set of attached cert child tags or as an attribute.
-2.  A signer tag must contain a `seinfo` tag XOR multiple package stanzas.
-3.  Each signer/package tag is allowed to contain one `seinfo` tag. This tag
+2.  A signer tag must contain a *seinfo* tag XOR multiple package stanzas.
+3.  Each signer/package tag is allowed to contain one *seinfo* tag. This tag
     represents additional info that each app can use in setting a SELinux security
     context on the eventual process as well as the apps data directory.
-4.  `seinfo` assignments are made according to the following rules:
+4.  *seinfo* assignments are made according to the following rules:
 -   Stanzas with package name refinements will be checked first.
 -   Stanzas w/o package name refinements will be checked second.
--   The "default" `seinfo` label is automatically applied.
+-   The "default" *seinfo* label is automatically applied.
 5.  valid stanzas can take one of the following forms:
 
 ```

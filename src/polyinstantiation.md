@@ -27,10 +27,10 @@ To clarify polyinstantiation support:
 ## Polyinstantiated Objects
 
 Determining a polyinstantiated context for an object is supported by
-SELinux using the policy language `type_member` statement and the
+SELinux using the policy language *type_member* statement and the
 ***avc_compute_member**(3)* and ***security_compute_member**(3)*
 libselinux API functions. These are not limited to specific object
-classes, however only `dir`, `x_selection` and `x_property` objects are
+classes, however only *dir*, *x_selection* and *x_property* objects are
 currently supported.
 
 
@@ -143,12 +143,12 @@ Where:
 ### Example Configurations
 
 This section shows two sample *namespace.conf* configurations, the first
-uses the `method=user` and the second `method=context`. It should be notedPAM
+uses the *method=user* and the second *method=context*. It should be notedPAM
 that while polyinstantiation is enabled, the full path names will not be
 visible, it is only when polyinstantiation is disabled that the
 directories become visible.
 
-**Example 1 - `method=user`:**
+**Example 1 - *method=user*:**
 
 Set the */etc/security/namespace.conf* entries as follows:
 
@@ -176,7 +176,7 @@ following polyinstantiated directories:
 /home/rch/rch.inst/rch
 ```
 
-**Example 2 - `method=context`:**
+**Example 2 - *method=context*:**
 
 Set the */etc/security/namespace.conf* entries as follows:
 
@@ -219,7 +219,7 @@ section.
 
 The reference policy *files.te* and *files.if* modules (in the kernel
 layer) support polyinstantiated directories. There is also a global
-tunable (a boolean called `polyinstantiation_enabled`) that can be used
+tunable (a boolean called *polyinstantiation_enabled*) that can be used
 to set this functionality on or off during login. By default this
 boolean is set *false* (off).
 

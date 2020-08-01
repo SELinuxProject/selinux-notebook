@@ -170,7 +170,7 @@ the kernel, see
 ### Optional Policy
 
 The loadable module policy infrastructure supports an
-[**`optional`**](modular_policy_statements.md#optional) policy statement that
+[***optional***](modular_policy_statements.md#optional) policy statement that
 allows policy rules to be defined but only enabled in the binary policy once
 the conditions have been satisfied.
 
@@ -192,9 +192,9 @@ shows a persistent conditional policy change:
 setsebool -P ext_gateway_audit false
 ```
 
-The conditional policy language statements are the `bool` Statement
+The conditional policy language statements are the *bool* Statement
 that defines the boolean flag identifier and its initial status, and the
-`if` Statement that allows certain rules to be executed depending on
+*if* Statement that allows certain rules to be executed depending on
 the state of the boolean value or values. See the
 [**Conditional Policy Statements**](conditional_statements.md#conditional-policy-statements)
 section.

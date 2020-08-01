@@ -56,11 +56,11 @@ define new objects and their associated permissions as these would be
 done by those who actually design and/or write object managers.
 
 Note: In theory a policy could be defined with no classes or permissions
-then set the `handle_unknown` flag when building the policy to `allow`
+then set the *handle_unknown* flag when building the policy to *allow*
 (***checkpolicy**(8)* and ***secilc**(8)*
-`[-U handle-unknown (allow,deny,reject)]`). However:
+*[-U handle-unknown (allow,deny,reject)]*). However:
 -   CIL requires at least one class to be defined.
--   The `process` class with its `transition` and `dyntransition` permissions
+-   The *process* class with its *transition* and *dyntransition* permissions
     are still required for default labeling behaviors, role and range
     transitions in older policy versions.
 
@@ -669,7 +669,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 
 ## File Object Classes
 
-### `filesystem`
+### *filesystem*
 
 <table>
 <tbody>
@@ -724,7 +724,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `dir`
+### *dir*
 
 <table>
 <tbody>
@@ -763,7 +763,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `file`
+### *file*
 
 <table>
 <tbody>
@@ -790,7 +790,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `lnk_file`
+### *lnk_file*
 
 <table>
 <tbody>
@@ -809,7 +809,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `chr_file`
+### *chr_file*
 
 <table>
 <tbody>
@@ -828,7 +828,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `blk_file`
+### *blk_file*
 
 <table>
 <tbody>
@@ -847,7 +847,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `sock_file`
+### *sock_file*
 
 <table>
 <tbody>
@@ -866,7 +866,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `fifo_file`
+### *fifo_file*
 
 <table>
 <tbody>
@@ -885,7 +885,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `fd`
+### *fd*
 
 <table>
 <tbody>
@@ -909,7 +909,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 
 ## Network Object Classes
 
-### `node`
+### *node*
 
 <table>
 <tbody>
@@ -932,7 +932,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `netif`
+### *netif*
 
 <table>
 <tbody>
@@ -955,7 +955,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `socket`
+### *socket*
 
 <table>
 <tbody>
@@ -974,7 +974,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `tcp_socket`
+### *tcp_socket*
 
 <table>
 <tbody>
@@ -1001,7 +1001,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `udp_socket`
+### *udp_socket*
 
 <table>
 <tbody>
@@ -1024,7 +1024,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `rawip_socket`
+### *rawip_socket*
 
 <table>
 <tbody>
@@ -1047,7 +1047,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `packet_socket`
+### *packet_socket*
 
 <table>
 <tbody>
@@ -1066,7 +1066,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `unix_stream_socket`
+### *unix_stream_socket*
 
 <table>
 <tbody>
@@ -1089,7 +1089,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `unix_dgram_socket`
+### *unix_dgram_socket*
 
 <table>
 <tbody>
@@ -1108,7 +1108,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `tun_socket`
+### *tun_socket*
 
 <table>
 <tbody>
@@ -1134,7 +1134,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 
 ## IPSec Network Object Classes
 
-### `association`
+### *association*
 
 <table>
 <tbody>
@@ -1165,7 +1165,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `key_socket`
+### *key_socket*
 
 <table>
 <tbody>
@@ -1184,7 +1184,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-### `netlink_xfrm_socket`
+### *netlink_xfrm_socket*
 
 <table>
 <tbody>
@@ -1217,7 +1217,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 Netlink sockets communicate between userspace and the kernel – also see
 ***netlink**(7)*.
 
-### `netlink_socket`
+### *netlink_socket*
 
 <table>
 <tbody>
@@ -1236,7 +1236,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_route_socket`
+### *netlink_route_socket*
 
 <table>
 <tbody>
@@ -1263,7 +1263,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_firewall_socket` (Deprecated)
+### *netlink_firewall_socket* (Deprecated)
 
 <table>
 <tbody>
@@ -1290,7 +1290,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_tcpdiag_socket`
+### *netlink_tcpdiag_socket*
 
 <table>
 <tbody>
@@ -1317,7 +1317,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_nflog_socket`
+### *netlink_nflog_socket*
 
 <table>
 <tbody>
@@ -1336,7 +1336,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_selinux_socket`
+### *netlink_selinux_socket*
 
 <table>
 <tbody>
@@ -1355,7 +1355,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_audit_socket`
+### *netlink_audit_socket*
 
 <table>
 <tbody>
@@ -1394,7 +1394,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_ip6fw_socket` (Deprecated)
+### *netlink_ip6fw_socket* (Deprecated)
 
 <table>
 <tbody>
@@ -1421,7 +1421,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_dnrt_socket`
+### *netlink_dnrt_socket*
 
 <table>
 <tbody>
@@ -1440,7 +1440,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_kobject_uevent_socket`
+### *netlink_kobject_uevent_socket*
 
 <table>
 <tbody>
@@ -1459,7 +1459,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_iscsi_socket`
+### *netlink_iscsi_socket*
 
 <table>
 <tbody>
@@ -1478,7 +1478,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_fib_lookup_socket`
+### *netlink_fib_lookup_socket*
 
 <table>
 <tbody>
@@ -1497,7 +1497,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_connector_socket`
+### *netlink_connector_socket*
 
 <table>
 <tbody>
@@ -1516,7 +1516,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_netfilter_socket`
+### *netlink_netfilter_socket*
 
 <table>
 <tbody>
@@ -1535,7 +1535,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_generic_socket`
+### *netlink_generic_socket*
 
 <table>
 <tbody>
@@ -1554,7 +1554,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_scsitransport_socket`
+### *netlink_scsitransport_socket*
 
 <table>
 <tbody>
@@ -1573,7 +1573,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_rdma_socket`
+### *netlink_rdma_socket*
 
 <table>
 <tbody>
@@ -1592,7 +1592,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `netlink_crypto_socket`
+### *netlink_crypto_socket*
 
 <table>
 <tbody>
@@ -1614,7 +1614,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 
 ## Miscellaneous Network Object Classes
 
-### `peer`
+### *peer*
 
 <table>
 <tbody>
@@ -1633,7 +1633,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `packet`
+### *packet*
 
 <table>
 <tbody>
@@ -1668,7 +1668,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `appletalk_socket`
+### *appletalk_socket*
 
 <table>
 <tbody>
@@ -1687,7 +1687,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-### `dccp_socket`
+### *dccp_socket*
 
 <table>
 <tbody>
@@ -1720,7 +1720,7 @@ Netlink sockets communicate between userspace and the kernel – also see
 These socket classes that were introduced by the
 *extended_socket_class* policy capability in kernel version 4.16 ?.
 
-### `sctp_socket`
+### *sctp_socket*
 
 <table>
 <tbody>
@@ -1751,7 +1751,7 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-### `icmp_socket`
+### *icmp_socket*
 
 <table>
 <tbody>
@@ -1904,7 +1904,7 @@ These socket classes that were introduced by the
 
 ## BPF Object Class
 
-### `bpf`
+### *bpf*
 
 <table>
 <tbody>
@@ -1942,7 +1942,7 @@ These socket classes that were introduced by the
 
 ## Performance Event Object Class
 
-### `perf_event`
+### *perf_event*
 
 <table>
 <tbody>
@@ -1988,7 +1988,7 @@ Note: If the *lockdown* LSM is enabled alongside SELinux, then the
 lockdown access control will take precedence over the SELinux lockdown
 implementation.
 
-### `lockdown`
+### *lockdown*
 
 <table>
 <tbody>
@@ -2014,7 +2014,7 @@ implementation.
 
 ## IPC Object Classes
 
-### `ipc` (Deprecated)
+### *ipc* (Deprecated)
 
 <table>
 <tbody>
@@ -2033,7 +2033,7 @@ implementation.
 </tbody>
 </table>
 
-### `sem`
+### *sem*
 
 <table>
 <tbody>
@@ -2052,7 +2052,7 @@ implementation.
 </tbody>
 </table>
 
-### `msgq`
+### *msgq*
 
 <table>
 <tbody>
@@ -2075,7 +2075,7 @@ implementation.
 </tbody>
 </table>
 
-### `msg`
+### *msg*
 
 <table>
 <tbody>
@@ -2098,7 +2098,7 @@ implementation.
 </tbody>
 </table>
 
-### `shm`
+### *shm*
 
 <table>
 <tbody>
@@ -2124,7 +2124,7 @@ implementation.
 
 ## Process Object Class
 
-### `process`
+### *process*
 
 <table>
 <tbody>
@@ -2263,7 +2263,7 @@ implementation.
 </tbody>
 </table>
 
-### `process2`
+### *process2*
 
 <table>
 <tbody>
@@ -2289,7 +2289,7 @@ implementation.
 
 ## Security Object Class
 
-### `security`
+### *security*
 
 <table>
 <tbody>
@@ -2362,7 +2362,7 @@ implementation.
 Note that while this is defined as a kernel object class, the userspace
 ***systemd**(1)* has hitched a ride.
 
-### `system`
+### *system*
 
 <table>
 <tbody>
@@ -2445,7 +2445,7 @@ Note that while this is defined as a kernel object class, the userspace
 
 ## Miscellaneous Kernel Object Classes
 
-### `kernel_service`
+### *kernel_service*
 
 <table>
 <tbody>
@@ -2469,7 +2469,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `key`
+### *key*
 
 <table>
 <tbody>
@@ -2512,7 +2512,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `memprotect`
+### *memprotect*
 
 <table>
 <tbody>
@@ -2531,7 +2531,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `binder`
+### *binder*
 
 <table>
 <tbody>
@@ -2565,7 +2565,7 @@ Note that while this is defined as a kernel object class, the userspace
 
 ## Capability Object Classes
 
-### `capability`
+### *capability*
 
 <table>
 <tbody>
@@ -2584,7 +2584,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `capability2`
+### *capability2*
 
 <table>
 <tbody>
@@ -2603,7 +2603,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `cap_userns`
+### *cap_userns*
 
 <table>
 <tbody>
@@ -2622,7 +2622,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `cap2_userns`
+### *cap2_userns*
 
 <table>
 <tbody>
@@ -2644,7 +2644,7 @@ Note that while this is defined as a kernel object class, the userspace
 
 ## InfiniBand Object Classes
 
-### `infiniband_pkey`
+### *infiniband_pkey*
 
 <table>
 <tbody>
@@ -2663,7 +2663,7 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-### `infiniband_endport`
+### *infiniband_endport*
 
 <table>
 <tbody>
@@ -2690,7 +2690,7 @@ Note that while this is defined as a kernel object class, the userspace
 
 These are userspace objects managed by XSELinux.
 
-### `x_drawable`
+### *x_drawable*
 
 <table>
 <tbody>
@@ -2782,7 +2782,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_screen`
+### *x_screen*
 
 <table>
 <tbody>
@@ -2829,7 +2829,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_gc`
+### *x_gc*
 
 <table>
 <tbody>
@@ -2864,7 +2864,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_font`
+### *x_font*
 
 <table>
 <tbody>
@@ -2903,7 +2903,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_colormap`
+### *x_colormap*
 
 <table>
 <tbody>
@@ -2958,7 +2958,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_property`
+### *x_property*
 
 <table>
 <tbody>
@@ -3001,7 +3001,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_selection`
+### *x_selection*
 
 <table>
 <tbody>
@@ -3032,7 +3032,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_cursor`
+### *x_cursor*
 
 <table>
 <tbody>
@@ -3075,7 +3075,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_client`
+### *x_client*
 
 <table>
 <tbody>
@@ -3106,7 +3106,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_device`
+### *x_device*
 
 <table>
 <tbody>
@@ -3125,7 +3125,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_server`
+### *x_server*
 
 <table>
 <tbody>
@@ -3164,7 +3164,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_extension`
+### *x_extension*
 
 <table>
 <tbody>
@@ -3187,7 +3187,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_resource`
+### *x_resource*
 
 <table>
 <tbody>
@@ -3210,7 +3210,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_event`
+### *x_event*
 
 <table>
 <tbody>
@@ -3233,7 +3233,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_synthetic_event`
+### *x_synthetic_event*
 
 <table>
 <tbody>
@@ -3256,7 +3256,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_application_data`
+### *x_application_data*
 
 <table>
 <tbody>
@@ -3283,7 +3283,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_pointer`
+### *x_pointer*
 
 <table>
 <tbody>
@@ -3302,7 +3302,7 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-### `x_keyboard`
+### *x_keyboard*
 
 <table>
 <tbody>
@@ -3329,7 +3329,7 @@ with their SE-PostgreSQL database extension. The
 "[**Security-Enhanced PostgreSQL Security Wiki**](http://wiki.postgresql.org/wiki/SEPostgreSQL_Development)"
 explains the objects, their permissions and how they should be used in detail.
 
-### `db_database`
+### *db_database*
 
 <table>
 <tbody>
@@ -3360,7 +3360,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_table`
+### *db_table*
 
 <table>
 <tbody>
@@ -3399,7 +3399,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_schema`
+### *db_schema*
 
 <table>
 <tbody>
@@ -3430,7 +3430,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_procedure`
+### *db_procedure*
 
 <table>
 <tbody>
@@ -3461,7 +3461,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_column`
+### *db_column*
 
 <table>
 <tbody>
@@ -3492,7 +3492,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_tuple`
+### *db_tuple*
 
 <table>
 <tbody>
@@ -3536,7 +3536,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_blob`
+### *db_blob*
 
 <table>
 <tbody>
@@ -3571,7 +3571,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_view`
+### *db_view*
 
 <table>
 <tbody>
@@ -3594,7 +3594,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_sequence`
+### *db_sequence*
 
 <table>
 <tbody>
@@ -3625,7 +3625,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `db_language`
+### *db_language*
 
 <table>
 <tbody>
@@ -3655,7 +3655,7 @@ explains the objects, their permissions and how they should be used in detail.
 
 ## Miscellaneous Userspace Object Classes
 
-### `passwd`
+### *passwd*
 
 <table>
 <tbody>
@@ -3690,7 +3690,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `nscd`
+### *nscd*
 
 <table>
 <tbody>
@@ -3753,7 +3753,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `dbus`
+### *dbus*
 
 <table>
 <tbody>
@@ -3776,7 +3776,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `context`
+### *context*
 
 <table>
 <tbody>
@@ -3799,7 +3799,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `service`
+### *service*
 
 <table>
 <tbody>
@@ -3846,7 +3846,7 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-### `proxy`
+### *proxy*
 
 <table>
 <tbody>

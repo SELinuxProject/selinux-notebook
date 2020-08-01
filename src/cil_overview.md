@@ -11,15 +11,15 @@ A PDF version is included in this documentation:
 The CIL compiler source can be found at:
 <https://github.com/SELinuxProject/selinux.git> within the *secilc* and
 *libsepol* sections and can be cloned via:
--    `git clone https://github.com/SELinuxProject/selinux.git`
+-    *git clone https://github.com/SELinuxProject/selinux.git*
 
 While the CIL design web pages give the main objectives of CIL, from a
 language perspective it will:
 
 1.  Apply name and usage consistency to the current kernel language
-    statements. For example the kernel language uses `attribute` and
-    `attribute_role` to declare identifiers, whereas CIL uses
-    `typeattribute` and `roleattribute`. Also statements to associate
+    statements. For example the kernel language uses *attribute* and
+    *attribute_role* to declare identifiers, whereas CIL uses
+    *typeattribute* and *roleattribute*. Also statements to associate
     types or roles have been made consistent and enhanced to allow
     expressions to be defined.
 
@@ -27,28 +27,28 @@ language perspective it will:
 
 |    Kernel        |      CIL           |
 | ---------------- | ------------------ |
-| `attribute`      | `typeattribute`    |
-| `typeattribute`  | `typeattributeset` |
-| `attribute_role` | `roleattribute`    |
-| `roleattribute`  | `roleattributeset` |
-| `allow`          | `allow`            |
-| `allow` (role)   | `roleallow`        |
-| `dominance`      | `sensitivityorder` |
+| *attribute*      | *typeattribute*    |
+| *typeattribute*  | *typeattributeset* |
+| *attribute_role* | *roleattribute*    |
+| *roleattribute*  | *roleattributeset* |
+| *allow*          | *allow*            |
+| *allow* (role)   | *roleallow*        |
+| *dominance*      | *sensitivityorder* |
 
 
 2.  Additional CIL statements have been defined to enhance
     functionality:
 
--   `classpermission` - Declare a `classpermissionset` identifier.
+-   *classpermission* - Declare a *classpermissionset* identifier.
 
--   `classpermissionset` - Associate class / permissions also supporting
+-   *classpermissionset* - Associate class / permissions also supporting
 expressions.
 
--   `classmap` / `classmapping` - Statements to support declaration and
-association of multiple `classpermissionset`'s. Useful when defining an
-`allow` rule with multiple class/permissions.
+-   *classmap* / *classmapping* - Statements to support declaration and
+association of multiple *classpermissionset*'s. Useful when defining an
+*allow* rule with multiple class/permissions.
 
--   `context` - Statement to declare security context.
+-   *context* - Statement to declare security context.
 
 3.  Allow named and anonymous definitions to be supported.
 4.  Support namespace features allowing policy modules to be defined
@@ -137,14 +137,14 @@ Usage: build-sepolicy [-k] [-M] [-c|-p|-s] -d flask_directory -o output_file
 ```
 There is another CIL policy in the notebook examples called
 "cil-policy" that takes a slightly different approach where the goal
-is to keep the policy as simple as possible. It requires `semodule`,
+is to keep the policy as simple as possible. It requires *semodule*,
 Linux 5.7, SELinux 3.1 and can be installed by executing
-`make install`. It leverages some modern SELinux features, most
+*make install*. It leverages some modern SELinux features, most
 notably where the requirement for ordered security classes is lifted.
 With this you are no longer expected to be aware of all the access
 vectors managed by Linux in order to align your security class
 declarations with the order in which they are declared in the kernel.
-A module store is created by `semodule` to give easy access to the
+A module store is created by *semodule* to give easy access to the
 source and that allows for full control over the policy.
 
 

@@ -11,14 +11,14 @@ using either IPv4 or IPv6 addresses.
 **Network ports** - These can be either udp, tcp, dccp or sctp port numbers.
 
 A security context is defined by these network labeling statements,
-therefore if the policy supports MCS / MLS, then an `mls_range` is
+therefore if the policy supports MCS / MLS, then an *mls_range* is
 required as described in the
 [**MLS Statements - MLS range Definition**](mls_statements.md#mls-range-definition)
 section. Note that there are no terminating semi-colons ';' on these statements.
 
 If any of the network objects do not have a specific security context
 assigned by the policy, then the value given in the policies initial SID
-is used (`netif`, `node` or `port` respectively), as shown below:
+is used (*netif*, *node* or *port* respectively), as shown below:
 
 ```
 # Network Initial SIDs from the MLS Reference Policy:
@@ -83,11 +83,11 @@ Or
 ```
 
 
-## `netifcon`
+## *netifcon*
 
-The `netifcon` statement is used to label network interface objects (e.g.
+The *netifcon* statement is used to label network interface objects (e.g.
 eth0) for peer labeling (see the
-[**`netif` object class**](object_classes_permissions.md#network-object-classes)).
+[***netif* object class**](object_classes_permissions.md#network-object-classes)).
 
 It is also possible to use the ***semanage**(8)* interface command to associate
 the interface to a security context.
@@ -179,11 +179,11 @@ system_u:object_r:netif_t:s0
 ```
 
 
-## `nodecon`
+## *nodecon*
 
-The `nodecon` statement is used to label network address objects for peer
+The *nodecon* statement is used to label network address objects for peer
 labeling (see the
-[**`node` object class**](object_classes_permissions.md#network-object-classes)
+[***node* object class**](object_classes_permissions.md#network-object-classes)
 that represent IPv4 or IPv6 IP addresses and network masks.
 
 It is also possible to add SELinux these outside the policy using the
@@ -281,9 +281,9 @@ nodecon ipv4 127.0.0.2 255.255.255.255 system_u:object_r:node_t:s0
 ```
 
 
-## `portcon`
+## *portcon*
 
-The `portcon` statement is used to label udp, tcp, dccp or sctp ports.
+The *portcon* statement is used to label udp, tcp, dccp or sctp ports.
 
 It is also possible to add a security context to ports outside the
 policy using the ***semanage**(8)* 'port' command that will associate the port

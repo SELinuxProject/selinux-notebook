@@ -10,8 +10,8 @@ make a basic validator and tell ***libsemanage*** to run it before
 allowing any policy updates.
 
 The sample validator uses ***sesearch**(1)* to search for a rule
-between `user_t` and `shadow_t`. The purpose of this validator is
-to never allow a policy update that allows `user_t` to access `shadow_t`.
+between *user_t* and *shadow_t*. The purpose of this validator is
+to never allow a policy update that allows *user_t* to access *shadow_t*.
 
 To use the script below requires the **setools-console** package to be
 installed.

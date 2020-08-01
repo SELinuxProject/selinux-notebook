@@ -61,11 +61,11 @@ The basic idea behind LSM is to:
 /proc/<self|pid>/task/<tid>/attr/<attr>
 ```
 
-Where `<pid>` is the process id, `<tid>` is the thread id, and `<attr>` is the
+Where *<pid>* is the process id, *<tid>* is the thread id, and *<attr>* is the
 entry described in **Table 2: /proc Filesystem attribute files**.
 
 -   Support filesystems that use extended attributes (SELinux uses
-    `security.selinux` as explained in the
+    *security.selinux* as explained in the
     [**Labeling Extended Attribute Filesystems**](objects.md#labeling-extended-attribute-filesystems)
     section).
 -   Later kernels (ver ?) allow 'module stacking' where the LSM modules
@@ -98,12 +98,12 @@ managed by 3<sup>rd</sup> party modules (see
 
 | ***/proc/self/attr/*** **Permissions** |  **File Name**|     **Function**                              |
 | ------------ | ------------ | ------------------------------------------------------------------------ |
-| `current`    | `-rw-rw-rw-` | Contains the current process security context.                           |
-| `exec`       | `-rw-rw-rw-` | Used to set the security context for the next exec call.                 |
-| `fscreate`   | `-rw-rw-rw-` | Used to set the security context of a newly created file.                |
-| `keycreate`  | `-rw-rw-rw-` | Used to set the security context for keys that are cached in the kernel. |
-| `prev`       | `-r--r--r--` | Contains the previous process security context.                          |
-| `sockcreate` | `-rw-rw-rw-` | Used to set the security context of a newly created socket.              |
+| *current*    | *-rw-rw-rw-* | Contains the current process security context.                           |
+| *exec*       | *-rw-rw-rw-* | Used to set the security context for the next exec call.                 |
+| *fscreate*   | *-rw-rw-rw-* | Used to set the security context of a newly created file.                |
+| *keycreate*  | *-rw-rw-rw-* | Used to set the security context for keys that are cached in the kernel. |
+| *prev*       | *-r--r--r--* | Contains the previous process security context.                          |
+| *sockcreate* | *-rw-rw-rw-* | Used to set the security context of a newly created socket.              |
 
 **Table 2: /proc Filesystem attribute files** - *These files are used by
 the kernel services and libselinux (for userspace) to manage setting and
@@ -282,83 +282,83 @@ This section walks through the the ***fork**(2)* system call shown in
 kernel hooks that link to the SELinux services. The way the SELinux hooks are
 initialised into the LSM *security_ops* function table are also described.
 
-Using , the major steps to check whether the `unconfined_t` process has
+Using , the major steps to check whether the *unconfined_t* process has
 permission to use the fork permission are:
 
 1.  The *kernel/fork.c* has a hook that links it to the LSM function
-    `security_task_create()` that is called to check access
+    *security_task_create()* that is called to check access
     permissions.
 2.  Because the SELinux module has been initialised as the security
-    module, the `security_ops` table has been set to point to the
-    SELinux `selinux_task_create()` function in *hooks.c*.
-3.  The `selinux_task_create()` function check whether the task has
-    permission via the `current_has_perm(current, PROCESS__FORK)`
+    module, the *security_ops* table has been set to point to the
+    SELinux *selinux_task_create()* function in *hooks.c*.
+3.  The *selinux_task_create()* function check whether the task has
+    permission via the *current_has_perm(current, PROCESS__FORK)*
     function.
-4.  This will result in a call to the AVC via the `avc_has_perm()`
+4.  This will result in a call to the AVC via the *avc_has_perm()*
     function in *avc.c* that checks whether the permission has been
-    granted or not. First (via `avc_has_perm_noaudit()`) the cache is
+    granted or not. First (via *avc_has_perm_noaudit()*) the cache is
     checked for an entry. Assuming that there is no entry in the AVC,
-    then the `security_compute_av()` function in *services.c* is
+    then the *security_compute_av()* function in *services.c* is
     called.
-5.  The `security_compute_av()` function will search the SID table for
+5.  The *security_compute_av()* function will search the SID table for
     source and target entries, and if found will then call the
-    `context_struct_compute_av()` function.
+    *context_struct_compute_av()* function.
 
-The `context_struct_compute_av()` function carries out many checks to
+The *context_struct_compute_av()* function carries out many checks to
 validate whether access is allowed. The steps are (assuming the access
 is valid):
 -   Initialise the AV structure so that it is clear.
 -   Check the object class and permissions are correct. It also checks
-    the status of the `allow_unknown` flag (see the
+    the status of the *allow_unknown* flag (see the
     [**SELinux Filesystem**](#selinux-filesystem),
     [*/etc/selinux/semanage.conf*](global_config_files.md#etcselinuxsemanage.conf)
     and
     [Reference Policy Build Options](reference_policy.md#the-reference-policy)
-    *build.conf* and `UNK_PERMS` sections.
+    *build.conf* and *UNK_PERMS* sections.
 -   Checks if there are any type enforcement rules (AVTAB_ALLOWED,
     AVTAB_AUDITALLOW, AVTAB_AUDITDENY, AVTAB_XPERMS).
 -   Check whether any conditional statements are involved via the
-    `cond_compute_av()` function in *conditional.c*.
--   Remove permissions that are defined in any `constraint` rule via the
-    `constraint_expr_eval()` function call (in *services.c*). This
+    *cond_compute_av()* function in *conditional.c*.
+-   Remove permissions that are defined in any *constraint* rule via the
+    *constraint_expr_eval()* function call (in *services.c*). This
     function will also check any MLS constraints.
--   `context_struct_compute_av()` checks if a process transition is
-    being requested (it is not). If it were, then the `transition` and
-    `dyntransition` permissions are checked and whether the role is
+-   *context_struct_compute_av()* checks if a process transition is
+    being requested (it is not). If it were, then the *transition* and
+    *dyntransition* permissions are checked and whether the role is
     changing.
 -   Finally check whether there are any constraints applied via the
-    `typebounds` rule.
+    *typebounds* rule.
 7.  Once the result has been computed it is returned to the
-    *kernel/fork.c* system call via the initial `selinux_task_create()`
+    *kernel/fork.c* system call via the initial *selinux_task_create()*
     function. In this case the ***fork**(2)* call is allowed.
 8.  **The End.**
 
 ![](./images/10-fork.png)
 
 **Figure 10: Hooks for the** ***fork**(2)* **system call** *This describes the steps
-required to check access permissions for Object Class `process` and
-permission `fork`.*
+required to check access permissions for Object Class *process* and
+permission *fork*.*
 
 
 ### Process Transition Walk-thorough
 
 This section walks through the ***execve**(2)* and checking whether a
-process transition to the `ext_gateway_t` domain is allowed, and if so
+process transition to the *ext_gateway_t* domain is allowed, and if so
 obtain a new SID for the context
-`unconfined_u:message_filter_r:ext_gateway_t` as shown in
+*unconfined_u:message_filter_r:ext_gateway_t* as shown in
 [**Figure 7: Domain Transition**](domain_object_transitions.md#domain-transition).
 
 The process starts with the Linux operating system issuing a
-`do_execve` (that passes over the file name to be run and its
+*do_execve* (that passes over the file name to be run and its
 environment + arguments) call from the CPU specific architecture code to execute
 a new program (for example, from *arch/ia64/kernel/process.c*). The
-`do_execve()` function is located in the *fs/exec.c* source code module
+*do_execve()* function is located in the *fs/exec.c* source code module
 and does the loading and final exec as described below.
 
-`do_execve()` has a number of calls to `security_bprm_*` functions
+*do_execve()* has a number of calls to *security_bprm_** functions
 that are a part of the LSM (see *include/linux*/*security.h*), and are
 hooked by SELinux during the initialisation process (in
-*security/selinux*/*hooks.c*). briefly describes these `security_bprm`
+*security/selinux*/*hooks.c*). briefly describes these *security_bprm*
 functions that are hooks for validating program loading and execution
 (although see *security.h* for greater detail).
 
@@ -398,24 +398,24 @@ functions that are hooks for validating program loading and execution
 
 ***Table 5: The LSM / SELinux Program Loading Hooks***
 
-Therefore starting at the `do_execve()` function and using, the
+Therefore starting at the *do_execve()* function and using, the
 following major steps will be carried out to check whether the
-`unconfined_t` process has permission to transition the
-*secure_server* executable to the `ext_gateway_t` domain:
+*unconfined_t* process has permission to transition the
+*secure_server* executable to the *ext_gateway_t* domain:
 
-1.  The executable file is opened, a call issued to the `sched_exec()`
-    function and the `bprm` structure is initialised with the file
+1.  The executable file is opened, a call issued to the *sched_exec()*
+    function and the *bprm* structure is initialised with the file
     parameters (name, environment and arguments).
-2.  Via the `prepare_binprm()` function call the UID and GIDs are
-    checked and a call issued to `security_bprm_set_creds()` that
+2.  Via the *prepare_binprm()* function call the UID and GIDs are
+    checked and a call issued to *security_bprm_set_creds()* that
     will carry out the following:
-3.  Call `cap_bprm_set_creds` function in *commoncap.c*, that will
+3.  Call *cap_bprm_set_creds* function in *commoncap.c*, that will
     set up credentials based on any configured capabilities.
 
-If ***setexeccon**(3)* has been called prior to the `exec`, then that
-context will be used otherwise call `security_transition_sid()`
+If ***setexeccon**(3)* has been called prior to the *exec*, then that
+context will be used otherwise call *security_transition_sid()*
 function in *services.c*. This function will then call
-`security_compute_sid()` to check whether a new SID needs to be
+*security_compute_sid()* to check whether a new SID needs to be
 computed. This function will (assuming there are no errors):
 
 -  Search the SID table for the source and target SIDs.
@@ -423,41 +423,41 @@ computed. This function will (assuming there are no errors):
 -  Set the source role and type.
 -  Checks that a `type_transition rule exists in the AV table and /
     or the conditional AV table (see **Figure 12: The Main LSM / SELinux Modules**).
--  If a `type_transition`, then also check for a `role_transition`
+-  If a *type_transition*, then also check for a *role_transition*
     (there is a role change in the *ext_gateway.conf* policy module),
     set the role.
--  Check if any MLS attributes by calling `mls_compute_sid()` in
+-  Check if any MLS attributes by calling *mls_compute_sid()* in
     *mls.c*. It also checks whether MLS is enabled or not, if so sets
     up MLS contexts.
 -  Check whether the contexts are valid by calling
-    `compute_sid_handle_invalid_context()` that will also log an
+    *compute_sid_handle_invalid_context()* that will also log an
     audit message if the context is invalid.
 -  Finally obtains a SID for the new context by calling
-    `sidtab_context_to_sid()` in *sidtab.c* that will search the
+    *sidtab_context_to_sid()* in *sidtab.c* that will search the
     SID table (see **Figure 12: The Main LSM / SELinux Modules**)
     and insert a new entry if okay or log a kernel event if invalid.
-4.  The `selinux_bprm_set_creds()` function will continue by checking
-    via the `avc_has_perm()` functions (in *avc.c*) whether the *file*
-    class `file_execute_no_trans` is set (in this case it is not),
-    therefore the `process` class `transition` and `file` class
-    `entrypoint` permissions are checked (in this case they are
+4.  The *selinux_bprm_set_creds()* function will continue by checking
+    via the *avc_has_perm()* functions (in *avc.c*) whether the *file*
+    class *file_execute_no_trans* is set (in this case it is not),
+    therefore the *process* class *transition* and *file* class
+    *entrypoint* permissions are checked (in this case they are
     allowed), therefore the new SID is set, and after checking various
-    other permissions, control is passed back to the `do_execve`
+    other permissions, control is passed back to the *do_execve*
     function.
-5.  The `exec_binprm` function will ultimately commit the credentials
-    calling the SELinux `selinux_bprm_committing_creds` and
-    `selinux_bprm_committed_creds`.
+5.  The *exec_binprm* function will ultimately commit the credentials
+    calling the SELinux *selinux_bprm_committing_creds* and
+    *selinux_bprm_committed_creds*.
 6.  Various strings are copied (args etc.) and a check is made to see if
     the exec succeeded or not (in this case it did), therefore the
-    `security_bprm_free()` function is ultimately called to free the
-    `bprm` security structure.
+    *security_bprm_free()* function is ultimately called to free the
+    *bprm* security structure.
 7.  **The End.**
 
 ![](./images/11-transition.png)
 
 **Figure 11: Process Transition** - *This shows the major steps required to
-check if a transition is allowed from the `unconfined_t` domain to the
-`ext_gateway_t` domain.*
+check if a transition is allowed from the *unconfined_t* domain to the
+*ext_gateway_t* domain.*
 
 
 ![](./images/12-lsm-selinux-arch.png)

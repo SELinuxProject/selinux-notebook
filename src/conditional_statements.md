@@ -1,7 +1,7 @@
 # Conditional Policy Statements
 
 Conditional policies consist of a bool statement that defines a
-condition as `true` or `false`, with a supporting `if` / `else` construct that
+condition as *true* or *false*, with a supporting *if* / *else* construct that
 specifies what rules are valid under the condition as shown in the
 example below:
 
@@ -17,9 +17,9 @@ if (allow_daemons_use_tty) {
 
 [**Table 3** in the 'Kernel Policy Language'](kernel_policy_language.md#kernel-policy-language)
 section shows what policy statements or rules are valid within the
-`if` / `else` construct under the "Conditional Statements" column.
+*if* / *else* construct under the "Conditional Statements" column.
 
-The `bool` statement default value can be changed when a policy is active
+The *bool* statement default value can be changed when a policy is active
 by using the ***setsebool**(3)* command as follows:
 
 ```
@@ -41,7 +41,7 @@ setsebool allow_daemons_use_tty false
 setsebool -P allow_daemons_use_tty false
 ```
 
-The ***getsebool**(3)* command can be used to query the current `bool` statement
+The ***getsebool**(3)* command can be used to query the current *bool* statement
 value as follows:
 
 ```
@@ -59,9 +59,9 @@ getsebool allow_daemons_use_tty
 
 ## bool
 
-The `bool` statement is used to specify a boolean identifier and its
-initial state (`true` or `false`) that can then be used with the
-`if` statement to form a 'conditional policy' as described in the
+The *bool* statement is used to specify a boolean identifier and its
+initial state (*true* or *false*) that can then be used with the
+*if* statement to form a 'conditional policy' as described in the
 [Types of SELinux Policy](types_of_policy.md#conditional-policy) section.
 
 **The statement definition is:**
@@ -139,14 +139,14 @@ bool allow_execstack true;
 
 The if statement is used to form a 'conditional block' of statements and
 rules that are enforced depending on whether one or more boolean
-identifiers evaluate to `TRUE` or `FALSE`. An `if` / `else`
+identifiers evaluate to *TRUE* or *FALSE*. An *if* / *else*
 construct is also supported.
 
-The only statements and rules allowed within the `if` / `else` construct
+The only statements and rules allowed within the *if* / *else* construct
 are:
 
-`allow`, `auditallow`, `auditdeny`, `dontaudit`, `type_member`, `type_transition`
-(except `file_name_transition`), `type_change` and `require`.
+*allow*, *auditallow*, *auditdeny*, *dontaudit*, *type_member*, *type_transition*
+(except *file_name_transition*), *type_change* and *require*.
 
 **The statement definition is:**
 

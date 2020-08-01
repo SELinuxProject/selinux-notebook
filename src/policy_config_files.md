@@ -39,8 +39,8 @@ The ***seusers**(5)* file is used by login programs (normally via the
 *user* / *passwd* files) to SELinux users (defined in the policy). A
 typical login sequence would be:
 
--   Using the GNU / Linux `user_id`, lookup the `seuser_id` from this
-    file. If an entry cannot be found, then use the `__default__`
+-   Using the GNU / Linux *user_id*, lookup the *seuser_id* from this
+    file. If an entry cannot be found, then use the *__default__*
     entry.
 -   To determine the remaining context to be used as the security
     context, read the
@@ -53,8 +53,8 @@ typical login sequence would be:
     [*./contexts/failsafe_context*](#contextsfailsafe_context) file
     to allow a fail safe context to be set.
 
-Note: The `system_u` user is defined in this file, however there must be
-**no** `system_u` Linux user configured on the system.
+Note: The *system_u* user is defined in this file, however there must be
+**no** *system_u* Linux user configured on the system.
 
 The format of the *seusers* file is the same as the files described in the
 [*active/seusers*](policy_store_config_files.md#activeseusers)
@@ -146,8 +146,8 @@ policy_bool_name new_name
 
 **Where:**
 
--   `policy_bool_name` - The policy boolean name.
--   `new_name` - The new boolean name.
+-   *policy_bool_name* - The policy boolean name.
+-   *new_name* - The new boolean name.
 
 **Example:**
 
@@ -445,15 +445,15 @@ these functions.
 
 An example use in this Notebook (to get over a small feature) is that
 when the initial **basic policy** was built, no default_contexts file
-entries were required as only one `role:type` of `unconfined_r:unconfined_t`
+entries were required as only one *role:type* of *unconfined_r:unconfined_t*
 had been defined, therefore the login process did not need to decide
-anything (as the only user context was `unconfined_u:unconfined_r:unconfined_t`).
+anything (as the only user context was *unconfined_u:unconfined_r:unconfined_t*).
 
 However when adding the **loadable module** that used another type
-(`ext_gateway_t`) but with the same role and user (e.g.
-`unconfined_u:unconfined_r:ext_gateway_t`), then it was found that the
+(*ext_gateway_t*) but with the same role and user (e.g.
+*unconfined_u:unconfined_r:ext_gateway_t*), then it was found that the
 login process would always set the logged in user context to
-`unconfined_u:unconfined_r:ext_gateway_t` (i.e. the login application
+*unconfined_u:unconfined_r:ext_gateway_t* (i.e. the login application
 now had a choice and chose the wrong one, probably because the types
 are sorted and 'e' comes before 'u').
 
@@ -466,7 +466,7 @@ unconfined_r:unconfined_t unconfined_r:unconfined_t
 ```
 
 The login process could now set the context correctly to
-`unconfined_r:unconfined_t`. Note that adding the same entry to the
+*unconfined_r:unconfined_t*. Note that adding the same entry to the
 *contexts/users/unconfined_u* configuration file instead could also have
 achieved this.
 

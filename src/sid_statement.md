@@ -1,15 +1,15 @@
 # Security ID (SID) Statement
 
-There are two `sid` statements, the first one declares the actual `sid`
+There are two *sid* statements, the first one declares the actual *sid*
 identifier and is defined at the start of a policy source file. The
 second statement is used to associate an initial security context to the
-`sid`, this is used when SELinux initialises but the policy has not yet
+*sid*, this is used when SELinux initialises but the policy has not yet
 been activated or as a default context should an object have an invalid
 label.
 
-## `sid`
+## *sid*
 
-The `sid` statement declares the actual SID identifier and is defined at
+The *sid* statement declares the actual SID identifier and is defined at
 the start of a policy source file.
 
 **The statement definition is:**
@@ -74,9 +74,9 @@ sid fs
 ```
 
 
-## `sid context`
+## *sid context*
 
-The `sid context` statement is used to associate an initial security
+The *sid context* statement is used to associate an initial security
 context to the SID.
 
 **The statement definition is:**

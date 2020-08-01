@@ -143,7 +143,7 @@ the *SELINUXTYPE* entry of the *build.conf* as shown in
 **Table 2:** *build.conf* **Entries**), for example the Fedora policies support:
 
 -   minimum - MCS policy that supports a minimal set of confined daemons
-    within their own domains. The remainder run in the `unconfined_t` space.
+    within their own domains. The remainder run in the *unconfined_t* space.
 -   targeted - MCS policy that supports a greater number of confined daemons
     and can also confine other areas and users.
 -   mls - MLS policy for server based systems.
@@ -162,10 +162,10 @@ using three principle types of source file:
     module. These files are named *&lt;module_name&gt;.te*.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example the *ada.te* file shown below has two statements:
--   one to state that the `ada_t` process has permission to write to
+-   one to state that the *ada_t* process has permission to write to
     the stack and memory allocated to a file.
 -   one that states that if the *unconfined_domain* module is loaded, then
-    allow the `ada_t` domain unconfined access. Note that if the
+    allow the *ada_t* domain unconfined access. Note that if the
     flow of this statement is followed it will be seen that many
     more interfaces and macros are called to build the final raw
     SELinux language statements. An expanded module source isshown in the
@@ -176,12 +176,12 @@ using three principle types of source file:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example the *ada.if* file shown below
 has two interfaces defined for other modules to call:
--   `ada_domtrans` - that allows another module (running in domain `$1`) to
-    run the ada application in the `ada_t` domain.
--   `ada_run` - that allows another module to run the ada application in
-    the `ada_t` domain (via the `ada_domtrans` interface), then
-    associate the `ada_t` domain to the caller defined role (`$2`) and
-    terminal (`$3`).
+-   *ada_domtrans* - that allows another module (running in domain *$1*) to
+    run the ada application in the *ada_t* domain.
+-   *ada_run* - that allows another module to run the ada application in
+    the *ada_t* domain (via the *ada_domtrans* interface), then
+    associate the *ada_t* domain to the caller defined role (*$2*) and
+    terminal (*$3*).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Provided of course that the caller domain has permission.
 
@@ -205,7 +205,7 @@ has two interfaces defined for other modules to call:
     file that will be used to label the filesystem.
 
 For example the *ada.fc* file shown below requires that the specified
-files are labeled `system_u:object_r:ada_exec_t:s0`.
+files are labeled *system_u:object_r:ada_exec_t:s0*.
 
 The &lt;module_name&gt; must be unique within the reference policy
 source tree and should reflect the specific Linux service being
@@ -263,7 +263,7 @@ optional_policy(`				# Macro in loadable_module.spt
 ##	</summary>
 ## </param>
 #
-interface(`ada_domtrans',`			# Defining an interface
+interface(*ada_domtrans',*			# Defining an interface
 	gen_require(`				# Macro in loadable_module.spt
 		type ada_t, ada_exec_t;
 	')
@@ -288,7 +288,7 @@ interface(`ada_domtrans',`			# Defining an interface
 ##	</summary>
 ## </param>
 #
-interface(`ada_run',`
+interface(*ada_run',*
 	gen_require(`
 		attribute_role ada_roles;
 	')
@@ -556,7 +556,7 @@ there are a number of *m4* macro parameters that are set up when this file is
 read by the build process makefiles. These macro definitions are shown
 in and are also used within the module source files to control how the
 policy is built with examples shown in the
-[**`ifdef`**](#ifdef-ifndef-parameters) section.
+[***ifdef***](#ifdef-ifndef-parameters) section.
 
 <table>
 <tbody>
@@ -776,7 +776,7 @@ Generally it is up to the policy distributor to decide which modules are
 in the base and those that are loadable, however there are some modules
 that MUST be in the base module. To highlight this there is a special
 entry at the start of the modules interface file (.if) that has the
-entry `<required val="true">` as shown below (taken from the
+entry *<required val="true">* as shown below (taken from the
 *kernel.if* file):
 
 ```
@@ -805,7 +805,7 @@ process and the *modules.conf* file updated).
 kernel = base
 ```
 
-Those marked as `Required in base` are shown in
+Those marked as *Required in base* are shown in
 **Table 4: Mandatory modules.conf Entries** (note that Fedora and the standard
 reference policy are different)
 
@@ -1584,7 +1584,7 @@ QUIET = n
     *active/modules/400/&lt;module_name&gt;*, there will also be CIL
     versions of the modules.
 6.  Install the *permissivedomains.cil* module as follows:
--   `semodule -s targeted-FEDORA -i permissivedomains.cil`
+-   *semodule -s targeted-FEDORA -i permissivedomains.cil*
 7.  The policy should now be built and can be checked using tools such
     as ***apol**(8)* or loaded by editing the */etc/selinux/config*
     file (setting to **permissive** mode for safety), running
@@ -1870,14 +1870,14 @@ policy_module (ftp, 1.7.0)
 The loadable policy module support macros are located in the
 *loadable_module.spt* file.
 
-#### `policy_module` Macro
+#### *policy_module* Macro
 
-This macro will add the [**`module`**](modular_policy_statements.md#module)
+This macro will add the [***module***](modular_policy_statements.md#module)
 to a loadable module, and automatically add a
-[**`require`**](modular_policy_statements.md#require) with pre-defined
-information for all loadable modules such as the `system_r` role, kernel
+[***require***](modular_policy_statements.md#require) with pre-defined
+information for all loadable modules such as the *system_r* role, kernel
 classes and permissions, and optionally MCS / MLS information
-(`sensitivity` and `category` statements).
+(*sensitivity* and *category* statements).
 
 ****The macro definition is:****
 
@@ -1951,14 +1951,14 @@ require {
 ```
 
 
-#### `gen_require` Macro
+#### *gen_require* Macro
 
-For use within module files to insert a `require` block.
+For use within module files to insert a *require* block.
 
 **The macro definition is:**
 
 ```
-gen_require(`require_statements`)
+gen_require(*require_statements*)
 ```
 
 **Where:**
@@ -2014,9 +2014,9 @@ require {
 ```
 
 
-#### `optional_policy` Macro
+#### *optional_policy* Macro
 
-For use within module files to insert an `optional` block that will be
+For use within module files to insert an *optional* block that will be
 expanded by the build process only if the modules containing the access
 or template interface calls that follow are present. If one module is
 present and the other is not, then the optional statements are not
@@ -2025,7 +2025,7 @@ included.
 **The macro definition is:**
 
 ```
-optional_policy(`optional_statements`)
+optional_policy(*optional_statements*)
 ```
 
 **Where:**
@@ -2181,10 +2181,10 @@ optional {
 ```
 
 
-#### `gen_tunable` Macro
+#### *gen_tunable* Macro
 
 This macro defines booleans that are global in scope. The corresponding
-[**`tunable_policy`**](#tunable_policy-macro) macro
+[***tunable_policy***](#tunable_policy-macro) macro
 contains the supporting statements allowed or not depending on the value
 of the boolean. These entries are extracted as a part of the build
 process (by the *make conf* target) and added to the *global_tunables*
@@ -2260,16 +2260,16 @@ gen_tunable(allow_ftpd_use_nfs, false)
 bool allow_ftpd_use_nfs false;
 ```
 
-#### `tunable_policy` Macro
+#### *tunable_policy* Macro
 
 This macro contains the statements allowed or not depending on the value
 of the boolean defined by the
-[**`gen_tunable`**](#gen_tunable-macro) macro.
+[***gen_tunable***](#gen_tunable-macro) macro.
 
 **The macro definition is:**
 
 ```
-tunable_policy(`gen_tunable_id',`tunable_policy_rules`)
+tunable_policy(*gen_tunable_id',*tunable_policy_rules`)
 ```
 
 **Where:**
@@ -2315,7 +2315,7 @@ tunable_policy(`gen_tunable_id',`tunable_policy_rules`)
 # showing the use of the boolean with the && operator.
 #
 
-tunable_policy(`allow_ftpd_use_nfs && allow_ftpd_anon_write',`
+tunable_policy(*allow_ftpd_use_nfs && allow_ftpd_anon_write',*
 	fs_manage_nfs_files(ftpd_t)
 ')
 ```
@@ -2337,9 +2337,9 @@ if (allow_ftpd_use_nfs && allow_ftpd_anon_write) {
 ```
 
 
-#### `interface` Macro
+#### *interface* Macro
 
-Access `interface` macros are defined in the interface module file (*.if*)
+Access *interface* macros are defined in the interface module file (*.if*)
 and form the interface through which other modules can call on the
 modules services (as shown in and described in the
 [**Module Expansion Process**](#module-expansion-process) section.
@@ -2347,7 +2347,7 @@ modules services (as shown in and described in the
 **The macro definition is:**
 
 ```
-interface(`name`,`interface_rules`)
+interface(*name*,*interface_rules*)
 ```
 
 **Where:**
@@ -2407,7 +2407,7 @@ used to describe the function and are extracted for the
 ##	</summary>
 ## </param>
 #
-interface(`ftp_read_config',`
+interface(*ftp_read_config',*
 	gen_require(`
 		type ftpd_etc_t;
 	')
@@ -2457,7 +2457,7 @@ optional {
 ```
 
 
-#### `template` Macro
+#### *template* Macro
 
 A template interface is used to help create a domain and set up the
 appropriate rules and statements to run an application / process. The
@@ -2480,7 +2480,7 @@ used to describe the function and are extracted for the
 
 **The macro definition is:**
 
-template(`name`,`template_rules`)
+template(*name*,*template_rules*)
 
 **Where:**
 
@@ -2535,7 +2535,7 @@ template(`name`,`template_rules`)
 ##	</summary>
 ## </param>
 #
-template(`djbdns_daemontools_domain_template',`
+template(*djbdns_daemontools_domain_template',*
 	gen_require(`
 		attribute djbdns_domain;
 	')
@@ -2614,7 +2614,7 @@ template(`djbdns_daemontools_domain_template',`
 
 These macros are in the *misc_macros.spt* file.
 
-#### `gen_context` Macro
+#### *gen_context* Macro
 
 This macro is used to generate a valid security context and can be used
 in any of the module files. Its most general use is in the *.fc* file
@@ -2680,11 +2680,11 @@ gen_context(context[,mls | mcs])
 ```
 
 
-#### `gen_user` Macro
+#### *gen_user* Macro
 
-This macro is used to generate a valid [**`user`**](user_statements.md#user)
+This macro is used to generate a valid [***user***](user_statements.md#user)
 Statement and add an entry in the
-[**`users_extra`**](policy_store_config_files.md#activeusers_extra)
+[***users_extra***](policy_store_config_files.md#activeusers_extra)
 configuration file if it exists.
 
 **The macro definition is:**
@@ -2751,10 +2751,10 @@ gen_user(username, prefix, role_set, mls_defaultlevel, mls_range, [mcs_categorie
 # This example has been taken from the policy/policy/users file:
 #
 
-ifdef(`direct_sysadm_daemon',`
-	gen_user(root, sysadm, sysadm_r staff_r ifdef(`enable_mls',`secadm_r auditadm_r') system_r, s0, s0 - mls_systemhigh, mcs_allcats)
+ifdef(*direct_sysadm_daemon',*
+	gen_user(root, sysadm, sysadm_r staff_r ifdef(*enable_mls',*secadm_r auditadm_r') system_r, s0, s0 - mls_systemhigh, mcs_allcats)
 ',`
-	gen_user(root, sysadm, sysadm_r staff_r ifdef(`enable_mls',`secadm_r auditadm_r'), s0, s0 - mls_systemhigh, mcs_allcats)
+	gen_user(root, sysadm, sysadm_r staff_r ifdef(*enable_mls',*secadm_r auditadm_r'), s0, s0 - mls_systemhigh, mcs_allcats)
 ')
 ```
 
@@ -2778,15 +2778,15 @@ user root prefix sysadm;
 ```
 
 
-#### `gen_bool` Macro
+#### *gen_bool* Macro
 
 This macro defines a boolean and requires the following steps:
 
-1.  Declare the [**`boolean`**](conditional_statements.md#bool) in the
+1.  Declare the [***boolean***](conditional_statements.md#bool) in the
     [***global_booleans***](#booleans-global-booleans-and-tunable-booleans)
     file.
 2.  Use the boolean in a module fileswith an
-    [**`if / else`**](conditional_statements.md#if) Statement as shown in the example.
+    [***if / else***](conditional_statements.md#if) Statement as shown in the example.
 
 Note that the comments shown in the example MUST be present as they are
 used to describe the function and are extracted for the
@@ -2817,7 +2817,7 @@ gen_bool(name,default_value)
 </tbody>
 </table>
 
-The macro is only valid in the *global_booleans* file but the `boolean`
+The macro is only valid in the *global_booleans* file but the *boolean*
 declared can be used in the following module types:
 
 <table style="text-align:center">
@@ -2917,13 +2917,13 @@ if( ! secure_mode_insmod ) {
 
 These macros are in the *mls_mcs_macros.spt* file.
 
-#### `gen_cats` Macro
+#### *gen_cats* Macro
 
 This macro will generate a
-[**`category`**](mls_statements.md#category) statement for each category
+[***category***](mls_statements.md#category) statement for each category
 defined. These are then used in the *base.conf* / *policy.conf* source
 file and also inserted into each module by the
-[**`policy_module`**](#policy_module-macro). The *policy/policy/mcs*
+[***policy_module***](#policy_module-macro). The *policy/policy/mcs*
 and *mls* configuration files are the only files that contain this macro
 in the current reference policy.
 
@@ -2987,16 +2987,16 @@ category c1023;
 ```
 
 
-#### `gen_sens` Macro
+#### *gen_sens* Macro
 
 This macro will generate a
-[**`sensitivity`**](mls_statements.md#sensitivity) for each sensitivity
+[***sensitivity***](mls_statements.md#sensitivity) for each sensitivity
 defined. These are then used in the *base.conf* / *policy.conf* source
 file and also inserted into each module by the
-[**`policy_module`**](#policy_module-macro). The *policy/policy/mcs*
+[***policy_module***](#policy_module-macro). The *policy/policy/mcs*
 and *mls* configuration files are the only files that contain this macro
 in the current reference policy (note that the *mcs* file has
-`gen_sens(1)` as only one sensitivity is required).
+*gen_sens(1)* as only one sensitivity is required).
 
 **The macro definition is:**
 
@@ -3057,7 +3057,7 @@ sensitivity s15;
 ```
 
 
-#### `gen_levels` Macro
+#### *gen_levels* Macro
 
 This macro will generate a [*level*](mls_statements.md#level) for each level
 defined. These are then used in the *base.conf* / *policy.conf* source file.
@@ -3184,13 +3184,13 @@ c0.c1023
 ```
 
 
-### `ifdef` / `ifndef` Parameters
+### *ifdef* / *ifndef* Parameters
 
-This section contains examples of the common `ifdef` / `ifndef`
+This section contains examples of the common *ifdef* / *ifndef*
 parameters that can be used in module source files.
 
 
-#### `hide_broken_symptoms`
+#### *hide_broken_symptoms*
 
 This is used within modules as shown in the example. The parameter is
 set up by the *Makefile* at the start of the build process.
@@ -3201,7 +3201,7 @@ set up by the *Makefile* at the start of the build process.
 # This example is from the modules/kernel/domain.te module.
 #
 
-ifdef(`hide_broken_symptoms',`
+ifdef(*hide_broken_symptoms',*
 	# This check is in the general socket
 	# listen code, before protocol-specific
 	# listen function is called, so bad calls
@@ -3211,7 +3211,7 @@ ifdef(`hide_broken_symptoms',`
 ```
 
 
-#### `enable_mls` and `enable_mcs`
+#### *enable_mls* and *enable_mcs*
 
 These are used within modules as shown in the example. The parameters
 are set up by the *Makefile* with information taken from the
@@ -3223,7 +3223,7 @@ are set up by the *Makefile* with information taken from the
 # This example is from the modules/kernel/kernel.te module.
 #
 
-ifdef(`enable_mls',`
+ifdef(*enable_mls',*
 	role secadm_r;
 	role auditadm_r;
 ')
@@ -3233,13 +3233,13 @@ ifdef(`enable_mls',`
 # This example is from the modules/services/ftp.te module.
 #
 
-ifdef(`enable_mcs',`
+ifdef(*enable_mcs',*
 	init_ranged_daemon_domain(ftpd_t, ftpd_exec_t, s0 - mcs_systemhigh)
 ')
 ```
 
 
-#### `enable_ubac`
+#### *enable_ubac*
 
 This is used within the *./policy/constraints* configuration file to set
 up various attributes to support user based access control (UBAC). These
@@ -3257,8 +3257,8 @@ ubac = n*).
 # Note that the ubac_constrained_type attribute is defined in
 # modules/kernel/ubac.te module.
 
-define(`basic_ubac_conditions',`
-	ifdef(`enable_ubac',`
+define(*basic_ubac_conditions',*
+	ifdef(*enable_ubac',*
 		u1 == u2
 		or u1 == system_u
 		or u2 == system_u
@@ -3269,7 +3269,7 @@ define(`basic_ubac_conditions',`
 ```
 
 
-#### `direct_sysadm_daemon`
+#### *direct_sysadm_daemon*
 
 This is used within modules as shown in the example. The parameter is
 set up by the *Makefile* with information taken from the *build.conf*
@@ -3281,8 +3281,8 @@ Example Macros:
 # This example is from the modules/system/selinuxutil.te module.
 #
 
-ifndef(`direct_sysadm_daemon',`
-	ifdef(`distro_gentoo',`
+ifndef(*direct_sysadm_daemon',*
+	ifdef(*distro_gentoo',*
 		# Gentoo integrated run_init:
 		init_script_file_entry_type(run_init_t)
 

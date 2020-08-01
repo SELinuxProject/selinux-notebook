@@ -1,21 +1,21 @@
 # Bounds Rules
 
 Bounds handling was added in version 24 of the policy and consisted of
-adding `userbounds`, `rolebounds` and `typebounds` information to the
-policy. However only the `typebounds` rule is currently implemented by
+adding *userbounds*, *rolebounds* and *typebounds* information to the
+policy. However only the *typebounds* rule is currently implemented by
 ***checkpolicy**(8)* and ***checkmodule**(8)* with kernel support from
 2.6.28.
 
-The CIL language does support `userbounds` and `rolebounds` but these are
+The CIL language does support *userbounds* and *rolebounds* but these are
 resolved at policy compile time, not via the kernel at run-time (i.e. they are
 NOT enforced by the SELinux kernel services). The
 [**CIL Reference Guide**](notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 gives details.
 
 
-## `typebounds`
+## *typebounds*
 
-The `typebounds` rule was added in version 24 of the policy. This
+The *typebounds* rule was added in version 24 of the policy. This
 defines a hierarchical relationship between domains where the bounded
 domain cannot have more permissions than its bounding domain (the
 parent). It requires kernel 2.6.28 and above to control the security

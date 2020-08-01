@@ -56,7 +56,7 @@
 -   [Implementing SELinux-aware Applications](implementing_seaware_apps.md#implementing-selinux-aware-applications)
 -   [SE for Android](seandroid.md#security-enhancements-for-android)
 -   [Appendix A - Object Classes and Permissions](object_classes_permissions.md#appendix-a---object-classes-and-permissions)
--   [Appendix B - `libselinux` API Summary](libselinux_functions.md#appendix-b---libselinux-api-summary)
+-   [Appendix B - *libselinux* API Summary](libselinux_functions.md#appendix-b---libselinux-api-summary)
 -   [Appendix C - SELinux Commands](selinux_cmds.md#appendix-c---selinux-commands)
 -   [Appendix D - Debugging Policy - Hints and Tips](debug_policy_hints.md#appendix-d---debugging-policy---hints-and-tips)
 -   [Appendix E - Policy Validation Example](policy_validation_example.md#appendix-e---policy-validation-example)
