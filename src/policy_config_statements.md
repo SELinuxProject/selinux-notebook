@@ -10,7 +10,9 @@ continue to use the original functionality.
 
 **The statement definition is:**
 
-`policycap capability;`
+```
+policycap capability;
+```
 
 **Where:**
 

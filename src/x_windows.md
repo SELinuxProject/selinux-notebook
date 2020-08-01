@@ -121,7 +121,9 @@ following command will enable the boolean, however it will be necessary
 to reload X-Windows to initialise the extension (i.e. run the **init 3**
 and then **init 5** commands):
 
-`setsebool -P xserver_object_manager true`
+```
+setsebool -P xserver_object_manager true
+```
 
 If the boolean is set to *false*, the x-server log will indicate
 that "SELinux: Disabled by boolean". Important note - If the boolean is

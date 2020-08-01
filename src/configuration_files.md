@@ -157,7 +157,9 @@ format. This is achieved via a *pp* to CIL high level language
 conversion utility located at */usr/libexec/selinux/hll/pp*. This
 utility can be used manually as follows:
 
-	`cat module_name.pp | /usr/libexec/selinux/hll/pp > module_name.cil`
+```
+cat module_name.pp | /usr/libexec/selinux/hll/pp > module_name.cil
+```
 
 There is no man page for '*pp*', however the help text is as follows:
 

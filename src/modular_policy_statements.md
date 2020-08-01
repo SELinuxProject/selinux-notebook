@@ -15,7 +15,9 @@ modules within the policy.
 
 **The statement definition is:**
 
-`module module_name version_number;`
+```
+module module_name version_number;
+```
 
 **Where:**
 
@@ -88,7 +90,9 @@ The require statement is used for two reasons:
 
 **The statement definition is:**
 
-`require { rule_list }`
+```
+require { rule_list }
+```
 
 **Where:**
 
@@ -174,7 +178,9 @@ a [**`require`**](#require) statement at the start of the list.
 
 **The statement definition is:**
 
-`optional { rule_list } [ else { rule_list } ]`
+```
+optional { rule_list } [ else { rule_list } ]
+```
 
 **Where:**
 

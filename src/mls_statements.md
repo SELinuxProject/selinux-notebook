@@ -3,7 +3,9 @@
 The optional MLS policy extension adds an additional security context
 component that consists of the following highlighted entries:
 
-`user:role:type:sensitivity[:category,...]- sensitivity [:category,...]`
+```
+user:role:type:sensitivity[:category,...]- sensitivity [:category,...]
+```
 
 These consist of a mandatory hierarchical
 [**sensitivity**](#sensitivity) and optional
@@ -76,7 +78,9 @@ discussed at the start of the [**MLS section**](#mls-statements).
 
 **The definition is:**
 
-`low_level [ - high_level ]`
+```
+low_level [ - high_level ]
+```
 
 **Where:**
 
@@ -106,7 +110,9 @@ and optional alias identifiers.
 
 **The statement definition is:**
 
-`sensitivity sens_id [alias sensitivityalias_id ...];`
+```
+sensitivity sens_id [alias sensitivityalias_id ...];
+```
 
 **Where:**
 
@@ -185,7 +191,9 @@ required to define the actual hierarchy between all sensitivities.
 
 **The statement definition is:**
 
-`dominance { sensitivity_id ... }`
+```
+dominance { sensitivity_id ... }
+```
 
 **Where:**
 
@@ -246,7 +254,9 @@ identifiers and optional alias identifiers.
 
 **The statement definition is:**
 
-`category category_id [alias categoryalias_id ...];`
+```
+category category_id [alias categoryalias_id ...];
+```
 
 **Where:**
 
@@ -327,7 +337,9 @@ Note there must only be one `level` statement for each
 
 **The statement definition is:**
 
-`level sensitivity_id [ :category_id ];`
+```
+level sensitivity_id [ :category_id ];
+```
 
 **Where:**
 
@@ -400,11 +412,15 @@ enhanced in Policy version 21 to accept other object classes.
 
 **The statement definition is (for pre-policy version 21):**
 
-`range_transition source_type target_type new_range;`
+```
+range_transition source_type target_type new_range;
+```
 
 **or (for policy version 21 and greater):**
 
-`range_transition source_type target_type : class new_range;`
+```
+range_transition source_type target_type : class new_range;
+```
 
 **Where:**
 

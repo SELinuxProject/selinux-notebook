@@ -3,7 +3,9 @@
 Each file discussed in this section is relative to the policy name as
 follows:
 
-`/etc/selinux/<SELINUXTYPE>`
+```
+/etc/selinux/<SELINUXTYPE>
+```
 
 All files under this area form the 'running policy' once the
 [*/etc/selinux/config*](global_config_files.md#etcselinuxconfig) files
@@ -97,7 +99,9 @@ Both files have the same format and contain one or more boolean names.
 
 **The format is:**
 
-`boolean_name value`
+```
+boolean_name value
+```
 
 **Where:**
 
@@ -136,7 +140,9 @@ the translated name.
 
 Each line within the substitution file *booleans.subs_dist* is:
 
-`policy_bool_name new_name`
+```
+policy_bool_name new_name
+```
 
 **Where:**
 
@@ -181,7 +187,9 @@ The daemon will not load unless a valid MCS or MLS policy is active.
 
 The translations can be disabled by adding the following line to the file:
 
-`disable = 1`
+```
+disable = 1
+```
 
 This file will also support the display of information in colour. The
 configuration file that controls this is called *secolor.conf* and is
@@ -340,7 +348,9 @@ list unless the -F flag is used (see the man pages).
 
 **The file format is as follows:**
 
-`type`
+```
+type
+```
 
 **Where:**
 
@@ -388,7 +398,9 @@ login applications) where:
 
 **The file format is as follows:**
 
-`role:type[:range] role:type[:range] ...`
+```
+role:type[:range] role:type[:range] ...
+```
 
 **Where:**
 
@@ -449,7 +461,9 @@ The end result was that as soon as enforcing mode was set, the system
 got bitter and twisted. To resolve this the *default_contexts* file
 entries were set to:
 
-`unconfined_r:unconfined_t unconfined_r:unconfined_t`
+```
+unconfined_r:unconfined_t unconfined_r:unconfined_t
+```
 
 The login process could now set the context correctly to
 `unconfined_r:unconfined_t`. Note that adding the same entry to the
@@ -491,7 +505,9 @@ The **default_type**(5) file allows SELinux-aware applications such as
 
 **The file format is as follows:**
 
-`role:type`
+```
+role:type
+```
 
 **Where:**
 
@@ -529,7 +545,9 @@ to allow an administrator access to the system.
 
 **The file format is as follows:**
 
-`role:type[:range]`
+```
+role:type[:range]
+```
 
 **Where:**
 
@@ -570,7 +588,9 @@ used by other SELinux-aware applications for the same purpose.
 
 **The file format is as follows:**
 
-`user:role:type[:range]`
+```
+user:role:type[:range]
+```
 
 **Where:**
 
@@ -689,7 +709,9 @@ matching of network packets - Never been used.
 
 **Example file contents:**
 
-`privsep_preauth=sshd_net_t`
+```
+privsep_preauth=sshd_net_t
+```
 
 **Supporting libselinux API functions are:**
 
@@ -705,7 +727,9 @@ should be used for removable devices that are not defined in the
 
 **The file format is as follows:**
 
-`user:role:type[:range]`
+```
+user:role:type[:range]
+```
 
 **Where:**
 
@@ -736,7 +760,9 @@ database objects and is descibed in ***selabel_db**(5)*.
 
 **The file format is as follows:**
 
-`object_type object_name context`
+```
+object_type object_name context
+```
 
 **Where:**
 
@@ -778,7 +804,9 @@ db_schema         *.*       system_u:object_r:sepgsql_schema_t:s0
 
 **Example file contents:**
 
-`snapperd_data = system_u:object_r:snapperd_data_t:s0`
+```
+snapperd_data = system_u:object_r:snapperd_data_t:s0
+```
 
 **Supporting libselinux API functions are:**
 
@@ -793,7 +821,9 @@ to find the type to use with tty devices when changing roles or levels.
 
 **The file format is as follows:**
 
-`type`
+```
+type
+```
 
 **Where:**
 
@@ -825,7 +855,9 @@ This file contains security contexts to be used by tasks run via ***systemd**(8)
 
 **The file format is as follows:**
 
-`service_class = security_context`
+```
+service_class = security_context
+```
 
 **Where:**
 
@@ -861,7 +893,9 @@ system-config-* applications when running from root.
 
 **The file format is as follows:**
 
-`security_context`
+```
+security_context
+```
 
 **Where:**
 
@@ -1058,7 +1092,9 @@ Then (for example), when ***selabel_lookup**(3)* is passed a path
 */myweb/index.html* the functions will substitute the */myweb* component
 with */var/www*, with the final result being:
 
-`/var/www/index.html`
+```
+/var/www/index.html
+```
 
 **Supporting libselinux API functions are:**
 
@@ -1078,7 +1114,9 @@ is used instead.
 
 **The file format is as follows:**
 
-`media_id file_context`
+```
+media_id file_context
+```
 
 **Where:**
 
@@ -1165,7 +1203,9 @@ used to retrieve default information.
 
 **The file format is as follows:**
 
-`service_name:seuser_id:level`
+```
+service_name:seuser_id:level
+```
 
 **Where:**
 

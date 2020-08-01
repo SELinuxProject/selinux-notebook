@@ -20,7 +20,9 @@ section.
 
 **The common format for Access Vector Rules are:**
 
-`rule_name source_type target_type : class perm_set;`
+```
+rule_name source_type target_type : class perm_set;
+```
 
 **Where:**
 

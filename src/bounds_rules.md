@@ -23,7 +23,9 @@ context associated to threads in multi-threaded applications.
 
 **The statement definition is:**
 
-`typebounds bounding_domain bounded_domain;`
+```
+typebounds bounding_domain bounded_domain;
+```
 
 **Where:**
 

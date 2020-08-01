@@ -61,7 +61,9 @@ It is possible to add constraints on users, roles, types and MLS ranges,
 for example within a TE environment, the way that subjects are allowed
 to access an object is via a TE [**`allow`**](avc_rules.md#allow), for example:
 
-`allow unconfined_t ext_gateway_t : process transition;`
+```
+allow unconfined_t ext_gateway_t : process transition;
+```
 
 This states that a process running in the `unconfined_t` domain has
 permission to transition a process to the `ext_gateway_t` domain.
@@ -71,7 +73,9 @@ domain is the same as the role of the target domain. To achieve this a
 constraint can be imposed using a
 [**`constrain`**](constraint_statements.md#constrain) statement:
 
-`constrain process transition ( r1 == r2 );`
+```
+constrain process transition ( r1 == r2 );
+```
 
 This states that a process transition can only occur if the source role
 is the same as the target role, therefore a constraint is a condition

@@ -20,14 +20,18 @@ two ways a process can define a domain transition:
     themselves SELinux-aware. This is the most common method and would
     be in the form of the following statement:
 
-`type_transition unconfined_t secure_services_exec_t : process ext_gateway_t;`
+```
+type_transition unconfined_t secure_services_exec_t : process ext_gateway_t;
+```
 
 1.  SELinux-aware applications can specify the domain of the new process
     using the **libselinux** API call ***setexeccon**(3)*. To achieve
     this the SELinux-aware application must also have the setexec
     permission, for example:
 
-`allow crond_t self:process setexec;`
+```
+allow crond_t self:process setexec;
+```
 
 However, before any domain transition can take place the policy must
 specify that:
@@ -63,18 +67,24 @@ bullet numbers correspond to the numbers shown in **Figure 7: Domain Transition*
 1.  The *domain* needs permission to *transition* into the
     `ext_gateway_t` (target) domain:
 
-`allow unconfined_t ext_gateway_t : process transition;`
+```
+allow unconfined_t ext_gateway_t : process transition;
+```
 
 2.  The executable file needs to be *executable* in the `unconfined_t`
     (source) domain, and therefore also requires that the file is
     readable:
 
-`allow unconfined_t secure_services_exec_t : file { execute read getattr };`
+```
+allow unconfined_t secure_services_exec_t : file { execute read getattr };
+```
 
 3.  The executable file needs an *entry point* into the
     `ext_gateway_t` (target) domain:
 
-`allow ext_gateway_t secure_services_exec_t : file entrypoint;`
+```
+allow ext_gateway_t secure_services_exec_t : file entrypoint;
+```
 
 These are shown in **Figure 7: Domain Transition** where `unconfined_t` forks
 a child process, that then exec's the new program into a new domain
@@ -96,11 +106,15 @@ intention was to have both of these transition to their respective
 domains via `type_transition` statements. The `ext_gateway_t` statement
 would be:
 
-`type_transition unconfined_t secure_services_exec_t : process ext_gateway_t;`
+```
+type_transition unconfined_t secure_services_exec_t : process ext_gateway_t;
+```
 
 and the `int_gateway_t` statement would be:
 
-`type_transition unconfined_t secure_services_exec_t : process int_gateway_t;`
+```
+type_transition unconfined_t secure_services_exec_t : process int_gateway_t;
+```
 
 However, when linking these two loadable modules into the policy, the
 following error was given:
@@ -215,7 +229,9 @@ that of its parent. For example a file is being created that requires a
 different label to that of its parent directory. This can be achieved
 automatically using a `type_transition` statement as follows:
 
-`type_transition ext_gateway_t in_queue_t:file in_file_t;`
+```
+type_transition ext_gateway_t in_queue_t:file in_file_t;
+```
 
 The following details an object transition used in n example
 *ext_gateway.conf* loadable module where by default, files would be labeled
@@ -251,16 +267,22 @@ rules, where:
 1.  The source domain needs permission to *add file entries into the
     directory*:
 
-`allow ext_gateway_t in_queue_t : dir { write search add_name };`
+```
+allow ext_gateway_t in_queue_t : dir { write search add_name };
+```
 
 2.  The source domain needs permission to *create file entries*:
 
-`allow ext_gateway_t in_file_t : file { write create getattr };`
+```
+allow ext_gateway_t in_file_t : file { write create getattr };
+```
 
 3.  The policy can then ensure (via the SELinux kernel services) that
     files created in the `in_queue` are relabeled:
 
-`type_transition ext_gateway_t in_queue_t : file in_file_t;`
+```
+type_transition ext_gateway_t in_queue_t : file in_file_t;
+```
 
 An example output from a directory listing shows the resulting file
 labels:

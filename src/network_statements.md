@@ -33,14 +33,18 @@ sid port system_u:object_r:port_t:s0
 IPv4 addresses are represented in dotted-decimal notation (four
 numbers, each ranging from 0 to 255, separated by dots as shown:
 
-`192.77.188.166`
+```
+192.77.188.166
+```
 
 ### IPv6 Address Formats
 
 IPv6 addresses are written as eight groups of four hexadecimal digits,
 where each group is separated by a colon ':' as follows:
 
-`2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+```
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+```
 
 To shorten the writing and presentation of addresses, the following
 rules apply:
@@ -48,25 +52,35 @@ rules apply:
 1.  Any leading zeros in a group may be replaced with a single '0' as
     shown:
 
-`2001:db8:85a3:0:0:8a2e:370:7334`
+```
+2001:db8:85a3:0:0:8a2e:370:7334
+```
 
 2.  Any leading zeros in a group may be omitted and be replaced with two
     colons '::', however this is only allowed once in an address as
     follows:
 
-`2001:db8:85a3::8a2e:370:7334`
+```
+2001:db8:85a3::8a2e:370:7334
+```
 
 3.  The *localhost* (loopback) address can be written as:
 
-`0000:0000:0000:0000:0000:0000:0000:0001`
+```
+0000:0000:0000:0000:0000:0000:0000:0001
+```
 
 Or
 
-`::1`
+```
+::1
+```
 
 4.  An undetermined IPv6 address i.e. all bits are zero is written as:
 
-`::`
+```
+::
+```
 
 
 ## `netifcon`
@@ -80,7 +94,9 @@ the interface to a security context.
 
 **The statement definition is:**
 
-`netifcon netif_id netif_context packet_context`
+```
+netifcon netif_id netif_context packet_context
+```
 
 **Where:**
 
@@ -145,7 +161,9 @@ netifcon lo system_u:object_r:lo_netif_t:s0 - s15:c0.c255 system_u:object_r:unla
 
 ***semanage**(8)* **Command example:**
 
-`semanage interface -a -t netif_t eth2`
+```
+semanage interface -a -t netif_t eth2
+```
 
 This command will produce the following file in the default
 &lt;SELINUXTYPE&gt; policy store and then activate the policy:
@@ -174,7 +192,9 @@ context.
 
 **The statement definition is:**
 
-`nodecon subnet netmask node_context`
+```
+nodecon subnet netmask node_context
+```
 
 **Where:**
 
@@ -244,7 +264,9 @@ nodecon ff00:: ff00:: system_u:object_r:multicast_node_t:s0 - s15:c0.c255
 
 ***semanage**(8)* **Command example:**
 
-`semanage node -a -t node_t -p ipv4 -M 255.255.255.255 127.0.0.2`
+```
+semanage node -a -t node_t -p ipv4 -M 255.255.255.255 127.0.0.2
+```
 
 This command will produce the following file in the default
 &lt;SELINUXTYPE&gt; policy store and then activate the policy:
@@ -269,7 +291,9 @@ policy using the ***semanage**(8)* 'port' command that will associate the port
 
 **The statement definition is:**
 
-`portcon protocol port_number port_context`
+```
+portcon protocol port_number port_context
+```
 
 **Where:**
 
@@ -335,7 +359,9 @@ portcon udp 1-599 system_u:object_r:reserved_port_t:s0
 
 ***semanage**(8)* **Command example:**
 
-`semanage port -a -t reserved_port_t -p udp 1234`
+```
+semanage port -a -t reserved_port_t -p udp 1234
+```
 
 This command will produce the following file in the default
 &lt;SELINUXTYPE&gt; policy store and then activate the policy:

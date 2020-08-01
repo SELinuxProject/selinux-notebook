@@ -50,7 +50,9 @@ args = $@
 
 Next try rebuilding the policy with no changes:
 
-`semodule -B`
+```
+semodule -B
+```
 
 It should succeed, therefore build a module that would violate this rule:
 
@@ -86,7 +88,9 @@ semodule: Failed!
 
 Now run ***sesearch*** to ensure that there is no matching rule:
 
-`sesearch --allow -s user_t -t shadow_t -c file`
+```
+sesearch --allow -s user_t -t shadow_t -c file
+```
 
 Note that there are also a **\[verify module\]** and **\[verify linked\]**
 options as described in the

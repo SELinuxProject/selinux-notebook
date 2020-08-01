@@ -14,7 +14,9 @@ Linux user id is mapped to the SELinux user id by configuration files),
 their role, a type identifier and an optional MCS / MLS security range or
 level as follows:
 
-`user:role:type[:range]`
+```
+user:role:type[:range]
+```
 
 **Where:**
 

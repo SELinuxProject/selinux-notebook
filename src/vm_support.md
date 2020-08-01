@@ -20,7 +20,9 @@ to configure VMs, then an overview of the Xen implementation follows.
 
 To ensure all dependencies are installed run:
 
-`dnf install libvirt qemu virt-manager`
+```
+dnf install libvirt qemu virt-manager
+```
 
 ## KVM / QEMU Support
 
@@ -205,7 +207,9 @@ To overcome this error, the following boolean needs to be enabled with
 ***setsebool**(8)* to allow access to shared memory (the *-P* option
 will set the boolean across reboots):
 
-`setsebool -P virt_use_execmem on`
+```
+setsebool -P virt_use_execmem on
+```
 
 Now that the image has been configured as shareable, the following
 initialisation process will take place:
@@ -274,7 +278,9 @@ enforcing mode (just so all errors are flagged during the build):
 1.  To set the required security context requires editing the
     *Static_VM1* configuration file using ***virsh**(1)* as follows:
 
-`virsh edit Static_VM1`
+```
+virsh edit Static_VM1
+```
 
 Then add the following at the end of the file:
 

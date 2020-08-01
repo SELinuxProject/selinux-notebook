@@ -20,7 +20,9 @@ Label i/o memory. This may be a single memory location or a range.
 
 **The statement definition is:**
 
-`iomemcon addr context`
+```
+iomemcon addr context
+```
 
 **Where:**
 
@@ -64,7 +66,9 @@ Label i/o ports. This may be a single port or a range.
 
 **The statement definition is:**
 
-`ioportcon port context`
+```
+ioportcon port context
+```
 
 **Where:**
 
@@ -108,7 +112,9 @@ Label a PCI device.
 
 **The statement definition is:**
 
-`pcidevicecon pci_id context`
+```
+pcidevicecon pci_id context
+```
 
 **Where:**
 
@@ -140,7 +146,9 @@ Conditional Policy Statements
 
 **Example:**
 
-`pcidevicecon 0xc800 system_u:object_r:nicP_t`
+```
+pcidevicecon 0xc800 system_u:object_r:nicP_t
+```
 
 ## *pirqcon*
 
@@ -148,7 +156,9 @@ Label an interrupt level.
 
 **The statement definition is:**
 
-`pirqcon irq context`
+```
+pirqcon irq context
+```
 
 **Where:**
 
@@ -180,7 +190,9 @@ Conditional Policy Statements
 
 **Example:**
 
-`pirqcon 33 system_u:object_r:nicP_t`
+```
+pirqcon 33 system_u:object_r:nicP_t
+```
 
 ## *devicetreecon*
 
@@ -188,7 +200,9 @@ Label device tree nodes.
 
 **The statement definition is:**
 
-`devicetreecon path context`
+```
+devicetreecon path context
+```
 
 **Where:**
 
@@ -221,7 +235,9 @@ Conditional Policy Statements
 
 **Example:**
 
-`devicetreecon "/this is/a/path" system_u:object_r:arm_path`
+```
+devicetreecon "/this is/a/path" system_u:object_r:arm_path
+```
 
 <!-- %CUTHERE% -->
 

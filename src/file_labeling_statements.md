@@ -25,7 +25,9 @@ section.
 
 **The statement definition is:**
 
-`fs_use_xattr fs_name fs_context;`
+```
+fs_use_xattr fs_name fs_context;
+```
 
 **Where:**
 
@@ -93,7 +95,9 @@ sockets.
 
 **The statement definition is:**
 
-`fs_use_task fs_name fs_context;`
+```
+fs_use_task fs_name fs_context;
+```
 
 **Where:**
 
@@ -164,7 +168,9 @@ filesystem type based on transition rules.
 
 **The statement definition is:**
 
-`fs_use_trans fs_name fs_context;`
+```
+fs_use_trans fs_name fs_context;
+```
 
 **Where:**
 
@@ -239,7 +245,9 @@ semi-colon on this statement.
 
 **The statement definition is:**
 
-`genfscon fs_name partial_path fs_context`
+```
+genfscon fs_name partial_path fs_context
+```
 
 **Where:**
 

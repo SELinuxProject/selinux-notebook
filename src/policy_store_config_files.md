@@ -91,7 +91,9 @@ the *tmp* directory (*/var/lib/selinux&lt;SELINUXTYPE&gt;/tmp*) will contain
 a copy of the failed policy for inspection. An example ***semodule*** failure
 message indicating the failing line number is:
 
-`Failed to resolve mlsconstrain statement at /var/lib/selinux/targeted/tmp/modules/400/test_mlsconstrain/cil:1`
+```
+Failed to resolve mlsconstrain statement at /var/lib/selinux/targeted/tmp/modules/400/test_mlsconstrain/cil:1
+```
 
 
 ## *active/commit_num*
@@ -126,7 +128,9 @@ the new value) if requested.
 
 **Example** ***semanage boolean*** **command to modify a boolean value:**
 
-`semanage boolean -m --on daemons_enable_cluster_mode`
+```
+semanage boolean -m --on daemons_enable_cluster_mode
+```
 
 **The resulting** *booleans.local* **file will be:**
 
@@ -235,7 +239,9 @@ files.*
 
 **The format of these files is:**
 
-`pathname_regexp [file_type] security_context | <<none>>`
+```
+pathname_regexp [file_type] security_context | <<none>>
+```
 
 **Where:**
 
@@ -352,7 +358,9 @@ The format of the *file_contexts.local* file is the same as the
 
 Example ***semanage fcontext*** command to add a new entry:
 
-`semanage fcontext -a -t unlabeled_t /usr/move_file`
+```
+semanage fcontext -a -t unlabeled_t /usr/move_file
+```
 
 The resulting *file_contexts.local* file will be:
 
@@ -452,7 +460,9 @@ The *seusers* file is built or modified when:
 
 **The format of the** *seusers* & *seusers.local* **files are as follows:**
 
-`[%]user_id:seuser_id[:range]`
+```
+[%]user_id:seuser_id[:range]
+```
 
 **Where:**
 
@@ -483,7 +493,9 @@ __default__:unconfined_u:s0-s0:c0.c1023
 
 now use ***semanage login*** command to add a Linux user:
 
-`semanage login -a -s user_u rch`
+```
+semanage login -a -s user_u rch
+```
 
 the resulting *seusers.local* file will be:
 
@@ -540,7 +552,9 @@ follows:
 
 **The format of the** *users_extra* & *users_extra.local* **files are:**
 
-`user seuser_id prefix prefix_id;`
+```
+user seuser_id prefix prefix_id;
+```
 
 **Where:**
 
@@ -577,7 +591,9 @@ user root prefix user;
 
 **Example** ***semanage user*** **command to add a new SELinux user:**
 
-`semanage user -a -R staff_r -P staff test_u`
+```
+semanage user -a -R staff_r -P staff test_u
+```
 
 the resulting *users_extra.local* file is as follows:
 
@@ -622,7 +638,9 @@ in the [**`netifcon`**](network_statements.md#netifcon) section.
 
 **Example** ***semanage interface*** **command:**
 
-`semanage interface -a -t netif_t -r s0:c20.c250 enp7s0`
+```
+semanage interface -a -t netif_t -r s0:c20.c250 enp7s0
+```
 
 **The resulting** *interfaces.local* **file will be:**
 
@@ -646,7 +664,9 @@ with examples in the policy language
 
 **Example** ***semanage node*** **command:**
 
-`semanage node -a -M 255.255.255.255 -t node_t -r s0:c20.c250 -p ipv4 127.0.0.2`
+```
+semanage node -a -M 255.255.255.255 -t node_t -r s0:c20.c250 -p ipv4 127.0.0.2
+```
 
 **The resulting** *nodes.local* **file will be:**
 
@@ -671,7 +691,9 @@ with examples in the policy language
 
 **Example** ***semanage port*** **command:**
 
-`semanage port -a -t port_t -p tcp -r s0:c20.c350 8888`
+```
+semanage port -a -t port_t -p tcp -r s0:c20.c350 8888
+```
 
 **The resulting** *ports.local* **file will be:**
 
@@ -690,12 +712,16 @@ module that sets the requested domain in permissive mode.
 
 **Example** ***semanage permissive*** **command to set permissive mode:**
 
-`semanage permissive -a tabrmd_t`
+```
+semanage permissive -a tabrmd_t
+```
 
 This will by default add a CIL policy module to
 *active/modules/400/permissive_tabrmd_t*, that if expanded will contain:
 
-`(typepermissive tabrmd_t)`
+```
+(typepermissive tabrmd_t)
+```
 
 Note that the CIL `typepermissive` statement is used, the equivalent kernel
 policy statement would be [**`permissive`**](type_statements.md#permissive).

@@ -12,7 +12,9 @@ Requires policy version 27.
 
 **The statement definition is:**
 
-`default_user class default;`
+```
+default_user class default;
+```
 
 **Where:**
 
@@ -86,7 +88,9 @@ Requires policy version 27.
 
 **The statement definition is:**
 
-`default_role class default;`
+```
+default_role class default;
+```
 
 **Where:**
 
@@ -160,7 +164,9 @@ Requires policy version 28.
 
 **The statement definition is:**
 
-`default_type class default;`
+```
+default_type class default;
+```
 
 **Where:**
 
@@ -240,7 +246,9 @@ greater of the low sensitivities and the lower of the high sensitivities.
 
 **The statement definition is:**
 
-`default_range class [default range] | [glblub];`
+```
+default_range class [default range] | [glblub];
+```
 
 **Where:**
 

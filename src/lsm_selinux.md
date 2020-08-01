@@ -53,9 +53,13 @@ The basic idea behind LSM is to:
     services by extending the */proc* filesystem with a security
     namespace as shown in . These are located at:
 
-	`/proc/<self|pid>/attr/<attr>`
+```
+/proc/<self|pid>/attr/<attr>
+```
 
-	`/proc/<self|pid>/task/<tid>/attr/<attr>`
+```
+/proc/<self|pid>/task/<tid>/attr/<attr>
+```
 
 Where `<pid>` is the process id, `<tid>` is the thread id, and `<attr>` is the
 entry described in **Table 2: /proc Filesystem attribute files**.
@@ -67,7 +71,9 @@ entry described in **Table 2: /proc Filesystem attribute files**.
 -   Later kernels (ver ?) allow 'module stacking' where the LSM modules
     can be called in a predifined order, for example:
 
-	`lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,bpf`
+```
+lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,bpf
+```
 
 It should be noted that the LSM does not provide any security services
 itself, only the hooks and structures for supporting 3<sup>rd</sup>

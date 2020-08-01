@@ -7,7 +7,9 @@ library and policy that will allow finer grained access control when
 using Apache with threads. The additional Apache module is called
 `mod_selinux.so` and has a supporting policy module called `mod_selinux.pp`.
 
-`dnf install mod_selinux`
+```
+dnf install mod_selinux
+```
 
 The `mod_selinux` policy module makes use of the `typebounds` statement that
 was introduced into version 24 of the policy (requires a minimum kernel of
