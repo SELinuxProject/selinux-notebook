@@ -12,7 +12,6 @@ therefore if the policy supports MCS / MLS, then an `mls_range` is
 required as described in the
 [**MLS range Definition**](mls_statements.md#mls-range-definition) section.
 
-<br>
 
 ## `fs_use_xattr`
 
@@ -85,7 +84,6 @@ fs_use_xattr ext2 system_u:object_r:fs_t:s0;
 fs_use_xattr ext3 system_u:object_r:fs_t:s0;
 ```
 
-<br>
 
 ## `fs_use_task`
 
@@ -156,7 +154,6 @@ fs_use_task pipefs system_u:object_r:fs_t:s0;
 fs_use_task sockfs system_u:object_r:fs_t:s0;
 ```
 
-<br>
 
 ## `fs_use_trans`
 
@@ -227,7 +224,6 @@ fs_use_trans tmpfs system_u:object_r:tmpfs_t:s0;
 fs_use_trans devpts system_u:object_r:devpts_t:s0;
 ```
 
-<br>
 
 ## `genfscon`
 
@@ -319,7 +315,6 @@ genfscon proc /fs/openafs system_u:object_r:proc_afs_t:s0
 genfscon proc /kmsg system_u:object_r:proc_kmsg_t:s15:c0.c255
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

@@ -15,7 +15,6 @@ the SELinux kernel source code). The major areas covered are:
 4.  The SELinux filesystem */sys/fs/selinux*.
 5.  The */proc* filesystem area most applicable to SELinux.
 
-<br>
 
 ## The LSM Module
 
@@ -90,7 +89,6 @@ inserted security hooks and structures to allow access control to be
 managed by 3<sup>rd</sup> party modules (see
 ./linux-3.14/include/linux/security.h).*
 
-<br>
 
 | ***/proc/self/attr/*** **Permissions** |  **File Name**|     **Function**                              |
 | ------------ | ------------ | ------------------------------------------------------------------------ |
@@ -145,7 +143,6 @@ hooks and structures.
 
 **Table 3:** *The core LSM source modules.*
 
-<br>
 
 ## The SELinux Module
 
@@ -271,7 +268,6 @@ to see how some of these kernel source modules fit together.
 **Table 4: The core SELinux source modules** - *The .h files and those in
 the include directory have a number of useful comments.*
 
-<br>
 
 ### Fork System Call Walk-thorough
 
@@ -337,7 +333,6 @@ is valid):
 required to check access permissions for Object Class `process` and
 permission `fork`.*
 
-<br>
 
 ### Process Transition Walk-thorough
 
@@ -458,7 +453,6 @@ computed. This function will (assuming there are no errors):
 check if a transition is allowed from the `unconfined_t` domain to the
 `ext_gateway_t` domain.*
 
-<br>
 
 ![](./images/12-lsm-selinux-arch.png)
 
@@ -466,7 +460,6 @@ check if a transition is allowed from the `unconfined_t` domain to the
 link to [**Figure 7**](domain_object_transitions.md#domain-transition)
 where the transition process is described.*
 
-<br>
 
 #### SELinux Filesystem
 
@@ -740,7 +733,6 @@ Notes:
     interfaces.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

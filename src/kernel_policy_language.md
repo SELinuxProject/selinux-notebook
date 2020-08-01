@@ -205,7 +205,6 @@ Where:
 **Table 3** shows a cross reference matrix of statements
 and rules allowed in each type of policy source file.
 
-<br>
 
 ## Conditional, Optional and Require Statement Rules
 
@@ -261,7 +260,6 @@ Where:
 **Table 3** shows a cross reference matrix of statements
 and rules allowed in each of the above policy statements.
 
-<br>
 
 ## MLS Statements and Optional MLS Components
 
@@ -272,7 +270,6 @@ context as an argument, (for example the
 [**Network Labeling Statements**](network_statements.md#network-labeling-statements)),
 therefore these statements show an example taken from the MLS **Reference Policy** build.
 
-<br>
 
 ## General Statement Information
 
@@ -483,7 +480,6 @@ same).
 
 **Table 2: Policy language reserved words**
 
-<br>
 
 **Table 3** shows what policy language statements and rules are allowed
 within each type of policy source file, and whether the statement is valid
@@ -952,7 +948,6 @@ policy source file. The right hand side of the table shows whether the
 statement is valid within the `if/else` construct, `optional {rule_list}`,
 or `require {rule_list}` statement.*
 
-<br>
 
 ## Section Contents
 
@@ -980,7 +975,6 @@ Note these are not kernel policy statements, but used by the Reference Policy
 to assist policy build:
 -   [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -992,7 +986,6 @@ to assist policy build:
 </ol>
 </section>
 
-<br>
 
 <!-- %CUTHERE% -->
 

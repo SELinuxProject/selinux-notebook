@@ -54,7 +54,6 @@ The command types are:
 -   [***semanage user***](#activeusers.local) Manage  SELinux confined users
 (Roles and levels for an SELinux user)
 
-<br>
 
 ## active/modules Directory Contents
 
@@ -84,7 +83,6 @@ test_policy               400       pp
 ...
 ```
 
-<br>
 
 ### *tmp* Policy Store (build failure)
 
@@ -95,14 +93,12 @@ message indicating the failing line number is:
 
 `Failed to resolve mlsconstrain statement at /var/lib/selinux/targeted/tmp/modules/400/test_mlsconstrain/cil:1`
 
-<br>
 
 ## *active/commit_num*
 
 This is a binary file used by ***semanage*** for managing updates to the
 store. The format is not relevant to policy construction.
 
-<br>
 
 ### *active/policy.kern*
 
@@ -112,7 +108,6 @@ is then becomes the
 */etc/selinux/&lt;SELINUXTYPE&gt;/policy/policy.&lt;ver&gt;* binary policy
 that will be loaded into the kernel.
 
-<br>
 
 ## *active/policy.linked*
 ## *active/seusers.linked*
@@ -121,7 +116,6 @@ that will be loaded into the kernel.
 These are saved policy files prior to merging local changes to improve
 performance.
 
-<br>
 
 ## *active/booleans.local*
 
@@ -143,7 +137,6 @@ the new value) if requested.
 daemons_enable_cluster_mode=1
 ```
 
-<br>
 
 ## *disable_dontaudit*
 
@@ -152,7 +145,6 @@ to build the policy or ***semanage dontaudit***. It indicates that a policy
 has been built without the `dontaudit` rules. This allows utilities
 such as ***audit2allow**(8)* to list all denials to assist debugging policy.
 
-<br>
 
 ## *active/file_contexts*
 
@@ -216,7 +208,6 @@ section.
 /var/run -dsystem_u:object_r:var_run_t:s0-s15:c0.c255
 /usr/tmp -dsystem_u:object_r:tmp_t:s0-s15:c0.c255
 ```
-<br>
 
 ### Building the File Labeling Support Files
 
@@ -274,7 +265,6 @@ files.*
 </tbody>
 </table>
 
-<br>
 
 Keywords that can be in policy source \*.fc files and then form the *file_contexts.template* file entries are:
 
@@ -345,7 +335,6 @@ HOME_ROOT/lost\+found/.*	<<none>>
 /home		-l	gen_context(system_u:object_r:home_root_t,s0)
 ```
 
-<br>
 
 ## *active/file_contexts.local*
 
@@ -374,7 +363,6 @@ The resulting *file_contexts.local* file will be:
 /usr/move_file    system_u:object_r:unlabeled_t:s0
 ```
 
-<br>
 
 ## *active/homedir_template*
 
@@ -400,7 +388,6 @@ HOME_ROOT/\.journal	<<none>>
 HOME_DIR/.+	system_u:object_r:user_home_t:s0
 ```
 
-<br>
 
 ### *active/file_contexts.homedirs*
 
@@ -437,7 +424,6 @@ libsepol library function.
 /home/[^/]+/.+	unconfined_u:object_r:user_home_t:s0
 ```
 
-<br>
 
 ## active/seusers
 ## active/seusers.local
@@ -519,7 +505,6 @@ __default__:unconfined_u:s0-s0:c0.c1023
 rch:user_u:s0
 ```
 
-<br>
 
 ## *active/users_extra*
 ## *active/users_extra.local*
@@ -625,7 +610,6 @@ and the resulting *users.local* file will be:
 user test_u roles { staff_r } level s0 range s0;
 ```
 
-<br>
 
 ## *active/interfaces.local*
 
@@ -649,7 +633,6 @@ in the [**`netifcon`**](network_statements.md#netifcon) section.
 netifcon enp7s0 system_u:object_r:netif_t:s0:c20.c250 system_u:object_r:netif_t:s0:c20.c250
 ```
 
-<br>
 
 ## *active/nodes.local*
 
@@ -674,7 +657,6 @@ with examples in the policy language
 nodecon ipv4 127.0.0.2 255.255.255.255 system_u:object_r:node_t:s0:c20.c250
 ```
 
-<br>
 
 ## *active/ports.local*
 
@@ -700,7 +682,6 @@ with examples in the policy language
 portcon tcp 8888 system_u:object_r:port_t:s0:c20.c350
 ```
 
-<br>
 
 ## Set domain permissive mode
 
@@ -720,7 +701,6 @@ Note that the CIL `typepermissive` statement is used, the equivalent kernel
 policy statement would be [**`permissive`**](type_statements.md#permissive).
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

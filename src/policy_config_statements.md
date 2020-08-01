@@ -63,7 +63,6 @@ continue to use the original functionality.
 policycap network_peer_controls;
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

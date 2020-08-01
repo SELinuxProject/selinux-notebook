@@ -69,7 +69,6 @@ Language, and the
 [**CIL Reference Guide**](./notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 specifies the CIL Policy Language.
 
-<br>
 
 # Kernel Object Classes and Permissions
 
@@ -667,7 +666,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-<br>
 
 ## File Object Classes
 
@@ -908,7 +906,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-<br>
 
 ## Network Object Classes
 
@@ -1134,7 +1131,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-<br>
 
 ## IPSec Network Object Classes
 
@@ -1215,7 +1211,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-<br>
 
 ## Netlink Object Classes
 
@@ -1616,7 +1611,6 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-<br>
 
 ## Miscellaneous Network Object Classes
 
@@ -1720,7 +1714,6 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-<br>
 
 ## Sockets via *extended_socket_class*
 
@@ -1908,7 +1901,6 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-<br>
 
 ## BPF Object Class
 
@@ -1947,7 +1939,6 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-<br>
 
 ## Performance Event Object Class
 
@@ -1990,7 +1981,6 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-<br>
 
 ## Lockdown Object Class
 
@@ -2021,7 +2011,6 @@ implementation.
 </tbody>
 </table>
 
-<br>
 
 ## IPC Object Classes
 
@@ -2132,7 +2121,6 @@ implementation.
 </tbody>
 </table>
 
-<br>
 
 ## Process Object Class
 
@@ -2298,7 +2286,6 @@ implementation.
 </tbody>
 </table>
 
-<br>
 
 ## Security Object Class
 
@@ -2369,7 +2356,6 @@ implementation.
 </tbody>
 </table>
 
-<br>
 
 ## System Operation Object Class
 
@@ -2456,7 +2442,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-<br>
 
 ## Miscellaneous Kernel Object Classes
 
@@ -2577,7 +2562,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-<br>
 
 ## Capability Object Classes
 
@@ -2657,7 +2641,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-<br>
 
 ## InfiniBand Object Classes
 
@@ -2699,7 +2682,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-<br>
 
 **Userspace** Object Classes
 =============================
@@ -3339,7 +3321,6 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-<br>
 
 ## Database Object Classes
 
@@ -3671,7 +3652,6 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-<br>
 
 ## Miscellaneous Userspace Object Classes
 
@@ -3886,7 +3866,6 @@ explains the objects, their permissions and how they should be used in detail.
 </table>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

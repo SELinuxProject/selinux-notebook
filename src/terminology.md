@@ -37,7 +37,6 @@
 | UID     | User Identifier                                                                          |
 | XACE    | X (windows) Access Control Extension                                                     |
 
-<br>
 
 ## Terminology
 
@@ -118,7 +117,6 @@ core SELinux infrastructure.
 </table>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

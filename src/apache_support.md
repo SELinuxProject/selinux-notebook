@@ -50,7 +50,6 @@ the LAPP<a href="#fnap1" class="footnote-ref" id="fnaph1"><strong><sup>1</sup></
 The [A secure web application platform powered by SELinux](http://sepgsql.googlecode.com/files/LCA20090120-lapp-selinux.pdf)
 document gives a good overview of the LAPP architecture.
 
-<br>
 
 ## `mod_selinux` Overview
 
@@ -76,7 +75,6 @@ itself, for example:
 3.  The web application exits, handing control back to the web server
     that replies with the HTTP response.
 
-<br>
 
 ## Bounds Overview
 
@@ -122,7 +120,6 @@ operation will be denied and an `SELINUX_ERR` entry will be added to
 the audit log stating `op=security_compute_av reason=bounds` with
 the context strings and the denied class and permissions.
 
-<br>
 
 
 <section class="footnotes">
@@ -131,7 +128,6 @@ the context strings and the denied class and permissions.
 </ol>
 </section>
 
-<br>
 
 <!-- %CUTHERE% -->
 

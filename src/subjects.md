@@ -37,7 +37,6 @@ under `semanage_t`).
 
 **Untrusted** - Everything else.
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -46,7 +45,6 @@ under `semanage_t`).
 </section>
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

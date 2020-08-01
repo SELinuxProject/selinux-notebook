@@ -43,7 +43,6 @@ locations as follows:
 </tbody>
 </table>
 
-<br>
 
 ## Is SELinux useful
 
@@ -125,7 +124,6 @@ The following maybe useful in providing a practical view of SELinux:
 4.  Older NSA documentation at: <https://www.nsa.gov/what-we-do/research/selinux/documentation/>
     that is informative.
 
-<br>
 
 <!-- %CUTHERE% -->
 

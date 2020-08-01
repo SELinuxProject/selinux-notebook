@@ -91,7 +91,6 @@ role user_r types user_t;
 role user_r types chfn_t;
 ```
 
-<br>
 
 ## `attribute_role`
 
@@ -155,7 +154,6 @@ attribute_role role_list_1;
 attribute_role srole_list_2;
 ```
 
-<br>
 
 ## `roleattribute`
 
@@ -226,7 +224,6 @@ role service_r;
 roleattribute service_r role_list_1;
 ```
 
-<br>
 
 ## `allow`
 
@@ -297,7 +294,6 @@ Note that the role allow rule has the same keyword as the allow AV rule.
 allow sysadm_r secadm_r;
 ```
 
-<br>
 
 ## `role_transition`
 
@@ -371,7 +367,6 @@ Or from Policy version 25:
 
 `role_transition system_r unconfined_exec_t:process unconfined_r;`
 
-<br>
 
 ## `dominance` - Deprecated
 
@@ -452,7 +447,6 @@ Where:
 dominance { role message_filter_r { role unconfined_r };}
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

@@ -36,7 +36,6 @@ SELinux-aware applications do not (they rely on 'Object Managers' to do
 this e.g. the kernel based Object Managers such as those that manage
 filesystem, IPC and network labeling).
 
-<br>
 
 ## Implementing SELinux-aware Applications
 
@@ -96,7 +95,6 @@ developing SELinux-aware applications and object managers using
     explained at:
 <http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=12b29f34558b9b45a2c6eabd4f3c6be939a3980f>
 
-<br>
 
 ## Implementing Object Managers
 
@@ -157,7 +155,6 @@ classes/permissions.
     the [**X Access Control Extension Specification**](http://www.x.org/releases/X11R7.5/doc/security/XACE-Spec.pdf), and for reference, the SE-PostgreSQL service also implements a similar
     interface.
 
-<br>
 
 ## Reference Policy Changes
 
@@ -211,7 +208,6 @@ not require modification, and supplying the module files (*\*.te*,
 ## </required>
 ```
 
-<br>
 
 ## Adding New Object Classes and Permissions
 
@@ -288,7 +284,6 @@ dynamic class/perm discovery:
     by the kernel. Then add allow rules as appropriate to the policy for
     the new permissions.
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -301,7 +296,6 @@ applied to their objects as defined by policy.<a href="#fnisa1" class="footnote-
 </ol>
 </section>
 
-<br>
 
 <!-- %CUTHERE% -->
 

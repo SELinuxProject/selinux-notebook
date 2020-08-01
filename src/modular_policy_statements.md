@@ -3,7 +3,6 @@
 This section contains statements used to support policy modules. They are
 not part of the kernel policy language.
 
-<br>
 
 ## `module`
 
@@ -72,7 +71,6 @@ modules within the policy.
 
 module bind 1.0.0;
 ```
-<br>
 
 ## `require`
 
@@ -165,7 +163,6 @@ require {
 	shmemhost shmemserv };
 }
 ```
-<br>
 
 ## `optional`
 
@@ -266,7 +263,6 @@ optional {
 } # end optional
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

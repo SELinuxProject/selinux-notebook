@@ -54,7 +54,6 @@ any SELinux service (i.e. it is only used to identify the type
 component), although as explained above CIL with namespaces does make
 identification of types easier.
 
-<br>
 
 ### Constraints
 
@@ -85,7 +84,6 @@ The kernel policy language constraints are defined in the
 [**Constraint Statements**](constraint_statements.md#constraint-statements)
 section.
 
-<br>
 
 ### Bounds
 
@@ -102,7 +100,6 @@ section defines the `typebounds` rule and also gives a summary of the
 `userbounds` and `rolebounds` rules.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

@@ -25,7 +25,6 @@ the [**Type Enforcement (TE)**](type_enforcement.md#type-enforcement) section.
 Some policies, for example Android, only make use of one user called `u`.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

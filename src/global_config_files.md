@@ -9,7 +9,6 @@ important files are:
 -   */etc/selinux/semanage.conf* - This is used by the SELinux policy
     configuration subsystem for modular or CIL policies.
 
-<br>
 
 ## */etc/selinux/config*
 
@@ -83,7 +82,6 @@ SELINUX=permissive
 SELINUXTYPE=targeted
 ```
 
-<br>
 
 ## */etc/selinux/semanage.conf*
 
@@ -275,7 +273,6 @@ args = $@
 [end]
 ```
 
-<br>
 
 ## */etc/selinux/restorecond.conf*
 ## *restorecond-user.conf*
@@ -319,14 +316,12 @@ directories).
 ~/public_html/*
 ```
 
-<br>
 
 ## */etc/selinux/newrole_pam.conf*
 
 The optional *newrole\_pam.conf* file is used by ***newrole**(1)* and
 maps commands to ***PAM**(8)* service names.
 
-<br>
 
 ## */etc/sestatus.conf*
 
@@ -367,7 +362,6 @@ List of processes to display context
 /usr/sbin/sshd
 ```
 
-<br>
 
 ## */etc/security/sepermit.conf*
 
@@ -413,7 +407,6 @@ example that describes the configuration:
 xguest:exclusive
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

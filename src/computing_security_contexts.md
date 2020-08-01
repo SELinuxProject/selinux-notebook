@@ -46,7 +46,6 @@ various kernel objects (also see the
 [**Linux Security Module and SELinux**](lsm_selinux.md#linux-security-module-and-selinux)
 section.
 
-<br>
 
 ### Process
 
@@ -74,7 +73,6 @@ Processes inherit their security context as follows:
     practice is generally discouraged - exec-based transitions are
     preferred.
 
-<br>
 
 ### Files
 
@@ -113,13 +111,11 @@ SID, which is mapped to a context by the policy. This default may be
 overridden via the `defcontext=` mount option on a per-mount basis as
 described in ***mount**(8)*.
 
-<br>
 
 ### File Descriptors
 
 Inherits the label of its creator/parent.
 
-<br>
 
 ### Filesystems
 
@@ -166,7 +162,6 @@ Notes:
     `context=`, `fscontext=`, `defcontext=` and `rootcontext=`. They are
     fully described in the ***mount**(8)* man page.
 
-<br>
 
 ### Network File System (nfsv4.2)
 
@@ -174,7 +169,6 @@ If labeled NFS is implemented with `xattr` support, then the creation of
 inodes are treated as described in the [Files](#files)
 section.
 
-<br>
 
 ### INET Sockets
 
@@ -208,13 +202,11 @@ Some sockets may be labeled with the kernel SID to reflect the fact that
 they are kernel-internal sockets that are not directly exposed to
 applications.
 
-<br>
 
 ### IPC
 
 Inherits the label of its creator/parent.
 
-<br>
 
 ### Message Queues
 
@@ -239,19 +231,16 @@ the message queue it will be stored in as follows:
     with the selected range being low, high or low-high to be defined
     for the message object class).
 
-<br>
 
 ### Semaphores
 
 Inherits the label of its creator/parent.
 
-<br>
 
 ### Shared Memory
 
 Inherits the label of its creator/parent.
 
-<br>
 
 ### Keys
 
@@ -260,7 +249,6 @@ Inherits the label of its creator/parent.
 Security-aware applications may use ***setkeycreatecon**(3)* to
 explicitly label keys they create if permitted by policy.
 
-<br>
 
 ## Using libselinux Functions
 
@@ -359,7 +347,6 @@ new context `newcon` (referenced by SIDs for
 
 **Table 1**
 
-<br>
 
 ### *avc_compute_member* and *security_compute_member*
 
@@ -435,7 +422,6 @@ the new context `newcon` (referenced by SIDs for
 
 **Table 2**
 
-<br>
 
 ### *security_compute_relabel*
 
@@ -514,7 +500,6 @@ following notes also apply:
 
 **Table 3**
 
-<br>
 
 <!-- %CUTHERE% -->
 

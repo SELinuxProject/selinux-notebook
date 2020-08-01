@@ -8,7 +8,6 @@ This section discusses the `type_transition` statement that is used to:
 These transitions can also be achieved using the **libselinux** API
 functions for SELinux-aware applications.
 
-<br>
 
 ## Domain Transition
 
@@ -89,7 +88,6 @@ SELinux enabled kernel.
 within the `unconfined_t` domain and then transitioned to the `ext_gateway_t`
 domain.*
 
-<br>
 
 ### Type Enforcement Rules
 
@@ -209,7 +207,6 @@ Other ways to resolve this issue are:
 It was decided to use runcon as it demonstrates the command usage better
 than reading the man pages.
 
-<br>
 
 ## Object Transition
 
@@ -276,7 +273,6 @@ drwxr-xr-x root root system_u:object_r:unconfined_t ..
 -rw-r--r-- root root unconfined_u:object_r:in_file_t Message-2
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 

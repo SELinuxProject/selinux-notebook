@@ -63,7 +63,6 @@ the inode associated to the socket and not from the actual kernel socket
 structure (as currently there is no standard kernel/userspace interface
 to achieve this).
 
-<br>
 
 ## SECMARK
 
@@ -177,7 +176,6 @@ The following articles explain the SECMARK service:
 -   [New secmark-based network controls for SELinux](http://james-morris.livejournal.com/11010.html)
 
 
-<br>
 
 ## NetLabel - Fallback Peer Labeling
 
@@ -217,7 +215,6 @@ netlabelctl -p map list
 Note that the security contexts must be valid in the policy otherwise the
 commands will fail.
 
-<br>
 
 ## NetLabel – CIPSO/CALIPSO
 
@@ -286,7 +283,6 @@ netlabelctl -p map list
 The examples use the *nb_client*/*nb_server* from the Notebook examples
 section, plus the standard Fedora 'targeted' policy for the tests.
 
-<br>
 
 ## Labeled IPSec
 
@@ -431,7 +427,6 @@ article and a good reference covering **Basic Labeled IPsec Configuration**
 available at:
 <http://www.redhat.com/archives/redhat-lspp/2006-November/msg00051.html>
 
-<br>
 
 ## Labeled Network FileSystem (NFS)
 
@@ -449,7 +444,6 @@ Labeled NFS clients must use a consistent security policy.
 
 The *selinux-testsuite tools/nfs.sh* tests labeled NFS using various labels.
 
-<br>
 
 <section class="footnotes">
 <ol>
@@ -459,7 +453,6 @@ The *selinux-testsuite tools/nfs.sh* tests labeled NFS using various labels.
 </ol>
 </section>
 
-<br>
 
 <!-- %CUTHERE% -->
 

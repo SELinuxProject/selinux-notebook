@@ -43,7 +43,6 @@ enforcement mode in its output, however it does not display individual
 domain or object manager enforcement modes.
 
 
-<br>
 
 <!-- %CUTHERE% -->
 

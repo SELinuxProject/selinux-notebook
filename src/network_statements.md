@@ -68,7 +68,6 @@ Or
 
 `::`
 
-<br>
 
 ## `netifcon`
 
@@ -161,7 +160,6 @@ netifcon eth2 system_u:object_r:netif_t:s0
 system_u:object_r:netif_t:s0
 ```
 
-<br>
 
 ## `nodecon`
 
@@ -260,7 +258,6 @@ This command will produce the following file in the default
 nodecon ipv4 127.0.0.2 255.255.255.255 system_u:object_r:node_t:s0
 ```
 
-<br>
 
 ## `portcon`
 
@@ -352,7 +349,6 @@ This command will produce the following file in the default
 portcon udp 1234 system_u:object_r:reserved_port_t:s0
 ```
 
-<br>
 
 <!-- %CUTHERE% -->
 
