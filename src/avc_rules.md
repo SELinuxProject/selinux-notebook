@@ -1,19 +1,19 @@
 # Access Vector Rules
 
 The AV rules define what access control privileges are allowed for
-processes and objects. There are four types of AV rule: `allow`,
-`dontaudit`, `auditallow`, and `neverallow` as explained in the sections that
+processes and objects. There are four types of AV rule: *allow*,
+*dontaudit*, *auditallow*, and *neverallow* as explained in the sections that
 follow with a number of examples to cover all the scenarios.
 
-The general format of an AV rule is that the `source_type` is the
+The general format of an AV rule is that the *source_type* is the
 identifier of a process that is attempting to access an object
-identifier `target_type`, that has an object class of `class`, and
-`perm_set` defines the access permissions `source_type` is allowed.
+identifier *target_type*, that has an object class of *class*, and
+*perm_set* defines the access permissions *source_type* is allowed.
 
 From Policy version 30 with the target platform '*selinux*', the AVC
 rules have been extended to expand the permission sets from a fixed 32
 bits to permission sets in 256 bit increments. The format of the new
-`allowxperm`, `dontauditxperm`, `auditallowxperm` and `neverallowxperm`
+*allowxperm*, *dontauditxperm*, *auditallowxperm* and *neverallowxperm*
 rules are discussed in the
 [**Extended Access Vector Rules**](xperm_rules.md#extended-access-vector-rules)
 section.
@@ -36,7 +36,7 @@ rule_name source_type target_type : class perm_set;
 <td><p><code>source_type</code></p>
 <p><code>target_type</code></p></td>
 <td><p>One or more source / target <code>type</code>, <code>typealias</code> or <code>attribute</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. Entries can be excluded from the list by using the negative operator '-'.</p>
-<p>The `target_type` can have the self keyword instead of <code>type</code>, <code>typealias</code> or <code>attribute</code> identifiers. This means that the `target_type` is the same as the `source_type`.</p>
+<p>The *target_type* can have the self keyword instead of <code>type</code>, <code>typealias</code> or <code>attribute</code> identifiers. This means that the *target_type* is the same as the *source_type*.</p>
 <p>The <code>neverallow</code> rule also supports the wildcard operator '*' to specify that all types are to be included and the complement operator '~' to specify all types are to be included except those explicitly listed.</p></td>
 </tr>
 <tr>
@@ -80,7 +80,7 @@ rule_name source_type target_type : class perm_set;
 </table>
 
 
-## `allow`
+## *allow*
 
 The allow rule checks whether the operations between the source\_type
 and target_type are allowed for the class and permissions defined. It
@@ -140,9 +140,9 @@ allow files_unconfined_type file_type:{ file chr_file } ~execmod;
 ```
 
 
-## `dontaudit`
+## *dontaudit*
 
-The `dontaudit` rule stops the auditing of denial messages as it is known
+The *dontaudit* rule stops the auditing of denial messages as it is known
 that this event always happens and does not cause any real issues. This
 also helps to manage the audit log by excluding known events.
 
@@ -159,10 +159,10 @@ dontaudit traceroute_t { port_type -port_t }:tcp_socket name_bind;
 ```
 
 
-## `auditallow`
+## *auditallow*
 
 Audit the event as a record as it is useful for auditing purposes. Note
-that this rule only audits the event, it still requires the `allow` rule
+that this rule only audits the event, it still requires the *allow* rule
 to grant permission.
 
 **Example:**
@@ -176,10 +176,10 @@ auditallow ada_t self:process execstack;
 ```
 
 
-## `neverallow`
+## *neverallow*
 
-This rule specifies that an `allow` rule must not be generated for the
-operation, even if it has been previously allowed. The `neverallow`
+This rule specifies that an *allow* rule must not be generated for the
+operation, even if it has been previously allowed. The *neverallow*
 statement is a compiler enforced action, where the ***checkpolicy**(8)*,
 ***checkmodule**(8)* <a href="#fna1" class="footnote-ref" id="fnavc1"><sup>1</sup></a>
 or ***secilc**(8)* <a href="#fna2" class="footnote-ref" id="fnavc2"><sup>2</sup></a>
@@ -209,7 +209,7 @@ neverallow { domain -mmap_low_domain_type } self:memprotect mmap_zero;
 <section class="footnotes">
 <ol>
 <li id="fna1"><p><code>neverallow</code> statements are allowed in modules, however to detect these the <em>semanage.conf</em> file must have the 'expand-check=1' entry present.<a href="#fnavc1" class="footnote-back">↩</a></p></li>
-<li id="fna2"><p>The `--disable-neverallow` option can be used with <em></strong>secilc</strong>(8)</em> to disable <code>neverallow</code> rule checking.<a href="#fnavc2" class="footnote-back">↩</a></p></li>
+<li id="fna2"><p>The *--disable-neverallow* option can be used with <em></strong>secilc</strong>(8)</em> to disable <code>neverallow</code> rule checking.<a href="#fnavc2" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 

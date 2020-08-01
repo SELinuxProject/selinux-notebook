@@ -294,7 +294,7 @@ directories).
     the *-u* option (see ***restorecond**(8)*). This requires a
     *restorecond-user.conf* file to be installed as shown in the examples below.
 2.  The files names and location can be changed if *restorecond* is run
-    with the `-f` option.
+    with the *-f* option.
 
 **Example *restorecond.conf* file contents are:**
 

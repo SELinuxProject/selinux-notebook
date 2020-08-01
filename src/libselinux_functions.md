@@ -1,4 +1,4 @@
-# Appendix B - `libselinux` API Summary
+# Appendix B - *libselinux* API Summary
 
 These functions have been taken from the following header files of
 *libselinux* version 3.0:

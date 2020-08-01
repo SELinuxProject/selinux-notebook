@@ -20,7 +20,7 @@ These flags are set in the */etc/selinux/config* file as described in the
 section.
 
 There is another method for running specific domains in permissive mode
-using the kernel policy `permissive` statement. This can be used directly in a
+using the kernel policy *permissive* statement. This can be used directly in a
 user written module or ***semanage**(8)* will generate the appropriate
 module and load it using the following example command:
 
@@ -35,7 +35,7 @@ semanage permissive -a unconfined_t
 It is also possible to set permissive mode on a userspace object manager
 using the *libselinux* function ***avc_open**(3)*, for example the
 [**X-Windows Object Manager**](x_windows.md#x-windows-selinux-support)
-uses `avc_open()` to set whether it will always run permissive,
+uses *avc_open()* to set whether it will always run permissive,
 enforcing or follow the current SELinux enforcement mode.
 
 The ***sestatus**(8)* command will show the current SELinux

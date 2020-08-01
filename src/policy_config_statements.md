@@ -1,8 +1,8 @@
 # Policy Configuration Statements
 
-## `policycap`
+## *policycap*
 
-Policy version 22 introduced the `policycap` statement to allow new
+Policy version 22 introduced the *policycap* statement to allow new
 capabilities to be enabled or disabled in the kernel via policy in a
 backward compatible way. For example policies that are aware of a new
 capability can enable the functionality, while older policies would

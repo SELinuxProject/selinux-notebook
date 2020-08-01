@@ -1,13 +1,13 @@
 # Role Statements
 
 Policy version 26 introduced two new role statements aimed at replacing
-the deprecated role `dominance` rule by making role relationships easier to
-understand. These new statements: `attribute_role` and `roleattribute`
+the deprecated role *dominance* rule by making role relationships easier to
+understand. These new statements: *attribute_role* and *roleattribute*
 are defined in this section with examples.
 
-## `role`
+## *role*
 
-The `role` statement either declares a role identifier or associates a
+The *role* statement either declares a role identifier or associates a
 role identifier to one or more types (i.e. authorise the role to access
 the domain or domains). Where there are multiple role statements
 declaring the same role, the compiler will associate the additional
@@ -96,9 +96,9 @@ role user_r types chfn_t;
 ```
 
 
-## `attribute_role`
+## *attribute_role*
 
-The `attribute_role` statement declares a role attribute identifier that
+The *attribute_role* statement declares a role attribute identifier that
 can then be used to refer to a group of roles.
 
 **The statement definition is:**
@@ -161,7 +161,7 @@ attribute_role srole_list_2;
 ```
 
 
-## `roleattribute`
+## *roleattribute*
 
 The <code>roleattribute</code> statement allows the association of previously
 declared roles to one or more previously declared <code>attribute_roles</code>.
@@ -233,10 +233,10 @@ roleattribute service_r role_list_1;
 ```
 
 
-## `allow`
+## *allow*
 
-The role `allow` rule checks whether a request to change roles is allowed,
-if it is, then there may be a further request for a `role_transition` so
+The role *allow* rule checks whether a request to change roles is allowed,
+if it is, then there may be a further request for a *role_transition* so
 that the process runs with the new role or role set.
 
 Note that the role allow rule has the same keyword as the allow AV rule.
@@ -305,11 +305,11 @@ allow sysadm_r secadm_r;
 ```
 
 
-## `role_transition`
+## *role_transition*
 
-The `role_transition` rule specifies that a role transition is required,
+The *role_transition* rule specifies that a role transition is required,
 and if allowed, the process will run under the new role. From policy
-version 25, the `class` can now be defined.
+version 25, the *class* can now be defined.
 
 **The statement definition is:**
 
@@ -384,20 +384,20 @@ role_transition system_r unconfined_exec_t:process unconfined_r;
 ```
 
 
-## `dominance` - Deprecated
+## *dominance* - Deprecated
 
 This rule has been deprecated and therefore should not be used. The role
-dominance rule allows the `dom_role_id` to dominate the `role_id`
+dominance rule allows the *dom_role_id* to dominate the *role_id*
 (consisting of one or more roles). The dominant role will automatically
 inherit all the type associations of the other roles.
 
 Notes:
 
 1.  There is another dominance rule for MLS (see the
-    [**MLS `dominance`**](mls_statements.md#dominance) statement.
+    [**MLS *dominance***](mls_statements.md#dominance) statement.
 2.  The role dominance rule is not used by the **Reference Policy** as
     the policy manages role dominance using the
-    [**`constrain`**](constraint_statements.md#constraint-statements) statement.
+    [***constrain***](constraint_statements.md#constraint-statements) statement.
 3.  Note the usage of braces '{}' and the ';' in the statement.
 
 **The statement definition is:**

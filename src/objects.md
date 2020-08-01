@@ -16,14 +16,14 @@ as Access Vectors (AV)) that describe what services the object can handle
 (read, write, send etc.).
 When an object is instantiated it will be allocated a name (e.g. a file
 could be called config or a socket my_connection) and a security
-context (e.g. `system_u:object_r:selinux_config_t`) as shown in
+context (e.g. *system_u:object_r:selinux_config_t*) as shown in
 **Figure 5: Object Class = 'file' and permissions**.
 
 ![](./images/5-object-class.png)
 
 **Figure 5: Object Class = 'file' and permissions** - *the policy rules would
 define those permissions allowed for each process that needs access to
-the `/etc/selinux/config` file.*
+the */etc/selinux/config* file.*
 
 The objective of the policy is to enable the user of the object (the
 subject) access to the minimum permissions needed to complete the task
@@ -46,17 +46,17 @@ permissions are described in
 This is a simple example that attempts to explain two points:
 
 1.  How a process is given permission to use an objects resource.
-2.  By using the `process` object class, show that a process can be
+2.  By using the *process* object class, show that a process can be
     described as a process or object.
 
 An SELinux policy contains many rules and statements, the majority of
-which are `allow` rules that (simply) allows processes to be given
+which are *allow* rules that (simply) allows processes to be given
 access permissions to an objects resources.
 
-The following allow rule and **Figure 6: The `allow` rule** illustrates 'a
+The following allow rule and **Figure 6: The *allow* rule** illustrates 'a
 process can also be an object' as it allows processes running in the
-`unconfined_t` domain, permission to `transition` the external gateway
-application to the `ext_gateway_t` domain once it has been executed:
+*unconfined_t* domain, permission to *transition* the external gateway
+application to the *ext_gateway_t* domain once it has been executed:
 
 ```
 allow Rule | source_domain |  target_type  :  class  | permission
@@ -82,11 +82,11 @@ Where:
 </tr>
 <tr>
 <td>process</td>
-<td>The target object class - the `process` object class.</td>
+<td>The target object class - the *process* object class.</td>
 </tr>
 <tr>
 <td>transition</td>
-<td>The permission granted to the source domain on the targets object - in this case the `unconfined_t` domain has transition permission on the `ext_gateway_t` `process` object.</td>
+<td>The permission granted to the source domain on the targets object - in this case the *unconfined_t* domain has transition permission on the *ext_gateway_t* *process* object.</td>
 </tr>
 </tbody>
 </table>
@@ -94,9 +94,9 @@ Where:
 
 ![](./images/6-allow-rule.png)
 
-**Figure 6: The `allow` rule** - *Showing that the subject (the processes
-running in the `unconfined_t` domain) has been given the transition
-permission on the `ext_gateway_t` `process` object.*
+**Figure 6: The *allow* rule** - *Showing that the subject (the processes
+running in the *unconfined_t* domain) has been given the transition
+permission on the *ext_gateway_t* *process* object.*
 
 It should be noted that there is more to a domain transition than
 described above, for a more detailed explanation, see the
@@ -153,7 +153,7 @@ The labeling of file systems that implement extended
 attributes<a href="#fno1" class="footnote-ref" id="fnobj1"><strong><sup>1</sup></strong></a>
 is supported by SELinux using:
 
-1.  The `fs_use_xattr` statement within the policy to identify what
+1.  The *fs_use_xattr* statement within the policy to identify what
     filesystems use extended attributes. This statement is used to
     inform the security server how to label the filesystem.
 2.  A 'file contexts' file that defines what the initial contexts should
@@ -264,15 +264,15 @@ discussed in the
 The policy language supports a number of statements to assign components
 to security contexts such as:
 
-`user`, `role` and `type` statements.
+*user*, *role* and *type* statements.
 
 and manage their scope:
 
-`role_allow` and `constrain`
+*role_allow* and *constrain*
 
 and manage their transition:
 
-`type_transition`, `role_transition` and `range_transition`
+*type_transition*, *role_transition* and *range_transition*
 
 SELinux-aware applications can assign a new label (with the policy's
 approval of course) using the **libselinux** API functions. The

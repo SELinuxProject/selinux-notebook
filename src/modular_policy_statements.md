@@ -4,7 +4,7 @@ This section contains statements used to support policy modules. They are
 not part of the kernel policy language.
 
 
-## `module`
+## *module*
 
 This statement is mandatory for loadable modules (non-base) and must be
 the first line of any module policy source file. The identifier should
@@ -74,7 +74,7 @@ module module_name version_number;
 module bind 1.0.0;
 ```
 
-## `require`
+## *require*
 
 The require statement is used for two reasons:
 
@@ -83,7 +83,7 @@ The require statement is used for two reasons:
     not explicitly defined in this module but elsewhere). The examples
     below show the usage.
 2.  Within a base policy source file, but only if preceded by the
-    [**`optional`**](#optional) to indicate what policy components
+    [***optional***](#optional) to indicate what policy components
     are required from an external source file (i.e. they are not
     explicitly defined in the base policy but elsewhere). The examples
     below show the usage.
@@ -168,13 +168,13 @@ require {
 }
 ```
 
-## `optional`
+## *optional*
 
 The optional statement is used to indicate what policy statements may or
 may not be present in the final compiled policy. The statements will be
 included in the policy only if all statements within the optional `{ rule
 list }` can be expanded successfully, this is generally achieved by using
-a [**`require`**](#require) statement at the start of the list.
+a [***require***](#require) statement at the start of the list.
 
 **The statement definition is:**
 

@@ -28,7 +28,7 @@ can only 'Read Down' and 'Write Up' within an MLS enabled system.*
 To achieve this level of control, the MLS extensions to SELinux make use
 of constraints similar to those described in the type enforcement
 [**Type Enforcement - Constraints**](type_enforcement.md#constraints) section,
-except that the statement is called `mlsconstrain`.
+except that the statement is called *mlsconstrain*.
 
 However, as always life is not so simple as:
 
@@ -149,14 +149,14 @@ user:role:type:sensitivity[:category,...]  -  sensitivity [:category,...]
 #### Translating Levels
 
 When writing policy for MLS / MCS security level components it is usual
-to use an abbreviated form such as `s0`, `s1` etc. to represent
-sensitivities and `c0`, `c1` etc. to represent categories. This is done
+to use an abbreviated form such as *s0*, *s1* etc. to represent
+sensitivities and *c0*, *c1* etc. to represent categories. This is done
 simply to conserve space as they are held on files as extended
 attributes and also in memory. So that these labels can be represented
 in human readable form, a translation service is provided via the
 [**setrans.conf**](policy_config_files.md#setrans.conf) configuration file that
-is used by the ***mcstransd**(8)* daemon. For example `s0` = Unclassified, `s15`
-= Top Secret and `c0` = Finance, `c100` = Spy Stories. The ***semanage**(8)*
+is used by the ***mcstransd**(8)* daemon. For example *s0* = Unclassified, *s15*
+= Top Secret and *c0* = Finance, *c100* = Spy Stories. The ***semanage**(8)*
 command can be used to set up this translation and is shown in the
 [**setrans.conf**](policy_config_files.md#setrans.conf) configuration file
 section.
@@ -165,7 +165,7 @@ section.
 ### Managing Security Levels via Dominance Rules
 
 As stated earlier, allowing a process access to an object is managed by
-[**`dominance`**](mls_statements.md#dominance) rules applied to the security
+[***dominance***](mls_statements.md#dominance) rules applied to the security
 levels. These rules are as follows:
 
 **Security Level 1 dominates Security Level 2** - If the sensitivity of
@@ -189,18 +189,18 @@ categories of Security Level 1 and Security Level 2 cannot be compared
 
 To illustrate the usage of these rules, **Table 2: MLS Security Levels** lists
 the security level attributes in a table to show example files (or
-documents) that have been allocated labels such as `s3:c0`. The process
+documents) that have been allocated labels such as *s3:c0*. The process
 that accesses these files (e.g. an editor) is running with a range of
-`s0 - s3:c1.c5` and has access to the files highlighted within the grey box
+*s0 - s3:c1.c5* and has access to the files highlighted within the grey box
 area.
 
-As the MLS `dominance` statement is used to enforce the
+As the MLS *dominance* statement is used to enforce the
 sensitivity hierarchy, the security levels now follow that sequence
-(lowest = `s0` to highest = `s3`) with the categories being unordered lists
+(lowest = *s0* to highest = *s3*) with the categories being unordered lists
 of 'compartments'. To allow the process access to files within its scope
 and within the dominance rules, the process will be constrained by using
-the `mlsconstrain` statement as illustrated in
-**Figure 9: `mlsconstrain` Statements controlling Read Down & Write Up**.
+the *mlsconstrain* statement as illustrated in
+**Figure 9: *mlsconstrain* Statements controlling Read Down & Write Up**.
 
 <table>
 <tbody>
@@ -277,7 +277,7 @@ the `mlsconstrain` statement as illustrated in
 </table>
 
 **Table 2: MLS Security Levels** - *Showing the scope of a process running
-at a security range of `s0 - s3:c1.c5`.*
+at a security range of *s0 - s3:c1.c5*.*
 
 
 ![](./images/9-mls-constrain.png)
@@ -285,7 +285,7 @@ at a security range of `s0 - s3:c1.c5`.*
 **Figure 9: Showing the mlsconstrain Statements controlling Read Down & Write Up** - *This ties in with* **Table 2: MLS Security Levels** *that shows a process running with a security range of s0 - s3:c1.c5.*
 
 
-Using **Figure 9: `mlsconstrain` Statements controlling Read Down & Write Up**:
+Using **Figure 9: *mlsconstrain* Statements controlling Read Down & Write Up**:
 
 1.  To allow write-up, the source level (l1) must be **dominated by**
     the target level (l2):
@@ -307,7 +307,7 @@ allow the write-up unless the process has a special privilege (by having
 the domain type added to an attribute), although it does allow the
 read-down. The default is to use l1 eq l2 (i.e. the levels are equal).
 The reference policy MLS source file (policy/mls) shows these
-`mlsconstrain` statements.
+*mlsconstrain* statements.
 
 
 ### MLS Labeled Network and Database Support

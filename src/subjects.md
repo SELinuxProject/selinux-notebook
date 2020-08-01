@@ -33,7 +33,7 @@ has been verified that it conforms to the security policy. Generally
 these trusted applications would run in either their own domain (e.g.
 the audit daemon could run under auditd\_t) or grouped together (e.g.
 the ***semanage**(8)* and ***semodule**(8)* commands could be grouped
-under `semanage_t`).
+under *semanage_t*).
 
 **Untrusted** - Everything else.
 

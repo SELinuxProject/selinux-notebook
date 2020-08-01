@@ -28,7 +28,7 @@ The library hides the low level functionality of (but not limited to):
 -   The SELinux policy and its associated configuration files.
 
 The general category of functions available in *libselinux* are shown below,
-with [**Appendix B - `libselinux` API Summary**](libselinux_functions.md#appendix-b---libselinux-api-summary)
+with [**Appendix B - *libselinux* API Summary**](libselinux_functions.md#appendix-b---libselinux-api-summary)
 giving a complete list of functions.
 
 **Access Vector Cache Services**

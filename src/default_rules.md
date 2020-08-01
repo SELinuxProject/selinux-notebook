@@ -4,7 +4,7 @@ These rules allow a default user, role, type and/or range to be used
 when computing a context for a new object. These require policy version
 27 or 28 with kernels 3.5 or greater.
 
-## `default_user`
+## *default_user*
 
 Allows the default user to be taken from the source or target context
 when computing a new context for an object of the defined class.
@@ -80,7 +80,7 @@ default_user { x_selection x_property } source;
 ```
 
 
-## `default_role`
+## *default_role*
 
 Allows the default role to be taken from the source or target context
 when computing a new context for an object of the defined class.
@@ -156,7 +156,7 @@ default_role { x_selection x_property } source;
 ```
 
 
-## `default_type`
+## *default_type*
 
 Allows the default type to be taken from the source or target context
 when computing a new context for an object of the defined class.
@@ -232,16 +232,16 @@ default_type { x_selection x_property } source;
 ```
 
 
-## `default_range`
+## *default_range*
 
 Allows the default range or level to be taken from the source or target
 context when computing a new context for an object of the defined class.
 Requires policy version 27.
 
-Policy verion 32 with kernel 5.5 allows the use of `glblub` as a
-`default_range` default and the computed transition will be the
-intersection of the MLS range of the two contexts. The `glb` (greatest
-lower bound) `lub` (lowest upper bound) of a range is calculated as the
+Policy verion 32 with kernel 5.5 allows the use of *glblub* as a
+*default_range* default and the computed transition will be the
+intersection of the MLS range of the two contexts. The *glb* (greatest
+lower bound) *lub* (lowest upper bound) of a range is calculated as the
 greater of the low sensitivities and the lower of the high sensitivities.
 
 **The statement definition is:**

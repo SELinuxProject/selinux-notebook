@@ -1,22 +1,22 @@
 # File System Labeling Statements
 
-There are four types of file labeling statements: `fs_use_xattr`,
-`fs_use_task`, `fs_use_trans` and `genfscon` that are explained below.
+There are four types of file labeling statements: *fs_use_xattr*,
+*fs_use_task*, *fs_use_trans* and *genfscon* that are explained below.
 
-The filesystem identifiers `fs_name` used by these statements are
+The filesystem identifiers *fs_name* used by these statements are
 defined by the SELinux teams who are responsible for their development,
 the policy writer then uses those needed to be supported by the policy.
 
 A security context is defined by these filesystem labeling statements,
-therefore if the policy supports MCS / MLS, then an `mls_range` is
+therefore if the policy supports MCS / MLS, then an *mls_range* is
 required as described in the
 [**MLS range Definition**](mls_statements.md#mls-range-definition) section.
 
 
-## `fs_use_xattr`
+## *fs_use_xattr*
 
-The `fs_use_xattr` statement is used to allocate a security context to
-filesystems that support the extended attribute `security.selinux`. The
+The *fs_use_xattr* statement is used to allocate a security context to
+filesystems that support the extended attribute *security.selinux*. The
 labeling is persistent for filesystems that support these extended
 attributes, and the security context is added to these files (and directories)
 by the SELinux commands such as ***setfiles**(8)* as explained in the
@@ -87,9 +87,9 @@ fs_use_xattr ext3 system_u:object_r:fs_t:s0;
 ```
 
 
-## `fs_use_task`
+## *fs_use_task*
 
-The `fs_use_task` statement is used to allocate a security context to
+The *fs_use_task* statement is used to allocate a security context to
 pseudo filesystems that support task related services such as pipes and
 sockets.
 
@@ -159,9 +159,9 @@ fs_use_task sockfs system_u:object_r:fs_t:s0;
 ```
 
 
-## `fs_use_trans`
+## *fs_use_trans*
 
-The `fs_use_trans` statement is used to allocate a security context to
+The *fs_use_trans* statement is used to allocate a security context to
 pseudo filesystems such as pseudo terminals and temporary objects. The
 assigned context is derived from the creating process and that of the
 filesystem type based on transition rules.
@@ -231,14 +231,14 @@ fs_use_trans devpts system_u:object_r:devpts_t:s0;
 ```
 
 
-## `genfscon`
+## *genfscon*
 
-The `genfscon` statement is used to allocate a security context to
+The *genfscon* statement is used to allocate a security context to
 filesystems that cannot support any of the other file labeling
-statements (`fs_use_xattr`, `fs_use_task` or `fs_use_trans`). Generally
+statements (*fs_use_xattr*, *fs_use_task* or *fs_use_trans*). Generally
 a filesystem would have a single default security context assigned by
-`genfscon` from the root (/) that would then be inherited by all files and
-directories on that filesystem. The exception to this is the `/proc`
+*genfscon* from the root (/) that would then be inherited by all files and
+directories on that filesystem. The exception to this is the */proc*
 filesystem, where directories can be labeled with a specific security
 context (as shown in the examples). Note that there is no terminating
 semi-colon on this statement.

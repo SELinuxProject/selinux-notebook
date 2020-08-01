@@ -7,17 +7,17 @@ done by those who actually design and/or write object managers.
 A list of object classes used by the **Reference Policy** can be found
 in the *./policy/flask/security\_classes* file.
 
-There are two variants of the `class` statement for writing policy:
+There are two variants of the *class* statement for writing policy:
 
-1.  There is the `class` statement that declares the actual class
+1.  There is the *class* statement that declares the actual class
     identifier or name.
-2.  There is a further refinement of the `class` statement that
+2.  There is a further refinement of the *class* statement that
     associates permissions to the class as discussed in the
     [**Associating Permissions to a Class**](#associating-permissions-to-a-class)
     section.
 
 
-## `class`
+## *class*
 
 Object classes are declared within a policy with the following statement
 definition:
@@ -82,8 +82,8 @@ class db_tuple
 Permissions can be defined within policy in two ways:
 
 1.  Define a set of common permissions that can then be inherited by one
-    or more object classes using further `class` statements.
-2.  Define `class` specific permissions. This is where permissions are
+    or more object classes using further *class* statements.
+2.  Define *class* specific permissions. This is where permissions are
     declared for a specific object class only (i.e. the permission is
     not inherited by any other object class).
 
@@ -91,9 +91,9 @@ A list of classes and their permissions used by the **Reference Policy**
 can be found in the *./policy/flask/access_vectors* file.
 
 
-## `common`
+## *common*
 
-Declare a `common` identifier and associate one or more `common` permissions.
+Declare a *common* identifier and associate one or more *common* permissions.
 
 The statement definition is:
 
@@ -156,9 +156,9 @@ common database { create drop getattr setattr relabelfrom relabelto }
 ```
 
 
-## `class`
+## *class*
 
-Inherit and / or associate permissions to a perviously declared `class` identifier.
+Inherit and / or associate permissions to a perviously declared *class* identifier.
 
 **The statement definition is:**
 
@@ -193,7 +193,7 @@ class class_id [ inherits common_set ] [ { perm_set } ]
 </tbody>
 </table>
 
-Note: There must be at least one `common_set` or one `perm_set` defined within
+Note: There must be at least one *common_set* or one *perm_set* defined within
 the statement.
 
 **The statement is valid in:**
