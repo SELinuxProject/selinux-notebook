@@ -20,7 +20,9 @@
 
 ## Copyright Information
 
-Copyright © 2020 [*Richard Haines*](mailto:richard_c_haines@btinternet.com).
+Copyright (c) 2020 [*Richard Haines*](mailto:richard_c_haines@btinternet.com)
+
+Copyright (c) 2020 [*Paul Moore*](mailto:paul@paul-moore.com)
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -30,7 +32,10 @@ See: **<http://www.gnu.org/licenses/fdl-1.3.html>**
 
 ## Acknowledgements
 
-Logo designed by [*Máirín Duffy*](http://pookstar.deviantart.com/)
+The Notebook was originally created by *Richard Haines* who graciously donated
+the source material to the SELinux project.
+
+The SELinux logo was designed by [*Máirín Duffy*](https://blog.linuxgrrl.com).
 
 <!-- %PAGEBREAK% -->
 
@@ -79,6 +84,13 @@ Android.
 
 **Object Classes and Permissions** - Describes the SELinux object
 classes and permissions.
+
+### Updated Editions
+
+The SELinux Notebook is being maintained as part of the SELinux project, more
+recent editions may be available.
+
+See: **<https://github.com/SELinuxProject/selinux-notebook>**
 
 <!-- %CUTHERE% -->
 
