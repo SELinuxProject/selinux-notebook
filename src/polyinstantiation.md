@@ -23,7 +23,6 @@ To clarify polyinstantiation support:
     function of the XSELinux Object Manager and the supporting XACE
     service.
 
-
 ## Polyinstantiated Objects
 
 Determining a polyinstantiated context for an object is supported by
@@ -32,7 +31,6 @@ SELinux using the policy language *type_member* statement and the
 libselinux API functions. These are not limited to specific object
 classes, however only *dir*, *x_selection* and *x_property* objects are
 currently supported.
-
 
 ## Polyinstantiation support in PAM
 
@@ -102,7 +100,6 @@ instance, and the user name. If a new instance is being set up, the
 directory permissions are set and the ***restorecon**(8)* command is run
 to set the correct file contexts.
 
-
 #### *namespace.conf* Configuration File
 
 Each line in the namespace.conf file is formatted as follows:
@@ -138,7 +135,6 @@ Where:
 </tr>
 </tbody>
 </table>
-
 
 ### Example Configurations
 
@@ -205,7 +201,6 @@ following polyinstantiated directories:
 /home/rch/rch.inst/unconfined_u:unconfined_r:unconfined_t_rch
 ```
 
-
 ## Polyinstantiation support in X-Windows
 
 The X-Windows SELinux object manager and XACE (X Access Control
@@ -213,7 +208,6 @@ Extension) supports *x_selection* and *x_property* polyinstantiated
 objects as discussed in the
 [**SELinux X-Windows Support**](x_windows.md#x-windows-selinux-support)
 section.
-
 
 ## Polyinstantiation support in the Reference Policy
 
@@ -225,8 +219,6 @@ boolean is set *false* (off).
 
 The polyinstantiation of X-Windows objects (*x_selection* and
 *x_property*) are not currently supported by the reference policy.
-
-
 
 <!-- %CUTHERE% -->
 

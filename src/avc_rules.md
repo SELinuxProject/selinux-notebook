@@ -79,7 +79,6 @@ rule_name source_type target_type : class perm_set;
 </tbody>
 </table>
 
-
 ## *allow*
 
 The allow rule checks whether the operations between the source\_type
@@ -139,7 +138,6 @@ allow bootloader_t system_dbusd_t:dbus { acquire_svc send_msg };
 allow files_unconfined_type file_type:{ file chr_file } ~execmod;
 ```
 
-
 ## *dontaudit*
 
 The *dontaudit* rule stops the auditing of denial messages as it is known
@@ -158,7 +156,6 @@ also helps to manage the audit log by excluding known events.
 dontaudit traceroute_t { port_type -port_t }:tcp_socket name_bind;
 ```
 
-
 ## *auditallow*
 
 Audit the event as a record as it is useful for auditing purposes. Note
@@ -174,7 +171,6 @@ to grant permission.
 
 auditallow ada_t self:process execstack;
 ```
-
 
 ## *neverallow*
 
@@ -205,14 +201,12 @@ neverallow ~can_read_shadow_passwords shadow_t:file read;
 neverallow { domain -mmap_low_domain_type } self:memprotect mmap_zero;
 ```
 
-
 <section class="footnotes">
 <ol>
 <li id="fna1"><p><code>neverallow</code> statements are allowed in modules, however to detect these the <em>semanage.conf</em> file must have the 'expand-check=1' entry present.<a href="#fnavc1" class="footnote-back">↩</a></p></li>
 <li id="fna2"><p>The *--disable-neverallow* option can be used with <em></strong>secilc</strong>(8)</em> to disable <code>neverallow</code> rule checking.<a href="#fnavc2" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

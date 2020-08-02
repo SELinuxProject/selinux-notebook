@@ -31,7 +31,6 @@ The type of SELinux policy can described in a number of ways:
 As can be seen the description of a policy can vary depending on the
 context.
 
-
 ## Reference Policy
 
 Note that this section only gives an introduction to the Reference
@@ -55,7 +54,6 @@ number of RPMs.
 
 The Reference Policy can be built as a Monolithic policy or as a Modular policy
 that has a 'base module' with zero or more optional 'loadable modules'.
-
 
 ## Policy Functionality Based on Name or Type
 
@@ -93,7 +91,6 @@ The *NAME* and *TYPE* entries are defined in the reference policy
 [**Source Configuration Files**](reference_policy.md#source-configuration-files)
 section.
 
-
 ## Custom Policy
 
 This generally refers to a policy source that is either:
@@ -118,7 +115,6 @@ classes/permissions (see kernel *Documentation/admin-guide/LSM/SELinux.rst*
 for build instructions, also the
 [**Notebook Sample Policy - README**](./notebook-examples/selinux-policy/README.md)).
 
-
 ## Monolithic Policy
 
 A Monolithic policy is an SELinux policy that is compiled from one
@@ -132,7 +128,6 @@ SELinux command.
 The Reference Policy supports building of monolithic policies.
 
 In some cases the kernel policy binary file is also called a monolithic policy.
-
 
 ## Loadable Module Policy
 
@@ -166,14 +161,12 @@ into the final [**binary policy**](#policy-versions) for loading into
 the kernel, see
 "[**SELinux Policy Module Primer**](http://securityblog.org/brindle/2006/07/05/selinux-policy-module-primer/)".
 
-
 ### Optional Policy
 
 The loadable module policy infrastructure supports an
 [***optional***](modular_policy_statements.md#optional) policy statement that
 allows policy rules to be defined but only enabled in the binary policy once
 the conditions have been satisfied.
-
 
 ## Conditional Policy
 
@@ -198,7 +191,6 @@ that defines the boolean flag identifier and its initial status, and the
 the state of the boolean value or values. See the
 [**Conditional Policy Statements**](conditional_statements.md#conditional-policy-statements)
 section.
-
 
 ## Binary Policy
 
@@ -226,7 +218,6 @@ at */etc/selinux/targeted/policy* and be called *policy.32* (as version 32
 is supported by Fedora):
 
 */etc/selinux/targeted/policy/policy.32*
-
 
 ## Policy Versions
 
@@ -372,8 +363,6 @@ quoted (some SELinux utilities give both version numbers).
 </table>
 
 **Table 1: Policy version descriptions**
-
-
 
 <!-- %CUTHERE% -->
 

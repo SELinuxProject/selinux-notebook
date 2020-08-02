@@ -52,7 +52,6 @@ the LAPP<a href="#fnap1" class="footnote-ref" id="fnaph1"><strong><sup>1</sup></
 The [A secure web application platform powered by SELinux](http://sepgsql.googlecode.com/files/LCA20090120-lapp-selinux.pdf)
 document gives a good overview of the LAPP architecture.
 
-
 ## *mod_selinux* Overview
 
 What the *mod_selinux* module achieves is to allow a web application
@@ -76,7 +75,6 @@ itself, for example:
 
 3.  The web application exits, handing control back to the web server
     that replies with the HTTP response.
-
 
 ## Bounds Overview
 
@@ -122,14 +120,11 @@ operation will be denied and an *SELINUX_ERR* entry will be added to
 the audit log stating *op=security_compute_av reason=bounds* with
 the context strings and the denied class and permissions.
 
-
-
 <section class="footnotes">
 <ol>
 <li id="fnap1"><p>This is similar to the LAMP (Linux, Apache, MySQL, PHP/Perl/Python) stack, however MySQL is not SELinux-aware.<a href="#fnaph1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

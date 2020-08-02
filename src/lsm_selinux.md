@@ -15,7 +15,6 @@ the SELinux kernel source code). The major areas covered are:
 4.  The SELinux filesystem */sys/fs/selinux*.
 5.  The */proc* filesystem area most applicable to SELinux.
 
-
 ## The LSM Module
 
 The LSM is the Linux security framework that allows 3<sup>rd</sup> party
@@ -95,7 +94,6 @@ inserted security hooks and structures to allow access control to be
 managed by 3<sup>rd</sup> party modules (see
 ./linux-3.14/include/linux/security.h).*
 
-
 | ***/proc/self/attr/*** **Permissions** |  **File Name**|     **Function**                              |
 | ------------ | ------------ | ------------------------------------------------------------------------ |
 | *current*    | *-rw-rw-rw-* | Contains the current process security context.                           |
@@ -148,7 +146,6 @@ hooks and structures.
 </table>
 
 **Table 3:** *The core LSM source modules.*
-
 
 ## The SELinux Module
 
@@ -274,7 +271,6 @@ to see how some of these kernel source modules fit together.
 **Table 4: The core SELinux source modules** - *The .h files and those in
 the include directory have a number of useful comments.*
 
-
 ### Fork System Call Walk-thorough
 
 This section walks through the the ***fork**(2)* system call shown in
@@ -338,7 +334,6 @@ is valid):
 **Figure 10: Hooks for the** ***fork**(2)* **system call** *This describes the steps
 required to check access permissions for Object Class *process* and
 permission *fork*.*
-
 
 ### Process Transition Walk-thorough
 
@@ -459,13 +454,11 @@ computed. This function will (assuming there are no errors):
 check if a transition is allowed from the *unconfined_t* domain to the
 *ext_gateway_t* domain.*
 
-
 ![](./images/12-lsm-selinux-arch.png)
 
 **Figure 12: The Main LSM / SELinux Modules** - *The fork and exec functions
 link to [**Figure 7**](domain_object_transitions.md#domain-transition)
 where the transition process is described.*
-
 
 #### SELinux Filesystem
 
@@ -737,8 +730,6 @@ Notes:
     to userspace via */proc/&lt;self|pid&gt;/attr* and
     */proc/&lt;self|pid&gt;/task/&lt;tid&gt;/attr/&lt;attr&gt;*
     interfaces.
-
-
 
 <!-- %CUTHERE% -->
 

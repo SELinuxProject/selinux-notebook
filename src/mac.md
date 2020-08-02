@@ -29,7 +29,6 @@ chain for DAC and MAC are shown in **Figure 3**.
 **Figure 3: Processing a System Call** - *The DAC checks are carried out
 first, if they pass then the Security Server is consulted for a decision.*
 
-
 SELinux supports two forms of MAC:
 
 **Type Enforcement** - Where processes run in domains and the actions on
@@ -60,8 +59,6 @@ application separation, for example SELinux enabled:
     app running on behalf of one user cannot read or write files created
     by the same app running on behalf of another user (see the
     [**Security Enhancements for Android - Computing a Context**](seandroid.md#computing-process-context-examples) section).
-
-
 
 <!-- %CUTHERE% -->
 

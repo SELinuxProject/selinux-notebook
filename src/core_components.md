@@ -17,7 +17,6 @@ manage enforcement of the policy and comprise of the following:
 5.  An Access Vector Cache (AVC) that improves system performance by
     caching security server decisions.
 
-
 ![](./images/1-core.png)
 
 **Figure 1: High Level Core SELinux Components** - *Decisions by the
@@ -25,11 +24,9 @@ Security Server are cached in the AVC to enhance performance of future
 requests. Note that it is the kernel and userspace Object Managers that
 enforce the policy.*
 
-
 ![](./images/2-high-level-arch.png)
 
 **Figure 2: High Level SELinux Architecture** - *Showing the major supporting services*
-
 
 **Figure 2** shows a more complex diagram of kernel and userspace with a number of
 supporting services that are used to manage the SELinux environment.
@@ -131,7 +128,6 @@ The [**Linux Security Module and SELinux**](lsm_selinux.md#linux-security-module
 section goes into greater detail of the LSM / SELinux modules with a walk
 through of a ***fork**(2)* and ***exec**(2)* process.
 
-
 <section class="footnotes">
 <ol>
 <li id="fnc1"><p>When SELinux is enabled, the policy can be running in 'permissive mode' (<code>SELINUX=permissive</code>), where all accesses are allowed. The policy
@@ -144,7 +140,6 @@ statement that allows a domain to run in permissive mode while the others are st
 (instead of the all or nothing set by <code>SELINUX=</code>).<a href="#fncor1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

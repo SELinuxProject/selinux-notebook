@@ -95,7 +95,6 @@ role user_r types user_t;
 role user_r types chfn_t;
 ```
 
-
 ## *attribute_role*
 
 The *attribute_role* statement declares a role attribute identifier that
@@ -159,7 +158,6 @@ attribute_role attribute_id;
 attribute_role role_list_1;
 attribute_role srole_list_2;
 ```
-
 
 ## *roleattribute*
 
@@ -232,7 +230,6 @@ role service_r;
 roleattribute service_r role_list_1;
 ```
 
-
 ## *allow*
 
 The role *allow* rule checks whether a request to change roles is allowed,
@@ -303,7 +300,6 @@ allow from_role_id to_role_id;
 
 allow sysadm_r secadm_r;
 ```
-
 
 ## *role_transition*
 
@@ -382,7 +378,6 @@ role_transition current_role_id type_id : class new_role_id;
 ```
 role_transition system_r unconfined_exec_t:process unconfined_r;
 ```
-
 
 ## *dominance* - Deprecated
 
@@ -464,7 +459,6 @@ Where:
 
 dominance { role message_filter_r { role unconfined_r };}
 ```
-
 
 <!-- %CUTHERE% -->
 

@@ -36,7 +36,6 @@ SELinux-aware applications do not (they rely on 'Object Managers' to do
 this e.g. the kernel based Object Managers such as those that manage
 filesystem, IPC and network labeling).
 
-
 ## Implementing SELinux-aware Applications
 
 This section puts forward various points that may be useful when
@@ -94,7 +93,6 @@ developing SELinux-aware applications and object managers using
     This is called 'deferred mapping of security contexts' and is
     explained at:
 <http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=12b29f34558b9b45a2c6eabd4f3c6be939a3980f>
-
 
 ## Implementing Object Managers
 
@@ -155,7 +153,6 @@ classes/permissions.
     the [**X Access Control Extension Specification**](http://www.x.org/releases/X11R7.5/doc/security/XACE-Spec.pdf), and for reference, the SE-PostgreSQL service also implements a similar
     interface.
 
-
 ## Reference Policy Changes
 
 When adding a new object manager to SELinux, it will require at least a
@@ -207,7 +204,6 @@ not require modification, and supplying the module files (*\*.te*,
 ##Comment on reason why required in base
 ## </required>
 ```
-
 
 ## Adding New Object Classes and Permissions
 
@@ -286,7 +282,6 @@ dynamic class/perm discovery:
     by the kernel. Then add allow rules as appropriate to the policy for
     the new permissions.
 
-
 <section class="footnotes">
 <ol>
 <li id="fni1"><p>The SELinux security server does not enforce a decision, it merely
@@ -297,7 +292,6 @@ also true of labeling, the object manager ensures that labels are
 applied to their objects as defined by policy.<a href="#fnisa1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

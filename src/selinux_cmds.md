@@ -152,8 +152,6 @@ has a page that details all the available tools and commands at:
 </tbody>
 </table>
 
-
-
 <!-- %CUTHERE% -->
 
 ---

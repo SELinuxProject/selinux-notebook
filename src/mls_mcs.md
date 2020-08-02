@@ -111,7 +111,6 @@ The format used in the policy language statements is fully described in
 the [MLS Statements](mls_statements.md#mls-statements) section, however
 a brief overview follows.
 
-
 #### MLS / MCS Range Format
 
 The following components (shown in bold) are used to define the MLS /
@@ -145,7 +144,6 @@ user:role:type:sensitivity[:category,...]  -  sensitivity [:category,...]
 </tbody>
 </table>
 
-
 #### Translating Levels
 
 When writing policy for MLS / MCS security level components it is usual
@@ -160,7 +158,6 @@ is used by the ***mcstransd**(8)* daemon. For example *s0* = Unclassified, *s15*
 command can be used to set up this translation and is shown in the
 [**setrans.conf**](policy_config_files.md#setrans.conf) configuration file
 section.
-
 
 ### Managing Security Levels via Dominance Rules
 
@@ -279,11 +276,9 @@ the *mlsconstrain* statement as illustrated in
 **Table 2: MLS Security Levels** - *Showing the scope of a process running
 at a security range of *s0 - s3:c1.c5*.*
 
-
 ![](./images/9-mls-constrain.png)
 
 **Figure 9: Showing the mlsconstrain Statements controlling Read Down & Write Up** - *This ties in with* **Table 2: MLS Security Levels** *that shows a process running with a security range of s0 - s3:c1.c5.*
-
 
 Using **Figure 9: *mlsconstrain* Statements controlling Read Down & Write Up**:
 
@@ -309,7 +304,6 @@ read-down. The default is to use l1 eq l2 (i.e. the levels are equal).
 The reference policy MLS source file (policy/mls) shows these
 *mlsconstrain* statements.
 
-
 ### MLS Labeled Network and Database Support
 
 Networking for MLS is supported via the NetLabel CIPSO (commercial IP
@@ -321,7 +315,6 @@ section.
 PostgreSQL supports labeling for MLS database services as discussed in
 the [**SE-PostgreSQL Support**](postgresql.md#postgresql-selinux-support)
 section.
-
 
 ### Common Criteria Certification
 
@@ -352,8 +345,6 @@ An interesting point:
     were: Microsoft CAPP only, Red Hat CAPP and LSPP. Therefore always
     look at the protection profiles as they define what was actually
     evaluated.
-
-
 
 <!-- %CUTHERE% -->
 

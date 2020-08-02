@@ -31,7 +31,6 @@ additional two files are required:
     SELinux.
 -   *./context/x_contexts* - To allow the X-Windows service to run under SELinux.
 
-
 ## *seusers*
 
 The ***seusers**(5)* file is used by login programs (normally via the
@@ -75,7 +74,6 @@ __default__:user_u:s0-s0
 
 -   ***getseuser**(3)*
 -   ***getseuserbyname**(3)*
-
 
 ## *booleans*
 ## *booleans.local*
@@ -125,7 +123,6 @@ Note that if *SETLOCALDEFS* is set in the SELinux
 in the ***selinux_booleans_path**(3)*, and also a *local.users* file
 in the ***selinux_users_path**(3)*.
 
-
 ## *booleans.subs_dist*
 
 The *booleans.subs_dist* file (if present) will allow new boolean names
@@ -170,7 +167,6 @@ Supporting libselinux API functions are:
 -   ***selinux_booleans_sub**(3)*
 -   ***security_get_boolean_names**(3)*
 -   ***security_set_boolean**(3)*
-
 
 ## setrans.conf
 
@@ -229,7 +225,6 @@ Supporting libselinux API functions are:
 -   ***selinux_translations_path**(3)*
 -   ***selinux_raw_to_trans_context**(3)*
 -   ***selinux_trans_to_raw_context**(3)*
-
 
 ## *secolor.conf*
 
@@ -322,7 +317,6 @@ user : role : type : range
 black white white black tan orange black green
 ```
 
-
 ## *policy/policy.&lt;ver&gt;*
 
 This is the binary policy file that is loaded into the kernel to enforce
@@ -337,7 +331,6 @@ version is built into the policy file. The different policy versions are
 discussed in the
 [**Types of SELinux Policy - Policy Versions**](types_of_policy.md#policy-versions)
 section.
-
 
 ## *contexts/customizable_types*
 
@@ -379,7 +372,6 @@ sysadm_untrusted_content_tmp_t
 -   ***is_context_customizable**(3)*
 -   ***selinux_customizable_types_path**(3)*
 -   ***selinux_context_path**(3)*
-
 
 ## *contexts/default_contexts*
 
@@ -442,7 +434,6 @@ these functions.
 -   ***query_user_context**(3)*
 -   ***manual_user_enter_context**(3)*
 
-
 An example use in this Notebook (to get over a small feature) is that
 when the initial **basic policy** was built, no default_contexts file
 entries were required as only one *role:type* of *unconfined_r:unconfined_t*
@@ -470,7 +461,6 @@ The login process could now set the context correctly to
 *contexts/users/unconfined_u* configuration file instead could also have
 achieved this.
 
-
 ## *contexts/dbus_contexts*
 
 This file is for the dbus messaging service daemon (a form of IPC) that
@@ -496,7 +486,6 @@ information at:
 **Supporting libselinux API function is:**
 
 -   ***selinux_context_path**(3)*
-
 
 ## *contexts/default_type*
 
@@ -535,7 +524,6 @@ user_r:user_t
 
 -   ***selinux_default_type_path**(3)*
 -   ***get_default_type**(3)*
-
 
 ## *contexts/failsafe_context*
 
@@ -579,7 +567,6 @@ sysadm_r:sysadm_t:s0
 -   ***get_ordered_context_list**(3)*
 -   ***get_ordered_context_list_with_level**(3)*
 
-
 ## *contexts/initrc_context*
 
 This is used by the ***run_init**(8)* command to allow system services to
@@ -605,7 +592,6 @@ user:role:type[:range]
 
 **Example file contents:**
 
-
 ```
 # Taken from the MLS policy
 # Note that the init process has full access via the range s0-s15:c0.c255.
@@ -616,7 +602,6 @@ system_u:system_r:initrc_t:s0-s15:c0.c255
 **Supporting libselinux API functions are:**
 
 -   ***selinux_context_path**(3)*
-
 
 ## *contexts/lxc_contexts*
 
@@ -672,7 +657,6 @@ sandbox_lxc_process = "system_u:system_r:container_t:s0"
 -   ***selinux_context_path**(3)*
 -   ***selinux_lxc_context_path**(3)*
 
-
 ## *contexts/netfilter_contexts* - Obsolete
 
 This file was to support the Secmark labeling for Netfilter / iptable rule
@@ -683,29 +667,24 @@ matching of network packets - Never been used.
 -   ***selinux_context_path**(3)*
 -   ***selinux_netfilter_context_path**(3)*
 
-
 ## *contexts/openrc_contexts*
 
 **To be determined**
 
 **The file format is as follows:**
 
-
 **Example file contents:**
-
 
 **Supporting libselinux API functions are:**
 
 -   ***selinux_context_path**(3)*
 -   ***selinux_openrc_contexts_path**(3)*
 
-
 ## *contexts/openssh_contexts*
 
 **To be determined**
 
 **The file format is as follows:**
-
 
 **Example file contents:**
 
@@ -717,7 +696,6 @@ privsep_preauth=sshd_net_t
 
 -   ***selinux_context_path**(3)*
 -   ***selinux_openssh_contexts_path**(3)*
-
 
 ## *contexts/removable_context*
 
@@ -752,7 +730,6 @@ system_u:object_r:removable_t:s0
 
 -   ***selinux_removable_context_path**(3)*
 
-
 ## *contexts/sepgsql_contexts*
 
 This file contains the default security contexts for SE-PostgreSQL
@@ -784,7 +761,6 @@ object_type object_name context
 </tbody>
 </table>
 
-
 **Example file contents:**
 
 ```
@@ -794,13 +770,11 @@ db_database        *        system_u:object_r:sepgsql_db_t:s0
 db_schema         *.*       system_u:object_r:sepgsql_schema_t:s0
 ```
 
-
 ## *contexts/snapperd_contexts*
 
 **To be determined**
 
 **The file format is as follows:**
-
 
 **Example file contents:**
 
@@ -812,7 +786,6 @@ snapperd_data = system_u:object_r:snapperd_data_t:s0
 
 -   ***selinux_context_path**(3)*
 -   ***selinux_snapperd_contexts_path**(3)*
-
 
 ## *contexts/securetty_types*
 
@@ -847,7 +820,6 @@ staff_tty_device_t
 **Supporting libselinux API functions are:**
 
 -   ***selinux_securetty_types_path**(3)*
-
 
 ## *contexts/systemd_contexts*
 
@@ -885,7 +857,6 @@ runtime=system_u:object_r:systemd_runtime_unit_file_t:s0
 -   ***selinux_context_path**(3)*
 -   ***selinux_systemd_contexts_path**(3)*
 
-
 ## *contexts/userhelper_context*
 
 This file contains the default security context used by the
@@ -918,7 +889,6 @@ system_u:sysadm_r:sysadm_t:s0
 
 -   ***selinux_context_path**(3)*
 
-
 ## *contexts/virtual_domain_context*
 
 The ***virtual_domain_context**(5)* file is used by the virtulization
@@ -938,7 +908,6 @@ system_u:system_r:svirt_tcg_t:s0
 
 -   ***selinux_virtual_domain_context_path**(3)*
 
-
 ## *contexts/virtual_image_context*
 
 The ***virtual_image_context**(5)* file is used by the virtulization API
@@ -957,7 +926,6 @@ system_u:object_r:virt_content_t:s0
 **Supporting libselinux API functions are:**
 
 -   ***selinux_virtual_image_context_path**(3)*
-
 
 ## *contexts/x_contexts*
 
@@ -1002,7 +970,6 @@ selection      PRIMARY	   system_u:object_r:clipboard_xselection_t:s0
 -   ***selabel_lookup**(3)*
 -   ***selabel_stats**(3)*
 
-
 ## *contexts/files/file_contexts*
 
 The ***file_contexts**(5)* file is managed by the ***semodule**(8)* and
@@ -1035,7 +1002,6 @@ compatible regular expression (PCRE) internal format.
 -   ***selabel_lookup**(3)*
 -   ***selabel_stats**(3)*
 
-
 ## *contexts/files/file_contexts.local*
 
 This file is added by the ***semanage fcontext*** command as described in the
@@ -1046,7 +1012,6 @@ file section to allow locally defined files to be labeled correctly. The
 **Supporting libselinux API functions are:**
 
 -   ***selinux_file_context_local_path**(3)*
-
 
 ## *contexts/files/file_contexts.homedirs*
 
@@ -1071,7 +1036,6 @@ Perl compatible regular expression (PCRE) internal format.
 
 -   ***selinux_file_context_homedir_path**(3)*
 -   ***selinux_homedir_context_path**(3)*
-
 
 ## contexts/files/file_contexts.subs
 ## contexts/files/file_contexts.subs_dist
@@ -1103,7 +1067,6 @@ with */var/www*, with the final result being:
 -   ***selabel_lookup**(3)*
 -   ***matchpathcon**(3)* (deprecated)
 -   ***matchpathcon_index**(3)* (deprecated)
-
 
 ## *contexts/files/media*
 
@@ -1145,7 +1108,6 @@ disk system_u:object_r:fixed_disk_device_t:s0
 
 -   ***selinux_media_context_path**(3)*
 
-
 ## *contexts/users/[seuser_id]*
 
 These optional files are named after the SELinux user they represent.
@@ -1182,7 +1144,6 @@ system_r:init_t:s0		unconfined_r:unconfined_t:s0
 -   ***get_default_context_with_rolelevel**(3)*
 -   ***get_ordered_context_list**(3)*
 -   ***get_ordered_context_list_with_level**(3)*
-
 
 ## *logins/&lt;linuxuser_id&gt;*
 
@@ -1238,7 +1199,6 @@ another_service:unconfined_u:s0
 
 -   ***getseuser**(3)*
 
-
 ## users/local.users
 
 **NOTE: These were removed in libselinux 3.0**
@@ -1258,14 +1218,11 @@ Note that if *SETLOCALDEFS* is set in the SELinux
 in the ***selinux_booleans_path**(3)*, and also a *local.users* file
 in the ***selinux_users_path**(3)*.
 
-
 <section class="footnotes">
 <ol>
 <li id="fnp1"><p>As each module would have its own file_contexts component that is either added or removed from the policies overall /etc/selinux/&lt;SELINUXTYPE&gt;/contexts/ files/file_contexts file.<a href="#fnpcf1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
-
 
 <!-- %CUTHERE% -->
 

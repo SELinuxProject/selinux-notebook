@@ -35,7 +35,6 @@ language perspective it will:
 | *allow* (role)   | *roleallow*        |
 | *dominance*      | *sensitivityorder* |
 
-
 2.  Additional CIL statements have been defined to enhance
     functionality:
 
@@ -146,7 +145,6 @@ vectors managed by Linux in order to align your security class
 declarations with the order in which they are declared in the kernel.
 A module store is created by *semodule* to give easy access to the
 source and that allows for full control over the policy.
-
 
 <!-- %CUTHERE% -->
 

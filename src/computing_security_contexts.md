@@ -46,7 +46,6 @@ various kernel objects (also see the
 [**Linux Security Module and SELinux**](lsm_selinux.md#linux-security-module-and-selinux)
 section.
 
-
 ### Process
 
 The initial task starts with the kernel security context, but the
@@ -72,7 +71,6 @@ Processes inherit their security context as follows:
     switch its security context (if permitted by policy) although this
     practice is generally discouraged - exec-based transitions are
     preferred.
-
 
 ### Files
 
@@ -111,11 +109,9 @@ SID, which is mapped to a context by the policy. This default may be
 overridden via the *defcontext=* mount option on a per-mount basis as
 described in ***mount**(8)*.
 
-
 ### File Descriptors
 
 Inherits the label of its creator/parent.
-
 
 ### Filesystems
 
@@ -164,13 +160,11 @@ Notes:
     *context=*, *fscontext=*, *defcontext=* and *rootcontext=*. They are
     fully described in the ***mount**(8)* man page.
 
-
 ### Network File System (nfsv4.2)
 
 If labeled NFS is implemented with *xattr* support, then the creation of
 inodes are treated as described in the [Files](#files)
 section.
-
 
 ### INET Sockets
 
@@ -204,11 +198,9 @@ Some sockets may be labeled with the kernel SID to reflect the fact that
 they are kernel-internal sockets that are not directly exposed to
 applications.
 
-
 ### IPC
 
 Inherits the label of its creator/parent.
-
 
 ### Message Queues
 
@@ -233,16 +225,13 @@ the message queue it will be stored in as follows:
     with the selected range being low, high or low-high to be defined
     for the message object class).
 
-
 ### Semaphores
 
 Inherits the label of its creator/parent.
 
-
 ### Shared Memory
 
 Inherits the label of its creator/parent.
-
 
 ### Keys
 
@@ -250,7 +239,6 @@ Inherits the label of its creator/parent.
 
 Security-aware applications may use ***setkeycreatecon**(3)* to
 explicitly label keys they create if permitted by policy.
-
 
 ## Using libselinux Functions
 
@@ -349,7 +337,6 @@ new context *newcon* (referenced by SIDs for
 
 **Table 1**
 
-
 ### *avc_compute_member* and *security_compute_member*
 
 **Table 2** shows how the components from the source context,
@@ -423,7 +410,6 @@ the new context *newcon* (referenced by SIDs for
 </table>
 
 **Table 2**
-
 
 ### *security_compute_relabel*
 
@@ -501,7 +487,6 @@ following notes also apply:
 </table>
 
 **Table 3**
-
 
 <!-- %CUTHERE% -->
 

@@ -79,7 +79,6 @@ default_user file target;
 default_user { x_selection x_property } source;
 ```
 
-
 ## *default_role*
 
 Allows the default role to be taken from the source or target context
@@ -155,7 +154,6 @@ default_role file target;
 default_role { x_selection x_property } source;
 ```
 
-
 ## *default_type*
 
 Allows the default type to be taken from the source or target context
@@ -230,7 +228,6 @@ default_type file target;
 
 default_type { x_selection x_property } source;
 ```
-
 
 ## *default_range*
 
@@ -331,7 +328,6 @@ default_type { x_selection x_property } source low_high;
 
 default_range db_table glblub;
 ```
-
 
 <!-- %CUTHERE% -->
 

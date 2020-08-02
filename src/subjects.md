@@ -37,14 +37,11 @@ under *semanage_t*).
 
 **Untrusted** - Everything else.
 
-
 <section class="footnotes">
 <ol>
 <li id="fns1"><p>The object class and its associated permissions are explained in the <strong><a href="object_classes_permissions.md#process-object-class"> Appendix A - Object Classes and Permissions - Process Object Class</a></strong> section.<a href="#fnsub1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
-
 
 <!-- %CUTHERE% -->
 

@@ -22,8 +22,6 @@ Some policies, for example Android, only make use of one role called *r*.
 **Figure 4: Role Based Access Control** - *Showing how SELinux controls
 access via user, role and domain type association.*
 
-
-
 <!-- %CUTHERE% -->
 
 ---

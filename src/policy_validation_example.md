@@ -97,7 +97,6 @@ options as described in the
 [**Global Configuration Files** - *semanage.conf*](global_config_files.md#etcselinuxsemanage.conf)
 file section.
 
-
 <!-- %CUTHERE% -->
 
 ---

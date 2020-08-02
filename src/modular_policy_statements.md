@@ -3,7 +3,6 @@
 This section contains statements used to support policy modules. They are
 not part of the kernel policy language.
 
-
 ## *module*
 
 This statement is mandatory for loadable modules (non-base) and must be
@@ -268,7 +267,6 @@ optional {
 
 } # end optional
 ```
-
 
 <!-- %CUTHERE% -->
 

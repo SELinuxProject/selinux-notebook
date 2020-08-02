@@ -73,7 +73,6 @@ sid unlabeled
 sid fs
 ```
 
-
 ## *sid context*
 
 The *sid context* statement is used to associate an initial security
@@ -150,7 +149,6 @@ sid unlabeled
 ...
 sid unlabeled system_u:object_r:unlabeled_t:s15:c0.c255
 ```
-
 
 <!-- %CUTHERE% -->
 

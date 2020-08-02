@@ -43,7 +43,6 @@ locations as follows:
 </tbody>
 </table>
 
-
 ## Is SELinux useful
 
 There are many views on the usefulness of SELinux on Linux based
@@ -123,7 +122,6 @@ The following maybe useful in providing a practical view of SELinux:
     <https://events.static.linuxfound.org/sites/events/files/slides/abs2014_seforandroid_smalley.pdf>
 4.  Older NSA documentation at: <https://www.nsa.gov/what-we-do/research/selinux/documentation/>
     that is informative.
-
 
 <!-- %CUTHERE% -->
 

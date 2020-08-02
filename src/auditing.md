@@ -40,7 +40,6 @@ Notes:
     ***selinux_set_callback**(3)* and specifying an alternative log
     handler.
 
-
 ## AVC Audit Events
 
 **Table 1** describes the general format of AVC audit
@@ -232,7 +231,6 @@ exe="/usr/move_file/move_file_c"
 subj=unconfined_u:unconfined_r:move_file_t key=(null)
 ```
 
-
 ## General SELinux Audit Events
 
 This section shows a selection of non-AVC SELinux-aware services audit
@@ -269,7 +267,6 @@ policyload notice (seqno=2) : exe="/usr/bin/Xorg" sauid=0 hostname=?
 addr=? terminal=?'
 ```
 
-
 Change enforcement mode - *MAC_STATUS* - This was generated when the
 SELinux enforcement mode was changed:
 
@@ -283,7 +280,6 @@ pid=5591 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0
 tty=pts0 ses=2 comm="setenforce" exe="/usr/sbin/setenforce"
 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 key=(null)
 ```
-
 
 Change boolean value - *MAC_CONFIG_CHANGE* - This event was generated
 when ***setsebool**(8)* was run to change a boolean. Note that the
@@ -318,7 +314,6 @@ egid=0 sgid=0 fsgid=0 tty=pts0 ses=2 comm="netlabelctl"
 exe="/sbin/netlabelctl"
 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 key=(null)
 ```
-
 
 Labeled IPSec - *MAC_IPSEC_EVENT* - Generated when running
 ***setkey**(8)* to load IPSec configuration:
@@ -371,7 +366,6 @@ exe="/usr/sbin/httpd" subj=system_u:system_r:httpd_t:s0-s0:c0.c300
 key=(null)
 ```
 
-
 Role changes - *USER_ROLE_CHANGE* - Used ***newrole**(1)* to set a new
 role that was not valid.
 
@@ -384,7 +378,6 @@ old-context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 new-context=?: exe="/usr/bin/newrole" hostname=? addr=?
 terminal=/dev/pts/0 res=failed'
 ```
-
 
 <!-- %CUTHERE% -->
 

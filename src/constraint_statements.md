@@ -172,7 +172,6 @@ constrain { dir file lnk_file sock_file fifo_file chr_file blk_file } { create r
 	(u1 == u2 or t1 == can_change_object_identity);
 ```
 
-
 ## *validatetrans*
 
 This statement is used to control the ability to change the objects
@@ -273,7 +272,6 @@ validatetrans class expression;
 ```
 validatetrans { file } { t1 == unconfined_t );
 ```
-
 
 ## *mlsconstrain*
 
@@ -399,7 +397,6 @@ mlsconstrain dir search
 	( t1 == mlsfileread ) or
 	( t2 == mlstrustedobject ));
 ```
-
 
 ## *mlsvalidatetrans*
 
@@ -530,7 +527,6 @@ mlsvalidatetrans { dir file lnk_file chr_file blk_file sock_file fifo_file }
 	(( t3 == mlsfiledowngrade ) and ( h1 dom h2 )) or
 	(( t3 == mlsfiledowngrade ) and ( h1 incomp h2 ))));
 ```
-
 
 <!-- %CUTHERE% -->
 

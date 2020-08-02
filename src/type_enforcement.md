@@ -54,7 +54,6 @@ any SELinux service (i.e. it is only used to identify the type
 component), although as explained above CIL with namespaces does make
 identification of types easier.
 
-
 ### Constraints
 
 It is possible to add constraints on users, roles, types and MLS ranges,
@@ -88,7 +87,6 @@ The kernel policy language constraints are defined in the
 [**Constraint Statements**](constraint_statements.md#constraint-statements)
 section.
 
-
 ### Bounds
 
 It is possible to add bounds to users, roles and types, however
@@ -102,8 +100,6 @@ compile time by the CIL compiler and NOT enforced by the SELinux kernel
 services. The [**Bounds Rules**](bounds_rules.md#bounds-rules)
 section defines the *typebounds* rule and also gives a summary of the
 *userbounds* and *rolebounds* rules.
-
-
 
 <!-- %CUTHERE% -->
 

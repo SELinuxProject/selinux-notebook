@@ -2,10 +2,6 @@
 
 I'm sure there is more to add here !!!
 
-
-
-
-
 <!-- %CUTHERE% -->
 
 ---
