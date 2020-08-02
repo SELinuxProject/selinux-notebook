@@ -6,9 +6,9 @@ then has links to each section within this document.
 
 ## Policy Source Files
 
-There are three basic types of policy source file<strong><a href="#fn1" class="footnote-ref" id="fnker1"><sup>1</sup></a></strong> that can contain language statements
-and rules. The three types of policy
-source file<strong><a href="#fn2" class="footnote-ref" id="fnker2"><sup>2</sup></a></strong> are:
+There are three basic types of policy source file[^fn_kpl_1] that can contain
+language statements and rules. The three types of policy source file[^fn_kpl_2]
+are:
 
 **Monolithic Policy** - This is a single policy source file that
 contains all statements. By convention this file is called policy.conf
@@ -739,7 +739,7 @@ within an *if/else* construct, *optional {rule_list}*, or
 <td>neverallow</td>
 <td>Yes</td>
 <td>Yes</td>
-<td><strong>Yes</strong><sup><strong><a href="#fnk3" class="footnote-ref" id="fnker3"><sup>3</sup></a></strong></sup></td>
+<td><strong>Yes</strong>[^fn_kpl_3]</td>
 <td>No</td>
 <td>Yes</td>
 <td>No</td>
@@ -801,9 +801,9 @@ within an *if/else* construct, *optional {rule_list}*, or
 <tr>
 <td>require</td>
 <td>No</td>
-<td><strong>Yes</strong><sup><strong><a href="#fnk4" class="footnote-ref" id="fnker4"><sup>4</sup></a></strong></sup></td>
+<td><strong>Yes</strong>[^fn_kpl_4]</td>
 <td>Yes</td>
-<td><strong>Yes</strong><sup><strong><a href="#fnk5" class="footnote-ref" id="fnker5"><sup>5</sup></a></strong></sup></td>
+<td><strong>Yes</strong>[^fn_kpl_5]</td>
 <td>Yes</td>
 <td>No</td>
 </tr>
@@ -969,15 +969,23 @@ Note these are not kernel policy statements, but used by the Reference Policy
 to assist policy build:
 -   [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
 
-<section class="footnotes">
-<ol>
-<li id="fn1"><p>It is important to note that the <strong>Reference Policy</strong> builds policy using makefiles and m4 support macros within its own source file structure. However, the end result of the make process is that there can be three possible types of source file built (depending on the <strong>MONOLITHIC=Y/N</strong> build option). These files contain the policy language statements and rules that are finally complied into a binary policy.<a href="#fnker1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>This does not include the <em>file_contexts</em> file as it does not contain policy statements, only default security contexts (labels) that will be used to label files and directories.<a href="#fnker2" class="footnote-back">↩</a></p></li>
-<li id="fnk3"><p><code>neverallow</code> statements are allowed in modules, however to detect these the <em>semanage.conf</em> file must have the <code>expand-check=1</code> entry present.<a href="#fnker3" class="footnote-back">↩</a></p></li>
-<li id="fnk4"><p>Only if preceded by the <code>optional</code> statement.<a href="#fnker4" class="footnote-back">↩</a></p></li>
-<li id="fnk5"><p>Only if preceded by the <code>optional</code> statement.<a href="#fnker5" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
+[^fn_kpl_1]: It is important to note that the Reference Policy builds policy
+using makefiles and m4 support macros within its own source file structure.
+However, the end result of the make process is that there can be three possible
+types of source file built (depending on the *MONOLITHIC=Y/N* build option).
+These files contain the policy language statements and rules that are finally
+complied into a binary policy.
+
+[^fn_kpl_2]: This does not include the *file_contexts* file as it does not
+contain policy statements, only default security contexts (labels) that will be
+used to label files and directories.
+
+[^fn_kpl_3]: *neverallow* statements are allowed in modules, however to detect
+these the *semanage.conf* file must have the *expand-check=1* entry present.
+
+[^fn_kpl_4]: Only if preceded by the *optional* statement.
+
+[^fn_kpl_5]: Only if preceded by the *optional* statement.
 
 <!-- %CUTHERE% -->
 
