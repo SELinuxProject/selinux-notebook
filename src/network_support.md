@@ -69,7 +69,6 @@ the inode associated to the socket and not from the actual kernel socket
 structure (as currently there is no standard kernel/userspace interface
 to achieve this).
 
-
 ## SECMARK
 
 SECMARK makes use of the standard kernel NetFilter framework that
@@ -181,8 +180,6 @@ The following articles explain the SECMARK service:
 -   [*Transitioning to Secmark*](http://paulmoore.livejournal.com/4281.html)
 -   [New secmark-based network controls for SELinux](http://james-morris.livejournal.com/11010.html)
 
-
-
 ## NetLabel - Fallback Peer Labeling
 
 Fallback labeling can optionally be implemented on a system if the
@@ -204,7 +201,6 @@ the policy capability *network_peer_controls* being set to 0 and 1.
 **Figure 14: Fallback Labeling** - *Showing the differences between the
 policy capability ***network_peer_controls*** set to 0 and 1.*
 
-
 The *selinux-testsuite inet_socket* and *sctp* tests have examples of
 fallback labeling, and the following are a set of ***netlabelctl**(8)*
 commands from the *sctp* test:
@@ -220,7 +216,6 @@ netlabelctl -p map list
 ```
 Note that the security contexts must be valid in the policy otherwise the
 commands will fail.
-
 
 ## NetLabel – CIPSO/CALIPSO
 
@@ -290,7 +285,6 @@ netlabelctl -p map list
 
 The examples use the *nb_client*/*nb_server* from the Notebook examples
 section, plus the standard Fedora 'targeted' policy for the tests.
-
 
 ## Labeled IPSec
 
@@ -437,7 +431,6 @@ article and a good reference covering **Basic Labeled IPsec Configuration**
 available at:
 <http://www.redhat.com/archives/redhat-lspp/2006-November/msg00051.html>
 
-
 ## Labeled Network FileSystem (NFS)
 
 Version 4.2 of NFS supports labeling between client/server and requires
@@ -458,7 +451,6 @@ Labeled NFS clients must use a consistent security policy.
 
 The *selinux-testsuite tools/nfs.sh* tests labeled NFS using various labels.
 
-
 <section class="footnotes">
 <ol>
 <li id="fnn1"><p>For example, an ftp session where the server is listening on a specific port (the destination port) but the client will be assigned a random source port. The CONNSECMARK will ensure that all packets for the ftp session are marked with the same label.<a href="#fnnet1" class="footnote-back">↩</a></p></li>
@@ -466,7 +458,6 @@ The *selinux-testsuite tools/nfs.sh* tests labeled NFS using various labels.
 <li id="fnn3"><p>These are the Internet Key Exchange (IKE) daemons that exchange encryption keys securely and also supports Labeled IPSec parameter exchanges.<a href="#fnnet3" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

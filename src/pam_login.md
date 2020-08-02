@@ -111,8 +111,6 @@ perform the following functions:
 -   ***pam_selinux.so close*** - This will reset the login programs context
     to the context defined in the policy.
 
-
-
 <!-- %CUTHERE% -->
 
 ---

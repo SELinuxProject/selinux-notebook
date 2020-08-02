@@ -69,7 +69,6 @@ Language, and the
 [**CIL Reference Guide**](./notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 specifies the CIL Policy Language.
 
-
 # Kernel Object Classes and Permissions
 
 ## Common Permissions
@@ -345,7 +344,6 @@ inherited by a number of object classes.
 </tbody>
 </table>
 
-
 ### Common Capability Permissions
 
 <table>
@@ -575,7 +573,6 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-
 ### Common X_Device Permissions
 
 The following table describes the common *x_device* permissions that are
@@ -665,7 +662,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 </tbody>
 </table>
-
 
 ## File Object Classes
 
@@ -906,7 +902,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-
 ## Network Object Classes
 
 ### *node*
@@ -1131,7 +1126,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tbody>
 </table>
 
-
 ## IPSec Network Object Classes
 
 ### *association*
@@ -1210,7 +1204,6 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 </tbody>
 </table>
-
 
 ## Netlink Object Classes
 
@@ -1611,7 +1604,6 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tbody>
 </table>
 
-
 ## Miscellaneous Network Object Classes
 
 ### *peer*
@@ -1713,7 +1705,6 @@ Netlink sockets communicate between userspace and the kernel – also see
 </tr>
 </tbody>
 </table>
-
 
 ## Sockets via *extended_socket_class*
 
@@ -1901,7 +1892,6 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-
 ## BPF Object Class
 
 ### *bpf*
@@ -1938,7 +1928,6 @@ These socket classes that were introduced by the
 </tr>
 </tbody>
 </table>
-
 
 ## Performance Event Object Class
 
@@ -1981,7 +1970,6 @@ These socket classes that were introduced by the
 </tbody>
 </table>
 
-
 ## Lockdown Object Class
 
 Note: If the *lockdown* LSM is enabled alongside SELinux, then the
@@ -2010,7 +1998,6 @@ implementation.
 </tr>
 </tbody>
 </table>
-
 
 ## IPC Object Classes
 
@@ -2120,7 +2107,6 @@ implementation.
 </tr>
 </tbody>
 </table>
-
 
 ## Process Object Class
 
@@ -2286,7 +2272,6 @@ implementation.
 </tbody>
 </table>
 
-
 ## Security Object Class
 
 ### *security*
@@ -2355,7 +2340,6 @@ implementation.
 </tr>
 </tbody>
 </table>
-
 
 ## System Operation Object Class
 
@@ -2441,7 +2425,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tr>
 </tbody>
 </table>
-
 
 ## Miscellaneous Kernel Object Classes
 
@@ -2562,7 +2545,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-
 ## Capability Object Classes
 
 ### *capability*
@@ -2641,7 +2623,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tbody>
 </table>
 
-
 ## InfiniBand Object Classes
 
 ### *infiniband_pkey*
@@ -2681,7 +2662,6 @@ Note that while this is defined as a kernel object class, the userspace
 </tr>
 </tbody>
 </table>
-
 
 **Userspace** Object Classes
 =============================
@@ -3321,7 +3301,6 @@ These are userspace objects managed by XSELinux.
 </tbody>
 </table>
 
-
 ## Database Object Classes
 
 These are userspace objects - The PostgreSQL database supports these
@@ -3652,7 +3631,6 @@ explains the objects, their permissions and how they should be used in detail.
 </tbody>
 </table>
 
-
 ## Miscellaneous Userspace Object Classes
 
 ### *passwd*
@@ -3864,8 +3842,6 @@ explains the objects, their permissions and how they should be used in detail.
 </tr>
 </tbody>
 </table>
-
-
 
 <!-- %CUTHERE% -->
 

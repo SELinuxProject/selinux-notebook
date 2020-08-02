@@ -42,7 +42,6 @@ The sections that follow cover:
 8.  Logging and auditing
 9.  Configuration file formats
 
-
 ## SE for Android Project Updates
 
 This gives a high level view of the new and updated projects to support
@@ -128,7 +127,6 @@ Provides the policy build tool. Added support for MacOS X. Not available
 on the device as policy rebuilds are done in the development environment.
 There are no specific updates to support Android except an *Android.bp* file.
 
-
 ### ***bootable/recovery***
 
 Changes to manage file labeling on recovery using functions such as
@@ -197,7 +195,6 @@ Build information for each device that includes device specific policy as
 discussed in the [**The SELinux Policy**](#the-selinux-policy) and
 [**Managing Device Policy Files**](#managing-device-policy-files) sections.
 
-
 ## Kernel LSM / SELinux Support
 
 The paper "Security Enhanced (SE) Android: Bringing Flexible MAC to
@@ -219,7 +216,6 @@ that consists of the following:
 Kernel 5.0+ supports Dynamically Allocated Binder Devices, therefore
 configuring specific devices (e.g. **CONFIG_ANDROID_BINDER_DEVICES="binder"**)
 is no longer required (use ***CONFIG_ANDROID_BINDERFS=y*** instead).
-
 
 ## Android Classes & Permissions
 
@@ -463,7 +459,6 @@ not all are required for Android.
 </tbody>
 </table>
 
-
 ## SELinux Commands
 
 A subset of the Linux SELinux commands have been implemented in Android
@@ -526,7 +521,6 @@ adb shell pm list permissions -g
 </tr>
 </tbody>
 </table>
-
 
 ## SELinux Public Methods
 
@@ -630,7 +624,6 @@ TV package *AboutFragment.java* calls **SELinux.isSELinuxEnabled()**.
 </tbody>
 </table>
 
-
 ## Android Init Language SELinux Extensions
 
 The Android init process language has been expanded to support SELinux
@@ -675,7 +668,6 @@ service ueventd /system/bin/ueventd
 # Set SELinux security contexts on upgrade or policy update.
     restorecon --recursive --skip-ce /data
 ```
-
 
 ## The SELinux Policy
 
@@ -975,7 +967,6 @@ domains (not allowed) and *neverallow* assertions
 **version_policy** - Takes the given public platform policy, a private policy
 and a version number to produced a combined "versioned" policy file.
 
-
 ## Logging and Auditing
 
 Android supports auditing of SELinux events via the AOSP logger
@@ -1001,7 +992,6 @@ in the kernel buffers that can be read using ***dmesg**(1)*:
 ```
 adb shell dmesg
 ```
-
 
 ## Policy File Formats
 
@@ -1117,7 +1107,6 @@ example taken from *device/generic/goldfish/fstab.ranchu*:
 ...
 /dev/block/pci/pci0000:00/0000:00:06.0/by-name/metadata /metadata ext4 .....
 ```
-
 
 ### ***seapp_contexts***
 
@@ -1367,7 +1356,6 @@ LABEL                                    USER    PID  PPID NAME
 u:r:untrusted_app:s0:c149,c256,c512,c768 u0_a149 1138 64   com.example.myapplication
 ```
 
-
 ### ***property_contexts***
 
 This file holds property service keys and their contexts that are
@@ -1385,7 +1373,6 @@ property_key security_context type value
 
 type = prefix or exact
 value = int, double, bool or string
-
 
 Example entries:
 
@@ -1410,7 +1397,6 @@ ro.radio.noril                    u:object_r:telephony_config_prop:s0 exact stri
 ro.telephony.call_ring.multiple   u:object_r:telephony_config_prop:s0 exact bool
 ro.telephony.default_cdma_sub     u:object_r:telephony_config_prop:s0 exact int
 ```
-
 
 ### ***service_contexts***
 
@@ -1461,7 +1447,6 @@ Example *vndservice_contexts* Entries:
 manager                 u:object_r:service_manager_vndservice:s0
 *                       u:object_r:default_android_vndservice:s0
 ```
-
 
 ### ***mac_permissions.xml***
 
@@ -1549,7 +1534,6 @@ file:
      </signer>
 ```
 
-
 ### ***keys.conf***
 
 The *keys.conf* file is used by **insertkeys.py** for mapping the
@@ -1588,8 +1572,6 @@ ENG       : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 USER      : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 USERDEBUG : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 ```
-
-
 
 <!-- %CUTHERE% -->
 

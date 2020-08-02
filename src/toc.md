@@ -61,7 +61,6 @@
 -   [Appendix D - Debugging Policy - Hints and Tips](debug_policy_hints.md#appendix-d---debugging-policy---hints-and-tips)
 -   [Appendix E - Policy Validation Example](policy_validation_example.md#appendix-e---policy-validation-example)
 
-
 <!-- %CUTHERE% -->
 
 ---

@@ -91,7 +91,6 @@ Where:
 </tbody>
 </table>
 
-
 ![](./images/6-allow-rule.png)
 
 **Figure 6: The *allow* rule** - *Showing that the subject (the processes
@@ -185,7 +184,6 @@ security.selinux="unconfined_u:object_r:user_home:s0
 # attribute and 'myfile' is a file name. The security context
 # (or label) held for the file is displayed.
 ```
-
 
 #### Copying and Moving Files
 
@@ -321,7 +319,6 @@ process itself should clear or shred the information before releasing
 the object (which can be difficult in some cases unless the source code
 is available).
 
-
 <section class="footnotes">
 <ol>
 <li id="fno1"><p>These file systems store the security context in an attribute
@@ -329,8 +326,6 @@ associated with the file.<a href="#fnobj1" class="footnote-back">↩</a></p></li
 <li id="fno2"><p>Note that this file contains the contexts of all files in all extended attribute filesystems for the policy. However within a modular policy (and/or CIL modules) each module describes its own file context information, that is then used to build this file.<a href="#fnobj2" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
-
 
 <!-- %CUTHERE% -->
 

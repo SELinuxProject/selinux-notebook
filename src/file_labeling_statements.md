@@ -12,7 +12,6 @@ therefore if the policy supports MCS / MLS, then an *mls_range* is
 required as described in the
 [**MLS range Definition**](mls_statements.md#mls-range-definition) section.
 
-
 ## *fs_use_xattr*
 
 The *fs_use_xattr* statement is used to allocate a security context to
@@ -86,7 +85,6 @@ fs_use_xattr ext2 system_u:object_r:fs_t:s0;
 fs_use_xattr ext3 system_u:object_r:fs_t:s0;
 ```
 
-
 ## *fs_use_task*
 
 The *fs_use_task* statement is used to allocate a security context to
@@ -158,7 +156,6 @@ fs_use_task pipefs system_u:object_r:fs_t:s0;
 fs_use_task sockfs system_u:object_r:fs_t:s0;
 ```
 
-
 ## *fs_use_trans*
 
 The *fs_use_trans* statement is used to allocate a security context to
@@ -229,7 +226,6 @@ fs_use_trans shm system_u:object_r:tmpfs_t:s0;
 fs_use_trans tmpfs system_u:object_r:tmpfs_t:s0;
 fs_use_trans devpts system_u:object_r:devpts_t:s0;
 ```
-
 
 ## *genfscon*
 
@@ -322,7 +318,6 @@ genfscon proc /sysvipc system_u:object_r:proc_t:s0
 genfscon proc /fs/openafs system_u:object_r:proc_afs_t:s0
 genfscon proc /kmsg system_u:object_r:proc_kmsg_t:s15:c0.c255
 ```
-
 
 <!-- %CUTHERE% -->
 

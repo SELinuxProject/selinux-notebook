@@ -16,7 +16,6 @@ There are two variants of the *class* statement for writing policy:
     [**Associating Permissions to a Class**](#associating-permissions-to-a-class)
     section.
 
-
 ## *class*
 
 Object classes are declared within a policy with the following statement
@@ -76,7 +75,6 @@ class class_id
 class db_tuple
 ```
 
-
 ### Associating Permissions to a Class
 
 Permissions can be defined within policy in two ways:
@@ -89,7 +87,6 @@ Permissions can be defined within policy in two ways:
 
 A list of classes and their permissions used by the **Reference Policy**
 can be found in the *./policy/flask/access_vectors* file.
-
 
 ## *common*
 
@@ -154,7 +151,6 @@ common common_id { perm_set }
 
 common database { create drop getattr setattr relabelfrom relabelto }
 ```
-
 
 ## *class*
 
@@ -247,7 +243,6 @@ class db_blob inherits database
 
 class db_blob inherits database { read write import export }
 ```
-
 
 <!-- %CUTHERE% -->
 

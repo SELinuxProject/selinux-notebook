@@ -54,7 +54,6 @@ The command types are:
 -   [***semanage user***](#activeusers.local) Manage  SELinux confined users
 (Roles and levels for an SELinux user)
 
-
 ## active/modules Directory Contents
 
 Under this directory are the respective priority directories containing
@@ -83,7 +82,6 @@ test_policy               400       pp
 ...
 ```
 
-
 ### *tmp* Policy Store (build failure)
 
 When adding/updating a policy module and it fails to  build for some reason,
@@ -95,12 +93,10 @@ message indicating the failing line number is:
 Failed to resolve mlsconstrain statement at /var/lib/selinux/targeted/tmp/modules/400/test_mlsconstrain/cil:1
 ```
 
-
 ## *active/commit_num*
 
 This is a binary file used by ***semanage*** for managing updates to the
 store. The format is not relevant to policy construction.
-
 
 ### *active/policy.kern*
 
@@ -110,14 +106,12 @@ is then becomes the
 */etc/selinux/&lt;SELINUXTYPE&gt;/policy/policy.&lt;ver&gt;* binary policy
 that will be loaded into the kernel.
 
-
 ## *active/policy.linked*
 ## *active/seusers.linked*
 ## *active/seusers_extra.linked*
 
 These are saved policy files prior to merging local changes to improve
 performance.
-
 
 ## *active/booleans.local*
 
@@ -141,14 +135,12 @@ semanage boolean -m --on daemons_enable_cluster_mode
 daemons_enable_cluster_mode=1
 ```
 
-
 ## *disable_dontaudit*
 
 This file is only present when the ***semodule**(8)* '-D' flag is used to
 to build the policy or ***semanage dontaudit***. It indicates that a policy
 has been built without the *dontaudit* rules. This allows utilities
 such as ***audit2allow**(8)* to list all denials to assist debugging policy.
-
 
 ## *active/file_contexts*
 
@@ -271,7 +263,6 @@ pathname_regexp [file_type] security_context | <<none>>
 </tbody>
 </table>
 
-
 Keywords that can be in policy source \*.fc files and then form the *file_contexts.template* file entries are:
 
 <table>
@@ -304,7 +295,6 @@ Keywords that can be in policy source \*.fc files and then form the *file_contex
 </tr>
 </tbody>
 </table>
-
 
 **Example policy source file from Reference Policy** *policy/modules/system/userdomain.fc*:
 
@@ -341,7 +331,6 @@ HOME_ROOT/lost\+found/.*	<<none>>
 /home		-l	gen_context(system_u:object_r:home_root_t,s0)
 ```
 
-
 ## *active/file_contexts.local*
 
 This file is created and updated by the ***semanage fcontext*** command. It is
@@ -371,7 +360,6 @@ The resulting *file_contexts.local* file will be:
 /usr/move_file    system_u:object_r:unlabeled_t:s0
 ```
 
-
 ## *active/homedir_template*
 
 This file is built as described in the
@@ -395,7 +383,6 @@ HOME_ROOT/\.journal	<<none>>
 ...
 HOME_DIR/.+	system_u:object_r:user_home_t:s0
 ```
-
 
 ### *active/file_contexts.homedirs*
 
@@ -431,7 +418,6 @@ libsepol library function.
 #
 /home/[^/]+/.+	unconfined_u:object_r:user_home_t:s0
 ```
-
 
 ## active/seusers
 ## active/seusers.local
@@ -517,7 +503,6 @@ __default__:unconfined_u:s0-s0:c0.c1023
 rch:user_u:s0
 ```
 
-
 ## *active/users_extra*
 ## *active/users_extra.local*
 ## *active/users.local*
@@ -579,7 +564,6 @@ user seuser_id prefix prefix_id;
 </tbody>
 </table>
 
-
 **Example** *users_extra* **file contents:**
 
 ```
@@ -626,7 +610,6 @@ and the resulting *users.local* file will be:
 user test_u roles { staff_r } level s0 range s0;
 ```
 
-
 ## *active/interfaces.local*
 
 This file is created and updated by the ***semanage interface*** command to
@@ -650,7 +633,6 @@ semanage interface -a -t netif_t -r s0:c20.c250 enp7s0
 
 netifcon enp7s0 system_u:object_r:netif_t:s0:c20.c250 system_u:object_r:netif_t:s0:c20.c250
 ```
-
 
 ## *active/nodes.local*
 
@@ -677,7 +659,6 @@ semanage node -a -M 255.255.255.255 -t node_t -r s0:c20.c250 -p ipv4 127.0.0.2
 nodecon ipv4 127.0.0.2 255.255.255.255 system_u:object_r:node_t:s0:c20.c250
 ```
 
-
 ## *active/ports.local*
 
 This file is created and updated by the ***semanage port*** command to hold
@@ -687,7 +668,6 @@ port information is then built into the policy.
 Each line of the file contains a *portcon* statement that is defined along
 with examples in the policy language
 [***portcon***](network_statements.md#portcon) section.
-
 
 **Example** ***semanage port*** **command:**
 
@@ -703,7 +683,6 @@ semanage port -a -t port_t -p tcp -r s0:c20.c350 8888
 
 portcon tcp 8888 system_u:object_r:port_t:s0:c20.c350
 ```
-
 
 ## Set domain permissive mode
 
@@ -725,8 +704,6 @@ This will by default add a CIL policy module to
 
 Note that the CIL *typepermissive* statement is used, the equivalent kernel
 policy statement would be [***permissive***](type_statements.md#permissive).
-
-
 
 <!-- %CUTHERE% -->
 

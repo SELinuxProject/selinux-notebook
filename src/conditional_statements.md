@@ -56,7 +56,6 @@ getsebool -a
 getsebool allow_daemons_use_tty
 ```
 
-
 ## bool
 
 The *bool* statement is used to specify a boolean identifier and its
@@ -133,7 +132,6 @@ bool allow_execheap false;
 
 bool allow_execstack true;
 ```
-
 
 ### if
 
@@ -259,7 +257,6 @@ if (read_untrusted_content) {
     ...
 }
 ```
-
 
 <!-- %CUTHERE% -->
 

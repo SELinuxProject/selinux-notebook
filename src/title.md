@@ -80,7 +80,6 @@ Android.
 **Object Classes and Permissions** - Describes the SELinux object
 classes and permissions.
 
-
 <!-- %CUTHERE% -->
 
 ---

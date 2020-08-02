@@ -42,8 +42,6 @@ The ***sestatus**(8)* command will show the current SELinux
 enforcement mode in its output, however it does not display individual
 domain or object manager enforcement modes.
 
-
-
 <!-- %CUTHERE% -->
 
 ---

@@ -12,7 +12,6 @@ NOT enforced by the SELinux kernel services). The
 [**CIL Reference Guide**](notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 gives details.
 
-
 ## *typebounds*
 
 The *typebounds* rule was added in version 24 of the policy. This
@@ -91,7 +90,6 @@ allow httpd_t etc_t : file { getattr read };
 # will not be allowed by the kernel SELinux security server.
 allow httpd_child_t etc_t : file { read write };
 ```
-
 
 <!-- %CUTHERE% -->
 

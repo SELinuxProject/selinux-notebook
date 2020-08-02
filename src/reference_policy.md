@@ -26,7 +26,6 @@ In most documentation the policy name is defined using the
 */etc/selinux/config* file entry **SELINUXTYPE=**. This part of the Notebook
 uses both forms.
 
-
 ### Reference Policy Overview
 
 Strictly speaking the 'Reference Policy' should refer to the policy
@@ -71,7 +70,6 @@ section explains a simple build from source.
 
 **Figure 26: The Reference Policy Source Tree** - *When building a modular policy, files are added to the policy store. For monolithic builds the policy store is not used.*
 
-
 The Reference Policy can be used to build two policy types:
 
 1.  **Loadable Module Policy** - A policy that has a
@@ -92,7 +90,6 @@ forming a single 'base' source file.
 
 The Reference Policy relies heavily on the ***m4**(1)* macro processor
 as the majority of supporting services are m4 macros.
-
 
 ### Distributing Policies
 
@@ -134,7 +131,6 @@ The selinux-policy-sandbox rpm contains the sandbox module for use by the
 *policycoreutils-sandbox* package. This will be installed as a module for
 one of the three main policies described above.
 
-
 ### Policy Functionality
 
 As can be seen from the policies distributed with Fedora above, they can
@@ -147,7 +143,6 @@ the *SELINUXTYPE* entry of the *build.conf* as shown in
 -   targeted - MCS policy that supports a greater number of confined daemons
     and can also confine other areas and users.
 -   mls - MLS policy for server based systems.
-
 
 ### Reference Policy Module Files
 
@@ -310,7 +305,6 @@ interface(*ada_run',*
 /usr/libexec/gcc(/.*)?/gnat1	--	gen_context(system_u:object_r:ada_exec_t,s0)
 ```
 
-
 ### Reference Policy Documentation
 
 One of the advantages of the reference policy is that it is possible to
@@ -338,7 +332,6 @@ the ada module interfaces.
 
 **Figure 27: Example Documentation Screen Shot**
 
-
 ## Reference Policy Source
 
 This section explains the source layout and configuration files, with
@@ -350,7 +343,6 @@ and installation processes that has been used within this section (and
 updated with the authors comments as necessary). There is also a VERSION
 file that contains the Reference Policy release date, this can then be used to
 obtain a change list <https://github.com/SELinuxProject/refpolicy/releases>.
-
 
 ### Source Layout
 
@@ -375,7 +367,6 @@ The
 [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
 section then describes how the initial source is installed and
 configured to allow a policy to be built.
-
 
 ### Reference Policy Files and Directories
 
@@ -535,12 +526,10 @@ modular policy is being built. This file is explained in the
 
 **Table 1: The Reference Policy Files and Directories**
 
-
 ### Source Configuration Files
 
 There are two major configuration files (build.conf and modules.conf)
 that define the policy to be built and are detailed in this section.
-
 
 #### Reference Policy Build Options - build.conf
 
@@ -549,7 +538,6 @@ name and where the source will be located once it is finally installed.
 An example file content is shown in the
 [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
 section where it is used to install and then build the policy.
-
 
 **Table 2:** *build.conf* **Entries** explains the fields that can be defined within this file, however
 there are a number of *m4* macro parameters that are set up when this file is
@@ -647,7 +635,6 @@ policy is built with examples shown in the
 
 **Table 2:** *build.conf* **Entries**
 
-
 <table>
 <tbody>
 <tr style="background-color:#F2F2F2;">
@@ -704,7 +691,6 @@ policy is built with examples shown in the
 </table>
 
 **Table 3: m4 parameters set at build time** - *These have been extracted from the Reference Policy Makefile.*
-
 
 #### Reference Policy Build Options - policy/modules.conf
 
@@ -908,7 +894,6 @@ reference policy are different)
 
 **Table 4: Mandatory modules.conf Entries**
 
-
 ##### Building the modules.conf File
 
 The file can be created by an editor, however it is generally built
@@ -920,7 +905,6 @@ As will be seen in the
 [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source) section, the Fedora reference policy source comes with a number of
 pre-configured files that are used to produce the required policy including
 multiple versions of the *modules.conf* file.
-
 
 ### Source Installation and Build Make Options
 
@@ -966,7 +950,6 @@ taken from the *README* file.
 </table>
 
 **Table 5: General Build Make Targets**
-
 
 <table>
 <tbody>
@@ -1054,7 +1037,6 @@ taken from the *README* file.
 
 **Table 7: Monolithic Policy Build Make Targets**
 
-
 ### Booleans, Global Booleans and Tunable Booleans
 
 The three files *booleans.conf*, *global_booleans* and *global_tunables* are
@@ -1080,7 +1062,6 @@ built and used as follows:
 </tr>
 </tbody>
 </table>
-
 
 ### Modular Policy Build Structure
 
@@ -1209,7 +1190,6 @@ in **Table 9: Module Build**.
 
 **Table 8: Base Module Build** - *This shows the temporary build files used to build the base module 'base.conf' as a part of the 'make' process. Note that the modules marked as base in modules.conf are built here.*
 
-
 <table>
 <tbody>
 <tr style="background-color:#F2F2F2;">
@@ -1246,7 +1226,6 @@ in **Table 9: Module Build**.
 
 **Table 9: Module Build** - *This shows the module files and the temporary build files used to build each module as a part of the 'make' process (i.e. those modules marked as module in modules.conf).*
 
-
 ### Creating Additional Layers
 
 One objective of the reference policy is to separate the modules into
@@ -1271,7 +1250,6 @@ completed:
 <summary>ABC modules for the XYZ components.</summary>
 ```
 
-
 ## Installing and Building the Reference Policy Source
 
 This section will give a brief overview of how to build the Reference
@@ -1279,7 +1257,6 @@ Policy for an MCS modular build that is similar (but not the same) as
 the Fedora targeted policy. The Fedora version of the targeted
 policy build is discussed but building without using the rpm spec file
 is more complex.
-
 
 ### Building Standard Reference Policy
 
@@ -1419,7 +1396,6 @@ WERROR = n
 8.  The policy should now be built and can be checked using tools such
     as ***apol**(8)* or loaded by editing the */etc/selinux/config*
     file, running '*touch /.autorelabel*' and rebooting the system.
-
 
 ### Building the Fedora Policy
 
@@ -1591,7 +1567,6 @@ QUIET = n
     '*touch /.autorelabel*' and rebooting the system. It should have the
     same number of rules, types, classes etc. as the original release.
 
-
 ## Reference Policy Headers
 
 This method of building policy and adding new modules is used for
@@ -1626,7 +1601,6 @@ source two steps are required:
     macros to allow all classes and permissions to be resolved.
 -   Copy the module interface files (*.if*) to the relevant module
     directories at: */usr/share/selinux/&lt;SELINUXTYPE&gt;/include/modules*.
-
 
 ### Using the Reference Policy Headers
 
@@ -1697,7 +1671,6 @@ modules built from headers.
 
 **Table 10: Header Policy Build Make Targets**
 
-
 ### Using Fedora Supplied Headers
 
 The Fedora distribution installs the headers in a slightly different
@@ -1711,7 +1684,6 @@ manner as Fedora installs:
     used by the Reference Policy source.
 -   The documentation is installed in the
     */usr/share/doc/selinux-policy/html* directory.
-
 
 ## Reference Policy Support Macros
 
@@ -1864,7 +1836,6 @@ Incorrect:
 policy_module (ftp, 1.7.0)
 ```
 
-
 ### Loadable Policy Macros
 
 The loadable policy module support macros are located in the
@@ -1950,7 +1921,6 @@ require {
 }
 ```
 
-
 #### *gen_require* Macro
 
 For use within module files to insert a *require* block.
@@ -2012,7 +1982,6 @@ require {
 	class passwd rootok;
 }
 ```
-
 
 #### *optional_policy* Macro
 
@@ -2180,7 +2149,6 @@ optional {
 } # end optional
 ```
 
-
 #### *gen_tunable* Macro
 
 This macro defines booleans that are global in scope. The corresponding
@@ -2336,7 +2304,6 @@ if (allow_ftpd_use_nfs && allow_ftpd_anon_write) {
 } # end allow_ftpd_use_nfs && allow_ftpd_anon_write
 ```
 
-
 #### *interface* Macro
 
 Access *interface* macros are defined in the interface module file (*.if*)
@@ -2455,7 +2422,6 @@ optional {
 	##### end ftp_read_config(initrc_t) depth: 0
 } # end optional
 ```
-
 
 #### *template* Macro
 
@@ -2609,7 +2575,6 @@ template(*djbdns_daemontools_domain_template',*
 ##### end djbdns_daemontools_domain_template(dnscache) depth: 0
 ```
 
-
 ### Miscellaneous Macros
 
 These macros are in the *misc_macros.spt* file.
@@ -2678,7 +2643,6 @@ gen_context(context[,mls | mcs])
 
 /dev/\.tmp-block-.*  -c  system_u:object_r:fixed_disk_device_t:s15:c0.c1023
 ```
-
 
 #### *gen_user* Macro
 
@@ -2758,7 +2722,6 @@ ifdef(*direct_sysadm_daemon',*
 ')
 ```
 
-
 **Expanded Macro:**
 
 ```
@@ -2776,7 +2739,6 @@ user root roles { sysadm_r staff_r secadm_r auditadm_r } level s0 range s0 - s15
 
 user root prefix sysadm;
 ```
-
 
 #### *gen_bool* Macro
 
@@ -2912,7 +2874,6 @@ if( ! secure_mode_insmod ) {
 }
 ```
 
-
 ### MLS and MCS Macros
 
 These macros are in the *mls_mcs_macros.spt* file.
@@ -2986,7 +2947,6 @@ category c1;
 category c1023;
 ```
 
-
 #### *gen_sens* Macro
 
 This macro will generate a
@@ -3055,7 +3015,6 @@ sensitivity s1;
 ...
 sensitivity s15;
 ```
-
 
 #### *gen_levels* Macro
 
@@ -3128,7 +3087,6 @@ level s1:c0.c1023;
 level s15:c0.c1023;
 ```
 
-
 #### System High/Low Parameters
 
 These macros define system high etc. as shown.
@@ -3183,12 +3141,10 @@ mcs_allcats
 c0.c1023
 ```
 
-
 ### *ifdef* / *ifndef* Parameters
 
 This section contains examples of the common *ifdef* / *ifndef*
 parameters that can be used in module source files.
-
 
 #### *hide_broken_symptoms*
 
@@ -3209,7 +3165,6 @@ ifdef(*hide_broken_symptoms',*
 	dontaudit domain self:udp_socket listen;
 ')
 ```
-
 
 #### *enable_mls* and *enable_mcs*
 
@@ -3237,7 +3192,6 @@ ifdef(*enable_mcs',*
 	init_ranged_daemon_domain(ftpd_t, ftpd_exec_t, s0 - mcs_systemhigh)
 ')
 ```
-
 
 #### *enable_ubac*
 
@@ -3268,7 +3222,6 @@ define(*basic_ubac_conditions',*
 ')
 ```
 
-
 #### *direct_sysadm_daemon*
 
 This is used within modules as shown in the example. The parameter is
@@ -3290,7 +3243,6 @@ ifndef(*direct_sysadm_daemon',*
 	')
 ')
 ```
-
 
 ## Module Expansion Process
 
@@ -3318,8 +3270,6 @@ section.
 ![](./images/29-mod-expand-2.png)
 
 **Figure 29: The expansion process**
-
-
 
 <!-- %CUTHERE% -->
 

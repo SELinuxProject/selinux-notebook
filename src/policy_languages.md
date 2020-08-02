@@ -55,7 +55,6 @@ domain_transition_pattern(sysadm_t, ls_exec_t, test_stat_domain)
 domain_entry_file(test_stat_domain, ls_exec_t)
 ```
 
-
 <!-- %CUTHERE% -->
 
 ---

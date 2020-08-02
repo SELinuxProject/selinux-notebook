@@ -122,7 +122,6 @@ ls -Z /var/lib/libvirt/images
 system_u:object_r:svirt_image_t:s0:c585,c813 Dynamic_VM1.img
 system_u:object_r:svirt_image_t:s0:c535,c601 Dynamic_VM2.img
 
-
 ps -eZ | grep qemu
 system_u:system_r:svirt_tcg_t:s0:c585,c813 8707 ? 00:00:44 qemu-system-x86
 
@@ -227,7 +226,6 @@ initialisation process will take place:
     libselinux* API calls *setfilecon* and *setexeccon* respectively.
     The following example shows each VM having the same file label but
     different process labels:
-
 
 | VM Image           | Object    | Security context                             |
 | -------------------| ----------| -------------------------------------------- |

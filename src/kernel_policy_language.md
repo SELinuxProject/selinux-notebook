@@ -33,7 +33,6 @@ extension. These files are compiled using the ***checkmodule**(8)* command.
 appear in source files with the mandatory statements that must be
 present.
 
-
 <table>
 <tbody>
 <tr style="background-color:#D3D3D3;">
@@ -205,7 +204,6 @@ Where:
 **Table 3** shows a cross reference matrix of statements
 and rules allowed in each type of policy source file.
 
-
 ## Conditional, Optional and Require Statement Rules
 
 The language grammar specifies what statements and rules can be included
@@ -260,7 +258,6 @@ Where:
 **Table 3** shows a cross reference matrix of statements
 and rules allowed in each of the above policy statements.
 
-
 ## MLS Statements and Optional MLS Components
 
 The [**MLS Statements**](mls_statements.md#mls-statements) section defines
@@ -269,7 +266,6 @@ there are other statements that require the MLS component of a security
 context as an argument, (for example the
 [**Network Labeling Statements**](network_statements.md#network-labeling-statements)),
 therefore these statements show an example taken from the MLS **Reference Policy** build.
-
 
 ## General Statement Information
 
@@ -479,7 +475,6 @@ same).
 </table>
 
 **Table 2: Policy language reserved words**
-
 
 **Table 3** shows what policy language statements and rules are allowed
 within each type of policy source file, and whether the statement is valid
@@ -948,7 +943,6 @@ policy source file. The right hand side of the table shows whether the
 statement is valid within the *if/else* construct, *optional {rule_list}*,
 or *require {rule_list}* statement.*
 
-
 ## Section Contents
 
 The policy language statement and rule sections are as follows:
@@ -975,7 +969,6 @@ Note these are not kernel policy statements, but used by the Reference Policy
 to assist policy build:
 -   [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
 
-
 <section class="footnotes">
 <ol>
 <li id="fn1"><p>It is important to note that the <strong>Reference Policy</strong> builds policy using makefiles and m4 support macros within its own source file structure. However, the end result of the make process is that there can be three possible types of source file built (depending on the <strong>MONOLITHIC=Y/N</strong> build option). These files contain the policy language statements and rules that are finally complied into a binary policy.<a href="#fnker1" class="footnote-back">↩</a></p></li>
@@ -985,7 +978,6 @@ to assist policy build:
 <li id="fnk5"><p>Only if preceded by the <code>optional</code> statement.<a href="#fnker5" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
-
 
 <!-- %CUTHERE% -->
 

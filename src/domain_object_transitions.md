@@ -8,7 +8,6 @@ This section discusses the *type_transition* statement that is used to:
 These transitions can also be achieved using the **libselinux** API
 functions for SELinux-aware applications.
 
-
 ## Domain Transition
 
 A domain transition is where a process in one domain starts a new
@@ -97,7 +96,6 @@ SELinux enabled kernel.
 **Figure 7: Domain Transition** - *Where the secure_server is executed
 within the *unconfined_t* domain and then transitioned to the *ext_gateway_t*
 domain.*
-
 
 ### Type Enforcement Rules
 
@@ -221,7 +219,6 @@ Other ways to resolve this issue are:
 It was decided to use runcon as it demonstrates the command usage better
 than reading the man pages.
 
-
 ## Object Transition
 
 An object transition is where a new object requires a different label to
@@ -294,7 +291,6 @@ drwxr-xr-x root root system_u:object_r:unconfined_t ..
 -rw-r--r-- root root unconfined_u:object_r:in_file_t Message-1
 -rw-r--r-- root root unconfined_u:object_r:in_file_t Message-2
 ```
-
 
 <!-- %CUTHERE% -->
 

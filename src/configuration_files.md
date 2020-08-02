@@ -33,7 +33,6 @@ as follows:
     viewing the currently loaded policy using tools such as
     ***apol**(1)* (e.g. *apol /sys/fs/selinux/policy*).
 
-
 ## The Policy Store
 
 Version 2.7 of *libsemanage*, *libsepol*, and *policycoreutils* had the
@@ -148,7 +147,6 @@ already available, the following message will be given: "*A higher
 priority &lt;name&gt; module exists at priority &lt;999&gt; and will
 override the module currently being installed at priority &lt;111&gt;*".
 
-
 ## Converting policy packages to CIL
 
 A component of the update is to add a facility that converts compiled
@@ -174,7 +172,6 @@ standard output.
 Options:
 -h, --help print this message and exit
 ```
-
 
 <!-- %CUTHERE% -->
 
