@@ -5,14 +5,14 @@
 <!-- %STYLEEND% -->
 
 <!-- %STYLESTART%(display:block;margin-left:auto;margin-right:auto;) -->
-![](./images/logo.png)
+![](./images/selinux-penguin.svg)
 <!-- %STYLEEND% -->
 
 <br/>
 <br/>
 
-**<!-- %DATE% -->**  
-<!-- %GITHEAD% -->  
+**<!-- %DATE% -->**
+<!-- %GITHEAD% -->
 
 <!-- %STYLEEND% -->
 
