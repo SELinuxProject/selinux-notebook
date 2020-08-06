@@ -1,6 +1,6 @@
 # The SELinux Notebook
 
-![](./src/images/logo.png)
+![](./src/images/selinux-penguin.svg)
 
 ## Introduction
 
