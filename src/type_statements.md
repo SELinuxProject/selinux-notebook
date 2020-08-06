@@ -168,6 +168,65 @@ attribute file_type;
 attribute non_security_file_type;
 ```
 
+## *expandattribute*
+
+Overrides the compiler defaults for the expansion of one or more
+previously declared [*attribute*](#attribute) identifiers.
+
+This rule gives more control over type attribute expansion and
+removal. When the value is true, all rules involving the type
+attribute will be expanded and the type attribute will be removed from
+the policy. When the value is false, the type attribute will not be
+removed from the policy, even if the default expand rules or "-X"
+option cause the rules involving the type attribute to be expanded.
+
+**The statement definition is:**
+
+`expandattribute attribute_id expand_value;`
+
+**Where:**
+
+*expandattribute*
+
+The *expandattribute* keyword.
+
+*attribute_id*
+
+One or more *attribute* identifiers that have been previously declared by the
+[*attribute*](#attribute) statement. Multiple entries consist of a space
+separated list enclosed in braces '{}'.
+
+*expand_value*
+
+Either true or false.
+
+**The statement is valid in:**
+
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+**Examples:**
+
+```
+# Using the expandattribute statement to forcibly expand a
+# previously declared domain attribute.
+
+# The previously declared attribute:
+attribute domain;
+
+# The attribute stripping using the expandattribute statement:
+expandattribute domain true;
+```
+
 ## *typeattribute*
 
 The *typeattribute* statement allows the association of previously
