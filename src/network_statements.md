@@ -116,7 +116,7 @@ netifcon netif_id netif_context packet_context
 <tr>
 <td><code>packet_context</code></td>
 <td><p>The security context allocated packets. Note that these are defined but unused.</p>
-<p>The iptables(8)/nftables(8) <a href="network_support.md#secmark">SECMARK services</a> should be used to label packets.</p></td>
+<p>The iptables(8)/nftables(8) <a href="network_support.md#packet-controls-secmark">SECMARK services</a> should be used to label packets.</p></td>
 </tr>
 </tbody>
 </table>
