@@ -1752,7 +1752,7 @@ These socket classes that were introduced by the
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 21 common socket permissions + 1unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description</strong> (Inherit 21 common socket permissions + 1 unique)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-socket-permissions"><strong>Inherit Common Socket Permissions</strong></a></td>
