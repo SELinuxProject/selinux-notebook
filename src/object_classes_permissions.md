@@ -773,7 +773,7 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 <tr>
 <td>entrypoint</td>
@@ -796,11 +796,11 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions + 2 unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 </tbody>
 </table>
@@ -815,11 +815,11 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions + 2 unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 </tbody>
 </table>
@@ -834,11 +834,11 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions + 2 unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 </tbody>
 </table>
@@ -853,11 +853,11 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions + 2 unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 </tbody>
 </table>
@@ -872,11 +872,11 @@ inherited by the X-Windows *x_keyboard* and *x_pointer* object classes.
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><strong>Permissions</strong></td>
-<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions + 2 unique)</td>
+<td style="background-color:#F2F2F2;"><strong>Description </strong>(Inherit 25 common file permissions)</td>
 </tr>
 <tr>
 <td style="background-color:#F2F2F2;"><a href="#common-file-permissions"><strong>Inherit Common File Permissions</strong></a></td>
-<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads, write</td>
+<td style="background-color:#F2F2F2;">append, audit_access, create, execute, execmod, getattr, ioctl, link, lock, map, mounton, open, quotaon, read, relabelfrom, relabelto, rename, setattr, unlink,<em> watch, watch_mount, watch_sb, watch_with_perm, watch_reads,</em> write</td>
 </tr>
 </tbody>
 </table>
