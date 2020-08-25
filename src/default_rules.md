@@ -1,8 +1,14 @@
 # Default Object Rules
 
+- [*default_user*](#default_user)
+- [*default_role*](#default_role)
+- [*default_type*](#default_type)
+- [*default_range*](#default_range)
+
 These rules allow a default user, role, type and/or range to be used
 when computing a context for a new object. These require policy version
-27 or 28 with kernels 3.5 or greater.
+27 or 28 with kernels 3.5 or greater, for *glblub* support version 32 with
+kernel 5.5 is required.
 
 ## *default_user*
 
@@ -18,50 +24,34 @@ default_user class default;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>default_user</code></td>
-<td>The <code>default_user</code> rule keyword.</td>
-</tr>
-<tr>
-<td><p><code>class</code></p></td>
-<td><p>One or more <code>class</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. </p>
-<p>Entries can be excluded from the list by using the negative operator '-'.</p></td>
-</tr>
-<tr>
-<td><code>default</code></td>
-<td>A single keyword consisting of either <code>source</code> or <code>target</code> that will state whether the default user should be obtained from the source or target context.</td>
-</tr>
-</tbody>
-</table>
+*default_user*
+
+The *default_user* rule keyword.
+
+*class*
+
+One or more *class* identifiers. Multiple entries consist of a space separated
+list enclosed in braces \'\{\}\'. Entries can be excluded from the list by using
+the negative operator \'\-\'.
+
+*default*
+
+A single keyword consisting of either *source* or *target* that will state
+whether the default user should be obtained from the source or target context.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
@@ -93,50 +83,35 @@ default_role class default;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>default_role</code></td>
-<td>The <code>default_role</code> rule keyword.</td>
-</tr>
-<tr>
-<td><p><code>class</code></p></td>
-<td><p>One or more <code>class</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. </p>
-<p>Entries can be excluded from the list by using the negative operator '-'.</p></td>
-</tr>
-<tr>
-<td><code>default</code></td>
-<td>A single keyword consisting of either <code>source</code> or <code>target</code> that will state whether the default role should be obtained from the source or target context.</td>
-</tr>
-</tbody>
-</table>
+*default_role*
+
+The *default_role* rule keyword.
+
+*class*
+
+One or more *class* identifiers. Multiple entries consist of a space
+separated list enclosed in braces \'\{\}\'.
+Entries can be excluded from the list by using the negative operator \'\-\'.
+
+*default*
+
+A single keyword consisting of either *source* or *target* that will state
+whether the default role should be obtained from the source or target context.
+
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
@@ -168,50 +143,34 @@ default_type class default;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>default_type</code></td>
-<td>The <code>default_type</code> rule keyword.</td>
-</tr>
-<tr>
-<td><p><code>class</code></p></td>
-<td><p>One or more <code>class</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. </p>
-<p>Entries can be excluded from the list by using the negative operator '-'.</p></td>
-</tr>
-<tr>
-<td><code>default</code></td>
-<td>A single keyword consisting of either <code>source</code> or <code>target</code> that will state whether the default type should be obtained from the source or target context.</td>
-</tr>
-</tbody>
-</table>
+*default_type*
+
+The *default_type* rule keyword.
+
+*class*
+
+One or more *class* identifiers. Multiple entries consist of a space
+separated list enclosed in braces \'\{\}\'. Entries can be excluded from the
+list by using the negative operator \'\-\'.
+
+*default*
+
+A single keyword consisting of either *source* or *target* that will state
+whether the default type should be obtained from the source or target context.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
@@ -235,7 +194,7 @@ Allows the default range or level to be taken from the source or target
 context when computing a new context for an object of the defined class.
 Requires policy version 27.
 
-Policy verion 32 with kernel 5.5 allows the use of *glblub* as a
+Policy version 32 with kernel 5.5 allows the use of *glblub* as a
 *default_range* default and the computed transition will be the
 intersection of the MLS range of the two contexts. The *glb* (greatest
 lower bound) *lub* (lowest upper bound) of a range is calculated as the
@@ -249,58 +208,44 @@ default_range class [default range] | [glblub];
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>default_range</code></td>
-<td>The <code>default_range</code> rule keyword.</td>
-</tr>
-<tr>
-<td><p><code>class</code></p></td>
-<td><p>One or more <code>class</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. </p>
-<p>Entries can be excluded from the list by using the negative operator '-'.</p></td>
-</tr>
-<tr>
-<td><code>default</code></td>
-<td>A single keyword consisting of either <code>source</code> or <code>target</code> that will state whether the default level or range should be obtained from the source or target context.</td>
-</tr>
-<tr>
-<td><code>range</code></td>
-<td>A single keyword consisting of either: <code>low</code>, <code>high</code> or <code>low_high</code> that will state what part of the range should be used.</td>
-</tr>
-<tr>
-<td><code>glblub</code></td>
-<td>The <code>glblub</code> keyword used instead of <code>[default range]</code>.</td>
-</tr>
-</tbody>
-</table>
+*default_range*
+
+The *default_range* rule keyword.
+
+*class*
+
+One or more *class* identifiers. Multiple entries consist of a space
+separated list enclosed in braces \'\{\}\'. Entries can be excluded from the
+list by using the negative operator \'\-\'.
+
+*default*
+
+A single keyword consisting of either *source* or *target* that will state
+whether the default level or range should be obtained from the source
+or target context.
+
+*range*
+
+A single keyword consisting of either: *low*, *high* or *low_high* that will
+state what part of the range should be used.
+
+*glblub*
+
+The *glblub* keyword used instead of *[default range]*.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
