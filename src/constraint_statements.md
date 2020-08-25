@@ -1,93 +1,82 @@
 # Constraint Statements
 
+- [*constrain*](#constrain)
+- [*validatetrans*](#validatetrans)
+- [*mlsconstrain*](#mlsconstrain)
+- [*mlsvalidatetrans*](#mlsvalidatetrans)
+
 ## *constrain*
 
-The constrain statement allows further restriction on permissions for
+The *constrain* statement allows further restriction on permissions for
 the specified object classes by using boolean expressions covering:
 source and target types, roles and users as described in the examples.
 
 **The statement definition is:**
 
 ```
-constrain class perm_set expression;
+constrain class perm_set expression | expr ...;
 ```
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>constrain</code></td>
-<td>The <code>constrain</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class</code></td>
-<td>One or more object classes. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>perm_set</code></td>
-<td>One or more permissions. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>expression</code></td>
-<td>The boolean expression of the constraint that is defined as follows:</td>
-</tr>
-<tr>
-<td></td>
-<td><p> <code>( expression : expression )</code> </p>
-<p><code>| not expression</code></p>
-<p><code>| expression and expression</code></p>
-<p><code>| expression or expression</code></p>
-<p><code>| u1 op u2</code></p>
-<p><code>| r1 role_op r2</code></p>
-<p><code>| t1 op t2</code></p>
-<p><code>| u1 op names</code></p>
-<p><code>| u2 op names</code></p>
-<p><code>| r1 op names</code></p>
-<p><code>| r2 op names</code></p>
-<p><code>| t1 op names</code></p>
-<p><code>| t2 op names</code></p></td>
-</tr>
-<tr>
-<td><p>Where:</p>
-<p>u1, r1, t1 = Source user, role, type</p>
-<p>u2, r2, t2 = Target user, role, type</p>
-<p>and:</p>
-<p>op : == | != </p>
-<p>role_op : == | != | eq | dom | domby | incomp</p>
-<p>names : name | { name_list }</p>
-<p>name_list : name | name_list name</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+*constrain*
+
+The *constrain* keyword.
+
+*class*
+
+One or more object classes. Multiple entries consist of a space separated list
+enclosed in braces \'\{\}\'.
+
+*perm_set*
+
+One or more permissions. Multiple entries consist of a space separated list
+enclosed in braces \'\{\}\'.
+
+*expression*
+
+There must be one constraint *expression* or one or more *expr*'s. An
+*expression* consists of '*operand operator operand*' as follows:
+
+- *( u1 op u2 )*
+- *( r1 role_op r2 )*
+- *( t1 op t2 )*
+- *( u1 op names )*
+- *( u2 op names )*
+- *( r1 op names )*
+- *( r2 op names )*
+- *( t1 op names )*
+- *( t2 op names )*
+- Where:
+  - *u1*, *r1*, *t1* = Source *user*, *role*, *type*
+  - *u2*, *r2*, *t2* = Target *user*, *role*, *type*
+- And:
+  - *op : == | !=*
+  - *role_op : == | != | eq | dom | domby | incomp*
+  - *names : name | { name_list }*
+  - *name_list : name | name_list name*
+
+*expr*
+
+Zero or more *expr*'s, the valid operators and syntax are:
+
+- *( not expression )*
+- *( expression and expression )*
+- *( expression or expression )*
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
@@ -174,12 +163,12 @@ constrain { dir file lnk_file sock_file fifo_file chr_file blk_file } { create r
 
 ## *validatetrans*
 
-This statement is used to control the ability to change the objects
-security context.
+The *validatetrans* statement is used to control the ability to change the
+objects security context.
 
-The first context *u1.r1.t1* is the context before the transition, the
-second context *u2.r2.t2* is the context after the transition, and the
-third *u3.r3.t3* is the context of the process performing the transition.
+The first context *u1:r1:t1* is the context before the transition, the
+second context *u2:r2:t2* is the context after the transition, and the
+third *u3:r3:t3* is the context of the process performing the transition.
 
 Note there are no *validatetrans* statements specified within the
 **Reference Policy** source.
@@ -187,95 +176,78 @@ Note there are no *validatetrans* statements specified within the
 **The statement definition is:**
 
 ```
-validatetrans class expression;
+validatetrans class  expression | expr ...;
 ```
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>validatetrans</code></td>
-<td>The <code>validatetrans</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class</code></td>
-<td>One or more file related object classes. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>expression</code></td>
-<td>The boolean expression of the constraint that is defined as follows:</td>
-</tr>
-<tr>
-<td></td>
-<td><p><code>( expression : expression )</code> </p>
-<p><code>| not expression</code></p>
-<p><code>| expression and expression</code></p>
-<p><code>| expression or expression</code></p>
-<p><code>| u1 op u2</code></p>
-<p><code>| r1 role_op r2</code></p>
-<p><code>| t1 op t2</code></p>
-<p><code>| u1 op names</code></p>
-<p><code>| u2 op names</code></p>
-<p><code>| r1 op names</code></p>
-<p><code>| r2 op names</code></p>
-<p><code>| t1 op names</code></p>
-<p><code>| t2 op names</code></p>
-<p><code>| u3 op names</code></p>
-<p><code>| r3 op names</code></p>
-<p><code>| t3 op names</p></code></td>
-</tr>
-<tr>
-<td><p>Where:</p>
-<p>u1, r1, t1 = Old user, role, type</p>
-<p>u2, r2, t2 = New user, role, type</p>
-<p>u3, r3, t3 = Process user, role, type</p>
-<p>and:</p>
-<p>op : == | !=</p>
-<p>role_op : == | != | eq | dom | domby | incomp</p>
-<p>names : name | { name_list }</p>
-<p>name_list : name | name_list name</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+*validatetrans*
+
+The *validatetrans* keyword.
+
+*class*
+
+One or more object classes. Multiple entries consist of a space separated list
+enclosed in braces \'\{\}\'.
+
+*expression*
+
+There must be one constraint *expression* or one or more *expr*'s. An
+*expression* consists of '*operand operator operand*' as follows:
+
+- *( u1 op u2 )*
+- *( r1 role_op r2 )*
+- *( t1 op t2 )*
+- *( u1 op names )*
+- *( u2 op names )*
+- *( u3 op names )*
+- *( r1 op names )*
+- *( r2 op names )*
+- *( r3 op names )*
+- *( t1 op names )*
+- *( t2 op names )*
+- *( t3 op names )*
+- Where:
+  - *u1*, *r1*, *t1* = Source *user*, *role*, *type*
+  - *u2*, *r2*, *t2* = Target *user*, *role*, *type*
+  - *u3*, *r3*, *t3* = Process *user*, *role*, *type*
+- And:
+  - *op : == | !=*
+  - *role_op : == | != | eq | dom | domby | incomp*
+  - *names : name | { name_list }*
+  - *name_list : name | name_list name*
+
+*expr*
+
+Zero or more *expr*'s, the valid operators and syntax are:
+
+- *( not expression )*
+- *( expression and expression )*
+- *( expression or expression )*
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
 ```
-validatetrans { file } { t1 == unconfined_t );
+validatetrans { file } ( t1 == unconfined_t );
 ```
 
 ## *mlsconstrain*
 
-The mlsconstrain statement allows further restriction on permissions for
+The *mlsconstrain* statement allows further restriction on permissions for
 the specified object classes by using boolean expressions covering:
 source and target types, roles, users and security levels as described
 in the examples.
@@ -283,91 +255,75 @@ in the examples.
 **The statement definition is:**
 
 ```
-mlsconstrain class perm_set expression;
+mlsconstrain class perm_set expression | expr ...;
 ```
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>mlsconstrain</code></td>
-<td>The <code>mlsconstrain</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class</code></td>
-<td>One or more object classes. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>perm_set</code></td>
-<td>One or more permissions. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>expression<code></td>
-<td>The boolean expression of the constraint that is defined as follows:</td>
-</tr>
-<tr>
-<td></td>
-<td><p><code> ( expression : expression ) </code></p>
-<p><code>| not expression</code></p>
-<p><code>| expression and expression</code></p>
-<p><code>| expression or expression</code></p>
-<p><code>| u1 op u2</code></p>
-<p><code>| r1 role_mls_op r2</code></p>
-<p><code>| t1 op t2</code></p>
-<p><code>| l1 role_mls_op l2</code></p>
-<p><code>| l1 role_mls_op h2</code></p>
-<p><code>| h1 role_mls_op l2</code></p>
-<p><code>| h1 role_mls_op h2</code></p>
-<p><code>| l1 role_mls_op h1</code></p>
-<p><code>| l2 role_mls_op h2</code></p>
-<p><code>| u1 op names</code></p>
-<p><code>| u2 op names</code></p>
-<p><code>| r1 op names</code></p>
-<p><code>| r2 op names</code></p>
-<p><code>| t1 op names</code></p>
-<p><code>| t2 op names</code></p></td>
-</tr>
-<tr>
-<td><p>Where:</p>
-<p>u1, r1, t1, l1, h1 = Source user, role, type, low level, high level</p>
-<p>u2, r2, t2, l2, h2 = Target user, role, type, low level, high level</p>
-<p>and:</p>
-<p>op : == | !=</p>
-<p>role_mls_op : == | != | eq | dom | domby | incomp</p>
-<p>names : name | { name_list }</p>
-<p>name_list : name | name_list name</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+*mlsconstrain*
+
+The *mlsconstrain* keyword.
+
+*class*
+
+One or more object classes. Multiple entries consist of a space separated
+list enclosed in braces \'\{\}\'.
+
+*perm_set*
+
+One or more permissions. Multiple entries consist of a space separated
+list enclosed in braces \'\{\}\'.
+
+*expression*
+
+There must be one constraint *expression* or one or more *expr*'s. An
+*expression* consists of '*operand operator operand*' as follows:
+
+- *( u1 op u2 )*
+- *( r1 role_mls_op r2 )*
+- *( t1 op t2 )*
+- *( l1 role_mls_op l2 )*
+- *( l1 role_mls_op h2 )*
+- *( h1 role_mls_op l2 )*
+- *( h1 role_mls_op h2 )*
+- *( l1 role_mls_op h1 )*
+- *( l2 role_mls_op h2 )*
+- *( u1 op names )*
+- *( u2 op names )*
+- *( r1 op names )*
+- *( r2 op names )*
+- *( t1 op names )*
+- *( t2 op names )*
+- Where:
+  - *u1*, *r1*, *t1*, *l1*, *h1* = Source *user*, *role*, *type*, *low*, *high*
+  - *u2*, *r2*, *t2*, *l2*, *h2* = Target *user*, *role*, *type*, *low*, *high*
+- And:
+  - *op : == | !=*
+  - *role_mls_op : == | != | eq | dom | domby | incomp*
+  - *names : name | { name_list }*
+  - *name_list : name | name_list name*
+
+*expr*
+
+Zero or more *expr*'s, the valid operators and syntax are:
+
+- *( not expression )*
+- *( expression and expression )*
+- *( expression or expression )*
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
@@ -404,98 +360,82 @@ The *mlsvalidatetrans* is the MLS equivalent of the *validatetrans*
 statement where it is used to control the ability to change the objects
 security context.
 
-The first context *u1.r1.t1* is the context before the transition, the
-second context *u2.r2.t2* is the context after the transition, and the
-third *u3.r3.t3* is the context of the process performing the transition.
+The first context *u1:r1:t1:l1-h1* is the context before the transition, the
+second context *u2:r2:t2:l2-h2* is the context after the transition, and the
+third *u3:r3:t3:*\[*range*\] is the context of the process performing the
+transition.
 
 **The statement definition is:**
 
 ```
-mlsvalidatetrans class expression;
+mlsvalidatetrans class expression | expr ...;
 ```
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>mlsvalidatetrans</code></td>
-<td>The <code>mlsvalidatetrans</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class</code></td>
-<td>One or more file type object classes. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>expression</code></td>
-<td>The boolean expression of the constraint that is defined as follows:</td>
-</tr>
-<tr>
-<td></td>
-<td><p><code>( expression : expression ) </code></p>
-<p><code>| not expression</code></p>
-<p><code>| and (expression and expression</code></p>
-<p><code>| or expression or expression</code></p>
-<p><code>| u1 op u2</code></p>
-<p><code>| r1 role_mls_op r2</code></p>
-<p><code>| t1 op t2</code></p>
-<p><code>| l1 role_mls_op l2</code></p>
-<p><code>| l1 role_mls_op h2</code></p>
-<p><code>| h1 role_mls_op l2</code></p>
-<p><code>| h1 role_mls_op h2</code></p>
-<p><code>| l1 role_mls_op h1</code></p>
-<p><code>| l2 role_mls_op h2</code></p>
-<p><code>| u1 op names</code></p>
-<p><code>| u2 op names</code></p>
-<p><code>| r1 op names</code></p>
-<p><code>| r2 op names</code></p>
-<p><code>| t1 op names</code></p>
-<p><code>| t2 op names</code></p>
-<p><code>| u3 op names</code></p>
-<p><code>| r3 op names</code></p>
-<p><code>| t3 op names</code></p></td>
-</tr>
-<tr>
-<td><p>Where:</p>
-<p>u1, r1, t1, l1, h1 = Old user, role, type, low level, high level</p>
-<p>u2, r2, t2, l2, h2 = New user, role, type, low level, high level</p>
-<p>u3, r3, t3, l3, h3 = Process user, role, type, low level, high level</p>
-<p>and:</p>
-<p>op : == | !=</p>
-<p>role_mls_op : == | != | eq | dom | domby | incomp</p>
-<p>names : name | { name_list }</p>
-<p>name_list : name | name_list name</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+*mlsvalidatetrans*
+
+The *mlsvalidatetrans* keyword.
+
+*class*
+
+One or more object classes. Multiple entries consist of a space separated list
+enclosed in braces \'\{\}\'.
+
+*expression*
+
+There must be one constraint *expression* or one or more *expr*'s. An
+*expression* consists of '*operand operator operand*' as follows:
+
+- *( u1 op u2 )*
+- *( r1 role_mls_op r2 )*
+- *( t1 op t2 )*
+- *( l1 role_mls_op l2 )*
+- *( l1 role_mls_op h2 )*
+- *( h1 role_mls_op l2 )*
+- *( h1 role_mls_op h2 )*
+- *( l1 role_mls_op h1 )*
+- *( l2 role_mls_op h2 )*
+- *( u1 op names )*
+- *( u2 op names )*
+- *( u3 op names )*
+- *( r1 op names )*
+- *( r2 op names )*
+- *( r3 op names )*
+- *( t1 op names )*
+- *( t2 op names )*
+- *( t3 op names )*
+- Where:
+  - *u1*, *r1*, *t1*, *l1*, *h1* = Source *user*, *role*, *type*, *low*, *high*
+  - *u2*, *r2*, *t2*, *l2*, *h2* = Target *user*, *role*, *type*, *low*, *high*
+  - *u3*, *r3*, *t3*, \[*range*\] = Process *user*, *role*, *type*, \[*range*\]
+- And:
+  - *op : == | !=*
+  - *role_mls_op : == | != | eq | dom | domby | incomp*
+  - *names : name | { name_list }*
+  - *name_list : name | name_list name*
+
+*expr*
+
+Zero or more *expr*'s, the valid operators and syntax are:
+
+- *( not expression )*
+- *( expression and expression )*
+- *( expression or expression )*
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
