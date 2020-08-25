@@ -11,19 +11,17 @@ A PDF version is included in this documentation:
 The CIL compiler source can be found at:
 <https://github.com/SELinuxProject/selinux.git> within the *secilc* and
 *libsepol* sections and can be cloned via:
--    *git clone https://github.com/SELinuxProject/selinux.git*
+- *git clone https://github.com/SELinuxProject/selinux.git*
 
 While the CIL design web pages give the main objectives of CIL, from a
 language perspective it will:
 
-1.  Apply name and usage consistency to the current kernel language
-    statements. For example the kernel language uses *attribute* and
-    *attribute_role* to declare identifiers, whereas CIL uses
-    *typeattribute* and *roleattribute*. Also statements to associate
-    types or roles have been made consistent and enhanced to allow
-    expressions to be defined.
-
--   Examples:
+- Apply name and usage consistency to the current kernel language
+  statements. For example the kernel language uses *attribute* and
+  *attribute_role* to declare identifiers, whereas CIL uses
+  *typeattribute* and *roleattribute*. Also statements to associate
+  types or roles have been made consistent and enhanced to allow
+  expressions to be defined. Some examples are:
 
 |    Kernel        |      CIL           |
 | ---------------- | ------------------ |
@@ -35,32 +33,27 @@ language perspective it will:
 | *allow* (role)   | *roleallow*        |
 | *dominance*      | *sensitivityorder* |
 
-2.  Additional CIL statements have been defined to enhance
-    functionality:
-
--   *classpermission* - Declare a *classpermissionset* identifier.
-
--   *classpermissionset* - Associate class / permissions also supporting
-expressions.
-
--   *classmap* / *classmapping* - Statements to support declaration and
-association of multiple *classpermissionset*'s. Useful when defining an
-*allow* rule with multiple class/permissions.
-
--   *context* - Statement to declare security context.
-
-3.  Allow named and anonymous definitions to be supported.
-4.  Support namespace features allowing policy modules to be defined
-    within blocks with inheritance and template features.
-5.  Remove the order dependency in that policy statements can be
-    anywhere within the source (i.e. remove dependency of class, sid
-    etc. being within a base module).
-6.  Able to define macros and calls that will remove any dependency on
-    M4 macro support.
-7.  Directly generate the binary policy file and other configuration
-    files - currently the *file_contexts* file.
-8.  Support transformation services such as delete, transform and
-    inherit with exceptions.
+- Additional CIL statements have been defined to enhance
+  functionality:
+  - *classpermission* - Declare a *classpermissionset* identifier.
+  - *classpermissionset* - Associate class / permissions also supporting
+    expressions.
+  - *classmap* / *classmapping* - Statements to support declaration and
+    association of multiple *classpermissionset*'s. Useful when defining an
+    *allow* rule with multiple class/permissions.
+  - *context* - Statement to declare security context.
+- Allow named and anonymous definitions to be supported.
+- Support namespace features allowing policy modules to be defined
+  within blocks with inheritance and template features.
+- Remove the order dependency in that policy statements can be
+  anywhere within the source (i.e. remove dependency of class, sid
+  etc. being within a base module).
+- Able to define macros and calls that will remove any dependency on
+  M4 macro support.
+- Directly generate the binary policy file and other configuration
+  files - currently the *file_contexts* file.
+- Support transformation services such as delete, transform and
+  inherit with exceptions.
 
 An simple CIL policy is as follows:
 
