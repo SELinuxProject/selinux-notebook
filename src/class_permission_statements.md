@@ -1,5 +1,10 @@
 # Object Class and Permission Statements
 
+- [*class* (1)](#class-1)
+  - [Associating Permissions to a Class](#associating-permissions-to-a-class)
+- [*common*](#common)
+- [*class* (2)](#class-2)
+
 For those who write or manager SELinux policy, there is no need to
 define new objects and their associated permissions as these would be
 done by those who actually design and/or write object managers.
@@ -9,14 +14,14 @@ in the *./policy/flask/security\_classes* file.
 
 There are two variants of the *class* statement for writing policy:
 
-1.  There is the *class* statement that declares the actual class
-    identifier or name.
-2.  There is a further refinement of the *class* statement that
-    associates permissions to the class as discussed in the
-    [**Associating Permissions to a Class**](#associating-permissions-to-a-class)
-    section.
+1. There is the *class* statement that declares the actual class
+   identifier or name.
+2. There is a further refinement of the *class* statement that
+   associates permissions to the class as discussed in the
+   [**Associating Permissions to a Class**](#associating-permissions-to-a-class)
+   section.
 
-## *class*
+## *class* (1)
 
 Object classes are declared within a policy with the following statement
 definition:
@@ -27,45 +32,27 @@ class class_id
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>class</code></td>
-<td>The <code>class</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class_id</code></td>
-<td>The <code>class</code> identifier. </td>
-</tr>
-</tbody>
-</table>
+*class*
+
+The *class* keyword.
+
+*class_id*
+
+The *class* identifier.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | Yes                     |
 
 **Example:**
 
@@ -79,11 +66,11 @@ class db_tuple
 
 Permissions can be defined within policy in two ways:
 
-1.  Define a set of common permissions that can then be inherited by one
-    or more object classes using further *class* statements.
-2.  Define *class* specific permissions. This is where permissions are
-    declared for a specific object class only (i.e. the permission is
-    not inherited by any other object class).
+1. Define a set of common permissions that can then be inherited by one
+   or more object classes using further *class* statements.
+2. Define *class* specific permissions. This is where permissions are
+   declared for a specific object class only (i.e. the permission is
+   not inherited by any other object class).
 
 A list of classes and their permissions used by the **Reference Policy**
 can be found in the *./policy/flask/access_vectors* file.
@@ -100,49 +87,32 @@ common common_id { perm_set }
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>common</code></td>
-<td>The <code>common</code> keyword.</td>
-</tr>
-<tr>
-<td><code>common_id</code></td>
-<td>The <code>common</code> identifier. </td>
-</tr>
-<tr>
-<td><code>perm_set</code></td>
-<td>One or more permission identifiers in a space separated list enclosed within braces '{}'.</td>
-</tr>
-</tbody>
-</table>
+*common*
+
+The *common* keyword.
+
+*common_id*
+
+The *common* identifier.
+
+*perm_set*
+
+One or more permission identifiers in a space separated list enclosed within
+braces \'\{\}\'.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
@@ -152,9 +122,10 @@ common common_id { perm_set }
 common database { create drop getattr setattr relabelfrom relabelto }
 ```
 
-## *class*
+## *class* (2)
 
-Inherit and / or associate permissions to a perviously declared *class* identifier.
+Inherit and / or associate permissions to a perviously declared *class*
+identifier.
 
 **The statement definition is:**
 
@@ -164,60 +135,44 @@ class class_id [ inherits common_set ] [ { perm_set } ]
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>class</code></td>
-<td>The <code>class</code> keyword.</td>
-</tr>
-<tr>
-<td><code>class_id</code></td>
-<td>The previously declared <code>class</code> identifier. </td>
-</tr>
-<tr>
-<td><code>inherits</code></td>
-<td>The optional <code>inherits</code> keyword that allows a set of common permissions to be inherited.</td>
-</tr>
-<tr>
-<td><code>common_set</code></td>
-<td>A previously declared <code>common</code> identifier.</td>
-</tr>
-<tr>
-<td><code>perm_set</code></td>
-<td>One or more optional permission identifiers in a space separated list enclosed within braces '{}'.</td>
-</tr>
-</tbody>
-</table>
+*class*
+
+The *class* keyword.
+
+*class_id*
+
+The previously declared *class* identifier.
+
+*inherits*
+
+The optional *inherits* keyword that allows a set of common permissions to be
+inherited.
+
+*common_set*
+
+A previously declared *common* identifier.
+
+*perm_set*
+
+One or more optional permission identifiers in a space separated list enclosed
+within braces \'\{\}\'.</td>
 
 Note: There must be at least one *common_set* or one *perm_set* defined within
 the statement.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | Yes                     |
 
 **Examples:**
 
