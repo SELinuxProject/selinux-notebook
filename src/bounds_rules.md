@@ -1,5 +1,7 @@
 # Bounds Rules
 
+- [*typebounds*](#typebounds)
+
 Bounds handling was added in version 24 of the policy and consisted of
 adding *userbounds*, *rolebounds* and *typebounds* information to the
 policy. However only the *typebounds* rule is currently implemented by
@@ -28,49 +30,32 @@ typebounds bounding_domain bounded_domain;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>typebounds</code></td>
-<td>The <code>typebounds</code> keyword.</td>
-</tr>
-<tr>
-<td><code>bounding_domain</code></td>
-<td>The <code>type</code> or <code>typealias</code> identifier of the parent domain.</td>
-</tr>
-<tr>
-<td><code>bounded_domain</code></td>
-<td>One or more <code>type</code> or <code>typealias</code> identifiers of the child domains. Multiple entries consist of a comma ',' separated list.</td>
-</tr>
-</tbody>
-</table>
+*typebound*
+
+The *typebounds* keyword.
+
+*bounding_domain*
+
+The *type* or *typealias* identifier of the parent domain.
+
+*bounded_domain*
+
+One or more *type* or *typealias* identifiers of the child domains.
+Multiple entries consist of a comma ',' separated list.</td>
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Example:**
 
