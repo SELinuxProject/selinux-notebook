@@ -1,5 +1,8 @@
 # Conditional Policy Statements
 
+- [*if*](#if)
+- [*bool*](#bool)
+
 Conditional policies consist of a bool statement that defines a
 condition as *true* or *false*, with a supporting *if* / *else* construct that
 specifies what rules are valid under the condition as shown in the
@@ -56,7 +59,7 @@ getsebool -a
 getsebool allow_daemons_use_tty
 ```
 
-## bool
+## *bool*
 
 The *bool* statement is used to specify a boolean identifier and its
 initial state (*true* or *false*) that can then be used with the
@@ -71,49 +74,31 @@ bool bool_id default_value;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>bool</code></td>
-<td>The <code>bool</code> keyword.</td>
-</tr>
-<tr>
-<td><code>bool_id</code></td>
-<td>The boolean identifier.</td>
-</tr>
-<tr>
-<td><code>default_value</code></td>
-<td>Either true or false.</td>
-</tr>
-</tbody>
-</table>
+*bool*
+
+The *bool* keyword.
+
+*bool_id*
+
+The boolean identifier.
+
+*default_value*
+
+Either true or false.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | Yes                     |
 
 **Examples:**
 
@@ -133,7 +118,7 @@ bool allow_execheap false;
 bool allow_execstack true;
 ```
 
-### if
+## *if*
 
 The if statement is used to form a 'conditional block' of statements and
 rules that are enforced depending on whether one or more boolean
@@ -154,60 +139,48 @@ if (conditional_expression) { true_list } [ else { false_list } ]
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>if</code></td>
-<td>The <code>if</code> keyword.</td>
-</tr>
-<tr>
-<td>conditional_expression</td>
-<td><p>One or more <code>bool_name<code> identifiers that have been previously defined by the <code>bool</code> Statement. Multiple identifiers must be separated by the following logical operators: &amp;&amp;, ¦¦, ^, !, ==, !=. </p>
-<p>The conditional_expression is enclosed in brackets ().</p></td>
-</tr>
-<tr>
-<td><code>true_list</code></td>
-<td><p>A list of rules enclosed within braces '{}' that will be executed when the <code>conditional_expression</code> is 'true'.</p>
-<p>Valid statements and rules are highlighted within each language definition statement.</p></td>
-</tr>
-<tr>
-<td><code>else</code></td>
-<td>Optional <code>else</code> keyword.</td>
-</tr>
-<tr>
-<td><code>false_list</code></td>
-<td><p>A list of rules enclosed within braces '{}' that will be executed when the optional <code>else</code> keyword is present and the conditional_expression is <code>false</code>.</p>
-<p>Valid statements and rules are highlighted within each language definition statement.</p></td>
-</tr>
-</tbody>
-</table>
+*if*
+
+The *if* keyword.
+
+*conditional_expression*
+
+One or more *bool_name* identifiers that have been previously defined by the
+*bool* Statement. Multiple identifiers must be separated by the following
+logical operators: &&, ¦¦, ^, !, ==, !=.
+The *conditional_expression* is enclosed in brackets \'\(\)\'.
+
+*true_list*
+
+A list of rules enclosed within braces \'\{\}\' that will be executed when the
+*conditional_expression* is 'true'.
+Valid statements and rules are highlighted within each language definition
+statement.
+
+*else*
+
+Optional *else* keyword.
+
+*false_list*
+
+A list of rules enclosed within braces \'\{\}\' that will be executed when the
+optional *else* keyword is present and the *conditional_expression* is *false*.
+Valid statements and rules are highlighted within each language definition
+statement.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Examples:**
 
