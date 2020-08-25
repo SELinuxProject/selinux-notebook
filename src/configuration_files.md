@@ -1,5 +1,9 @@
 # SELinux Configuration Files
 
+- [The Policy Store](#the-policy-store)
+  - [The priority Option](#the-priority-option)
+- [Converting policy packages to CIL](#converting-policy-packages-to-cil)
+
 This section explains each SELinux configuration file with its format,
 example content and where applicable, any supporting SELinux commands or
 **libselinux** library API functions.
@@ -10,34 +14,34 @@ adding the man page section (e.g. ***semanage.config**(5)*).
 This Notebook classifies the types of configuration file used in SELinux
 as follows:
 
-1.  [**Global Configuration files**](global_config_files.md#global-configuration-files) that
-    affect the active policy and their supporting SELinux-aware
-    applications, utilities or commands. This Notebook will only refer
-    to the commonly used configuration files.
-2.  [**Policy Store Configuration Files**](policy_store_config_files.md#policy-store-configuration-files)
-    that are managed by the **semanage**(8) and **semodule**(8) commands. These
-    are used to build the majority of the
-    [Policy Configuration Files](policy_config_files.md#policy-configuration-files)
-    and should NOT be edited as together they describe the overall 'policy' configuration.
-3.  [**Policy Configuration Files**](policy_config_files.md) used by an active
-    (run time) policy/system. Note that there can be multiple policy
-    configurations on a system (e.g. */etc/selinux/targeted* and
-    */etc/selinux/mls*), however only one can be the active policy.
-4.  [**SELinux Filesystem files - Table 6: SELinux filesystem Information**](lsm_selinux.md#selinux-filesystem) located under the */sys/fs/selinux*
-    directory and reflect the current configuration of SELinux for the active
-    policy. This area is used
-    extensively by the libselinux library for userspace object managers and
-    other SELinux-aware applications. These files and directories should not
-    be updated by users (the majority are read only anyway), however
-    they can be read to check various configuration parameters and
-    viewing the currently loaded policy using tools such as
-    ***apol**(1)* (e.g. *apol /sys/fs/selinux/policy*).
+1. [**Global Configuration files**](global_config_files.md#global-configuration-files) that
+   affect the active policy and their supporting SELinux-aware
+   applications, utilities or commands. This Notebook will only refer
+   to the commonly used configuration files.
+2. [**Policy Store Configuration Files**](policy_store_config_files.md#policy-store-configuration-files)
+   that are managed by the **semanage**(8) and **semodule**(8) commands. These
+   are used to build the majority of the
+   [Policy Configuration Files](policy_config_files.md#policy-configuration-files)
+   and should NOT be edited as together they describe the overall 'policy' configuration.
+3. [**Policy Configuration Files**](policy_config_files.md) used by an active
+   (run time) policy/system. Note that there can be multiple policy
+   configurations on a system (e.g. */etc/selinux/targeted* and
+   */etc/selinux/mls*), however only one can be the active policy.
+4. [**SELinux Filesystem files - Table 6: SELinux filesystem Information**](lsm_selinux.md#selinux-filesystem)
+   located under the */sys/fs/selinux* directory and reflect the current
+   configuration of SELinux for the active policy. This area is used
+   extensively by the libselinux library for userspace object managers and
+   other SELinux-aware applications. These files and directories should not
+   be updated by users (the majority are read only anyway), however
+   they can be read to check various configuration parameters and
+   viewing the currently loaded policy using tools such as
+   ***apol**(1)* (e.g. *apol /sys/fs/selinux/policy*).
 
 ## The Policy Store
 
 Version 2.7 of *libsemanage*, *libsepol*, and *policycoreutils* had the
-policy module store has moved from */etc/selinux/&lt;SELINUXTYPE&gt;/modules*
-to */var/lib/selinux/&lt;SELINUXTYPE&gt;*.
+policy module store has moved from */etc/selinux/\<SELINUXTYPE\>/modules*
+to */var/lib/selinux/\<SELINUXTYPE\>*.
 
 This new infrastructure now makes it possible to build policies containing a
 mixture of Reference Policy modules, kernel policy language modules and
@@ -83,12 +87,12 @@ int_gateway
 The ***semodule**(8)* command now has a number of new options, with the
 most significant being:
 
-1.  Setting module priorities (*-X | --priority*), this is discussed in
-    [The priority Option](#the-priority-option) section.
-2.  Listing modules (*--list-modules=full | standard*). The 'f*ull*'
-    option shows all the available modules with their priority and
-    policy format. The '*standard*' option will only show the highest
-    priority, enabled modules.
+1. Setting module priorities (*-X | \-\-priority*), this is discussed in
+   [The priority Option](#the-priority-option) section.
+2. Listing modules (*\-\-list-modules=full | standard*). The '*full*'
+   option shows all the available modules with their priority and
+   policy format. The '*standard*' option will only show the highest
+   priority, enabled modules.
 
 ### The priority Option
 
@@ -105,7 +109,7 @@ semodule --priority 400 --install custom/apache.pp
 
 Both apache modules are installed in the policy store as 'apache', but
 only the custom apache module is included in the final kernel binary.
-The distribution apache module is ignored. The *--list-modules* options
+The distribution apache module is ignored. The *\-\-list-modules* options
 can be used to show these:
 
 ```
@@ -137,15 +141,15 @@ new distribution policy.
 
 This does require that policy managers adopt some kind of scheme for who
 uses what priority. No strict guidelines currently exist, however the
-value used by the *semanage\_migrate\_store* script is *--priority 100*
+value used by the *semanage\_migrate\_store* script is *\-\-priority 100*
 as this is assumed to be migrating a distribution. If a value is not
-provided, *semodule* will use a default of *--priority 400* as it is
+provided, *semodule* will use a default of *\-\-priority 400* as it is
 assumed to be a locally customised policy.
 
 When *semodule* builds a lower priority module when a higher priority is
 already available, the following message will be given: "*A higher
-priority &lt;name&gt; module exists at priority &lt;999&gt; and will
-override the module currently being installed at priority &lt;111&gt;*".
+priority \<name\> module exists at priority \<999\> and will
+override the module currently being installed at priority \<111\>*".
 
 ## Converting policy packages to CIL
 
