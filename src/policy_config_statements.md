@@ -16,45 +16,27 @@ policycap capability;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>policycap</code></td>
-<td>The <code>policycap</code> keyword.</td>
-</tr>
-<tr>
-<td><code>capability</code></td>
-<td>A single <code>capability</code> identifier that will be enabled for this policy.</td>
-</tr>
-</tbody>
-</table>
+*policycap*
+
+The *policycap* keyword.
+
+*capability*
+
+A single *capability* identifier that will be enabled for this policy.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
