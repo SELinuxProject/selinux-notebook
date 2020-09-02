@@ -1,5 +1,12 @@
 # Role Statements
 
+- [*role*](#role)
+- [*attribute_role*](#attribute_role)
+- [*roleattribute*](#roleattribute)
+- [*allow*](#allow)
+- [*role_transition*](#role_transition)
+- [*dominance* - Deprecated](#dominance---deprecated)
+
 Policy version 26 introduced two new role statements aimed at replacing
 the deprecated role *dominance* rule by making role relationships easier to
 understand. These new statements: *attribute_role* and *roleattribute*
@@ -27,54 +34,42 @@ role role_id types type_id;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>role</code></td>
-<td>The <code>role</code> keyword.</td>
-</tr>
-<tr>
-<td><code>role_id</code></td>
-<td>The identifier of the role being declared. The same role identifier can be declared more than once in a policy, in which case the <code>type_id</code> entries will be amalgamated by the compiler.</td>
-</tr>
-<tr>
-<td><code>types</code></td>
-<td>The optional <code>types</code> keyword.</td>
-</tr>
-<tr>
-<td><code>type_id</code></td>
-<td><p>When used with the <code>types</code> keyword, one or more type, <code>typealias</code> or <code>attribute</code> identifiers associated with the <code>role_id</code>. Multiple entries consist of a space separated list enclosed in braces '{}'. Entries can be excluded from the list by using the negative operator '-'.</p>
-<p>For <code>role</code> statements, only <code>type</code>, <code>typealias</code> or <code>attribute</code> identifiers associated to domains have any meaning within SELinux.</p></td>
-</tr>
-</tbody>
-</table>
+*role*
+
+The *role* keyword.
+
+*role_id*
+
+The identifier of the role being declared. The same *role* identifier can be
+declared more than once in a policy, in which case the *type_id* entries will
+be amalgamated by the compiler.
+
+*types*
+
+The optional *types* keyword.
+
+*type_id*
+
+When used with the *types* keyword, one or more type, *typealias* or
+*attribute* identifiers associated with the *role_id*. Multiple entries
+consist of a space separated list enclosed in braces '{}'. Entries can be
+excluded from the list by using the negative operator '-'.
+For *role* statements, only *type*, *typealias* or *attribute* identifiers
+associated to domains have any meaning within SELinux.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | Yes                     |
 
 **Examples:**
 
@@ -108,45 +103,27 @@ attribute_role attribute_id;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>attribute_role</code></td>
-<td>The <code>attribute_role</code> keyword.</td>
-</tr>
-<tr>
-<td><code>attribute_id</code></td>
-<td>The <code>attribute</code> identifier.</td>
-</tr>
-</tbody>
-</table>
+*attribute_role*
+
+The *attribute_role* keyword.
+
+*attribute_id*
+
+The *attribute* identifier.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | Yes                     |
 
 **Examples:**
 
@@ -161,8 +138,8 @@ attribute_role srole_list_2;
 
 ## *roleattribute*
 
-The <code>roleattribute</code> statement allows the association of previously
-declared roles to one or more previously declared <code>attribute_roles</code>.
+The *roleattribute* statement allows the association of previously
+declared roles to one or more previously declared *attribute_roles*.
 
 **The statement definition is:**
 
@@ -172,49 +149,32 @@ roleattribute role_id attribute_id;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>roleattribute</code></td>
-<td>The <code>roleattribute</code> keyword.</td>
-</tr>
-<tr>
-<td><code>role_id</code></td>
-<td>The identifier of a previously declared <code>role</code>.</td>
-</tr>
-<tr>
-<td><code>attribute_id</code></td>
-<td>One or more previously declared <code>attribute_role</code> identifiers. Multiple entries consist of a comma ',' separated list.</td>
-</tr>
-</tbody>
-</table>
+*roleattribute*
+
+The *roleattribute* keyword.
+
+*role_id*
+
+The identifier of a previously declared *role*.
+
+*attribute_id*
+
+One or more previously declared *attribute_role* identifiers. Multiple entries
+consist of a comma ',' separated list.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Examples:**
 
@@ -232,11 +192,11 @@ roleattribute service_r role_list_1;
 
 ## *allow*
 
-The role *allow* rule checks whether a request to change roles is allowed,
+The 'role *allow*' rule checks whether a request to change roles is allowed,
 if it is, then there may be a further request for a *role_transition* so
 that the process runs with the new role or role set.
 
-Note that the role allow rule has the same keyword as the allow AV rule.
+Note that the 'role *allow*' rule has the same keyword as the *allow* AV rule.
 
 **The statement definition is:**
 
@@ -246,49 +206,33 @@ allow from_role_id to_role_id;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>allow</code></td>
-<td>The <code>role allow</code> rule keyword.</td>
-</tr>
-<tr>
-<td><code>from_role_id</code></td>
-<td>One or more <code>role</code> or <code>attribute_role</code> identifiers that identify the current role. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>to_role_id</code></td>
-<td>One or more <code>role</code> or <code>attribute_role</code> identifiers that identify the current role. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-</tbody>
-</table>
+*allow*
+
+The role *allow* rule keyword.
+
+*from_role_id*
+
+One or more *role* or *attribute_role* identifiers that identify the current
+role. Multiple entries consist of a space separated list enclosed in braces '{}'.
+
+*to_role_id*
+
+One or more *role* or *attribute_role* identifiers that identify the current
+role. Multiple entries consist of a space separated list enclosed in braces '{}'.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Example:**
 
@@ -321,57 +265,43 @@ role_transition current_role_id type_id : class new_role_id;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>role_transition</code></td>
-<td>The <code>role_transition</code> keyword.</td>
-</tr>
-<tr>
-<td><code>current_role_id</code></td>
-<td>One or more <code>role</code> or <code>attribute_role</code> identifiers that identify the current role. Multiple entries consist of a space separated list enclosed in braces '{}'.</td>
-</tr>
-<tr>
-<td><code>type_id</code></td>
-<td>One or more <code>type</code>, <code>typealias</code> or <code>attribute</code> identifiers. Multiple entries consist of a space separated list enclosed in braces '{}'. Entries can be excluded from the list by using the negative operator '-'. </td>
-</tr>
-<tr>
-<td><code>class</code></td>
-<td>For policy versions &gt;= 25 an object <code>class</code> that applies to the role transition. If omitted defaults to the <code>process</code> object class.</td>
-</tr>
-<tr>
-<td><code>new_role_id</code></td>
-<td>A single <code>role</code> identifier that will become the new role. </td>
-</tr>
-</tbody>
-</table>
+*role_transition*
+
+The *role_transition* keyword.
+
+*current_role_id*
+
+One or more *role* or *attribute_role* identifiers that identify the current
+role. Multiple entries consist of a space separated list enclosed in braces '{}'.
+
+*type_id*
+
+One or more *type*, *typealias* or *attribute* identifiers. Multiple entries
+consist of a space separated list enclosed in braces '{}'. Entries can be
+excluded from the list by using the negative operator '-'.
+
+*class*
+
+For policy versions \>= 25 an object *class* that applies to the role
+transition. If omitted defaults to the *process* object class.
+
+*new_role_id*
+
+A single *role* identifier that will become the new role.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Example:**
 
@@ -388,12 +318,12 @@ inherit all the type associations of the other roles.
 
 Notes:
 
-1.  There is another dominance rule for MLS (see the
-    [**MLS *dominance***](mls_statements.md#dominance) statement.
-2.  The role dominance rule is not used by the **Reference Policy** as
-    the policy manages role dominance using the
-    [***constrain***](constraint_statements.md#constraint-statements) statement.
-3.  Note the usage of braces '{}' and the ';' in the statement.
+1. There is another dominance rule for MLS (see the
+   [**MLS *dominance***](mls_statements.md#dominance) statement.
+2. The role dominance rule is not used by the **Reference Policy** as
+   the policy manages role dominance using the
+   [***constrain***](constraint_statements.md#constraint-statements) statement.
+3. Note the usage of braces '{}' and the ';' in the statement.
 
 **The statement definition is:**
 
@@ -401,55 +331,38 @@ Notes:
 dominance { role dom_role_id { role role_id; } }
 ```
 
-Where:
+**Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>dominance</code></td>
-<td>The <code>dominance</code> keyword.</td>
-</tr>
-<tr>
-<td><code>role</code></td>
-<td>The <code>role</code> keyword.</td>
-</tr>
-<tr>
-<td><code>dom_role_id</code></td>
-<td>The dominant role identifier.</td>
-</tr>
-<tr>
-<td><code>role_id</code></td>
-<td>For the simple case each <code>{ role role_id; }</code> pair defines the <code>role_id</code> that will be dominated by the <code>dom_role_id</code>.</td>
-</tr>
-</tbody>
-</table>
+*dominance*
+
+The *dominance* keyword.
+
+*role*
+
+The *role* keyword.
+
+*dom_role_id*
+
+The dominant role identifier.
+
+*role_id*
+
+For the simple case each *{ role role_id; }* pair defines the *role_id* that
+will be dominated by the *dom_role_id*.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | No                      |
 
 **Example:**
 
