@@ -1,18 +1,20 @@
 # The SELinux Policy Languages
 
 There are two methods of writing 'raw' policy statements and rules:
-1.   The [**Kernel Policy Language**](kernel_policy_language.md#kernel-policy-language)
-section is intended as a reference of the kernel policy language statements
-and rules with supporting examples taken from the Reference Policy sources.
-Also all of the language updates to Policy DB version 32 should have been
-captured. For a more detailed explanation of the policy language the
-[**SELinux by Example**] (https://www.worldcat.org/title/selinux-by-example-using-security-enhanced-linux/oclc/85872880) book is recommended.
-2.   The Common Intermediate Language (CIL) project defines a new policy
-definition language that has an overview of its motivation and design
-at: <https://github.com/SELinuxProject/cil/wiki>, however some of the
-language statement definitions are out of date. The
-[**CIL Policy Language**](cil_overview.md#cil-overview) section gives
-an overview.
+
+1. The [**Kernel Policy Language**](kernel_policy_language.md#kernel-policy-language)
+   section is intended as a reference of the kernel policy language statements
+   and rules with supporting examples taken from the Reference Policy sources.
+   Also all of the language updates to Policy DB version 32 should have been
+   captured. For a more detailed explanation of the policy language the
+   [**SELinux by Example**](https://www.worldcat.org/title/selinux-by-example-using-security-enhanced-linux/oclc/85872880)
+   book is recommended.
+2. The Common Intermediate Language (CIL) project defines a new policy
+   definition language that has an overview of its motivation and design
+   at: <https://github.com/SELinuxProject/cil/wiki>, however some of the
+   language statement definitions are out of date. The
+   [**CIL Policy Language**](cil_overview.md#cil-overview) section gives
+   an overview.
 
 However more likely, policy is written using the
 [**The Reference Policy**](reference_policy.md#the-reference-policy)
