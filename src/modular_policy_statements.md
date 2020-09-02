@@ -1,5 +1,9 @@
 # Modular Policy Support Statements
 
+- [*module*](#module)
+- [*require*](#require)
+- [*optional*](#optional)
+
 This section contains statements used to support policy modules. They are
 not part of the kernel policy language.
 
@@ -9,7 +13,7 @@ This statement is mandatory for loadable modules (non-base) and must be
 the first line of any module policy source file. The identifier should
 not conflict with other module names within the overall policy,
 otherwise it will over-write an existing module when loaded via the
-semodule command. The ***semodule -l*** command can be used to list all active
+semodule command. The *semodule -l* command can be used to list all active
 modules within the policy.
 
 **The statement definition is:**
@@ -20,49 +24,32 @@ module module_name version_number;
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>module</code></td>
-<td>The <code>module</code> keyword.</td>
-</tr>
-<tr>
-<td><code>module_name</code></td>
-<td>The <code>module</code> name. </td>
-</tr>
-<tr>
-<td><code>version_number</code></td>
-<td>The module version number in M.m.m format (where M = major version number and m = minor version numbers).</td>
-</tr>
-</tbody>
-</table>
+*module*
+
+The *module* keyword.
+
+*module_name*
+
+The *module* name.
+
+*version_number*
+
+The module version number in M.m.m format (where M = major version number
+and m = minor version numbers).
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
@@ -77,15 +64,15 @@ module bind 1.0.0;
 
 The require statement is used for two reasons:
 
-1.  Within loadable module policy source files to indicate what policy
-    components are required from an external source file (i.e. they are
-    not explicitly defined in this module but elsewhere). The examples
-    below show the usage.
-2.  Within a base policy source file, but only if preceded by the
-    [***optional***](#optional) to indicate what policy components
-    are required from an external source file (i.e. they are not
-    explicitly defined in the base policy but elsewhere). The examples
-    below show the usage.
+1. Within loadable module policy source files to indicate what policy
+   components are required from an external source file (i.e. they are
+   not explicitly defined in this module but elsewhere). The examples
+   below show the usage.
+2. Within a base policy source file, but only if preceded by the
+   [***optional***](#optional) to indicate what policy components
+   are required from an external source file (i.e. they are not
+   explicitly defined in the base policy but elsewhere). The examples
+   below show the usage.
 
 **The statement definition is:**
 
@@ -95,49 +82,38 @@ require { rule_list }
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>require</code></td>
-<td>The <code>require</code> keyword.</td>
-</tr>
-<tr>
-<td><code>require_list</code></td>
-<td><p>One or more specific statement keywords with their required identifiers in a semi-colon ';' separated list enclosed within braces '{}'. </p>
-<p>The valid statement keywords are:</p>
-<p><code>role</code>, <code>type</code>, <code>attribute</code>, <code>user</code>, <code>bool</code>, <code>sensitivity</code> and <code>category</code>. The keyword is followed by one or more identifiers in a comma ',' separated list, with the last entry being terminated with a semi-colon (;).</p>
-<p><code>class</code> - The class keyword is followed by a single object class identifier and one or more permissions. Multiple permissions consist of a space separated list enclosed within braces '{}'. The list is then terminated with a semi-colon ';'.</p>
-<p>The examples below show these in detail.</p></td>
-</tr>
-</tbody>
-</table>
+*require*
+
+The *require* keyword.
+
+*require_list*
+
+One or more specific statement keywords with their required identifiers
+in a semi-colon ';' separated list enclosed within braces '{}'. The examples
+below show these in detail. The valid statement keywords are:
+
+- *role*, *type*, *attribute*, *user*, *bool*, *sensitivity* and
+  *category* - The keyword is followed by one or more identifiers in a
+  comma ',' separated list, with the last entry being terminated with a
+  semi-colon ';'.
+- *class* - The class keyword is followed by a single object class identifier
+  and one or more permissions. Multiple permissions consist of a space
+  separated list enclosed within braces '{}'. The list is then terminated
+  with a semi-colon ';'.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes - But only if proceeded by the <code>optional</code> Statement</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>Yes - But only if proceeded by the <code>optional</code> Statement</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| No | Yes (only if proceeded by the *optional* Statement) | Yes              |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes (only if proceeded by the *optional* Statement) | Yes       | No        |
 
 **Examples:**
 
@@ -183,53 +159,38 @@ optional { rule_list } [ else { rule_list } ]
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>optional</code></td>
-<td>The <code>optional</code> keyword.</td>
-</tr>
-<tr>
-<td><code>rule_list</code></td>
-<td>One or more statements enclosed within braces '{}'. The list of valid statements is given in <em><a href="kernel_policy_language.md#kernel-policy-language"><strong>Table 3:</strong> The policy language statements and rules that are allowed within each type of policy source file</a></em>.</td>
-</tr>
-<tr>
-<td><code>else</code></td>
-<td>An optional <code>else</code> keyword.</td>
-</tr>
-<tr>
-<td><code>rule_list</code></td>
-<td>As the <code>rule_list</code> above.</td>
-</tr>
-</tbody>
-</table>
+*optional*
+
+The *optional* keyword.
+
+*rule_list*
+
+One or more statements enclosed within braces '{}'. The list of valid
+statements is given in
+[**Table 3:** of the Kernel Policy Language](kernel_policy_language.md#kernel-policy-language)
+section.
+
+*else*
+
+An optional *else* keyword.
+
+*rule_list*
+
+As the *rule_list* above.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | Yes                     | Yes                     |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | Yes                     |
 
 **Examples:**
 
