@@ -9,13 +9,13 @@ Each of the subjects and objects have a set of security attributes that
 can be interrogated by the operating system to check if the requested
 operation can be performed or not. For SELinux the:
 
--   [**subjects**](subjects.md#subjects) are processes.
--   [**objects**](objects.md#objects) are system resources such as files,
-    sockets, etc.
--   security attributes are the [**security context**](security_context.md#security-context).
--   Security Server within the Linux kernel authorizes access (or not)
-    using the security policy (or policy) that describes rules that must
-    be enforced.
+- [**subjects**](subjects.md#subjects) are processes.
+- [**objects**](objects.md#objects) are system resources such as files,
+  sockets, etc.
+- security attributes are the [**security context**](security_context.md#security-context).
+- Security Server within the Linux kernel authorizes access (or not)
+  using the security policy (or policy) that describes rules that must
+  be enforced.
 
 Note that the subject (and therefore the user) cannot decide to bypass
 the policy rules being enforced by the MAC policy with SELinux enabled.
@@ -35,8 +35,8 @@ SELinux supports two forms of MAC:
 objects are controlled by policy. This is the implementation used for
 general purpose MAC within SELinux along with Role Based Access Control.
 The [**Type Enforcement (TE)**](type_enforcement.md#type-enforcement) and
-[**Role Based Access Control**](rbac.md#role-based-access-control) sections covers
-these in more detail.
+[**Role Based Access Control**](rbac.md#role-based-access-control) sections
+covers these in more detail.
 
 **Multi-Level Security** - This is an implementation based on the
 Bell-La Padula (BLP) model, and used by organizations where different
@@ -51,14 +51,14 @@ Multi-Category Security (MCS).
 The MLS / MCS services are now more generally used to maintain
 application separation, for example SELinux enabled:
 
--   virtual machines use MCS categories to allow each VM to run within
-    its own domain to isolate VMs from each other (see the
-    [**SELinux Virtual Machine Support**](vm_support.md#selinux-virtual-machine-support)
-    section).
--   Android devices use dynamically generated MCS categories so that an
-    app running on behalf of one user cannot read or write files created
-    by the same app running on behalf of another user (see the
-    [**Security Enhancements for Android - Computing a Context**](seandroid.md#computing-process-context-examples) section).
+- virtual machines use MCS categories to allow each VM to run within
+  its own domain to isolate VMs from each other (see the
+  [**SELinux Virtual Machine Support**](vm_support.md#selinux-virtual-machine-support)
+  section).
+- Android devices use dynamically generated MCS categories so that an
+  app running on behalf of one user cannot read or write files created
+  by the same app running on behalf of another user (see the
+  [**Security Enhancements for Android - Computing a Context**](seandroid.md#computing-process-context-examples) section).
 
 <!-- %CUTHERE% -->
 
