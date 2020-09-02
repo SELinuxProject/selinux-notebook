@@ -1,5 +1,12 @@
 # Polyinstantiation Support
 
+- [Polyinstantiated Objects](#polyinstantiated-objects)
+- [Polyinstantiation support in PAM](#polyinstantiation-support-in-pam)
+  - [*namespace.conf* Configuration File](#namespace.conf-configuration-file)
+    - [Example Configurations](#example-configurations)
+- [Polyinstantiation support in X-Windows](#polyinstantiation-support-in-x-windows)
+- [Polyinstantiation support in the Reference Policy](#polyinstantiation-support-in-the-reference-policy)
+
 GNU / Linux supports the polyinstantiation of directories that can be
 utilised by SELinux via the Pluggable Authentication Module (PAM) as explained
 in the next section. The
@@ -12,16 +19,16 @@ sockets are not yet supported.
 
 To clarify polyinstantiation support:
 
-1.  SELinux has *libselinux* functions and a policy rule to support
-    polyinstantiation.
-2.  The polyinstantiation of directories is a function of GNU / Linux
-    not SELinux (as more correctly, the GNU / Linux services such as PAM
-    have been modified to support polyinstantiation of directories and
-    have also been made SELinux-aware. Therefore their services can be
-    controlled via policy).
-3.  The polyinstantiation of X-windows selections and properties is a
-    function of the XSELinux Object Manager and the supporting XACE
-    service.
+1. SELinux has *libselinux* functions and a policy rule to support
+   polyinstantiation.
+2. The polyinstantiation of directories is a function of GNU / Linux
+   not SELinux (as more correctly, the GNU / Linux services such as PAM
+   have been modified to support polyinstantiation of directories and
+   have also been made SELinux-aware. Therefore their services can be
+   controlled via policy).
+3. The polyinstantiation of X-windows selections and properties is a
+   function of the XSELinux Object Manager and the supporting XACE
+   service.
 
 ## Polyinstantiated Objects
 
@@ -46,10 +53,11 @@ to enable the feature and some [**examples**](#example-configurations).
 To implement polyinstantiated directories PAM requires the following
 files to be configured:
 
-1.  A **pam_namespace** module entry added to the appropriate */etc/pam.d/*
-    login configuration file (e.g. login, sshd, gdm etc.). Fedora
-    already has these entries configured, with an example
-    */etc/pam.d/gdm-password* file being:
+- A **pam_namespace** module entry added to the appropriate */etc/pam.d/*
+  login configuration file (e.g. login, sshd, gdm etc.). Fedora
+  already has these entries configured, with an example
+  */etc/pam.d/gdm-password* file being:
+
 ```
 auth     [success=done ignore=ignore default=bad] pam_selinux_permit.so
 auth        substack      password-auth
@@ -73,13 +81,13 @@ session     optional      pam_gnome_keyring.so auto_start
 session     include       postlogin
 ```
 
-2.  Entries added to the */etc/security/namespace.conf* file that defines
-    the directories to be polyinstantiated by PAM (and other services
-    that may need to use the namespace service). The entries are
-    explained in the
-    [*namespace.conf*](#namespace.conf-configuration-file) section,
-    with the default entries in Fedora being (note that the entries are
-    commented out in the distribution):
+- Entries added to the */etc/security/namespace.conf* file that defines
+  the directories to be polyinstantiated by PAM (and other services
+  that may need to use the namespace service). The entries are
+  explained in the
+  [*namespace.conf*](#namespace.conf-configuration-file) section,
+  with the default entries in Fedora being (note that the entries are
+  commented out in the distribution):
 
 ```
 # polydir  instance-prefix     method  list_of_uids
@@ -108,33 +116,37 @@ Each line in the namespace.conf file is formatted as follows:
 polydir instance_prefix method list_of_uids
 ```
 
-Where:
+**Where:**
 
-<table>
-<tbody>
-<tr>
-<td>polydir</td>
-<td>The absolute path name of the directory to polyinstantiate. The optional strings $USER and $HOME will be replaced by the user name and home directory respectively.</td>
-</tr>
-<tr>
-<td>instance_prefix</td>
-<td>A string prefix used to build the pathname for the polyinstantiated directory. The optional strings $USER and $HOME will be replaced by the user name and home directory respectively.</td>
-</tr>
-<tr>
-<td>method</td>
-<td><p>This is used to determine the method of polyinstantiation with valid entries being:</p>
-<p>user - Polyinstantiation is based on user name.</p>
-<p>level - Polyinstantiation is based on the user name and MLS level.</p>
-<p>context - Polyinstantiation is based on the user name and security context.</p>
-<p>Note that level and context are only valid for SELinux enabled systems.</p></td>
-</tr>
-<tr>
-<td>list_of_uids</td>
-<td><p>A comma separated list of user names that will not have polyinstantiated directories. If blank, then all users are polyinstantiated. If the list is preceded with an '~' character, then only the users in the list will have polyinstantiated directories.</p>
-<p>There are a number of optional flags available that are described in the <strong>namespace.conf</strong>(5) man page.</p></td>
-</tr>
-</tbody>
-</table>
+*polydir*
+
+- The absolute path name of the directory to polyinstantiate. The optional
+  strings *\$USER* and *\$HOME* will be replaced by the user name and home
+  directory respectively.
+
+*instance_prefix*
+
+- A string prefix used to build the pathname for the polyinstantiated
+  directory. The optional strings *\$USER* and *\$HOME* will be replaced by
+  the user name and home directory respectively.
+
+*method*
+
+- This is used to determine the method of polyinstantiation with valid
+  entries being:
+  - *user*    - Polyinstantiation is based on user name.
+  - *level*   - Polyinstantiation is based on user name and MLS level.
+  - *context* - Polyinstantiation is based on user name and security context.
+- Note that *level* and *context* are only valid for SELinux enabled systems.
+
+*list_of_uids*
+
+- A comma separated list of user names that will not have polyinstantiated
+  directories. If blank, then all users are polyinstantiated. If the list is
+  preceded with an '~' character, then only the users in the list will have
+  polyinstantiated directories.
+  There are a number of optional flags available that are described in the
+  ***namespace.conf**(5)* man page.
 
 ### Example Configurations
 
