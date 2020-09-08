@@ -452,11 +452,52 @@ Context type identifier has never been defined in any standard. Pluto is
 configurable and defaults to '*32001*', this is the IPSEC Security
 Association Attribute identifier reserved for private use. Racoon is
 hard coded to a value of '*10*', therefore the pluto ***ipsec.conf**(5)*
-file must be configured as follows:
+configuration file *secctx-attr-type* entry must be set as shown in the
+following example:
 
 ```
 config setup
-        secctx-attr-type=10
+	protostack=netkey
+	plutodebug=all
+	logfile=/var/log/pluto/pluto.log
+	logappend=no
+	# A "secctx-attr-type" MUST be present:
+	secctx-attr-type=10
+	# Labeled IPSEC only supports the following values:
+	#   10 = ECN_TUNNEL - Used by racoon(8)
+	#   32001 = Default - Reserved for private use (see RFC 2407)
+	# These are the "IPSEC Security Association Attributes"
+
+conn selinux_labeled_ipsec_test
+	# ikev2 MUST be "no" as labeled ipsec is not yet supported by IKEV2
+	# There is a draft IKEV2 labeled ipsec document (July '20) at:
+	#   https://tools.ietf.org/html/draft-ietf-ipsecme-labeled-ipsec-03
+	ikev2=no
+	auto=start
+	rekey=no
+	authby=secret	# set in '/etc/ipsec.secrets'. See NOTE
+	type=transport
+	left=192.168.1.198
+	right=192.168.1.148
+	ike=aes256-sha2		# See NOTE
+	phase2=esp
+	phase2alg=aes256	# See NOTE
+	# The 'policy-label' entry is used to determine whether SELinux will
+	# allow or deny the request using the labels from:
+	#   connection policy label from the applicable SAD entry
+	#   connection flow label from the applicable SPD entry (this is taken
+	#   from the 'conn <name> policy-label' entry).
+	# selinux_check_access(SAD, SPD, "association", "polmatch", NULL);
+	policy-label=system_u:object_r:ipsec_spd_t:s0
+	leftprotoport=tcp
+	rightprotoport=tcp
+
+# NOTE:
+#   The authentication methods and encryption algorithms should be chosen
+#   with care and within the constraints of those available for
+#   interoperability.
+#   Racoon is no longer actively supported and has a limited choice of
+#   algorithms compared to LibreSwan.
 ```
 
 The Fedora version of racoon has added functionality to support
