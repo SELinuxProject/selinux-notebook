@@ -1,5 +1,11 @@
 # Xen Statements
 
+- [*iomemcon*](#iomemcon)
+- [*ioportcon*](#ioportcon)
+- [*pcidevicecon*](#pcidevicecon)
+- [*pirqcon*](#pirqcon)
+- [*devicetreecon*](#devicetreecon)
+
 Xen policy supports additional policy language statements: *iomemcon*,
 *ioportcon*, *pcidevicecon*, *pirqcon* and *devicetreecon* that are
 discussed in the sections that follow, also the
@@ -49,7 +55,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
@@ -95,7 +101,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
@@ -140,7 +146,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
@@ -184,7 +190,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
@@ -229,7 +235,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
