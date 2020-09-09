@@ -1,5 +1,8 @@
 # Security ID (SID) Statement
 
+- [*sid*](#sid)
+- [*sid context*](#sid-context)
+
 There are two *sid* statements, the first one declares the actual *sid*
 identifier and is defined at the start of a policy source file. The
 second statement is used to associate an initial security context to the
@@ -20,45 +23,27 @@ sid sid_id
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>sid</code></td>
-<td>The <code>sid</code> keyword.</td>
-</tr>
-<tr>
-<td><code>sid_id</code></td>
-<td>The <code>sid</code> identifier.</td>
-</tr>
-</tbody>
-</table>
+*sid*
+
+The *sid* keyword.
+
+*sid_id*
+
+The *sid* identifier.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Example:**
 
@@ -86,49 +71,31 @@ sid sid_id context
 
 **Where:**
 
-<table>
-<tbody>
-<tr>
-<td><code>sid</code></td>
-<td>The <code>sid<code> keyword.</td>
-</tr>
-<tr>
-<td><code>sid_id</code></td>
-<td>The previously declared sid identifier. </td>
-</tr>
-<tr>
-<td><code>context</code></td>
-<td>The initial security context.</td>
-</tr>
-</tbody>
-</table>
+*sid*
+
+The *sid* keyword.
+
+*sid_id*
+
+The previously declared *sid* identifier.
+
+*context*
+
+The initial security context.
 
 **The statement is valid in:**
 
-<table style="text-align:center">
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Monolithic Policy</strong></td>
-<td><strong>Base Policy</strong></td>
-<td><strong>Module Policy</strong></td>
-</tr>
-<tr>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Conditional Policy <code>if</code> Statement</strong></td>
-<td><strong><code>optional</code> Statement</strong></td>
-<td><strong><code>require</code> Statement</strong></td>
-</tr>
-<tr>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+Policy Type
+
+| Monolithic Policy       | Base Policy             | Module Policy           |
+| ----------------------- | ----------------------- | ----------------------- |
+| Yes                     | Yes                     | No                      |
+
+Conditional Policy Statements
+
+| *if* Statement          | *optional* Statement    | *require* Statement     |
+| ----------------------- | ----------------------- | ----------------------- |
+| No                      | No                      | No                      |
 
 **Examples:**
 
