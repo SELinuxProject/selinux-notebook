@@ -13,7 +13,7 @@ objects, this user is *system_u*.
 
 The SELinux user name is the first component of a
 [**Security Context**](security_context.md#security-context) and
-by convention SELinux user names end in *_u*, however this is not
+by convention SELinux user names end in *\_u*, however this is not
 enforced by any SELinux service (i.e. it is only to identify the user
 component), although CIL with namespaces does make identification of an
 SELinux user easier for example a 'user' could be declared as
