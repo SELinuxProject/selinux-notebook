@@ -1,7 +1,8 @@
 # Appendix E - Policy Validation Example
 
 This example has been taken from
-[**http://selinuxproject.org/page/PolicyValidate**](http://selinuxproject.org/page/PolicyValidate) just in case the site is removed some day.
+[**http://selinuxproject.org/page/PolicyValidate**](http://selinuxproject.org/page/PolicyValidate)
+just in case the site is removed some day.
 
 ***libsemanage(8)*** is the library responsible for building a kernel policy
 from policy modules. It has many features but one that is rarely
