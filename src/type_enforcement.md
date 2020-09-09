@@ -1,5 +1,8 @@
 # Type Enforcement
 
+- [Constraints](#constraints)
+- [Bounds](#bounds)
+
 SELinux makes use of a specific style of type enforcement (TE) to enforce
 mandatory access control. For SELinux it means that all
 [**subjects**](subjects.md#subjects) and [**objects**](objects.md#objects)
@@ -17,7 +20,7 @@ server, enforce policy via the object managers.
 Because the *type* identifier (or just 'type') is associated to all
 subjects and objects, it can sometimes be difficult to distinguish what
 the type is actually associated with (it's not helped by the fact that
-by convention, type identifiers end in *_t*). In the end it comes down
+by convention, type identifiers end in *\_t*). In the end it comes down
 to understanding how they are allocated in the policy itself and how
 they are used by SELinux services (although CIL policies with namespaces
 do help in that a domain process 'type' could be declared as
@@ -33,7 +36,7 @@ While SELinux refers to a subject as being an active process that is
 associated to a domain type, the scope of an SELinux type enforcement
 domain can vary widely. For example in the simple
 [**Kernel policy**](./notebook-examples/selinux-policy/kernel/kern-nb-policy.txt)
-in the notebook-examples, all the processes on the system run in the
+in the *notebook-examples*, all the processes on the system run in the
 *unconfined_t* domain, therefore every process is
 'of type *unconfined_t*' (that means it can do whatever it likes within
 the limits of the standard Linux DAC policy as all access is allowed by
@@ -49,7 +52,7 @@ where the majority of user space processes run under the *unconfined_t*
 domain.
 
 The SELinux type is the third component of a 'security context' and by
-convention SELinux types end in *_t*, however this is not enforced by
+convention SELinux types end in *\_t*, however this is not enforced by
 any SELinux service (i.e. it is only used to identify the type
 component), although as explained above CIL with namespaces does make
 identification of types easier.
