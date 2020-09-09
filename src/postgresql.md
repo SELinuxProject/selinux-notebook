@@ -1,12 +1,12 @@
 # PostgreSQL SELinux Support
 
--   [**sepgsql Overview**](#sepgsql-overview)
--   [**Installing SE-PostgreSQL**](#installing-se-postgresql)
--   [***SECURITY LABEL* SQL Command**](#security-label-sql-command)
--   [**Additional SQL Functions**](#additional-sql-functions)
--   [***postgresql.conf* Entries**](#postgresql.conf-entries)
--   [**Logging Security Events**](#logging-security-events)
--   [**Internal Tables**](#internal-tables)
+- [sepgsql Overview](#sepgsql-overview)
+- [Installing SE-PostgreSQL](#installing-se-postgresql)
+- [*SECURITY LABEL* SQL Command](#security-label-sql-command)
+- [Additional SQL Functions](#additional-sql-functions)
+- [*postgresql.conf* Entries](#postgresql.conf-entries)
+- [Logging Security Events](#logging-security-events)
+- [Internal Tables](#internal-tables)
 
 This section gives an overview of PostgreSQL version 11.x with the
 *sepgsql* extension to support SELinux. It assumes some basic knowledge
@@ -144,14 +144,13 @@ by the *sepgsql.sql* script. If the parameter is NULL, then the default
 The *postgresql.conf* file supports the following additional entries to
 enable and manage SE-PostgreSQL:
 
-1.  This entry is mandatory to enable the *sepgsql* extension to be
-    loaded:
+- This entry is mandatory to enable the *sepgsql* extension to be loaded:
 
 ```
 shared_preload_libraries = 'sepgsql'
 ```
 
-2.  These entries are optional and default to '*off*'.
+- These entries are optional and default to '*off*'.
 
 ```
 # This enables sepgsql to always run in permissive mode:
