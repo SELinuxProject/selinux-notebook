@@ -1,10 +1,10 @@
 # Kernel Policy Language
 
--   [Policy Source Files](#policy-source-files)
--   [Conditional, Optional and Require Statement Rules](#conditional-optional-and-require-statement-rules)
--   [MLS Statements and Optional MLS Components](#mls-statements-and-optional-mls-components)
--   [General Statement Information](#general-statement-information)
--   [Policy Language Index](#policy-language-index)
+- [Policy Source Files](#policy-source-files)
+- [Conditional, Optional and Require Statement Rules](#conditional-optional-and-require-statement-rules)
+- [MLS Statements and Optional MLS Components](#mls-statements-and-optional-mls-components)
+- [General Statement Information](#general-statement-information)
+- [Policy Language Index](#policy-language-index)
 
 This section covers the policy source file types and what kernel policy
 statements and rule are allowed in each. The
@@ -93,30 +93,30 @@ what circumstances each one is valid within a policy source file.
 
 *Monolithic Policy*
 
--   Whether the statement is allowed within a monolithic policy source file or not.
+- Whether the statement is allowed within a monolithic policy source file or not.
 
 *Base Policy*
 
--   Whether the statement is allowed within a base (for loadable module support)
-    policy source file or not.
+- Whether the statement is allowed within a base (for loadable module support)
+  policy source file or not.
 
 *Module Policy*
 
--   Whether the statement is allowed within the optional loadable module policy
-    source file or not.
+- Whether the statement is allowed within the optional loadable module policy
+  source file or not.
 
 ## Conditional, Optional and Require Statement Rules
 
 The language grammar specifies what statements and rules can be included
 within:
 
-1.   [**Conditional Policy**](conditional_statements.md#conditional-policy-statements)
-     rules that are part of the kernel policy language.
-2.   *optional* and *require* rules that are NOT part of the kernel policy
-     language, but **Reference Policy** ***m4**(1)* macros used to control
-     policy builds (see the
-     [**Modular Policy Support Statements**](modular_policy_statements.md#modular-policy-support-statements)
-     section.
+1. [**Conditional Policy**](conditional_statements.md#conditional-policy-statements)
+   rules that are part of the kernel policy language.
+2. *optional* and *require* rules that are NOT part of the kernel policy
+   language, but **Reference Policy** ***m4**(1)* macros used to control
+   policy builds (see the
+   [**Modular Policy Support Statements**](modular_policy_statements.md#modular-policy-support-statements)
+   section.
 
 To highlight these rules the following table is included in each
 statement and rule section to show what circumstances each one is valid
@@ -132,17 +132,17 @@ within a policy source file:
 
 *if Statement*
 
--   Whether the statement is allowed within a conditional statement
-    (*if/else* construct). Conditional statements can be in all types
-    of policy source file.
+- Whether the statement is allowed within a conditional statement
+  (*if/else* construct). Conditional statements can be in all types
+  of policy source file.
 
 *optional Statement*
 
--   Whether the statement is allowed within the *optional { rule_list }* construct.
+- Whether the statement is allowed within the *optional { rule_list }* construct.
 
 *require Statement*
 
--   Whether the statement is allowed within the *require { rule_list }* construct.
+- Whether the statement is allowed within the *require { rule_list }* construct.
 
 ## MLS Statements and Optional MLS Components
 
@@ -156,14 +156,14 @@ MLS **Reference Policy** build.
 
 ## General Statement Information
 
-1.  Identifiers can generally be any length but should be restricted to
-    the following characters: a-z, A-Z, 0-9 and \_ (underscore).
-2.  A '\#' indicates the start of a comment in policy source files.
-3.  All statements available to policy version 29 have been included.
-4.  When multiple source and target entries are shown in a single
-    statement or rule, the compiler (***checkpolicy**(8)* or
-    ***checkmodule**(8)*) will expand these to individual statements or
-    rules as shown in the following example:
+1. Identifiers can generally be any length but should be restricted to
+   the following characters: a-z, A-Z, 0-9 and \_ (underscore).
+2. A '\#' indicates the start of a comment in policy source files.
+3. All statements available to policy version 29 have been included.
+4. When multiple source and target entries are shown in a single
+   statement or rule, the compiler (***checkpolicy**(8)* or
+   ***checkmodule**(8)*) will expand these to individual statements or
+   rules as shown in the following example:
 
 ```
 # This allow rule has two target entries console_device_t and tty_device_t:
@@ -180,11 +180,11 @@ using (for example) ***apol**(8)*, **sedispol** or **sedismod**, the
 results will differ (however the resulting policy rules will be the
 same).
 
-1.  Some statements can be added to a policy via the policy store using
-    the **semanage**(8) command. Examples of these are shown where
-    applicable, however the **semanage** man page should be consulted
-    for all the possible command line options.
-2.  **Table 2** lists words reserved for the SELinux  policy language.
+1. Some statements can be added to a policy via the policy store using
+   the **semanage**(8) command. Examples of these are shown where
+   applicable, however the **semanage** man page should be consulted
+   for all the possible command line options.
+2. **Table 2** lists words reserved for the SELinux  policy language.
 
 |                 |                |                    |                  |
 | :-------------- | :------------- | :----------------- | :--------------- |
@@ -294,28 +294,28 @@ or require {rule_list} statement.*
 
 The policy language statement and rule sections are as follows:
 
--   [Policy Configuration Statements](policy_config_statements.md#policy-configuration-statements)
--   [Default Rules](default_rules.md#default-object-rules)
--   [User Statements](user_statements.md#user-statements)
--   [Role Statements](role_statements.md#role-statements)
--   [Type Statements](type_statements.md#type-statements)
--   [Bounds Rules](bounds_rules.md#bounds-rules)
--   [Access Vector Rules](avc_rules.md#access-vector-rules)
--   [Extended Access Vector Rules](xperm_rules.md#extended-access-vector-rules)
--   [Object Class and Permission Statements](class_permission_statements.md#object-class-and-permission-statements)
--   [Conditional Policy Statements](conditional_statements.md#conditional-policy-statements)
--   [Constraint Statements](constraint_statements.md#constraint-statements)
--   [MLS Statements](mls_statements.md#mls-statements)
--   [Security ID (SID) Statement](sid_statement.md#security-id-sid-statement)
--   [File System Labeling Statements](file-labeling-statements.md#file-system-labeling-statements)
--   [Network Labeling Statements](network_statements.md#network-labeling-statements)
--   [InfiniBand Labeling Statements](infiniband_statements.md#infiniband-labeling-statements)
--   [XEN Statements](xen_statements.md#xen-statements)
+- [Policy Configuration Statements](policy_config_statements.md#policy-configuration-statements)
+- [Default Rules](default_rules.md#default-object-rules)
+- [User Statements](user_statements.md#user-statements)
+- [Role Statements](role_statements.md#role-statements)
+- [Type Statements](type_statements.md#type-statements)
+- [Bounds Rules](bounds_rules.md#bounds-rules)
+- [Access Vector Rules](avc_rules.md#access-vector-rules)
+- [Extended Access Vector Rules](xperm_rules.md#extended-access-vector-rules)
+- [Object Class and Permission Statements](class_permission_statements.md#object-class-and-permission-statements)
+- [Conditional Policy Statements](conditional_statements.md#conditional-policy-statements)
+- [Constraint Statements](constraint_statements.md#constraint-statements)
+- [MLS Statements](mls_statements.md#mls-statements)
+- [Security ID (SID) Statement](sid_statement.md#security-id-sid-statement)
+- [File System Labeling Statements](file-labeling-statements.md#file-system-labeling-statements)
+- [Network Labeling Statements](network_statements.md#network-labeling-statements)
+- [InfiniBand Labeling Statements](infiniband_statements.md#infiniband-labeling-statements)
+- [XEN Statements](xen_statements.md#xen-statements)
 
 Note these are not kernel policy statements, but used by the Reference Policy
 to assist policy build:
 
--   [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
+- [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
 
 [^fn_kpl_1]: It is important to note that the Reference Policy builds policy
 using makefiles and m4 support macros within its own source file structure.
