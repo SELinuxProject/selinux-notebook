@@ -1,13 +1,13 @@
 # X-Windows SELinux Support
 
--   [**Infrastructure Overview**](#infrastructure-overview)
--   [**Polyinstantiation**](#polyinstantiation)
--   [**Configuration Information**](#configuration-information)
-    -    [**Enable/Disable the OM from Policy Decisions**](#enabledisable-the-om-from-policy-decisions)
-    -    [**Configure OM Enforcement Mode**](#configure-om-enforcement-mode)
-    -    [**Determine OM X-extension Opcode**](#determine-om-x-extension-opcode)
-    -    [**The *x_contexts* File**](#the-x_contexts-file)
--   [**SELinux Extension Functions**](#selinux-extension-functions)
+- [Infrastructure Overview](#infrastructure-overview)
+- [Polyinstantiation](#polyinstantiation)
+- [Configuration Information](#configuration-information)
+  - [Enable/Disable the OM from Policy Decisions](#enabledisable-the-om-from-policy-decisions)
+  - [Configure OM Enforcement Mode](#configure-om-enforcement-mode)
+  - [Determine OM X-extension Opcode](#determine-om-x-extension-opcode)
+  - [The *x_contexts* File](#the-x_contexts-file)
+- [SELinux Extension Functions](#selinux-extension-functions)
 
 The SELinux X-Windows (XSELinux) implementation provides fine grained
 access control over the majority of the X-server objects (known as
@@ -116,10 +116,10 @@ of properties and selections.
 
 This section covers:
 
--   How to enable/disable the OM X-extension.
--   How to determine the OM X-extension opcode.
--   How to configure the OM in a specific SELinux enforcement mode.
--   The *x-contexts* configuration file.
+- How to enable/disable the OM X-extension.
+- How to determine the OM X-extension opcode.
+- How to configure the OM in a specific SELinux enforcement mode.
+- The *x-contexts* configuration file.
 
 ### Enable/Disable the OM from Policy Decisions
 
@@ -148,9 +148,9 @@ If the X-server object manager needs to be run in a specific SELinux
 enforcement mode, then the option may be added to the *xorg.conf* file
 (normally in */etc/X11/xorg.conf.d*). The option entries are as follows:
 
--   SELinux mode disabled
--   SELinux mode permissive
--   SELinux mode enforcing
+- SELinux mode disabled
+- SELinux mode permissive
+- SELinux mode enforcing
 
 Note that the entry must be exact otherwise it will be ignored. An
 example entry is:
@@ -222,17 +222,17 @@ the Xlib libraries (e.g. *XInternAtom*).
 
 **Notes:**
 
-1.  The way the XSELinux extension code works (see
-    *xselinux_label.c* - SELinuxAtomToSIDLookup()) is that non-poly
-    entries are searched for first, if an entry is not found then it
-    searches for a matching poly entry. The reason for this behavior is
-    that when operating in a secure environment all objects would be
-    polyinstantiated unless there are specific exemptions made for
-    individual objects to make them non-polyinstantiated. There would
-    then be a 'poly_selection' or 'poly_property' at the end of the section.
-2.  For systems using the Reference Policy all X-clients connecting
-    remotely will be allocated a security context from the *x_contexts*
-    file of:
+1. The way the XSELinux extension code works (see
+   *xselinux_label.c* - SELinuxAtomToSIDLookup()) is that non-poly
+   entries are searched for first, if an entry is not found then it
+   searches for a matching poly entry. The reason for this behavior is
+   that when operating in a secure environment all objects would be
+   polyinstantiated unless there are specific exemptions made for
+   individual objects to make them non-polyinstantiated. There would
+   then be a 'poly_selection' or 'poly_property' at the end of the section.
+2. For systems using the Reference Policy all X-clients connecting
+   remotely will be allocated a security context from the *x_contexts*
+   file of:
 
 ```
 # object_type object_name context
