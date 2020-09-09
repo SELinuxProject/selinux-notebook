@@ -1,5 +1,7 @@
 # Extended Access Vector Rules
 
+- [*ioctl* Operation Rules](#ioctl-operation-rules)
+
 There are three extended AV rules implemented from Policy version 30
 with the target platform 'selinux' that expand the permission sets from
 a fixed 32 bits to permission sets in 256 bit increments: *allowxperm*,
@@ -66,7 +68,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
 
@@ -80,7 +82,7 @@ policy format changes shown in the example below with a brief overview
 the final upstream kernel patch).
 
 Ioctl calls are generally used to get or set device options. Policy
-versions &lt; 30 only controls whether an *ioctl* permission is allowed
+versions \> 30 only controls whether an *ioctl* permission is allowed
 or not, for example this rule allows the object class *tcp_socket* the
 *ioctl* permission:
 
@@ -116,17 +118,17 @@ tclass=udp_socket permissive=0
 
 Notes:
 
-1.  Important: The ioctl operation is not 'deny all' ioctl requests
-    (hence whitelisting). It is targeted at the specific
-    source/target/class set of ioctl commands. As no other *allowxperm*
-    rules have been defined in the example, all other ioctl calls may
-    continue to use any valid request parameters (provided there are
-    *allow* rules for the *ioctl* permission).
-2.  As the ***ioctl**(2)* function requires a file descriptor, its
-    context must match the process context otherwise the *fd { use }*
-    class/permission is required.
-3.  To deny all ioctl requests for a specific source/target/class the
-    *xperm_set* should be set to *0* or *0x0*.
+1. Important: The ioctl operation is not 'deny all' ioctl requests
+   (hence whitelisting). It is targeted at the specific
+   source/target/class set of ioctl commands. As no other *allowxperm*
+   rules have been defined in the example, all other ioctl calls may
+   continue to use any valid request parameters (provided there are
+   *allow* rules for the *ioctl* permission).
+2. As the ***ioctl**(2)* function requires a file descriptor, its
+   context must match the process context otherwise the *fd { use }*
+   class/permission is required.
+3. To deny all ioctl requests for a specific source/target/class the
+   *xperm_set* should be set to *0* or *0x0*.
 
 <!-- %CUTHERE% -->
 
