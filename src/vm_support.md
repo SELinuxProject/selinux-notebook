@@ -1,5 +1,13 @@
 # SELinux Virtual Machine Support
 
+- [KVM / QEMU Support](#kvm-qemu-support)
+- [*libvirt* Support](#libvirt-support)
+- [VM Image Labeling](#vm-image-labeling)
+  - [Dynamic Labeling](#dynamic-labeling)
+  - [Shared Image](#shared-image)
+  - [Static Labeling](#static-labeling)
+- [Xen Support](#xen-support)
+
 SELinux support is available in the KVM/QEMU and Xen virtual machine (VM)
 technologies[^fn_vms_1] that are discussed in the sections that follow, however
 the package documentation should be read for how these products actually work
@@ -90,20 +98,20 @@ other (i.e. every time the VM is run a different and unique MCS label
 will be generated to confine each VM to its own domain). This mode is
 implemented as follows:
 
-1.  An initial context for the process is obtained from the
-    */etc/selinux/&lt;SELINUXTYPE&gt;/contexts/virtual_domain_context*
-    file (the default is *system_u:system_r:svirt_tcg_t:s0*).
-2.  An initial context for the image file label is obtained from the
-    */etc/selinux/&lt;SELINUXTYPE&gt;/contexts/virtual_image_context*
-    file. The default is *system_u:system_r:svirt_image_t:s0* that
-    allows read/write of image files.
-3.  When the image is used to start the VM, a random MCS *level* is
-    generated and added to the process context and the image file
-    context. The process and image files are then transitioned to the
-    context by the* libselinux* API calls *setfilecon* and *setexeccon*
-    respectively (see *security_selinux.c* in the *libvirt *source).
-    The following example shows two running VM sessions each having
-    different labels:
+1. An initial context for the process is obtained from the
+   */etc/selinux/\<SELINUXTYPE\>/contexts/virtual_domain_context*
+   file (the default is *system_u:system_r:svirt_tcg_t:s0*).
+2. An initial context for the image file label is obtained from the
+   */etc/selinux/\<SELINUXTYPE\>/contexts/virtual_image_context*
+   file. The default is *system_u:system_r:svirt_image_t:s0* that
+   allows read/write of image files.
+3. When the image is used to start the VM, a random MCS *level* is
+   generated and added to the process context and the image file
+   context. The process and image files are then transitioned to the
+   context by the *libselinux* API calls *setfilecon* and *setexeccon*
+   respectively (see *security_selinux.c* in the *libvirt *source).
+   The following example shows two running VM sessions each having
+   different labels:
 
 | VM Image    | Object    | Dynamically assigned security context             |
 | ------------| --------- | ------------------------------------------------- |
@@ -152,7 +160,7 @@ checking the *Shareable* box as shown in **Figure 19**.
 
 This will set the image (*Shareable_VM.xml*) resource XML
 configuration file located in the */etc/libvirt/qemu* directory
-*&lt;disk&gt;* contents as follows:
+*\<disk\>* contents as follows:
 
 ```
 # /etc/libvirt/qemu/Shareable_VM.xml:
@@ -172,7 +180,7 @@ needs to be cloned and the VM resource name selected was
 
 ![](./images/20-clone.png)
 
-The resource XML file *&lt;disk&gt;* contents generated are shown - note
+The resource XML file *\<disk\>* contents generated are shown - note
 that it has the same *source file* name as the *Shareable_VM.xml* file
 shown above.
 
@@ -191,7 +199,7 @@ shown above.
 With the targeted policy on Fedora the shareable option gave a error when
 the VMs were run as follows:
 
--   **Could not allocate dynamic translator buffer**
+- **Could not allocate dynamic translator buffer**
 
 The audit log contained the following AVC message:
 
@@ -213,19 +221,19 @@ setsebool -P virt_use_execmem on
 Now that the image has been configured as shareable, the following
 initialisation process will take place:
 
-1.  An initial context for the process is obtained from the
-    */etc/selinux/&lt;SELINUXTYPE&gt;/contexts/virtual_domain_context*
-    file (the default is *system_u:system_r:svirt_tcg_t:s0*).
-2.  An initial context for the image file label is obtained from the
-    */etc/selinux/&lt;SELINUXTYPE&gt;/contexts/virtual_image_context*
-    file. The default is *system_u:system_r:svirt_image_t:s0* that
-    allows read/write of image files.
-3.  When the image is used to start the VM a random MCS level is
-    generated and added to the process context (but not the image file).
-    The process is then transitioned to the appropriate context by the*
-    libselinux* API calls *setfilecon* and *setexeccon* respectively.
-    The following example shows each VM having the same file label but
-    different process labels:
+1. An initial context for the process is obtained from the
+   */etc/selinux/\<SELINUXTYPE\>/contexts/virtual_domain_context*
+   file (the default is *system_u:system_r:svirt_tcg_t:s0*).
+2. An initial context for the image file label is obtained from the
+   */etc/selinux/\<SELINUXTYPE\>/contexts/virtual_image_context*
+   file. The default is *system_u:system_r:svirt_image_t:s0* that
+   allows read/write of image files.
+3. When the image is used to start the VM a random MCS level is
+   generated and added to the process context (but not the image file).
+   The process is then transitioned to the appropriate context by the*
+   libselinux* API calls *setfilecon* and *setexeccon* respectively.
+   The following example shows each VM having the same file label but
+   different process labels:
 
 | VM Image           | Object    | Security context                             |
 | -------------------| ----------| -------------------------------------------- |
@@ -273,8 +281,8 @@ need to be relabeled. An example VM configuration follows where the VM
 has been created as *Static_VM1* using the Fedora *targeted* policy in
 enforcing mode (just so all errors are flagged during the build):
 
-1.  To set the required security context requires editing the
-    *Static_VM1* configuration file using ***virsh**(1)* as follows:
+1. To set the required security context requires editing the
+   *Static_VM1* configuration file using ***virsh**(1)* as follows:
 
 ```
 virsh edit Static_VM1
@@ -301,11 +309,11 @@ For this example *svirt_t* has been chosen as it is a valid context
 written to the *Static_VM1.xml* configuration file in
 */etc/libvirt/qemu*.
 
-2.  If the VM is now started an error will be shown as follows:
+2. If the VM is now started an error will be shown as follows:
 
 ![](./images/21-error.png)
 
-**Figure 2.21: Image Start Error**
+**Figure 21: Image Start Error**
 
 This is because the image file label is incorrect as by default
 it is labeled *virt_image_t* when the VM image is built (and
@@ -340,12 +348,12 @@ the same as the process using *chcon* as follows:
 chcon -l s0:c1022,c1023 Static_VM1.img
 ```
 
-3.  Now that the image has been relabeled, the VM can now be started.
+3. Now that the image has been relabeled, the VM can now be started.
 
 The following example shows two static VMs (one is configured for
 *unconfined_t* that is allowed to run under the targeted policy - this
-was possible because the 's*etsebool -P virt_transition_userdomain
-on*'* *boolean was set that allows *virtd_t* domain to transition to a
+was possible because the '*setsebool -P virt_transition_userdomain
+on*' boolean was set that allows *virtd_t* domain to transition to a
 user domain (e.g. *unconfined_t*).
 
 | VM Image   | Object    | Static security context                            |
@@ -383,7 +391,7 @@ system_u:object_r:virt_image_t:s0 Static_VM2.img
 ## Xen Support
 
 This is not supported by SELinux in the usual way as it is built into
-the actual Xen software as a 'Flask/TE' extension[24] for the XSM (Xen
+the actual Xen software as a 'Flask/TE' extension for the XSM (Xen
 Security Module). Also the Xen implementation has its own built-in
 policy (*xen.te*) and supporting definitions for access vectors,
 security classes and initial SIDs for the policy. These Flask/TE
