@@ -9,13 +9,13 @@ Within SELinux a subject is an active process and has a
 it, however a process can also be referred to as an object depending on the
 context in which it is being taken, for example:
 
-1.  A running process (i.e. an active entity) is a subject because it
-    causes information to flow among objects or can change the system
-    state.
-2.  The process can also be referred to as an object because each
-    process has an associated object class<a href="#fns1" class="footnote-ref" id="fnsub1"><strong><sup>1</sup></strong></a>
-    called '**process**'. This process 'object', defines what permissions the
-    policy is allowed to grant or deny on the active process.
+1. A running process (i.e. an active entity) is a subject because it
+   causes information to flow among objects or can change the system
+   state.
+2. The process can also be referred to as an object because each
+   process has an associated object class[^fn_sub_1]
+   called ***process***. This process 'object', defines what permissions the
+   policy is allowed to grant or deny on the active process.
 
 An example is given of the above scenarios in the
 [**Allowing a Process Access to Resources**](objects.md#allowing-a-process-access-to-resources)
@@ -37,11 +37,8 @@ under *semanage_t*).
 
 **Untrusted** - Everything else.
 
-<section class="footnotes">
-<ol>
-<li id="fns1"><p>The object class and its associated permissions are explained in the <strong><a href="object_classes_permissions.md#process-object-class"> Appendix A - Object Classes and Permissions - Process Object Class</a></strong> section.<a href="#fnsub1" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
+[^fn_sub_1]: The object class and its associated permissions are explained in
+[**Appendix A - Object Classes and Permissions - Process Object Class**](object_classes_permissions.md#process-object-class)
 
 <!-- %CUTHERE% -->
 
