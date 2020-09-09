@@ -1,7 +1,17 @@
 # Type Statements
 
+- [*type*](#type)
+- [*attribute*](#attribute)
+- [*expandattribute*](#expandattribute)
+- [*typeattribute*](#typeattribute)
+- [*typealias*](#typealias)
+- [*permissive*](#permissive)
+- [*type_transition*](#type_transition)
+- [*type_change*](#type_change)
+- [*type_member*](#type_member)
+
 These statements share the same namespace, therefore the general
-convention is to use *_t* as the final two characters of a type
+convention is to use *\_t* as the final two characters of a *type*
 identifier to differentiate it from an attribute identifier as shown in
 the following examples:
 
@@ -62,7 +72,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | Yes                     | Yes                     |
 
@@ -152,7 +162,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | Yes                     | Yes                     |
 
@@ -210,7 +220,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | Yes                     | Yes                     | No                      |
 
@@ -263,7 +273,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | Yes                     | No                      |
 
@@ -304,7 +314,7 @@ typeattribute setroubleshootd_exec_t file_type, non_security_file_type;
 
 The *typealias* statement allows the association of a previously declared
 *type* to one or more *alias* identifiers (an alternative way is to use the
-*type* statement.
+*type* statement).
 
 **The statement definition is:**
 
@@ -341,7 +351,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | Yes                     | No                      |
 
@@ -402,7 +412,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | Yes                     | No                      |
 
@@ -500,7 +510,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | Yes                     | Yes                     | No                      |
 
@@ -606,6 +616,7 @@ One or more object classes. Multiple entries consist of a space separated list
 enclosed in braces '{}'.
 
 *change_type*
+
 A single *type* or *typealias* identifier that will become the new *type*. 
 
 **The statement is valid in:**
@@ -618,7 +629,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | Yes                     | Yes                     | No                      |
 
@@ -691,7 +702,7 @@ Policy Type
 
 Conditional Policy Statements
 
-| *if* statement          | *optional* Statement    | *require* Statement     |
+| *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | Yes                     | Yes                     | No                      |
 
