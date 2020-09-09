@@ -1,5 +1,9 @@
 # SELinux Userspace Libraries
 
+- [libselinux Library](#libselinux-library)
+- [libsepol Library](#libsepol-library)
+- [libsemanage Library](#libsemanage-library)
+
 The versions of kernel and SELinux tools and libraries influence the
 features available, therefore it is important to establish what level of
 functionality is required for the application. The
@@ -19,13 +23,13 @@ Python, Ruby and PHP languages.
 
 The library hides the low level functionality of (but not limited to):
 
--   The SELinux filesystem that interfaces to the SELinux kernel
-    security server.
--   The proc filesystem that maintains process state information and
-    security contexts - see ***proc**(5)*.
--   Extended attribute services that manage the extended attributes
-    associated to files, sockets etc. - see ***attr**(5)*.
--   The SELinux policy and its associated configuration files.
+- The SELinux filesystem that interfaces to the SELinux kernel
+  security server.
+- The proc filesystem that maintains process state information and
+  security contexts - see ***proc**(5)*.
+- Extended attribute services that manage the extended attributes
+  associated to files, sockets etc. - see ***attr**(5)*.
+- The SELinux policy and its associated configuration files.
 
 The general category of functions available in *libselinux* are shown below,
 with [**Appendix B - *libselinux* API Summary**](libselinux_functions.md#appendix-b---libselinux-api-summary)
@@ -102,24 +106,23 @@ Retrieve default contexts for user sessions.
 The *libselinux* functions make use of a number of files within the
 SELinux sub-system:
 
-1.  The SELinux configuration file *config* that is described in the
-    [*/etc/selinux/config*](global_config_files.md#etcselinuxconfig) section.
-2.  The SELinux filesystem interface between userspace and kernel that
-    is generally mounted as */selinux* or */sys/fs/selinux* and
-    described in the
-    [**SELinux Filesystem**](lsm_selinux.md#selinux-filesystem)
-    section.
-3.  The *proc* filesystem that maintains process state information and
-    security contexts - see ***proc**(5)*.
-4.  The extended attribute services that manage the extended attributes
-    associated to files, sockets etc. - see ***attr**(5)*.
-5.  The SELinux kernel binary policy that describes the enforcement
-    policy.
-6.  A number of *libselinux* functions have their own configuration
-    files that in conjunction with the policy, allow additional levels
-    of configuration. These are described in the
-    [**Policy Configuration Files**](policy_config_files.md#policy-configuration-files)
-    section.
+1. The SELinux configuration file *config* that is described in the
+   [*/etc/selinux/config*](global_config_files.md#etcselinuxconfig) section.
+2. The SELinux filesystem interface between userspace and kernel that
+   is generally mounted as */selinux* or */sys/fs/selinux* and
+   described in the
+   [**SELinux Filesystem**](lsm_selinux.md#selinux-filesystem) section.
+3. The *proc* filesystem that maintains process state information and
+   security contexts - see ***proc**(5)*.
+4. The extended attribute services that manage the extended attributes
+   associated to files, sockets etc. - see ***attr**(5)*.
+5. The SELinux kernel binary policy that describes the enforcement
+   policy.
+6. A number of *libselinux* functions have their own configuration
+   files that in conjunction with the policy, allow additional levels
+   of configuration. These are described in the
+   [**Policy Configuration Files**](policy_config_files.md#policy-configuration-files)
+   section.
 
 There is a static version of the library that is not installed by default:
 
@@ -140,10 +143,11 @@ dnf install libsepol-static
 
 This is used by commands such as ***audit2allow**(8)* and ***checkpolicy**(8)*
 as they require access to functions that are not available in the dynamic
-library (such as sepol_compute_av(), sepol_compute_av_reason() and
-sepol_context_to_sid().
+library, such as *sepol_compute_av()*, *sepol_compute_av_reason()* and
+*sepol_context_to_sid()*.
 
 ## libsemanage Library
+
 *libsemanage* - To manage the policy infrastructure.
 
 <!-- %CUTHERE% -->
