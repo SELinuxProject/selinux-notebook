@@ -14,34 +14,11 @@ Note: When SELinux is installed, there are three well defined directory
 locations referenced. Two of these will change with the old and new
 locations as follows:
 
-<table>
-<tbody>
-<tr style="background-color:#D3D3D3;">
-<td><strong>Description</strong></td>
-<td><strong>Old Location</strong></td>
-<td><strong>New Location</strong></td>
-</tr>
-<tr>
-<td><p>The SELinux filesystem that interfaces with the kernel based security server.</p>
-<p>The new location has been available since Fedora 17.</p></td>
-<td><em>/selinux</em></td>
-<td><em>/sys/fs/selinux</em></td>
-</tr>
-<tr>
-<td>The SELinux configuration directory that holds the sub-system configuration files and policies.</td>
-<td><em>/etc/selinux</em></td>
-<td>No change</td>
-</tr>
-<tr>
-<td><p>The SELinux policy store that holds policy modules and configuration details.</p>
-<p>The new location has been available since Fedora 23.</p></td>
-<td><p><em>/etc/selinux/</em></p>
-<p><em>&lt;SELINUXTYPE&gt;/module</em></p></td>
-<td><p><em>/var/lib/selinux/</em></p>
-<p><em>&lt;SELINUXTYPE&gt;</em></p></td>
-</tr>
-</tbody>
-</table>
+| Description | Old Location | New Location |
+| :---------  | :----------- | :----------- |
+The SELinux filesystem that interfaces with the kernel based security server. The new location has been available since Fedora 17. | */selinux* | */sys/fs/selinux* |
+| The SELinux configuration directory that holds the sub-system configuration files and policies. | */etc/selinux* | No change |
+| The SELinux policy store that holds policy modules and configuration details. The new location has been available since Fedora 23. | */etc/selinux/\<SELINUXTYPE\>/module* | */var/lib/selinux/\<SELINUXTYPE\>* |
 
 ## Is SELinux useful
 
