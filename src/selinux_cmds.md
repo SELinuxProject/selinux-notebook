@@ -7,150 +7,118 @@ has a page that details all the available tools and commands at:
 
 <https://github.com/SELinuxProject/selinux/wiki/Tools>
 
-<table>
-<tbody>
-<tr style="background-color:#F2F2F2;">
-<td><strong>Command</strong></td>
-<td><strong>Man Page</strong></td>
-<td><strong>Purpose</strong></td>
-</tr>
-<tr>
-<td>audit2allow</td>
-<td>1</td>
-<td>Generates policy allow rules from the audit.log file.</td>
-</tr>
-<tr>
-<td>audit2why</td>
-<td>8</td>
-<td>Describes audit.log messages and why access was denied.</td>
-</tr>
-<tr>
-<td>avcstat</td>
-<td>8</td>
-<td>Displays the AVC statistics.</td>
-</tr>
-<tr>
-<td>chcat</td>
-<td>8</td>
-<td>Change or remove a catergory from a file or user. </td>
-</tr>
-<tr>
-<td>chcon</td>
-<td>1</td>
-<td>Changes the security context of a file.</td>
-</tr>
-<tr>
-<td>checkmodule</td>
-<td>8</td>
-<td>Compiles base and loadable modules from source.</td>
-</tr>
-<tr>
-<td>checkpolicy</td>
-<td>8</td>
-<td>Compiles a monolithic policy from source.</td>
-</tr>
-<tr>
-<td>fixfiles</td>
-<td>8</td>
-<td>Update / correct the security context of for filesystems that use extended attributes.</td>
-</tr>
-<tr>
-<td>genhomedircon</td>
-<td>8</td>
-<td>Generates file configuration entries for users home directories. This command has also been built into <em><strong>semanage</strong>(8)</em>, therefore when using the policy store / loadable modules this does not need to be used.</td>
-</tr>
-<tr>
-<td>getenforce</td>
-<td>1</td>
-<td>Shows the current enforcement state.</td>
-</tr>
-<tr>
-<td>getsebool</td>
-<td>8</td>
-<td>Shows the state of the booleans.</td>
-</tr>
-<tr>
-<td>load_policy</td>
-<td>8</td>
-<td>Loads a new policy into the kernel. Not required when using <em><strong>semanage</strong>(8)</em> / <em><strong>semodule</strong>(8)</em> commands.</td>
-</tr>
-<tr>
-<td>matchpathcon</td>
-<td>8</td>
-<td>Show a files path and security context.</td>
-</tr>
-<tr>
-<td>newrole</td>
-<td>1</td>
-<td>Allows users to change roles - runs a new shell with the new security context.</td>
-</tr>
-<tr>
-<td>restorecon</td>
-<td>8</td>
-<td>Sets the security context on one or more files.</td>
-</tr>
-<tr>
-<td>run_init</td>
-<td>8</td>
-<td>Runs an <em>init</em> script under the correct context.</td>
-</tr>
-<tr>
-<td>runcon</td>
-<td>1</td>
-<td>Runs a command with the specified context.</td>
-</tr>
-<tr>
-<td>selinuxenabled </td>
-<td>1</td>
-<td>Shows whether SELinux is enabled or not.</td>
-</tr>
-<tr>
-<td>semanage</td>
-<td>8</td>
-<td>Used to configure various areas of a policy within a policy store.</td>
-</tr>
-<tr>
-<td>semodule</td>
-<td>8</td>
-<td>Used to manage the installation, upgrading etc. of policy modules.</td>
-</tr>
-<tr>
-<td>semodule_expand</td>
-<td>8</td>
-<td>Manually expand a base policy package into a kernel binary policy file.</td>
-</tr>
-<tr>
-<td>semodule_link </td>
-<td>8</td>
-<td>Manually link a set of module packages.</td>
-</tr>
-<tr>
-<td>semodule_package</td>
-<td>8</td>
-<td>Create a module package with various configuration files (file context etc.)</td>
-</tr>
-<tr>
-<td>sestatus</td>
-<td>8</td>
-<td>Show the current status of SELinux and the loaded policy.</td>
-</tr>
-<tr>
-<td>setenforce</td>
-<td>1</td>
-<td>Sets / unsets enforcement mode.</td>
-</tr>
-<tr>
-<td>setfiles</td>
-<td>8</td>
-<td>Initialise the extended attributes of filesystems.</td>
-</tr>
-<tr>
-<td>setsebool</td>
-<td>8</td>
-<td>Sets the state of a boolean to on or off persistently across reboots or for this session only. </td>
-</tr>
-</tbody>
-</table>
+***audit2allow**(1)*
+
+Generates policy allow rules from an audit log file.
+
+***audit2why**(8)*
+
+Describes audit log messages and why access was denied.
+
+***avcstat**(8)*
+
+Displays the AVC statistics.
+
+***chcat**(8)*
+
+Change or remove a catergory from a file or user.
+
+***chcon**(1)*
+
+Changes the security context of a file.
+
+***checkmodule**(8)*
+
+Compiles base and loadable modules from source.
+
+***checkpolicy**(8)*
+
+Compiles a monolithic policy from source.
+
+***fixfiles**(8)*
+
+Update / correct the security context of for filesystems that use extended
+attributes.
+
+***genhomedircon**(8)*
+
+Generates file configuration entries for users home directories.
+This command has also been built into ***semanage**(8)*, therefore when using
+the policy store / loadable modules this does not need to be used.
+
+***getenforce**(1)*
+
+Shows the current enforcement state.
+
+***getsebool**(8)*
+
+Shows the state of the booleans.
+
+***load_policy**(8)*
+
+Loads a new policy into the kernel. Not required when using ***semanage**(8)* /
+***semodule**(8)* commands.
+
+***matchpathcon**(8)*
+
+Show a files path and security context.
+
+***newrole**(1)*
+
+Allows users to change roles - runs a new shell with the new security context.
+
+***restorecon**(8)*
+
+Sets the security context on one or more files.
+
+***run_init**(8)*
+
+Runs an *init* script under the correct context.
+
+***runcon**(1)*
+
+Runs a command with the specified context.
+
+***selinuxenabled**(1)*
+
+Shows whether SELinux is enabled or not.
+
+***semanage**(8)*
+
+Used to configure various areas of a policy within a policy store.
+
+***semodule**(8)*
+
+Used to manage the installation, upgrading etc. of policy modules.
+
+***semodule_expand**(8)*
+
+Manually expand a base policy package into a kernel binary policy file.
+
+***semodule_link**(8)*
+
+Manually link a set of module packages.
+
+***semodule_package**(8)*
+
+Create a module package with various configuration files (file context etc.)
+
+***sestatus**(8)*
+
+Show the current status of SELinux and the loaded policy.
+
+***setenforce**(1)*
+
+Sets / unsets enforcement mode.
+
+***setfiles**(8)*
+
+Initialise the extended attributes of filesystems.
+
+***setsebool**(8)*
+
+Sets the state of a boolean to on or off persistently across reboots or for
+this session only.
 
 <!-- %CUTHERE% -->
 
