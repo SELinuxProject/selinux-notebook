@@ -1,52 +1,52 @@
 # The Reference Policy
 
--   [Reference Policy Overview](#reference-policy-overview)
-    -  [Distributing Policies](#distributing-policies)
-    -  [Policy Functionality](#policy-functionality)
-    -  [Reference Policy Module Files](#reference-policy-module-files)
--   [Reference Policy Source](#reference-policy-source)
-    -  [Source Layout](#source-layout)
-    -  [Reference Policy Files and Directories](#reference-policy-files-and-directories)
-    -  [Source Configuration Files](#source-configuration-files)
-        -  [Reference Policy Build Options - build.conf](#reference-policy-build-options---build.conf)
-        -  [Reference Policy Build Options - policy/modules.conf](#reference-policy-build-options---policymodules.conf)
-            -  [Building the modules.conf File](#building-the-modules.conf-file)
-    -  [Source Installation and Build Make Options](#source-installation-and-build-make-options)
-    -  [Booleans, Global Booleans and Tunable Booleans](#booleans-global-booleans-and-tunable-booleans)
-    -  [Modular Policy Build Structure](#modular-policy-build-structure)
-       -  [Base Module Build](#base-module-build)
-       -  [Module Build](#module-build)
-    -  [Creating Additional Layers](#creating-additional-layers)
--   [Installing and Building the Reference Policy Source](#installing-and-building-the-reference-policy-source)
-    -  [Building Standard Reference Policy](#building-standard-reference-policy)
-    -  [Building the Fedora Policy](#building-the-fedora-policy)
--   [Reference Policy Headers](#reference-policy-headers)
-    -  [Building and Installing the Header Files](#building-and-installing-the-header-files)
-    -  [Using the Reference Policy Headers](#using-the-reference-policy-headers)
-    -  [Using Fedora Supplied Headers](#using-fedora-supplied-headers)
--   [Reference Policy Support Macros](#reference-policy-support-macros)
-    -  [Loadable Policy Macros](#loadable-policy-macros)
-        -  [*policy_module* Macro](#policy_module-macro)
-        -  [*gen_require* Macro](#gen_require-macro)
-        -  [*optional_policy* Macro](#optional_policy-macro)
-        -  [*gen_tunable* Macro](#gen_tunable-macro)
-        -  [*tunable_policy* Macro](#tunable_policy-macro)
-        -  [*interface* Macro](#interface-macro)
-        -  [*template* Macro](#template-macro)
-    -  [Miscellaneous Macros](#miscellaneous-macros)
-        -  [*gen_context* Macro](#gen_context-macro)
-        -  [*gen_user* Macro](#gen_user-macro)
-        -  [*gen_bool* Macro](#gen_bool-macro)
-    -  [MLS and MCS Macros](#mls-and-mcs-macros)
-        -  [*gen_cats* Macro](#gen_cats-macro)
-        -  [*gen_sens* Macro](#gen_sens-macro)
-        -  [*gen_levels* Macro](#gen_levels-macro)
-    -  [*ifdef* / *ifndef* Parameters](#ifdef-ifndef-parameters)
-        -  [*hide_broken_symptoms*](#hide_broken_symptoms)
-        -  [*enable_mls* and *enable_mcs*](#enable_mls-and-enable_mcs)
-        -  [*enable_ubac*](#enable_ubac)
-        -  [*direct_sysadm_daemon*](#direct_sysadm_daemon)
--   [Module Expansion Process](#module-expansion-process)
+- [Reference Policy Overview](#reference-policy-overview)
+  - [Distributing Policies](#distributing-policies)
+  - [Policy Functionality](#policy-functionality)
+  - [Reference Policy Module Files](#reference-policy-module-files)
+- [Reference Policy Source](#reference-policy-source)
+  - [Source Layout](#source-layout)
+  - [Reference Policy Files and Directories](#reference-policy-files-and-directories)
+  - [Source Configuration Files](#source-configuration-files)
+    - [Reference Policy Build Options - build.conf](#reference-policy-build-options---build.conf)
+    - [Reference Policy Build Options - policy/modules.conf](#reference-policy-build-options---policymodules.conf)
+      - [Building the modules.conf File](#building-the-modules.conf-file)
+  - [Source Installation and Build Make Options](#source-installation-and-build-make-options)
+  - [Booleans, Global Booleans and Tunable Booleans](#booleans-global-booleans-and-tunable-booleans)
+  - [Modular Policy Build Structure](#modular-policy-build-structure)
+    - [Base Module Build](#base-module-build)
+    - [Module Build](#module-build)
+  - [Creating Additional Layers](#creating-additional-layers)
+- [Installing and Building the Reference Policy Source](#installing-and-building-the-reference-policy-source)
+  - [Building Standard Reference Policy](#building-standard-reference-policy)
+  - [Building the Fedora Policy](#building-the-fedora-policy)
+- [Reference Policy Headers](#reference-policy-headers)
+  - [Building and Installing the Header Files](#building-and-installing-the-header-files)
+  - [Using the Reference Policy Headers](#using-the-reference-policy-headers)
+  - [Using Fedora Supplied Headers](#using-fedora-supplied-headers)
+- [Reference Policy Support Macros](#reference-policy-support-macros)
+  - [Loadable Policy Macros](#loadable-policy-macros)
+    - [*policy_module* Macro](#policy_module-macro)
+    - [*gen_require* Macro](#gen_require-macro)
+    - [*optional_policy* Macro](#optional_policy-macro)
+    - [*gen_tunable* Macro](#gen_tunable-macro)
+    - [*tunable_policy* Macro](#tunable_policy-macro)
+    - [*interface* Macro](#interface-macro)
+    - [*template* Macro](#template-macro)
+  - [Miscellaneous Macros](#miscellaneous-macros)
+    - [*gen_context* Macro](#gen_context-macro)
+    - [*gen_user* Macro](#gen_user-macro)
+    - [*gen_bool* Macro](#gen_bool-macro)
+  - [MLS and MCS Macros](#mls-and-mcs-macros)
+    - [*gen_cats* Macro](#gen_cats-macro)
+    - [*gen_sens* Macro](#gen_sens-macro)
+    - [*gen_levels* Macro](#gen_levels-macro)
+  - [*ifdef* / *ifndef* Parameters](#ifdef-ifndef-parameters)
+    - [*hide_broken_symptoms*](#hide_broken_symptoms)
+    - [*enable_mls* and *enable_mcs*](#enable_mls-and-enable_mcs)
+    - [*enable_ubac*](#enable_ubac)
+    - [*direct_sysadm_daemon*](#direct_sysadm_daemon)
+- [Module Expansion Process](#module-expansion-process)
 
 The Reference Policy is now the standard policy source used to build
 Linux SELinux policies. This provides a single source tree with
@@ -57,13 +57,13 @@ under SELinux control.
 
 This section details how the Reference Policy is:
 
-1.  Constructed and types of policy builds supported.
-2.  Adding new modules to the build.
-3.  Installation as a full Reference Policy source or as Header files.
-4.  Impact of the migration process being used to convert compiled
-    module files (*\*.pp*) to CIL.
-5.  Modifying the configuration files to build new policies.
-6.  Explain the support macros.
+1. Constructed and types of policy builds supported.
+2. Adding new modules to the build.
+3. Installation as a full Reference Policy source or as Header files.
+4. Impact of the migration process being used to convert compiled
+   module files (*\*.pp*) to CIL.
+5. Modifying the configuration files to build new policies.
+6. Explain the support macros.
 
 Note that the Reference Policy uses **NAME** to define the policy name. This
 then becomes part of the policy location (i.e. */etc/selinux/\<NAME\>*).
@@ -120,20 +120,20 @@ store is not used.*
 
 The Reference Policy can be used to build two policy types:
 
-1.  **Loadable Module Policy** - A policy that has a
-    base module for core services and has the ability to load / unload
-    modules to support applications as required. This is now the
-    standard used by Linux distributions.
-2.  **Monolithic Policy** - A policy that has all the
-    required policy information in a single base policy and does not
-    require the services of the module infrastructure (***semanage**(8)*
-    or ***semodule**(8)*). These are more suitable for embedded or
-    minimal systems.
+1. **Loadable Module Policy** - A policy that has a
+   base module for core services and has the ability to load / unload
+   modules to support applications as required. This is now the
+   standard used by Linux distributions.
+2. **Monolithic Policy** - A policy that has all the
+   required policy information in a single base policy and does not
+   require the services of the module infrastructure (***semanage**(8)*
+   or ***semodule**(8)*). These are more suitable for embedded or
+   minimal systems.
 
 Each of the policy types are built using module files that define the
 specific rules required by the policy as detailed in the
 [**Reference Policy Module Files**](#reference-policy-module-files) section.
-Note that the monolithic policy is built using the the same module files by
+Note that the monolithic policy is built using the same module files by
 forming a single 'base' source file.
 
 The Reference Policy relies heavily on the ***m4**(1)* macro processor
@@ -143,40 +143,40 @@ as the majority of supporting services are m4 macros.
 
 It is possible to distribute the Reference Policy in two forms:
 
-1.  As source code that is then used to build policies. This is not the
-    general way policies are distributed as it contains the complete
-    source that most administrators do not need. The
-    [**Reference Policy Source**](#reference-policy-source) section describes
-    the source and the
-    [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
-    section describes how to install the source and build a policy.
-2.  As 'Policy Headers'. This is the most common way to distribute the
-    Reference Policy. Basically, the modules that make up 'the
-    distribution' are pre-built and then linked to form a base and
-    optional modules. The 'headers' that make-up the policy are then
-    distributed along with makefiles and documentation. A policy writer
-    can then build policy using the core modules supported by the
-    distribution, and using development tools they can add their own
-    policy modules. The
-    [**Reference Policy Headers**](#reference-policy-headers) section describes
-    how these are installed and used to build modules.
+1. As source code that is then used to build policies. This is not the
+   general way policies are distributed as it contains the complete
+   source that most administrators do not need. The
+   [**Reference Policy Source**](#reference-policy-source) section describes
+   the source and the
+   [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
+   section describes how to install the source and build a policy.
+2. As 'Policy Headers'. This is the most common way to distribute the
+   Reference Policy. Basically, the modules that make up 'the
+   distribution' are pre-built and then linked to form a base and
+   optional modules. The 'headers' that make-up the policy are then
+   distributed along with makefiles and documentation. A policy writer
+   can then build policy using the core modules supported by the
+   distribution, and using development tools they can add their own
+   policy modules. The
+   [**Reference Policy Headers**](#reference-policy-headers) section describes
+   how these are installed and used to build modules.
 
 The policy header files and documentation for Fedora are distributed in:
 
--   **selinux-policy** - Contains the SELinux */etc/selinux/config* file
-    and rpm macros
--   **selinux-policy-devel** - Contains the 'Policy Header' development
-    environment that is located at */usr/share/selinux/devel*
--   **selinux-policy-doc** - Contains man pages and the html policy
-    documentation that is located at */usr/share/doc/selinux-policy/html*
+- **selinux-policy** - Contains the SELinux */etc/selinux/config* file
+  and rpm macros
+- **selinux-policy-devel** - Contains the 'Policy Header' development
+  environment that is located at */usr/share/selinux/devel*
+- **selinux-policy-doc** - Contains man pages and the html policy
+  documentation that is located at */usr/share/doc/selinux-policy/html*
 
 These rpms contain a specific policy type containing configuration files and
 packaged policy modules (*\*.pp*). The policy will be installed in the
 */etc/selinux/\<SELINUXTYPE\>* directory, along with its configuration files.
 
--   **selinux-policy-targeted** - This is the default Fedora policy.
--   selinux-policy-minimum
--   selinux-policy-mls
+- **selinux-policy-targeted** - This is the default Fedora policy.
+- selinux-policy-minimum
+- selinux-policy-mls
 
 The selinux-policy-sandbox rpm contains the sandbox module for use by the
 *policycoreutils-sandbox* package. This will be installed as a module for
@@ -190,11 +190,11 @@ the *SELINUXTYPE* entry of the *build.conf* as shown in the
 [**Reference Policy Build Options - build.conf**](#reference-policy-build-options---build.conf)
 section, for example the Fedora policies support:
 
--   minimum - MCS policy that supports a minimal set of confined daemons
-    within their own domains. The remainder run in the *unconfined_t* space.
--   targeted - MCS policy that supports a greater number of confined daemons
-    and can also confine other areas and users.
--   mls - MLS policy for server based systems.
+- minimum - MCS policy that supports a minimal set of confined daemons
+  within their own domains. The remainder run in the *unconfined_t* space.
+- targeted - MCS policy that supports a greater number of confined daemons
+  and can also confine other areas and users.
+- mls - MLS policy for server based systems.
 
 ### Reference Policy Module Files
 
@@ -204,50 +204,50 @@ The reference policy modules are constructed using a mixture of
 [**Kernel Policy Language Statements**](kernel_policy_language.md#kernel-policy-language),
 using three principle types of source file:
 
--   A private policy file that contains statements required to enforce
-    policy on the specific GNU / Linux service being defined within the
-    module. These files are named *\<module_name\>.te*. For example the
-    *ada.te* file shown below has two statements:
-    -  one to state that the *ada_t* process has permission to write to
-       the stack and memory allocated to a file.
-    -  one that states that if the *unconfined_domain* module is loaded, then
-       allow the *ada_t* domain unconfined access. Note that if the
-       flow of this statement is followed it will be seen that many
-       more interfaces and macros are called to build the final raw
-       SELinux language statements. An expanded module source isshown in the
-       [**Module Expansion Process**](#module-expansion-process) section.
--   An external interface file that defines the services available to
-    other modules. These files are named *\<module_name\>.if*.
-    For example the *ada.if* file shown below has two interfaces defined for
-    other modules to call:
-    -  *ada_domtrans* - that allows another module (running in domain *$1*) to
-       run the ada application in the *ada_t* domain.
-    -  *ada_run* - that allows another module to run the ada application in
-       the *ada_t* domain (via the *ada_domtrans* interface), then
-       associate the *ada_t* domain to the caller defined role (*$2*) and
-       terminal (*$3*). Provided of course that the caller domain has
-       permission. Note that there are two types of interface specification:
-    -  **Access Interfaces** - These are the most
-       common and define interfaces that *.te* modules can call as described
-       in the ada examples. They are generated by the *interface* macro as
-       detailed in the the [*interface*](#interface-macro) section.
-    -  **Template Interfaces** - These are required whenever a module is
-       required in different domains and allows the type(s) to be redefined by
-       adding a prefix supplied by the calling module. The basic idea is to
-       set up an application in a domain that is suitable for the defined
-       SELinux user and role to access but not others. These are generated by
-       the *template* macro as detailed in the [*template*](#template-macro)
-       section.
--   A file labeling file that defines the labels to be added to files
-    for the specified module. These files are named
-    *\<module_name\>.fc*. The build process will amalgamate all the
-    *\*.fc* files and finally form the
-    [***file_contexts***](policy_config_files.md#contextsfilesfile_contexts)
-    file that will be used to label the filesystem. For example the *ada.fc*
-    file shown below requires that the specified files are labeled
-    *system_u:object_r:ada_exec_t:s0*. The *\<module_name\>* must be unique
-    within the reference policy source tree and should reflect the specific
-    Linux service being enforced by the policy.
+- A private policy file that contains statements required to enforce
+  policy on the specific GNU / Linux service being defined within the
+  module. These files are named *\<module_name\>.te*. For example the
+  *ada.te* file shown below has two statements:
+  - one to state that the *ada_t* process has permission to write to
+    the stack and memory allocated to a file.
+  - one that states that if the *unconfined_domain* module is loaded, then
+    allow the *ada_t* domain unconfined access. Note that if the
+    flow of this statement is followed it will be seen that many
+    more interfaces and macros are called to build the final raw
+    SELinux language statements. An expanded module source isshown in the
+    [**Module Expansion Process**](#module-expansion-process) section.
+- An external interface file that defines the services available to
+  other modules. These files are named *\<module_name\>.if*.
+  For example the *ada.if* file shown below has two interfaces defined for
+  other modules to call:
+  - *ada_domtrans* - that allows another module (running in domain *$1*) to
+    run the ada application in the *ada_t* domain.
+  - *ada_run* - that allows another module to run the ada application in
+    the *ada_t* domain (via the *ada_domtrans* interface), then
+    associate the *ada_t* domain to the caller defined role (*$2*) and
+    terminal (*$3*). Provided of course that the caller domain has
+    permission. Note that there are two types of interface specification:
+  - **Access Interfaces** - These are the most
+    common and define interfaces that *.te* modules can call as described
+    in the ada examples. They are generated by the *interface* macro as
+    detailed in the [*interface*](#interface-macro) section.
+  - **Template Interfaces** - These are required whenever a module is
+    required in different domains and allows the type(s) to be redefined by
+    adding a prefix supplied by the calling module. The basic idea is to
+    set up an application in a domain that is suitable for the defined
+    SELinux user and role to access but not others. These are generated by
+    the *template* macro as detailed in the [*template*](#template-macro)
+    section.
+- A file labeling file that defines the labels to be added to files
+  for the specified module. These files are named
+  *\<module_name\>.fc*. The build process will amalgamate all the
+  *\*.fc* files and finally form the
+  [***file_contexts***](policy_config_files.md#contextsfilesfile_contexts)
+  file that will be used to label the filesystem. For example the *ada.fc*
+  file shown below requires that the specified files are labeled
+  *system_u:object_r:ada_exec_t:s0*. The *\<module_name\>* must be unique
+  within the reference policy source tree and should reflect the specific
+  Linux service being enforced by the policy.
 
 The following examples from the ada module files show how they are
 made from the Policy Macros, Interface calls and kernel policy statements
@@ -397,16 +397,16 @@ reference policy source tree, that once installed would be located at:
 
 The following sections detail the source contents:
 
--   [**Reference Policy Files and Directories**](#reference-policy-files-and-directories) -
-    Describes the files and their location.
--   [**Source Configuration Files**](#source-configuration-files) -
-    Details the contents of the *build.conf* and *modules.conf*
-    configuration files.
--   [**Source Installation and Build Make Options**](#source-installation-and-build-make-options) -
-    Describes the *make* targets.
--   [**Modular Policy Build Structure**](#modular-policy-build-structure) -
-    Describes how the various source files are linked together to form a
-    base policy module *base.conf* during the build process.
+- [**Reference Policy Files and Directories**](#reference-policy-files-and-directories) -
+  Describes the files and their location.
+- [**Source Configuration Files**](#source-configuration-files) -
+  Details the contents of the *build.conf* and *modules.conf*
+  configuration files.
+- [**Source Installation and Build Make Options**](#source-installation-and-build-make-options) -
+  Describes the *make* targets.
+- [**Modular Policy Build Structure**](#modular-policy-build-structure) -
+  Describes how the various source files are linked together to form a
+  base policy module *base.conf* during the build process.
 
 The
 [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
@@ -433,177 +433,178 @@ modular policy is being built. This file is explained in the
 
 *Makefile*
 
--   General rules for building the policy.
+- General rules for building the policy.
 
 *Rules.modular*
 
--   Makefile rules specific to building loadable module policies.
+- Makefile rules specific to building loadable module policies.
 
 *Rules.monolithic*
 
--   Makefile rules specific to building monolithic policies.
+- Makefile rules specific to building monolithic policies.
 
 *build.conf*
 
--   Options which influence the building of the policy, such as the policy type
-    and distribution. This file is described in the
-    [**Reference Policy Build Options - build.conf**](#reference-policy-build-options---build.conf) section.
+- Options which influence the building of the policy, such as the policy type
+  and distribution. This file is described in the
+  [**Reference Policy Build Options - build.conf**](#reference-policy-build-options---build.conf)
+  section.
 
 *config/appconfig-\<type\>*
 
--   Application configuration files for all configurations of the Reference
-    Policy where *\<type\>* is taken from the *build.conf* **TYPE** entry that
-    are currently: standard, MLS and MCS). These files are used by SELinux-aware
-    programs and described in the
-    [**SELinux Configuration Files**](policy_config_files.md#policy-configuration-files)
-    section.
+- Application configuration files for all configurations of the Reference
+  Policy where *\<type\>* is taken from the *build.conf* **TYPE** entry that
+  are currently: standard, MLS and MCS). These files are used by SELinux-aware
+  programs and described in the
+  [**SELinux Configuration Files**](policy_config_files.md#policy-configuration-files)
+  section.
 
 *config/file_contexts.subs_dist*
 
--   Used to configure file context aliases (see the
-    [**contexts/files/file_contexts.subs and file_contexts.subs_dist File**](policy_config_files.md#contextsfilesfile_contexts.subs)
-    section).
+- Used to configure file context aliases (see the
+  [**contexts/files/file_contexts.subs and file_contexts.subs_dist File**](policy_config_files.md#contextsfilesfile_contexts.subs)
+  section).
 
 *config/local.users*
 
--   The file read by load policy for adding SELinux users to the policy on
-    the fly. Note that this file is not used in the modular policy build.
+- The file read by load policy for adding SELinux users to the policy on
+  the fly. Note that this file is not used in the modular policy build.
 
 *doc/html/\**
 
--   When *make html* has been executed, contains the in-policy XML
-    documentation, presented in web page form.
+- When *make html* has been executed, contains the in-policy XML
+  documentation, presented in web page form.
 
 *doc/policy.dtd*
 
--   The *doc/policy.xml* file is validated against this DTD.
+- The *doc/policy.xml* file is validated against this DTD.
 
 *doc/policy.xml*
 
--   This file is generated/updated by the conf and html make targets.
-    It contains the complete XML documentation included in the policy.
+- This file is generated/updated by the conf and html make targets.
+  It contains the complete XML documentation included in the policy.
 
 *doc/templates/\**
 
--   Templates used for documentation web pages.
+- Templates used for documentation web pages.
 
 *man/\**
 
--   Various man pages for modules (ftp, http etc.)
+- Various man pages for modules (ftp, http etc.)
 
 *support/\**
 
--   Tools used in the build process.
+- Tools used in the build process.
 
 *policy/flask/initial_sids*
 
--   This file has declarations for each initial SID. The file usage in policy
-    generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure)
-    section.
+- This file has declarations for each initial SID. The file usage in policy
+  generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure)
+  section.
 
 *policy/flask/security_classes*
 
--   This file has declarations for each security class. The file usage in
-    policy generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure)
-    section.
+- This file has declarations for each security class. The file usage in
+  policy generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure)
+  section.
 
 *policy/flask/access_vectors*
 
--   This file defines the common permissions and class specific permissions
-    and is described in the [**Modular Policy Build Structure**](#modular-policy-build-structure)
-    section.
+- This file defines the common permissions and class specific permissions
+  and is described in the [**Modular Policy Build Structure**](#modular-policy-build-structure)
+  section.
 
 *policy/modules/\**
 
--   Each directory represents a layer in Reference Policy. All of the modules
-    are contained in one of these layers. The *contrib* modules are supplied
-    externally to the Reference Policy, then linked into the build. The files
-    present in each directory are: *metadata.xml* that describes the layer and
-    *\<module_name\>.te*, *.if* and *.fc* that contain policy source as
-    described in the [**Reference Policy Module Files**](#reference-policy-module-files)
-    section. The file usage in policy generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure)
-    section.
+- Each directory represents a layer in Reference Policy. All of the modules
+  are contained in one of these layers. The *contrib* modules are supplied
+  externally to the Reference Policy, then linked into the build. The files
+  present in each directory are: *metadata.xml* that describes the layer and
+  *\<module_name\>.te*, *.if* and *.fc* that contain policy source as
+  described in the [**Reference Policy Module Files**](#reference-policy-module-files)
+  section. The file usage in policy generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure)
+  section.
 
 *policy/support/\**
 
--   Reference Policy support macros are described in the
-    [**Reference Policy support Macros**](#reference-policy-support-macros)
-    section.
+- Reference Policy support macros are described in the
+  [**Reference Policy support Macros**](#reference-policy-support-macros)
+  section.
 
 *policy/booleans.conf*
 
--   This file is generated/updated by *make conf*. It contains the booleans in
-    the policy and their default values. If tunables are implemented as
-    booleans, tunables will also be included. This file will be installed as
-    the */etc/selinux/\<NAME\>/booleans file* (note that this is not true for
-    any system that implements the modular policy - see the
-    [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
-    section).
+- This file is generated/updated by *make conf*. It contains the booleans in
+  the policy and their default values. If tunables are implemented as
+  booleans, tunables will also be included. This file will be installed as
+  the */etc/selinux/\<NAME\>/booleans file* (note that this is not true for
+  any system that implements the modular policy - see the
+  [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
+  section).
 
 *policy/constraints*
 
--   This file defines constraints on permissions in the form of boolean
-    expressions that must be satisfied in order for specified permissions to
-    be granted. These constraints are used to further refine the type
-    enforcement rules and the role allow rules. Typically, these constraints
-    are used to restrict changes in user identity or role to certain domains.
-    (Note that this file does not contain the MLS / MCS constraints as they
-    are in the *mls* and *mcs* files described below). The file usage in policy
-    generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
+- This file defines constraints on permissions in the form of boolean
+  expressions that must be satisfied in order for specified permissions to
+  be granted. These constraints are used to further refine the type
+  enforcement rules and the role allow rules. Typically, these constraints
+  are used to restrict changes in user identity or role to certain domains.
+  (Note that this file does not contain the MLS / MCS constraints as they
+  are in the *mls* and *mcs* files described below). The file usage in policy
+  generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
 *policy/context_defaults*
 
--   This would contain any specific *default_user*, *default_role*,
-    *default_type* and/or *default_range* rules required by the policy.
+- This would contain any specific *default_user*, *default_role*,
+  *default_type* and/or *default_range* rules required by the policy.
 
 *policy/global_booleans*
 
--   This file defines all booleans that have a global scope, their default
-    value, and documentation. See the
-    [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
-    section.
+- This file defines all booleans that have a global scope, their default
+  value, and documentation. See the
+  [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
+  section.
 
 *policy/global_tunables*
 
--   This file defines all tunables that have a global scope, their default
-    value, and documentation.
-    See the [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
-    section.
+- This file defines all tunables that have a global scope, their default
+  value, and documentation.
+  See the [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
+  section.
 
 *policy/mcs*
 
--   This contains information used to generate the *sensitivity*, *category*,
-    *level* and *mlsconstraint* statements used to define the MCS configuration.
-    The file usage in policy generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
+- This contains information used to generate the *sensitivity*, *category*,
+  *level* and *mlsconstraint* statements used to define the MCS configuration.
+  The file usage in policy generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
 *policy/mls*
 
--   This contains information used to generate the *sensitivity*, *category*,
-    *level* and *mlsconstraint* statements used to define the MLS configuration.
-    The file usage in policy generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
+- This contains information used to generate the *sensitivity*, *category*,
+  *level* and *mlsconstraint* statements used to define the MLS configuration.
+  The file usage in policy generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
 *policy/modules.conf*
 
--   This file contains a listing of available modules, and how they will be
-    used when building Reference Policy. To prevent a module from being used,
-    set the module to "off". For monolithic policies, modules set to "base" and
-    "module" will be included in the policy. For modular policies, modules set
-    to "base" will be included in the base module; those set to "module" will
-    be compiled as individual loadable modules. This file is described in the
-    [**Reference Policy Build Options - policy/modules.conf**](#reference-policy-build-options---policymodules.conf)
-    section.
+- This file contains a listing of available modules, and how they will be
+  used when building Reference Policy. To prevent a module from being used,
+  set the module to "off". For monolithic policies, modules set to "base" and
+  "module" will be included in the policy. For modular policies, modules set
+  to "base" will be included in the base module; those set to "module" will
+  be compiled as individual loadable modules. This file is described in the
+  [**Reference Policy Build Options - policy/modules.conf**](#reference-policy-build-options---policymodules.conf)
+  section.
 
 *policy/policy_capabilities*
 
--   This file defines the policy capabilities that can be enabled in the policy.
-    The file usage in policy generation is described in the
-    [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
+- This file defines the policy capabilities that can be enabled in the policy.
+  The file usage in policy generation is described in the
+  [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
 *policy/users*
 
@@ -613,8 +614,8 @@ modular policy is being built. This file is explained in the
 
 *securetty_types* and *setrans.conf*
 
--   These files are not part of the standard Reference Policy distribution but
-    are added by Fedora source updates.
+- These files are not part of the standard Reference Policy distribution but
+  are added by Fedora source updates.
 
 ### Source Configuration Files
 
@@ -639,80 +640,80 @@ shown in the [***ifdef***](#ifdef-ifndef-parameters) section.
 
 *TYPE*
 
--   String - Available options are *standard*, *mls*, and *mcs*. For a type
-    enforcement only system, set standard. This optionally enables multi-level
-    security (MLS) or multi-category security (MCS) features. This option
-    controls *enable_mls*, and *enable_mcs* policy blocks.
+- String - Available options are *standard*, *mls*, and *mcs*. For a type
+  enforcement only system, set standard. This optionally enables multi-level
+  security (MLS) or multi-category security (MCS) features. This option
+  controls *enable_mls*, and *enable_mcs* policy blocks.
 
 *NAME*
 
--   String (optional) - Sets the name of the policy; the *\<NAME\>* is used when
-    installing files to e.g., */etc/selinux/\<NAME\>* and
-    */usr/share/selinux/\<NAME\>*. If not set, the policy type (*TYPE*) is used.
+- String (optional) - Sets the name of the policy; the *\<NAME\>* is used when
+  installing files to e.g., */etc/selinux/\<NAME\>* and
+  */usr/share/selinux/\<NAME\>*. If not set, the policy type (*TYPE*) is used.
 
 *DISTRO*
 
--   String (optional) - Enable distribution-specific policy. Available options
-    are redhat, gentoo, and debian. This option controls *distro_redhat*,
-    *distro_gentoo*, and *distro_debian* build option policy blocks.
+- String (optional) - Enable distribution-specific policy. Available options
+  are redhat, gentoo, and debian. This option controls *distro_redhat*,
+  *distro_gentoo*, and *distro_debian* build option policy blocks.
 
 *MONOLITHIC*
 
--   Boolean - If set, a monolithic policy is built, otherwise a modular policy
-    is built.
+- Boolean - If set, a monolithic policy is built, otherwise a modular policy
+  is built.
 
 *DIRECT_INITRC*
 
--   Boolean - If set, sysadm will be allowed to directly run init scripts,
-    instead of requiring the *run_init* tool.  This is a build option instead
-    of a tunable since role transitions do not work in conditional policy. This
-    option controls *direct_sysadm_daemon* policy blocks.
+- Boolean - If set, sysadm will be allowed to directly run init scripts,
+  instead of requiring the *run_init* tool.  This is a build option instead
+  of a tunable since role transitions do not work in conditional policy. This
+  option controls *direct_sysadm_daemon* policy blocks.
 
 *OUTPUT_POLICY*
 
--   Integer - Set the version of the policy created when building a monolithic
+- Integer - Set the version of the policy created when building a monolithic
 policy. This option has no effect on modular policy.
 
 *UNK_PERMS*
 
--   String - Set the kernel behavior for handling of permissions defined in the
-    kernel but missing from the policy. The permissions can either be allowed
-    (*allow*), denied (*deny*), or the policy loading can be rejected (*reject*).
+- String - Set the kernel behavior for handling of permissions defined in the
+  kernel but missing from the policy. The permissions can either be allowed
+  (*allow*), denied (*deny*), or the policy loading can be rejected (*reject*).
 
 *UBAC*
 
--   Boolean - If set, the SELinux user will be used additionally for approximate
-    role separation.
+- Boolean - If set, the SELinux user will be used additionally for approximate
+  role separation.
 
 *SYSTEMD*
 
--   Boolean - If set, ***systemd**(1)* will be assumed to be the init process
-    provider.
+- Boolean - If set, ***systemd**(1)* will be assumed to be the init process
+  provider.
 
 *MLS_SENS*
 
--   Integer - Set the number of sensitivities in the MLS policy. Ignored on
-    *TYPE* entries of *standard* and *mcs*.
+- Integer - Set the number of sensitivities in the MLS policy. Ignored on
+  *TYPE* entries of *standard* and *mcs*.
 
 *MLS_CATS*
 
--   Integer - Set the number of categories in the MLS policy. Ignored on
-    *TYPE* entries of *standard* and *mcs*.
+- Integer - Set the number of categories in the MLS policy. Ignored on
+  *TYPE* entries of *standard* and *mcs*.
 
 *MCS_CATS*
 
--   Integer - Set the number of categories in the MCS policy. Ignored on
-    *TYPE* entries of *standard* and *mls*.
+- Integer - Set the number of categories in the MCS policy. Ignored on
+  *TYPE* entries of *standard* and *mls*.
 
 *QUIET*
 
--   Boolean - If set, the build system will only display status messages and
-    error messages. This option has no effect on policy.
+- Boolean - If set, the build system will only display status messages and
+  error messages. This option has no effect on policy.
 
 *WERROR*
 
--   Boolean - If set, the build system will treat warnings as errors. If any
-    warnings are encountered, the build will fail.
+- Boolean - If set, the build system will treat warnings as errors. If any
+  warnings are encountered, the build will fail.
 
 #### Reference Policy Build Options - policy/modules.conf
 
@@ -761,22 +762,22 @@ documentation when it is generated by the *make html* target.
 
 *module_name*
 
--   The name of the module to be included within the build.
+- The name of the module to be included within the build.
 
 *base*
 
--   The module will be in the base module for a modular policy build
-    (*build.conf* entry *MONOLITHIC* = n).
+- The module will be in the base module for a modular policy build
+  (*build.conf* entry *MONOLITHIC* = n).
 
 *module*
 
--   The module will be built as a loadable module for a modular policy build.
-    If a monolithic policy is being built (*build.conf* entry *MONOLITHIC* = y),
-    then this module will be built into the base module.
+- The module will be built as a loadable module for a modular policy build.
+  If a monolithic policy is being built (*build.conf* entry *MONOLITHIC* = y),
+  then this module will be built into the base module.
 
 *off*
 
--   The module will not be included in any build.
+- The module will not be included in any build.
 
 Generally it is up to the policy distributor to decide which modules are
 in the base and those that are loadable, however there are some modules
@@ -819,84 +820,84 @@ Reference Policy may be different)
 
 *kernel*
 
--   *corecommands*
-    -  Core policy for shells and generic programs in: */bin*, */sbin*,
-       */usr/bin*, and */usr/sbin*. The *.fc* file sets up the labels for these
-       items.
-    -  All the interface calls start with '*corecmd_*'.
+- *corecommands*
+  - Core policy for shells and generic programs in: */bin*, */sbin*,
+    */usr/bin*, and */usr/sbin*. The *.fc* file sets up the labels for these
+    items.
+  - All the interface calls start with '*corecmd_*'.
 
--   *corenetwork*
-    -  Policy controlling access to network objects and also contains the
-       initial SIDs for these. The *.if* file is large and automatically
-       generated.
-    -  All the interface calls start with '*corenet_*'.
+- *corenetwork*
+  - Policy controlling access to network objects and also contains the
+    initial SIDs for these. The *.if* file is large and automatically
+    generated.
+  - All the interface calls start with '*corenet_*'.
 
--   *devices*
-    -  This module creates the device node concept and provides the policy for
-       many of the device files. Notable exceptions are the mass storage and
-       terminal devices that are covered by other modules (that is a char or
-       block device file, usually in */dev*). All types that are used to label
-       device nodes should use the dev_node macro. Additionally this module
-       controls access to:
-       1. the device directories containing device nodes.
-       2. device nodes as a group
-       3. individual access to specific device nodes covered by this module.
-    -  All the interface calls start with '*dev_*'.
+- *devices*
+  - This module creates the device node concept and provides the policy for
+    many of the device files. Notable exceptions are the mass storage and
+    terminal devices that are covered by other modules (that is a char or
+    block device file, usually in */dev*). All types that are used to label
+    device nodes should use the dev_node macro. Additionally this module
+    controls access to:
+    1. the device directories containing device nodes.
+    2. device nodes as a group
+    3. individual access to specific device nodes covered by this module.
+  - All the interface calls start with '*dev_*'.
 
--   *domain*
-    -  Contains the core policy for forming and managing domains.
-    -  All the interface calls start with '*domain_*'.
+- *domain*
+  - Contains the core policy for forming and managing domains.
+  - All the interface calls start with '*domain_*'.
 
--   *files*
-    -  This module contains basic filesystem types and interfaces and includes:
-       1. The concept of different file types including basic files,
-          mount points, tmp files, etc.
-       2. Access to groups of files and all files.
-       3. Types and interfaces for the basic filesystem layout
-          (*/*, */etc*, */tmp* ...).
-       4. Contains the file initial SID.
-    -  All the interface calls start with '*files_*'.
+- *files*
+  - This module contains basic filesystem types and interfaces and includes:
+    1. The concept of different file types including basic files,
+       mount points, tmp files, etc.
+    2. Access to groups of files and all files.
+    3. Types and interfaces for the basic filesystem layout
+       (*/*, */etc*, */tmp* ...).
+    4. Contains the file initial SID.
+  - All the interface calls start with '*files_*'.
 
--   *filesystem*
-    -  Contains the policy for filesystems and the initial SID.
-    -  All the interface calls start with '*fs_*'.
+- *filesystem*
+  - Contains the policy for filesystems and the initial SID.
+  - All the interface calls start with '*fs_*'.
 
--   *kernel*
-    -  Contains the policy for kernel threads, proc filesystem, and unlabeled
-       processes and objects. This module has initial SIDs.
-    -  All the interface calls start with '*kernel_*'.
+- *kernel*
+  - Contains the policy for kernel threads, proc filesystem, and unlabeled
+    processes and objects. This module has initial SIDs.
+  - All the interface calls start with '*kernel_*'.
 
--   *mcs*
-    -  Policy for Multicategory security. The *.te* file only contains
-       attributes used in MCS policy.
-    -  All the interface calls start with '*mcs_*'.
+- *mcs*
+  - Policy for Multicategory security. The *.te* file only contains
+    attributes used in MCS policy.
+  - All the interface calls start with '*mcs_*'.
 
--   *mls*
-    -  Policy for Multilevel security. The *.te* file only contains attributes
-       used in MLS policy. All the interface calls start with '*mls_*'.
+- *mls*
+  - Policy for Multilevel security. The *.te* file only contains attributes
+    used in MLS policy. All the interface calls start with '*mls_*'.
 
--   *selinux*
-    -  Contains the policy for the kernel SELinux security interface
-       (*selinuxfs*).
-    -  All the interface calls start with '*selinux_*'.
+- *selinux*
+  - Contains the policy for the kernel SELinux security interface
+    (*selinuxfs*).
+  - All the interface calls start with '*selinux_*'.
 
--   *terminal*
-    -  Contains the policy for terminals.
-    -  All the interface calls start with '*term_*'.
+- *terminal*
+  - Contains the policy for terminals.
+  - All the interface calls start with '*term_*'.
 
--   *ubac*
-    -  Disabled by Fedora but enabled on standard Ref Policy. Support
-       user-based access control.
+- *ubac*
+  - Disabled by Fedora but enabled on standard Ref Policy. Support
+    user-based access control.
 
 *system*
 
--   *application*
-    -  Enabled by Fedora but not standard Ref Policy. Defines attributes and
-       interfaces for all user apps.
+- *application*
+  - Enabled by Fedora but not standard Ref Policy. Defines attributes and
+    interfaces for all user apps.
 
--   *setrans*
-    -  Enabled by Fedora but not standard Ref Policy. Support for
-       ***mcstransd**(8)*.
+- *setrans*
+  - Enabled by Fedora but not standard Ref Policy. Support for
+    ***mcstransd**(8)*.
 
 ##### Building the modules.conf File
 
@@ -906,7 +907,8 @@ The file can then be edited to configure the required modules as base,
 module or off.
 
 As will be seen in the
-[**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source) section, the Fedora reference policy source comes with a number of
+[**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
+section, the Fedora reference policy source comes with a number of
 pre-configured files that are used to produce the required policy including
 multiple versions of the *modules.conf* file.
 
@@ -919,125 +921,125 @@ taken from the *README* file (with some additional minor comments).
 
 *install-src*
 
--   Install the policy sources into */etc/selinux/\<NAME\>/src/policy*, where
-    \<NAME\> is defined in the *build.conf* file. If it is not defined, then
-    *TYPE* is used instead. If a *build.conf* does not have the information,
-    then the Makefile will default to the current entry in the
-    */etc/selinux/config* file or default to *refpolicy*. A pre-existing source
-    policy will be moved to */etc/selinux/\<NAME\>/src/policy.bak*.
+- Install the policy sources into */etc/selinux/\<NAME\>/src/policy*, where
+  \<NAME\> is defined in the *build.conf* file. If it is not defined, then
+  *TYPE* is used instead. If a *build.conf* does not have the information,
+  then the Makefile will default to the current entry in the
+  */etc/selinux/config* file or default to *refpolicy*. A pre-existing source
+  policy will be moved to */etc/selinux/\<NAME\>/src/policy.bak*.
 
 *conf*
 
--   Regenerate *policy.xml*, and update/create *modules.conf* and
-    *booleans.conf*. This should be done after adding or removing modules, or
-    after running the bare target. If the configuration files exist, their
-    settings will be preserved. This must be run on policy sources that are
-    checked out from the CVS repository before they can be used. Note that if
-    *make bare* has been executed before this make target, or it is a first
-    build, then the *modules/kernel/corenetwork.??.in* files will be used to
-    generate the *corenetwork.te* and *corenetwork.if* module files.
-    These *\*.in* files may be edited to configure network ports etc.
-    (see the *# network_node* example entries in *corenetwork.te*).
+- Regenerate *policy.xml*, and update/create *modules.conf* and
+  *booleans.conf*. This should be done after adding or removing modules, or
+  after running the bare target. If the configuration files exist, their
+  settings will be preserved. This must be run on policy sources that are
+  checked out from the CVS repository before they can be used. Note that if
+  *make bare* has been executed before this make target, or it is a first
+  build, then the *modules/kernel/corenetwork.??.in* files will be used to
+  generate the *corenetwork.te* and *corenetwork.if* module files.
+  These *\*.in* files may be edited to configure network ports etc.
+  (see the *# network_node* example entries in *corenetwork.te*).
 
 *clean*
 
--   Delete all temporary files, compiled policy, and file_contexts.
-    Configuration files are left intact.
+- Delete all temporary files, compiled policy, and file_contexts.
+  Configuration files are left intact.
 
 *bare*
 
--   Do the clean make target and also delete configuration files, web page
-    documentation, and policy.xml.
+- Do the clean make target and also delete configuration files, web page
+  documentation, and policy.xml.
 
 *html*
 
--   Regenerate *policy.xml* and create web page documentation in the
-    *doc/html* directory.
+- Regenerate *policy.xml* and create web page documentation in the
+  *doc/html* directory.
 
 *install-appconfig*
 
--   Installs the appropriate SELinux-aware configuration files.
+- Installs the appropriate SELinux-aware configuration files.
 
 **Make targets specific to modular (loadable modules) policies:**
 
 *base*
 
--   Compile and package the base module. This is the default target for modular
-    policies.
+- Compile and package the base module. This is the default target for modular
+  policies.
 
 *modules*
 
--   Compile and package all Reference Policy modules configured to be built as
-    loadable modules.
+- Compile and package all Reference Policy modules configured to be built as
+  loadable modules.
 
 *MODULENAME.pp*
 
--   Compile and package the *MODULENAME* Reference Policy module.
+- Compile and package the *MODULENAME* Reference Policy module.
 
 *all*
 
--   Compile and package the base module and all Reference Policy modules
-    configured to be built as loadable modules.
+- Compile and package the base module and all Reference Policy modules
+  configured to be built as loadable modules.
 
 *install*
 
--   Compile, package, and install the base module and Reference Policy modules
-    configured to be built as loadable modules.
+- Compile, package, and install the base module and Reference Policy modules
+  configured to be built as loadable modules.
 
 *load*
 
--   Compile, package, and install the base module and Reference Policy modules
-    configured to be built as loadable modules, then insert them into the
-    module store.
+- Compile, package, and install the base module and Reference Policy modules
+  configured to be built as loadable modules, then insert them into the
+  module store.
 
 *validate*
 
--   Validate if the configured modules can successfully link and expand.
+- Validate if the configured modules can successfully link and expand.
 
 *install-headers*
 
--   Install the policy headers into */usr/share/selinux/\<NAME\>*. The headers
-    are sufficient for building a policy module locally, without requiring the
-    complete Reference Policy sources. The *build.conf* settings for this policy
-    configuration should be set before using this target.
+- Install the policy headers into */usr/share/selinux/\<NAME\>*. The headers
+  are sufficient for building a policy module locally, without requiring the
+  complete Reference Policy sources. The *build.conf* settings for this policy
+  configuration should be set before using this target.
 
 *install-docs*
 
--   Build and install the documentation and example module source with Makefile.
-    The default location is */usr/share/doc/refpolicy-\<VERSION\>*, where the
-    version is the value in the *VERSION* file.
+- Build and install the documentation and example module source with Makefile.
+  The default location is */usr/share/doc/refpolicy-\<VERSION\>*, where the
+  version is the value in the *VERSION* file.
 
 **Make targets specific to monolithic policies:**
 
 *policy*
 
--   Compile a policy locally for development and testing. This is the default
-    target for monolithic policies.
+- Compile a policy locally for development and testing. This is the default
+  target for monolithic policies.
 
 *install*
 
--   Compile and install the policy and file contexts.
+- Compile and install the policy and file contexts.
 
 *load*
 
--   Compile and install the policy and file contexts, then load the policy.
+- Compile and install the policy and file contexts, then load the policy.
 
 *enableaudit*
 
--   Remove all dontaudit rules from policy.conf.
+- Remove all dontaudit rules from policy.conf.
 
 *relabel*
 
--   Relabel the filesystem.
+- Relabel the filesystem.
 
 *checklabels*
 
--   Check the labels on the filesystem, and report when a file would be
-    relabeled, but do not change its label.
+- Check the labels on the filesystem, and report when a file would be
+  relabeled, but do not change its label.
 
 *restorelabels*
 
--   Relabel the filesystem and report each file that is relabeled.
+- Relabel the filesystem and report each file that is relabeled.
 
 ### Booleans, Global Booleans and Tunable Booleans
 
@@ -1046,35 +1048,35 @@ built and used as follows:
 
 *booleans.conf*
 
--   This file is generated / updated by *make conf*, and contains all the
-    booleans in the policy with their default values. If tunable and global
-    booleans are implemented then these are also included. This file can also
-    be delivered as a part of the Fedora reference policy source as shown in the
-    [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
-    section. This is generally because other default values are used for
-    booleans and not those defined within the modules themselves
-    (i.e. distribution specific booleans). When the *make install* is executed,
-    this file will be used to set the default values.
-    Note that if booleans are updated locally the policy store will contain a
-    [***booleans.local***](policy_store_config_files.md#activebooleans.local) file.
+- This file is generated / updated by *make conf*, and contains all the
+  booleans in the policy with their default values. If tunable and global
+  booleans are implemented then these are also included. This file can also
+  be delivered as a part of the Fedora reference policy source as shown in the
+  [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
+  section. This is generally because other default values are used for
+  booleans and not those defined within the modules themselves
+  (i.e. distribution specific booleans). When the *make install* is executed,
+  this file will be used to set the default values.
+  Note that if booleans are updated locally the policy store will contain a
+  [***booleans.local***](policy_store_config_files.md#activebooleans.local) file.
 
 *global_booleans*
 
--   These are booleans that have been defined in the *global_tunables* file
-    using the [***gen_bool***](#gen_bool-macro) macro. They are normally
-    booleans for managing the overall policy and currently consist of the
-    following (where the default values are *false*): *secure_mode*
+- These are booleans that have been defined in the *global_tunables* file
+  using the [***gen_bool***](#gen_bool-macro) macro. They are normally
+  booleans for managing the overall policy and currently consist of the
+  following (where the default values are *false*): *secure_mode*
 
 *global_tunables*
 
--   These are booleans that have been defined in module files using the
-    [***gen_tunable***](#gen_tunable-macro) macro and added to the
-    *global_tunables* file by *make conf*. The
-    [***tunable_policy***](#tunable_policy-macro) macros are defined in each
-    module where policy statements or interface calls are required. They are
-    booleans for managing specific areas of policy that are global in scope.
-    An example is *allow_execstack* that will allow all processes
-    running in *unconfined_t* to make their stacks executable.
+- These are booleans that have been defined in module files using the
+  [***gen_tunable***](#gen_tunable-macro) macro and added to the
+  *global_tunables* file by *make conf*. The
+  [***tunable_policy***](#tunable_policy-macro) macros are defined in each
+  module where policy statements or interface calls are required. They are
+  booleans for managing specific areas of policy that are global in scope.
+  An example is *allow_execstack* that will allow all processes
+  running in *unconfined_t* to make their stacks executable.
 
 ### Modular Policy Build Structure
 
@@ -1110,64 +1112,64 @@ The following shows the temporary build files used to build the base module
 
 *tmp/pre_te_files.conf*
 
--   *policy/flask/security_classes*
-    - The object classes supported by the kernel
--   *policy/flask/initial_sids*
-    -  The initial SIDs supported by the kernel.
--   *policy/flask/access_vectors*
-    -  The object class permissions supported by the kernel.
--   *policy/mls* or *policy/mcs*
-    -  This is either the expanded mls or mcs file depending on the type of
-       policy being built.
--   *policy/policy_capabilities*
-    -  These are the policy capabilities that can be configured / enabled to
-       support the policy.
+- *policy/flask/security_classes*
+  - The object classes supported by the kernel
+- *policy/flask/initial_sids*
+  - The initial SIDs supported by the kernel.
+- *policy/flask/access_vectors*
+  - The object class permissions supported by the kernel.
+- *policy/mls* or *policy/mcs*
+  - This is either the expanded mls or mcs file depending on the type of
+    policy being built.
+- *policy/policy_capabilities*
+  - These are the policy capabilities that can be configured / enabled to
+    support the policy.
 
 *tmp/all_attrs_types.conf*
 
--   *policy/modules/\*/\*.te* and *policy/modules/\*/\*.if*
-    -  This area contains all the *attribute*, *bool*, *type* and *typealias*
-       statements extracted from the *.te* and *.if* files that form the
-       base module.
+- *policy/modules/\*/\*.te* and *policy/modules/\*/\*.if*
+  - This area contains all the *attribute*, *bool*, *type* and *typealias*
+    statements extracted from the *.te* and *.if* files that form the
+    base module.
 
 *tmp/global_bools.conf*
 
--   *policy/global_tunables.conf* and *policy/global_bools.conf*
-    -  Contains the global and tunable bools extracted from the conf files.
+- *policy/global_tunables.conf* and *policy/global_bools.conf*
+  - Contains the global and tunable bools extracted from the conf files.
 
 
 *tmp/only_te_rules.conf*
 
--   *policy/modules*
-    -  Contains the rules extracted from each of the modules *.te* and *.if*
-       files defined in the *modules.conf* file as ***base***.
+- *policy/modules*
+  - Contains the rules extracted from each of the modules *.te* and *.if*
+    files defined in the *modules.conf* file as ***base***.
 
 *tmp/all_post.conf*
 
--   *policy/users*
-    -  Contains the expanded users from the users file.
--   *policy/constraints*
-    -  Contains the expanded constraints from the constraints file.
--   *policy/modules/\*/\*.te*
-    -  Contains the default SID labeling extracted from the *.te* files.
--   *policy/modules/\*/\*.te* and *policy/modules/\*/\*.if*
-    -  Contains the *fs_use_xattr*, *fs_use_task*, *fs_use_trans* and
-       *genfscon* statements extracted from each of the modules *.te* and
-       *.if* files defined in the *modules.conf* file as ***base***.
-    -  Contains the *netifcon*, *nodecon* and *portcon* statements extracted
-       from each of the modules *.te* and *.if* files defined in the
-       *modules.conf* file as ***base***.
+- *policy/users*
+  - Contains the expanded users from the users file.
+- *policy/constraints*
+  - Contains the expanded constraints from the constraints file.
+- *policy/modules/\*/\*.te*
+  - Contains the default SID labeling extracted from the *.te* files.
+- *policy/modules/\*/\*.te* and *policy/modules/\*/\*.if*
+  - Contains the *fs_use_xattr*, *fs_use_task*, *fs_use_trans* and
+    *genfscon* statements extracted from each of the modules *.te* and
+    *.if* files defined in the *modules.conf* file as ***base***.
+  - Contains the *netifcon*, *nodecon* and *portcon* statements extracted
+    from each of the modules *.te* and *.if* files defined in the
+    *modules.conf* file as ***base***.
 
 *tmp/base.fc.tmp*
 
--   *policy/modules/\*/\*.fc*
-    -  Contains the expanded file context file entries extracted from the
-       *.fc* files defined in the *modules.conf* file as ***base***.
+- *policy/modules/\*/\*.fc*
+  - Contains the expanded file context file entries extracted from the
+    *.fc* files defined in the *modules.conf* file as ***base***.
 
 *tmp/seusers*
 
--   *policy/seusers*
-    -  Expanded seusers file.
+- *policy/seusers*
+  - Expanded seusers file.
 
 These are the commands used to compile, link and load the base policy module,
 where *UNK_PERMS* and *NAME* are those defined in the *build.conf* file:
@@ -1188,24 +1190,24 @@ a part of the *make* process (i.e. those modules marked as *module* in
 
 *tmp/\<module_name\>.tmp*
 
--   *policy/modules/\*/\<module_name\>.te* and
-    *policy/modules/\*/\<module_name\>.if*
-    - For each module defined as *module* in the *modules.conf* configuration
-      file, a source module is produced that has been extracted from the
-      *.te* and *.if* files for that module.
+- *policy/modules/\*/\<module_name\>.te* and
+  *policy/modules/\*/\<module_name\>.if*
+  - For each module defined as *module* in the *modules.conf* configuration
+    file, a source module is produced that has been extracted from the
+    *.te* and *.if* files for that module.
 
 *tmp\<module_name\>.mod*
 
--   *tmp/\<module_name\>.tmp*
-    - For each module defined as *module* in the *modules.conf* configuration
+- *tmp/\<module_name\>.tmp*
+  - For each module defined as *module* in the *modules.conf* configuration
       file, an object module is produced from executing the ***checkmodule**(8)*
       command shown below.
 
 *tmp/<module_name\>.fc.tmp*
 
--   *policy/modules/\*/\<module_name\>.fc*
-    -  For each module defined as *module* in the *modules.conf* configuration
-       file, an expanded file context file is built.
+- *policy/modules/\*/\<module_name\>.fc*
+  - For each module defined as *module* in the *modules.conf* configuration
+    file, an expanded file context file is built.
 
 These are the commands (from *Rules.modular*) is used to build each module and
 insert it into the module store, where *NAME* is that defined in the
@@ -1232,13 +1234,12 @@ name.
 If a new layer is required, then the following will need to be
 completed:
 
-1.  Create a new layer directory *./policy/modules/LAYERNAME* that
-    reflects the layer's purpose.
-2.  In the *./policy/modules/LAYERNAME* directory create a metadata.xml
-    file. This is an XML file with a summary tag and optional desc (long
-    description) tag that should describe the purpose of the layer and
-    will be used as a part of the documentation. An example is as
-    follows:
+1. Create a new layer directory *./policy/modules/LAYERNAME* that
+   reflects the layer's purpose.
+2. In the *./policy/modules/LAYERNAME* directory create a metadata.xml
+   file. This is an XML file with a summary tag and optional desc (long
+   description) tag that should describe the purpose of the layer and
+   will be used as a part of the documentation. An example is as follows:
 
 ```
 <summary>ABC modules for the XYZ components.</summary>
@@ -1258,12 +1259,11 @@ This will run through a simple configuration process and build of a
 reference policy similar to the Fedora targeted policy. By convention
 the source is installed in a central location and then for each type of
 policy a copy of the source is installed at
-*/etc/selinux/<SELINUXTYPE\>/src/policy*.
+*/etc/selinux/\<SELINUXTYPE\>/src/policy*.
 
 The basic steps are:
 
--   Install master Reference Policy Source and add the contributed
-    modules:
+- Install master Reference Policy Source and add the contributed modules:
 
 ```
 # Check out the core policy:
@@ -1275,9 +1275,9 @@ git submodule init
 git submodule update
 ```
 
--   Edit the *build.conf* file to reflect the policy to be built, the
-    minimum required is setting the *NAME =* entry. An example file with
-    *NAME = refpolicy-test* is as follows:
+- Edit the *build.conf* file to reflect the policy to be built, the
+  minimum required is setting the *NAME =* entry. An example file with
+  *NAME = refpolicy-test* is as follows:
 
 ```
 ########################################
@@ -1371,25 +1371,25 @@ QUIET = n
 WERROR = n
 ```
 
--   Run *make install-src* to install source at policy build location.
--   Change to the */etc/selinux/<SELINUXTYPE\>/src/policy* directory where
-    an unconfigured basic policy has been installed.
--   Run *make conf* to build an initial *policy/booleans.conf* and
-    *policy/modules.conf* files. For this simple configuration these
-    files will not be edited.
-    -  This process will also build the *policy/modules/kernel/corenetwork.te*
-       / *corenetwork.if* files if not already present. These would be based on
-       the contents of *corenetwork.te.in* and *corenetwork.if.in*
-       configuration files (for this simple configuration these files will not
-       be edited).
--   Run *make load* to build the policy, add the modules to the store
-    and install the binary kernel policy plus its supporting
-    configuration files.
--   As the Reference Policy has NOT been tailored specifically for Fedora,
-    it MUST be run in permissive mode.
--   The policy should now be built and can be checked using tools such
-    as ***apol**(8)* or loaded by editing the */etc/selinux/config*
-    file, running '*touch /.autorelabel*' and rebooting the system.
+- Run *make install-src* to install source at policy build location.
+- Change to the */etc/selinux/\<SELINUXTYPE\>/src/policy* directory where
+  an unconfigured basic policy has been installed.
+- Run *make conf* to build an initial *policy/booleans.conf* and
+  *policy/modules.conf* files. For this simple configuration these
+  files will not be edited.
+  - This process will also build the *policy/modules/kernel/corenetwork.te*
+    and *corenetwork.if* files if not already present. These would be based on
+    the contents of *corenetwork.te.in* and *corenetwork.if.in*
+    configuration files (for this simple configuration these files will not
+    be edited).
+- Run *make load* to build the policy, add the modules to the store
+  and install the binary kernel policy plus its supporting
+  configuration files.
+- As the Reference Policy has NOT been tailored specifically for Fedora,
+  it MUST be run in permissive mode.
+- The policy should now be built and can be checked using tools such
+  as ***apol**(8)* or loaded by editing the */etc/selinux/config*
+  file, running '*touch /.autorelabel*' and rebooting the system.
 
 ### Building the Fedora Policy
 
@@ -1418,51 +1418,51 @@ they are not required for this exercise):
 
 *selinux-policy-\<commit_num\>.tar.gz*
 
--   The Reference Policy version 2.20130424 with Fedora specific updates that
-    should be unpacked into: *rpmbuild/SOURCES/selinux-policy-\<commit_num\>*
+- The Reference Policy version 2.20130424 with Fedora specific updates that
+  should be unpacked into: *rpmbuild/SOURCES/selinux-policy-\<commit_num\>*
 
 
 *selinux-policy-contrib-\<commit_num\>.tar.gz*
 
--   The Reference Policy contribution modules. Unpack the files and install
-    them into: *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules/contrib*
+- The Reference Policy contribution modules. Unpack the files and install
+  them into: *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules/contrib*
 
 *container-selinux.tgz*
 
--   Fedora Containers module. Unpack and then install into:
-    *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules/contrib*
+- Fedora Containers module. Unpack and then install into:
+  *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules/contrib*
 
 *permissivedomains.cil*
 
--   Badly named file – just adds *system_r* to *roleattributeset*. Copy this
-    to *rpmbuild/SOURCES/selinux-policy-\<commit_num\> as it will be installed
-    by *semodule* once the policy has been built.
+- Badly named file – just adds *system_r* to *roleattributeset*. Copy this
+  to *rpmbuild/SOURCES/selinux-policy-\<commit_num\> as it will be installed
+  by *semodule* once the policy has been built.
 
 *modules-targeted-base.conf* and *modules-targeted-contrib.conf*
 
--   Concatenate both files and copy this to become:
-    *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules.conf*
+- Concatenate both files and copy this to become:
+  *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/modules.conf*
 
 *booleans-targeted.conf*
 
--   Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/booleans.conf*
-    file with this version.
+- Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/booleans.conf*
+  file with this version.
 
 *securetty_types-targeted*
 
--   Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/config/appconfig-mcs/securetty_types*
-    file with this version.
+- Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/config/appconfig-mcs/securetty_types*
+  file with this version.
 
 *users-targeted*
 
--   Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/users*
-    file with this version.
+- Replace the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>/policy/users*
+  file with this version.
 
 The basic steps to build are:
 
--   Edit the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>build.conf* file to
-    reflect the policy to be built (as this is an earlier version of the
-    Reference Policy it has less options than the current Reference Policy):
+- Edit the *rpmbuild/SOURCES/selinux-policy-\<commit_num\>build.conf* file to
+  reflect the policy to be built (as this is an earlier version of the
+  Reference Policy it has less options than the current Reference Policy):
 
 ```
 ############################################
@@ -1537,28 +1537,28 @@ MCS_CATS = 1024
 QUIET = n
 ```
 
--   From *rpmbuild/SOURCES/selinux-policy-<commit_num\>* run *make conf*
-    to initialise the build (it creates two important files in
-    *./selinux-policy-<commit_num\>/policy/modules/kernel* called
-    *corenetwork.te* and *corenetwork.if*).
--   From *rpmbuild/SOURCES/selinux-policy-<commit_num\>* run
-    *make install-src* to install source at policy build location.
--   Change to the */etc/selinux/targeted-FEDORA/src/policy* directory where
-    the policy has been installed.
--   Run *make load* to build the policy, add the modules to the store
-    and install the binary kernel policy plus its supporting
-    configuration files.
-    -  Note that the policy store will default to
-       */var/lib/selinux/targeted-FEDORA*, with the modules in
-       *active/modules/400/<module_name\>*, there will also be CIL
-       versions of the modules.
--   Install the *permissivedomains.cil* module as follows:
-    -  *semodule -s targeted-FEDORA -i permissivedomains.cil*
--   The policy should now be built and can be checked using tools such
-    as ***apol**(8)* or loaded by editing the */etc/selinux/config*
-    file (setting to ***permissive*** mode for safety), running
-    '*touch /.autorelabel*' and rebooting the system. It should have the
-    same number of rules, types, classes etc. as the original release.
+- From *rpmbuild/SOURCES/selinux-policy-\<commit_num\>* run *make conf*
+  to initialise the build (it creates two important files in
+  *./selinux-policy-<commit_num\>/policy/modules/kernel* called
+  *corenetwork.te* and *corenetwork.if*).
+- From *rpmbuild/SOURCES/selinux-policy-\<commit_num\>* run
+  *make install-src* to install source at policy build location.
+- Change to the */etc/selinux/targeted-FEDORA/src/policy* directory where
+  the policy has been installed.
+- Run *make load* to build the policy, add the modules to the store
+  and install the binary kernel policy plus its supporting
+  configuration files.
+  - Note that the policy store will default to
+    */var/lib/selinux/targeted-FEDORA*, with the modules in
+    *active/modules/400/\<module_name\>*, there will also be CIL
+    versions of the modules.
+- Install the *permissivedomains.cil* module as follows:
+  - *semodule -s targeted-FEDORA -i permissivedomains.cil*
+- The policy should now be built and can be checked using tools such
+  as ***apol**(8)* or loaded by editing the */etc/selinux/config*
+  file (setting to ***permissive*** mode for safety), running
+  '*touch /.autorelabel*' and rebooting the system. It should have the
+  same number of rules, types, classes etc. as the original release.
 
 ## Reference Policy Headers
 
@@ -1573,27 +1573,27 @@ installations are slightly different as described below.
 To be able to fully build the policy headers from the reference policy
 source two steps are required:
 
-1.  Ensure the source is installed and configured as described in the
-    [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
-    section. This is because the *make load* (or *make install*) command
-    will package all the modules as defined in the *modules.conf* file,
-    producing a *base.pp* and the relevant *.pp* packages. The build
-    process will then install these in the
-    */usr/share/selinux/<SELINUXTYPE\>* directory.
-2.  Execute the *make install-headers* that will:
-    -  Produce a *build.conf* file that represents the contents of the
-       master *build.conf* file and place it in the
-       */usr/share/selinux/<SELINUXTYPE\>/include* directory.
-    -  Produce the XML documentation set that reflects the source and place
-       it in the */usr/share/selinux/<SELINUXTYPE\>/include* directory.
-    -  Copy a development *Makefile* for building from policy headers to
-       the */usr/share/selinux/<SELINUXTYPE\>/include* directory.
-    -  Copy the support macros *.spt* files to the
-       */usr/share/selinux/<SELINUXTYPE\>/include/support* directory. This
-       will also include an *all_perms.spt* file that will contain
-       macros to allow all classes and permissions to be resolved.
-    -  Copy the module interface files (*.if*) to the relevant module
-       directories at: */usr/share/selinux/<SELINUXTYPE\>/include/modules*.
+1. Ensure the source is installed and configured as described in the
+   [**Installing and Building the Reference Policy Source**](#installing-and-building-the-reference-policy-source)
+   section. This is because the *make load* (or *make install*) command
+   will package all the modules as defined in the *modules.conf* file,
+   producing a *base.pp* and the relevant *.pp* packages. The build
+   process will then install these in the
+   */usr/share/selinux/\<SELINUXTYPE\>* directory.
+2. Execute the *make install-headers* that will:
+   - Produce a *build.conf* file that represents the contents of the
+     master *build.conf* file and place it in the
+     */usr/share/selinux/\<SELINUXTYPE\>/include* directory.
+   - Produce the XML documentation set that reflects the source and place
+     it in the */usr/share/selinux/\<SELINUXTYPE\>/include* directory.
+   - Copy a development *Makefile* for building from policy headers to
+     the */usr/share/selinux/\<SELINUXTYPE\>/include* directory.
+   - Copy the support macros *.spt* files to the
+     */usr/share/selinux/\<SELINUXTYPE\>/include/support* directory. This
+     will also include an *all_perms.spt* file that will contain
+     macros to allow all classes and permissions to be resolved.
+   - Copy the module interface files (*.if*) to the relevant module
+     directories at: */usr/share/selinux/\<SELINUXTYPE\>/include/modules*.
 
 ### Using the Reference Policy Headers
 
@@ -1604,7 +1604,7 @@ the Fedora installation is slightly different and described in the
 Once the headers are installed as defined above, new modules can be
 built in any local directory. An example set of module files are located
 in the reference policy source at
-*/etc/selinux/<SELINUXTYPE\>/src/policy/doc* and are called *example.te*,
+*/etc/selinux/\<SELINUXTYPE\>/src/policy/doc* and are called *example.te*,
 *example.if*, and *example.fc*.
 
 During the header build process a *Makefile* was included in the headers
@@ -1616,7 +1616,7 @@ files are in the local directory):
 make -f /usr/share/selinux/<NAME>/include/Makefile
 ```
 
-However there is another *Makefile* (*./policy/doc Makefile.example*)that can
+However there is another *Makefile* (*./policy/doc Makefile.example*) that can
 be installed in the users home directory (*$HOME*) that will call the master
 *Makefile*:
 
@@ -1637,62 +1637,70 @@ modules built from headers.
 
 *MODULENAME.pp*
 
--   Compile and package the *MODULENAME* local module.
+- Compile and package the *MODULENAME* local module.
 
 *all*
 
--   Compile and package the modules in the current directory.
+- Compile and package the modules in the current directory.
 
 *load*
 
--   Compile and package the modules in the current directory, then insert them
-    into the module store.
+- Compile and package the modules in the current directory, then insert them
+  into the module store.
 
 *refresh*
 
--   Attempts to reinsert all modules that are currently in the module store
-    from the local and system module packages.
+- Attempts to reinsert all modules that are currently in the module store
+  from the local and system module packages.
 
 *xml*
 
--   Build a *policy.xml* from the XML included with the base policy headers and
-    any XML in the modules in the current directory.
+- Build a *policy.xml* from the XML included with the base policy headers and
+  any XML in the modules in the current directory.
 
 ### Using Fedora Supplied Headers
 
 The Fedora distribution installs the headers in a slightly different
-manner as Fedora installs:
+manner as Fedora installs (via the selinux-policy-devel rpm):
 
--   A *modules-base.lst* and *modules-contrib.lst* containing a list of
-    installed modules under */usr/share/selinux/<*NAME*\>*.
--   The development header files are installed in the
-    */usr/share/selinux/devel* directory. The example modules are also in
-    this directory and the *Makefile* is also slightly different to that
-    used by the Reference Policy source.
--   The documentation is installed in the
-    */usr/share/doc/selinux-policy/html* directory.
+- A *modules-base.lst* and *modules-contrib.lst* containing a list of
+  installed modules under */usr/share/selinux/\<NAME\>*.
+- The development header files are installed in the
+  */usr/share/selinux/devel* directory. The example modules are also in
+  this directory and the *Makefile* is also slightly different to that
+  used by the Reference Policy source.
+- The documentation is installed in the
+  */usr/share/doc/selinux-policy/html* directory.
+
+An example usage to build a policy module called *ipsec_test_policy.te* and
+insert this into the policy store is:
+
+```
+make -f /usr/share/selinux/devel/Makefile ipsec_test_policy.pp
+semodule -i ipsec_test_policy.pp
+```
 
 ## Reference Policy Support Macros
 
 This section explains some of the support macros used to build reference
 policy source modules. These macros are located at:
 
--   *./policy/support* for the reference policy source.
--   */usr/share/selinux/<*NAME*\>/include/support* for Reference
-    Policy installed header files.
--   */usr/share/selinux/devel/support* for Fedora installed header files.
+- *./policy/support* for the reference policy source.
+- */usr/share/selinux/\<NAME\>/include/support* for Reference
+  Policy installed header files.
+- */usr/share/selinux/devel/support* for Fedora installed header files.
 
 The following support macro file contents are explained:
 
--   *loadable_module.spt* - Loadable module support.
--   *misc_macros.spt* - Generate users, bools and security contexts.
--   *mls_mcs_macros.spt* - MLS / MCS support.
--   *file_patterns.spt* - Sets up allow rules via parameters for files and
-    directories.
--   *ipc_patterns.spt* - Sets up allow rules via parameters for Unix domain
-    sockets.
--   *misc_patterns.spt* - Domain and process transitions.
--   *obj_perm_sets.spt* - Object classes and permissions.
+- *loadable_module.spt* - Loadable module support.
+- *misc_macros.spt* - Generate users, bools and security contexts.
+- *mls_mcs_macros.spt* - MLS / MCS support.
+- *file_patterns.spt* - Sets up allow rules via parameters for files and
+  directories.
+- *ipc_patterns.spt* - Sets up allow rules via parameters for Unix domain
+  sockets.
+- *misc_patterns.spt* - Domain and process transitions.
+- *obj_perm_sets.spt* - Object classes and permissions.
 
 When the header files are installed the *all_perms.spt* support macro
 file is also installed that describes all classes and permissions
@@ -1702,80 +1710,78 @@ configured in the original source policy.
 
 *loadable_module.spt*
 
--   [*policy_module* Macro](#policy_module-macro)
-    -  For adding the *module* statement and mandatory *require* block entries.
+- [*policy_module* Macro](#policy_module-macro)
+  - For adding the *module* statement and mandatory *require* block entries.
 
--   [*gen_require* Macro](#gen_require-macro)
-    -  For use in interfaces to optionally insert a *require* block.
+- [*gen_require* Macro](#gen_require-macro)
+  - For use in interfaces to optionally insert a *require* block.
 
--   [*optional_policy* Macro](#optional_policy-macro)
-    -  Optional policy handling.
+- [*optional_policy* Macro](#optional_policy-macro)
+  - Optional policy handling.
 
--   [*gen_tunable* Macro](#gen_tunable-macro)
-    -  Tunable declaration.
+- [*gen_tunable* Macro](#gen_tunable-macro)
+  - Tunable declaration.
 
--   [*tunable_policy* Macro](#tunable_policy-macro)
-    -  Tunable policy handling.
+- [*tunable_policy* Macro](#tunable_policy-macro)
+  - Tunable policy handling.
 
--   [*interface* Macro](#interface-macro)
-    -  Generate the access interface block.
+- [*interface* Macro](#interface-macro)
+  - Generate the access interface block.
 
--   [*template* Macro](#template-macro)
-    -  Generate *template* interface block.
+- [*template* Macro](#template-macro)
+  - Generate *template* interface block.
 
 *misc_macros.spt*
 
--   [*gen_context* Macro](#gen_context-macro)
-    -  Generate a security context.
+- [*gen_context* Macro](#gen_context-macro)
+  - Generate a security context.
 
--   [*gen_user* Macro](#gen_user-macro)
-    -  Generate an SELinux user.
+- [*gen_user* Macro](#gen_user-macro)
+  - Generate an SELinux user.
 
--   [*gen_bool* Macro](#gen_bool-macro)
-    -  Generate a boolean.
+- [*gen_bool* Macro](#gen_bool-macro)
+  - Generate a boolean.
 
 *mls_mcs_macros.spt*
 
--   [*gen_cats* Macro](#gen_cats-macro)
-    -  Declares categories c0 to c(N-1).
+- [*gen_cats* Macro](#gen_cats-macro)
+  - Declares categories c0 to c(N-1).
 
--   [*gen_sens* Macro](#gen_sens-macro)
-    -  Declares sensitivities s0 to s(N-1) with dominance in increasing numeric
-       order with s0 lowest, s(N-1) highest.
+- [*gen_sens* Macro](#gen_sens-macro)
+  - Declares sensitivities s0 to s(N-1) with dominance in increasing numeric
+    order with s0 lowest, s(N-1) highest.
 
--   [*gen_levels* Macro](#gen_levels-macro)
-    -  Generate levels from s0 to (N-1) with categories c0 to (M-1).
+- [*gen_levels* Macro](#gen_levels-macro)
+  - Generate levels from s0 to (N-1) with categories c0 to (M-1).
 
 Notes:
 
-1.  The macro calls can be in any configuration file read by the build
-    process and can be found in (for example) the *users*, *mls*, *mcs*
-    and *constraints* files.
-2.  There are four main m4 *ifdef* parameters used within modules:
--   *enable_mcs* - this is used to test if the MCS policy is being
-    built.
--   *enable_mls* - this is used to test if the MLS policy is being
-    built.
--   *enable_ubac* - this enables the user based access control within
-    the *constraints* file.
--   *hide_broken_symptoms* - this is used to hide errors in modules
-    with *dontaudit* rules.
+1. The macro calls can be in any configuration file read by the build
+   process and can be found in (for example) the *users*, *mls*, *mcs*
+   and *constraints* files.
+2. There are four main m4 *ifdef* parameters used within modules:
+   - *enable_mcs* - this is used to test if the MCS policy is being built.
+   - *enable_mls* - this is used to test if the MLS policy is being built.
+   - *enable_ubac* - this enables the user based access control within
+     the *constraints* file.
+   - *hide_broken_symptoms* - this is used to hide errors in modules
+     with *dontaudit* rules.
 
 These are also mentioned as they are set by the initial build process
 with examples shown in the [*ifdef*](#ifdef-ifndef-parameters) section.
 
-1.  The macro examples in this section have been taken from the
-    reference policy module files and shown in each relevant "**Example
-    Macro**" section. The macros are then expanded by the build process
-    to form modules containing the policy language statements and rules
-    in the *tmp* directory. These files have been extracted and modified
-    for readability, then shown in each relevant "**Expanded Macro**"
-    section.
-2.  An example policy that has had macros expanded is shown in the
-    [**Module Expansion Process**](#module-expansion-process)
-    section.
-3.  Be aware that spaces between macro names and their parameters are
-    not allowed:
+1. The macro examples in this section have been taken from the
+   reference policy module files and shown in each relevant "**Example
+   Macro**" section. The macros are then expanded by the build process
+   to form modules containing the policy language statements and rules
+   in the *tmp* directory. These files have been extracted and modified
+   for readability, then shown in each relevant "**Expanded Macro**"
+   section.
+2. An example policy that has had macros expanded is shown in the
+   [**Module Expansion Process**](#module-expansion-process)
+   section.
+3. Be aware that spaces between macro names and their parameters are
+   not allowed:
 
 Correct:
 
@@ -1813,16 +1819,16 @@ policy_module(module_name,version)
 
 *policy_module*
 
--   The *policy_module* macro keyword.
+- The *policy_module* macro keyword.
 
 *module_name*
 
--   The module identifier that must be unique in the module layers.
+- The module identifier that must be unique in the module layers.
 
 *version_number*
 
--   The module version number in M.m.m format (where M = major version number
-    and m = minor version numbers).
+- The module version number in M.m.m format (where M = major version number
+  and m = minor version numbers).
 
 **The macro is valid in:**
 
@@ -1866,19 +1872,19 @@ For use within module files to insert a *require* block.
 **The macro definition is:**
 
 ```
-gen_require(*require_statements*)
+gen_require(`require_statements')
 ```
 
 **Where:**
 
 *gen_require*
 
--   The *gen_require* macro keyword.
+- The *gen_require* macro keyword.
 
 *require_statements*
 
--   These statements consist of those allowed in the policy language
-    [****require***](modular_policy_statements.md#require) Statement.
+- These statements consist of those allowed in the policy language
+  [***require***](modular_policy_statements.md#require) Statement.
 
 **The macro is valid in:**
 
@@ -1917,19 +1923,19 @@ included.
 **The macro definition is:**
 
 ```
-optional_policy(*optional_statements*)
+optional_policy(`optional_statements')
 ```
 
 **Where:**
 
 *optional_policy*
 
--   The *optional_policy* macro keyword.
+- The *optional_policy* macro keyword.
 
 *optional_statements*
 
--   These statements consist of those allowed in the policy language
-    [***optional***](modular_policy_statements.md#optional) Statement.
+- These statements consist of those allowed in the policy language
+  [***optional***](modular_policy_statements.md#optional) Statement.
 
 **The macro is valid in:**
 
@@ -2074,18 +2080,18 @@ used to describe the function and are extracted for the
 **The macro definition is:**
 
 ```
-gen_tunable(boolean_name,boolean_value)
+gen_tunable(`boolean_name',boolean_value)
 ```
 
 **Where:**
 
 *gen_tunable*
 
--   The *gen_tunable* macro keyword.
+- The *gen_tunable* macro keyword.
 
 *boolean_name*
 
--   The *boolean* identifier.
+- The *boolean* identifier.
 
 *boolean_value*
 
@@ -2129,25 +2135,25 @@ of the boolean defined by the
 **The macro definition is:**
 
 ```
-tunable_policy(*gen_tunable_id',*tunable_policy_rules`)
+tunable_policy('gen_tunable_id',tunable_policy_rules`)
 ```
 
 **Where:**
 
 *tunable_policy*
 
--   The *tunable_policy* macro keyword.
+- The *tunable_policy* macro keyword.
 
 *gen_tunable_id*
 
--   This is the boolean identifier defined by the *gen_tunable* macro. It is
-    possible to have multiple entries separated by *\&\&* or *||* as shown in
-    the example.
+- This is the boolean identifier defined by the *gen_tunable* macro. It is
+  possible to have multiple entries separated by *\&\&* or *||* as shown in
+  the example.
 
 *tunable_policy_rules*
 
--   These are the policy rules and statements as defined in the
-    [***if**](conditional_statements.md#if) statement policy language section.
+- These are the policy rules and statements as defined in the
+  [***if***](conditional_statements.md#if) statement policy language section.
 
 **The macro is valid in:**
 
@@ -2162,7 +2168,7 @@ tunable_policy(*gen_tunable_id',*tunable_policy_rules`)
 # showing the use of the boolean with the && operator.
 #
 
-tunable_policy(*allow_ftpd_use_nfs && allow_ftpd_anon_write',*
+tunable_policy(`allow_ftpd_use_nfs && allow_ftpd_anon_write',`
 	fs_manage_nfs_files(ftpd_t)
 ')
 ```
@@ -2193,24 +2199,24 @@ modules services (as shown in and described in the
 **The macro definition is:**
 
 ```
-interface(*name*,*interface_rules*)
+interface(`name',`interface_rules')
 ```
 
 **Where:**
 
 *interface*
 
--   The *interface* macro keyword.
+- The *interface* macro keyword.
 
 *name*
 
--   The *interface* identifier that should be named to reflect the module
-    identifier and its purpose.
+- The *interface* identifier that should be named to reflect the module
+  identifier and its purpose.
 
 *interface_rules*
 
--   This can consist of the support macros, policy language statements or other
-    *interface* calls as required to provide the service.
+- This can consist of the support macros, policy language statements or other
+  *interface* calls as required to provide the service.
 
 **The macro is valid in:**
 
@@ -2239,7 +2245,7 @@ used to describe the function and are extracted for the
 ##	</summary>
 ## </param>
 #
-interface(*ftp_read_config',*
+interface(`ftp_read_config',`
 	gen_require(`
 		type ftpd_etc_t;
 	')
@@ -2301,9 +2307,9 @@ domain name is derived from caller information).
 The main differences between an application interface and a template
 interface are:
 
--   An access interface is called by other modules to perform a service.
--   A template interface allows an application to be run in a domain
-    based on user / role information to isolate different instances.
+- An access interface is called by other modules to perform a service.
+- A template interface allows an application to be run in a domain
+  based on user / role information to isolate different instances.
 
 Note that the comments shown in the example MUST be present as they are
 used to describe the function and are extracted for the
@@ -2311,24 +2317,26 @@ used to describe the function and are extracted for the
 
 **The macro definition is:**
 
-template(*name*,*template_rules*)
+```
+template(`name',`template_rules')
+```
 
 **Where:**
 
 *template*
 
--   The *template* macro keyword.
+- The *template* macro keyword.
 
 *name*
 
--   The *template* identifier that should be named to reflect the module
-    identifier and its purpose. By convention the last component is
-    *_template* (e.g. *ftp_per_role_template*).
+- The *template* identifier that should be named to reflect the module
+  identifier and its purpose. By convention the last component is
+  *\_template* (e.g. *ftp_per_role_template*).
 
 *template_rules*
 
--   This can consist of the support macros, policy language statements or
-    *interface* calls as required to provide the service.
+- This can consist of the support macros, policy language statements or
+  *interface* calls as required to provide the service.
 
 **The macro is valid in:**
 
@@ -2353,7 +2361,7 @@ template(*name*,*template_rules*)
 ##	</summary>
 ## </param>
 #
-template(*djbdns_daemontools_domain_template',*
+template(`djbdns_daemontools_domain_template',`
 	gen_require(`
 		attribute djbdns_domain;
 	')
@@ -2447,16 +2455,16 @@ gen_context(context[,mls | mcs])
 
 *gen_context*
 
--   The *gen_context* macro keyword.
+- The *gen_context* macro keyword.
 
 *context*
 
--   The security context to be generated. This can include macros that are
-    relevant to a context as shown in the example below.
+- The security context to be generated. This can include macros that are
+  relevant to a context as shown in the example below.
 
 *mls | mcs*
 
--   MLS or MCS labels if enabled in the policy.
+- MLS or MCS labels if enabled in the policy.
 
 **The macro is valid in:**
 
@@ -2498,30 +2506,30 @@ gen_user(username, prefix, role_set, mls_defaultlevel, mls_range, [mcs_categorie
 
 *gen_user*
 
--   The *gen_user* macro keyword.
+- The *gen_user* macro keyword.
 
 *username*
 
--   The SELinux user id.
+- The SELinux user id.
 
 *prefix*
 
--   SELinux users without the prefix will not be in the *users_extra* file.
-    This is added to user directories by *genhomedircon* as discussed in the
-    [**Building the File Labeling Support Files**](policy_store_config_files.md#building-the-file-labeling-support-files)
-    section.
+- SELinux users without the prefix will not be in the *users_extra* file.
+  This is added to user directories by *genhomedircon* as discussed in the
+  [**Building the File Labeling Support Files**](policy_store_config_files.md#building-the-file-labeling-support-files)
+  section.
 
 *role_set*
 
--   The user roles.
+- The user roles.
 
 *mls_defaultlevel*
 
--   The default level if MLS / MCS policy.
+- The default level if MLS / MCS policy.
 
 *mls_range*
 
--   The range if MLS / MCS policy.
+- The range if MLS / MCS policy.
 
 *mcs_categories*
 
@@ -2539,10 +2547,10 @@ The categories if MLS / MCS policy.
 # This example has been taken from the policy/policy/users file:
 #
 
-ifdef(*direct_sysadm_daemon',*
-	gen_user(root, sysadm, sysadm_r staff_r ifdef(*enable_mls',*secadm_r auditadm_r') system_r, s0, s0 - mls_systemhigh, mcs_allcats)
+ifdef(`direct_sysadm_daemon',*
+	gen_user(root, sysadm, sysadm_r staff_r ifdef(`enable_mls',`secadm_r auditadm_r') system_r, s0, s0 - mls_systemhigh, mcs_allcats)
 ',`
-	gen_user(root, sysadm, sysadm_r staff_r ifdef(*enable_mls',*secadm_r auditadm_r'), s0, s0 - mls_systemhigh, mcs_allcats)
+	gen_user(root, sysadm, sysadm_r staff_r ifdef(`enable_mls',`secadm_r auditadm_r'), s0, s0 - mls_systemhigh, mcs_allcats)
 ')
 ```
 
@@ -2568,11 +2576,11 @@ user root prefix sysadm;
 
 This macro defines a boolean and requires the following steps:
 
-1.  Declare the [***boolean***](conditional_statements.md#bool) in the
-    [***global_booleans***](#booleans-global-booleans-and-tunable-booleans)
-    file.
-2.  Use the boolean in a module fileswith an
-    [***if / else***](conditional_statements.md#if) Statement as shown in the example.
+1. Declare the [***boolean***](conditional_statements.md#bool) in the
+   [***global_booleans***](#booleans-global-booleans-and-tunable-booleans)
+   file.
+2. Use the boolean in a module fileswith an
+   [***if / else***](conditional_statements.md#if) Statement as shown in the example.
 
 Note that the comments shown in the example MUST be present as they are
 used to describe the function and are extracted for the
@@ -2588,15 +2596,15 @@ gen_bool(name,default_value)
 
 *gen_bool*
 
--   The *gen_bool* macro keyword.
+- The *gen_bool* macro keyword.
 
 *name*
 
--   The *boolean* identifier.
+- The *boolean* identifier.
 
 *default_value*
 
--   The value *true* or *false*.
+- The value *true* or *false*.
 
 The macro is only valid in the *global_booleans* file but the *boolean*
 declared can be used in the following module types:
@@ -2706,15 +2714,15 @@ gen_cats(mcs_num_cats | mls_num_cats)
 
 *gen_cats*
 
--   The *gen_cats* macro keyword.
+- The *gen_cats* macro keyword.
 
 *mcs_num_cats*
 
 *mls_num_cats*
 
--   These are the maximum number of categories that have been extracted from
-    the *build.conf* file *MCS_CATS* or *MLS_CATS* entries and set as m4
-    parameters.
+- These are the maximum number of categories that have been extracted from
+  the *build.conf* file *MCS_CATS* or *MLS_CATS* entries and set as m4
+  parameters.
 
 **The macro is valid in:**
 
@@ -2763,12 +2771,12 @@ gen_sens(mls_num_sens)
 
 *gen_sens*
 
--   The *gen_sens* macro keyword.
+- The *gen_sens* macro keyword.
 
 *mls_num_sens*
 
--   These are the maximum number of sensitivities that have been extracted from
-    the *build.conf*file *MLS_SENS* entries and set as an m4 parameter.
+- These are the maximum number of sensitivities that have been extracted from
+  the *build.conf* file *MLS_SENS* entries and set as an m4 parameter.
 
 **The macro is valid in:**
 
@@ -2813,18 +2821,18 @@ gen_levels(mls_num_sens,mls_num_cats)
 
 *gen_levels*
 
--   The *gen_levels* macro keyword.
+- The *gen_levels* macro keyword.
 
 *mls_num_sens*
 
--   This is the parameter that defines the number of sensitivities to generate.
-    The MCS policy is set to '*1*'.
+- This is the parameter that defines the number of sensitivities to generate.
+  The MCS policy is set to '*1*'.
 
 *mls_num_cats*
 
 *mcs_num_cats*
 
--   This is the parameter that defines the number of categories to generate.
+- This is the parameter that defines the number of categories to generate.
 
 **The macro is valid in:**
 
@@ -2923,7 +2931,7 @@ set up by the *Makefile* at the start of the build process.
 # This example is from the modules/kernel/domain.te module.
 #
 
-ifdef(*hide_broken_symptoms',*
+ifdef(`hide_broken_symptoms',`
 	# This check is in the general socket
 	# listen code, before protocol-specific
 	# listen function is called, so bad calls
@@ -2944,7 +2952,7 @@ are set up by the *Makefile* with information taken from the
 # This example is from the modules/kernel/kernel.te module.
 #
 
-ifdef(*enable_mls',*
+ifdef(`enable_mls',`
 	role secadm_r;
 	role auditadm_r;
 ')
@@ -2954,7 +2962,7 @@ ifdef(*enable_mls',*
 # This example is from the modules/services/ftp.te module.
 #
 
-ifdef(*enable_mcs',*
+ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(ftpd_t, ftpd_exec_t, s0 - mcs_systemhigh)
 ')
 ```
@@ -2977,8 +2985,8 @@ ubac = n*).
 # Note that the ubac_constrained_type attribute is defined in
 # modules/kernel/ubac.te module.
 
-define(*basic_ubac_conditions',*
-	ifdef(*enable_ubac',*
+define(`basic_ubac_conditions',`
+	ifdef(`enable_ubac',`
 		u1 == u2
 		or u1 == system_u
 		or u2 == system_u
@@ -3000,8 +3008,8 @@ Example Macros:
 # This example is from the modules/system/selinuxutil.te module.
 #
 
-ifndef(*direct_sysadm_daemon',*
-	ifdef(*distro_gentoo',*
+ifndef(`direct_sysadm_daemon',`
+	ifdef(`distro_gentoo',`
 		# Gentoo integrated run_init:
 		init_script_file_entry_type(run_init_t)
 
