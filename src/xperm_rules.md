@@ -2,7 +2,7 @@
 
 - [*ioctl* Operation Rules](#ioctl-operation-rules)
 
-There are three extended AV rules implemented from Policy version 30
+There are four extended AV rules implemented from Policy version 30
 with the target platform 'selinux' that expand the permission sets from
 a fixed 32 bits to permission sets in 256 bit increments: *allowxperm*,
 *dontauditxperm*, *auditallowxperm* and *neverallowxperm*.
@@ -129,6 +129,12 @@ Notes:
    class/permission is required.
 3. To deny all ioctl requests for a specific source/target/class the
    *xperm_set* should be set to *0* or *0x0*.
+4. From the 32-bit ioctl request parameter value only the least significant
+   16 bits are used. Thus *0x8927*, *0x00008927* and *0xabcd8927*
+   are the same extended permission.
+5. To decode a numeric ioctl request parameter into the corresponding
+   textual identifier see
+   <https://www.kernel.org/doc/html/latest/userspace-api/ioctl/ioctl-decoding.html>
 
 <!-- %CUTHERE% -->
 
