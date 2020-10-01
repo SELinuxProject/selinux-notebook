@@ -80,8 +80,10 @@ Conditional Policy Statements
 
 **Examples:**
 
-These examples have been taken from the **Reference Policy** source
-*./policy/constraints* file.
+These examples have been taken from the [**Reference
+Policy**](https://github.com/SELinuxProject/refpolicy) source
+[*./policy/constraints*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/constraints)
+file.
 
 ```
 # This constrain statement is the "SELinux process identity
@@ -327,9 +329,11 @@ Conditional Policy Statements
 
 **Example:**
 
-This example has been taken from the **Reference Policy** source
-*./policy/mls* constraints file. These are built into the policy at build
-time and add constraints to many of the object classes.
+This example has been taken from the [**Reference
+Policy**](https://github.com/SELinuxProject/refpolicy) source
+[**./policy/mls*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/mls)
+constraints file.  These are built into the policy at build time and
+add constraints to many of the object classes.
 
 ```
 # The MLS Reference Policy mlsconstrain statement for searching
@@ -439,8 +443,8 @@ Conditional Policy Statements
 
 **Example:**
 
-This example has been taken from the **Reference Policy** source
-*./policy/mls* file.
+This example has been taken from the [**Reference Policy**](https://github.com/SELinuxProject/refpolicy) source
+[*./policy/mls*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/mls) file.
 
 ```
 # The MLS Reference Policy mlsvalidatetrans statement for

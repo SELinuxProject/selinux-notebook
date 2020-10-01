@@ -9,8 +9,10 @@ For those who write or manager SELinux policy, there is no need to
 define new objects and their associated permissions as these would be
 done by those who actually design and/or write object managers.
 
-A list of object classes used by the **Reference Policy** can be found
-in the *./policy/flask/security\_classes* file.
+A list of object classes used by the [**Reference
+Policy**](https://github.com/SELinuxProject/refpolicy) can be found in the
+[*./policy/flask/security\_classes*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/flask/security_classes)
+file.
 
 There are two variants of the *class* statement for writing policy:
 
@@ -72,8 +74,11 @@ Permissions can be defined within policy in two ways:
    declared for a specific object class only (i.e. the permission is
    not inherited by any other object class).
 
-A list of classes and their permissions used by the **Reference Policy**
-can be found in the *./policy/flask/access_vectors* file.
+A list of classes and their permissions used by the [**Reference
+Policy**](https://github.com/SELinuxProject/refpolicy) can be found in
+the
+[*./policy/flask/access\_vectors*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/flask/access_vectors)
+file.
 
 ## *common*
 

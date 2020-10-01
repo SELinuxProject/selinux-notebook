@@ -48,12 +48,13 @@
     - [*direct_sysadm_daemon*](#direct_sysadm_daemon)
 - [Module Expansion Process](#module-expansion-process)
 
-The Reference Policy is now the standard policy source used to build
-Linux SELinux policies. This provides a single source tree with
-supporting documentation that can be used to build policies for
-different purposes such as: confining important daemons, supporting MLS
-/ MCS type policies and locking down systems so that all processes are
-under SELinux control.
+The [**Reference Policy**](https://github.com/SELinuxProject/refpolicy)
+is now the standard policy source used to build Linux SELinux
+policies. This provides a single source tree with supporting
+documentation that can be used to build policies for different
+purposes such as: confining important daemons, supporting MLS / MCS
+type policies and locking down systems so that all processes are under
+SELinux control.
 
 This section details how the Reference Policy is:
 
@@ -418,7 +419,8 @@ configured to allow a policy to be built.
 The **Reference Policy Files and Directories** list shows the major
 files and their directories with a description of each taken from the
 README file (with comments added). All directories are relative to the root of
-the Reference Policy source directory *./policy*.
+the [Reference Policy](https://github.com/SELinuxProject/refpolicy) source directory
+[*./policy*](https://github.com/SELinuxProject/refpolicy/tree/master/policy).
 
 The *build.conf* and *modules.conf* configuration files are further detailed
 in the [**Source Configuration Files**](#source-configuration-files)
@@ -431,26 +433,26 @@ modular policy is being built. This file is explained in the
 
 **Reference Policy Files and Directories:**
 
-*Makefile*
+[*Makefile*](https://github.com/SELinuxProject/refpolicy/tree/master/Makefile)
 
 - General rules for building the policy.
 
-*Rules.modular*
+[*Rules.modular*](https://github.com/SELinuxProject/refpolicy/tree/master/Rules.modular)
 
 - Makefile rules specific to building loadable module policies.
 
-*Rules.monolithic*
+[*Rules.monolithic*](https://github.com/SELinuxProject/refpolicy/tree/master/Rules.monolithic)
 
 - Makefile rules specific to building monolithic policies.
 
-*build.conf*
+[*build.conf*](https://github.com/SELinuxProject/refpolicy/tree/master/build.conf)
 
 - Options which influence the building of the policy, such as the policy type
   and distribution. This file is described in the
   [**Reference Policy Build Options - build.conf**](#reference-policy-build-options---build.conf)
   section.
 
-*config/appconfig-\<type\>*
+[*config*](https://github.com/SELinuxProject/refpolicy/tree/master/config)*/appconfig-\<type\>*
 
 - Application configuration files for all configurations of the Reference
   Policy where *\<type\>* is taken from the *build.conf* **TYPE** entry that
@@ -459,64 +461,64 @@ modular policy is being built. This file is explained in the
   [**SELinux Configuration Files**](policy_config_files.md#policy-configuration-files)
   section.
 
-*config/file_contexts.subs_dist*
+[*config/file_contexts.subs_dist*](https://github.com/SELinuxProject/refpolicy/tree/master/config/file_contexts.subs_dist)
 
 - Used to configure file context aliases (see the
   [**contexts/files/file_contexts.subs and file_contexts.subs_dist File**](policy_config_files.md#contextsfilesfile_contexts.subs)
   section).
 
-*config/local.users*
+[*config/local.users*](https://github.com/SELinuxProject/refpolicy/tree/master/config/local.users)
 
 - The file read by load policy for adding SELinux users to the policy on
   the fly. Note that this file is not used in the modular policy build.
 
-*doc/html/\**
+[*doc/html*](https://github.com/SELinuxProject/refpolicy/tree/master/doc/html)*/\**
 
 - When *make html* has been executed, contains the in-policy XML
   documentation, presented in web page form.
 
-*doc/policy.dtd*
+[*doc/policy.dtd*](https://github.com/SELinuxProject/refpolicy/tree/master/doc/policy.dtd)
 
 - The *doc/policy.xml* file is validated against this DTD.
 
-*doc/policy.xml*
+[*doc/policy.xml*](https://github.com/SELinuxProject/refpolicy/tree/master/doc/policy.xml)
 
 - This file is generated/updated by the conf and html make targets.
   It contains the complete XML documentation included in the policy.
 
-*doc/templates/\**
+[*doc/templates*](https://github.com/SELinuxProject/refpolicy/tree/master/doc/templates)*/\**
 
 - Templates used for documentation web pages.
 
-*man/\**
+[*man*](https://github.com/SELinuxProject/refpolicy/tree/master/man)*/\**
 
 - Various man pages for modules (ftp, http etc.)
 
-*support/\**
+[*support*](https://github.com/SELinuxProject/refpolicy/tree/master/support)*/\**
 
 - Tools used in the build process.
 
-*policy/flask/initial_sids*
+[*policy/flask/initial_sids*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/flask/initial_sids)
 
 - This file has declarations for each initial SID. The file usage in policy
   generation is described in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure)
   section.
 
-*policy/flask/security_classes*
+[*policy/flask/security_classes*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/flask/security_classes)
 
 - This file has declarations for each security class. The file usage in
   policy generation is described in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure)
   section.
 
-*policy/flask/access_vectors*
+[*policy/flask/access_vectors*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/flask/access_vectors)
 
 - This file defines the common permissions and class specific permissions
   and is described in the [**Modular Policy Build Structure**](#modular-policy-build-structure)
   section.
 
-*policy/modules/\**
+[*policy/modules*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/modules)*/\**
 
 - Each directory represents a layer in Reference Policy. All of the modules
   are contained in one of these layers. The *contrib* modules are supplied
@@ -528,13 +530,13 @@ modular policy is being built. This file is explained in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure)
   section.
 
-*policy/support/\**
+[*policy/support*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support)*/\**
 
 - Reference Policy support macros are described in the
   [**Reference Policy support Macros**](#reference-policy-support-macros)
   section.
 
-*policy/booleans.conf*
+[*policy/booleans.conf*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/booleans.conf)
 
 - This file is generated/updated by *make conf*. It contains the booleans in
   the policy and their default values. If tunables are implemented as
@@ -544,7 +546,7 @@ modular policy is being built. This file is explained in the
   [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
   section).
 
-*policy/constraints*
+[*policy/constraints*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/constraints)
 
 - This file defines constraints on permissions in the form of boolean
   expressions that must be satisfied in order for specified permissions to
@@ -556,33 +558,33 @@ modular policy is being built. This file is explained in the
   generation is described in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
-*policy/context_defaults*
+[*policy/context_defaults*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/context_defaults)
 
 - This would contain any specific *default_user*, *default_role*,
   *default_type* and/or *default_range* rules required by the policy.
 
-*policy/global_booleans*
+[*policy/global_booleans*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/global_booleans)
 
 - This file defines all booleans that have a global scope, their default
   value, and documentation. See the
   [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
   section.
 
-*policy/global_tunables*
+[*policy/global_tunables*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/global_tunables)
 
 - This file defines all tunables that have a global scope, their default
   value, and documentation.
   See the [**Booleans, Global Booleans and Tunable Booleans**](#booleans-global-booleans-and-tunable-booleans)
   section.
 
-*policy/mcs*
+[*policy/mcs*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/mcs)
 
 - This contains information used to generate the *sensitivity*, *category*,
   *level* and *mlsconstraint* statements used to define the MCS configuration.
   The file usage in policy generation is described in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
-*policy/mls*
+[*policy/mls*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/mls)
 
 - This contains information used to generate the *sensitivity*, *category*,
   *level* and *mlsconstraint* statements used to define the MLS configuration.
@@ -600,13 +602,13 @@ modular policy is being built. This file is explained in the
   [**Reference Policy Build Options - policy/modules.conf**](#reference-policy-build-options---policymodules.conf)
   section.
 
-*policy/policy_capabilities*
+[*policy/policy_capabilities*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/policy_capabilities)
 
 - This file defines the policy capabilities that can be enabled in the policy.
   The file usage in policy generation is described in the
   [**Modular Policy Build Structure**](#modular-policy-build-structure) section.
 
-*policy/users*
+[*policy/users*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/users)
 
 - This file defines the users included in the policy. The file usage in policy
   generation is described in the
@@ -619,10 +621,10 @@ modular policy is being built. This file is explained in the
 
 ### Source Configuration Files
 
-There are two major configuration files (*build.conf* and *modules.conf*)
+There are two major configuration files ([*build.conf*](https://github.com/SELinuxProject/refpolicy/tree/master/build.conf) and *modules.conf*)
 that define the policy to be built and are detailed in this section.
 
-#### Reference Policy Build Options - build.conf
+#### Reference Policy Build Options - [build.conf](https://github.com/SELinuxProject/refpolicy/tree/master/build.conf)
 
 This file defines the policy type to be built that will influence its
 name and where the source will be located once it is finally installed.
@@ -636,7 +638,7 @@ process to set *m4* macro parameters. These macro definitions are also used
 within the module source files to control how the policy is built with examples
 shown in the [***ifdef***](#ifdef-ifndef-parameters) section.
 
-***build.conf* Entries:**
+**[*build.conf*](https://github.com/SELinuxProject/refpolicy/tree/master/build.conf) Entries:**
 
 *TYPE*
 
@@ -1685,22 +1687,22 @@ semodule -i ipsec_test_policy.pp
 This section explains some of the support macros used to build reference
 policy source modules. These macros are located at:
 
-- *./policy/support* for the reference policy source.
+- [*./policy/support*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support) for the reference policy source.
 - */usr/share/selinux/\<NAME\>/include/support* for Reference
   Policy installed header files.
 - */usr/share/selinux/devel/support* for Fedora installed header files.
 
 The following support macro file contents are explained:
 
-- *loadable_module.spt* - Loadable module support.
-- *misc_macros.spt* - Generate users, bools and security contexts.
-- *mls_mcs_macros.spt* - MLS / MCS support.
-- *file_patterns.spt* - Sets up allow rules via parameters for files and
+- [*loadable_module.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/loadable_module.spt) - Loadable module support.
+- [*misc_macros.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/misc_macros.spt) - Generate users, bools and security contexts.
+- [*mls_mcs_macros.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/mls_mcs_macros.spt) - MLS / MCS support.
+- [*file_patterns.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/file_patterns.spt) - Sets up allow rules via parameters for files and
   directories.
-- *ipc_patterns.spt* - Sets up allow rules via parameters for Unix domain
+- [*ipc_patterns.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/ipc_patterns.spt) - Sets up allow rules via parameters for Unix domain
   sockets.
-- *misc_patterns.spt* - Domain and process transitions.
-- *obj_perm_sets.spt* - Object classes and permissions.
+- [*misc_patterns.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/misc_patterns.spt) - Domain and process transitions.
+- [*obj_perm_sets.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/obj_perm_sets.spt) - Object classes and permissions.
 
 When the header files are installed the *all_perms.spt* support macro
 file is also installed that describes all classes and permissions
@@ -1708,7 +1710,7 @@ configured in the original source policy.
 
 **Support Macros described in this section:**
 
-*loadable_module.spt*
+[*loadable_module.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/loadable_module.spt)
 
 - [*policy_module* Macro](#policy_module-macro)
   - For adding the *module* statement and mandatory *require* block entries.
@@ -1731,7 +1733,7 @@ configured in the original source policy.
 - [*template* Macro](#template-macro)
   - Generate *template* interface block.
 
-*misc_macros.spt*
+[*misc_macros.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/misc_macros.spt)
 
 - [*gen_context* Macro](#gen_context-macro)
   - Generate a security context.
@@ -1742,7 +1744,7 @@ configured in the original source policy.
 - [*gen_bool* Macro](#gen_bool-macro)
   - Generate a boolean.
 
-*mls_mcs_macros.spt*
+[*mls_mcs_macros.spt*](https://github.com/SELinuxProject/refpolicy/tree/master/policy/support/mls_mcs_macros.spt)
 
 - [*gen_cats* Macro](#gen_cats-macro)
   - Declares categories c0 to c(N-1).
