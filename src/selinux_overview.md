@@ -8,7 +8,7 @@ was enhanced by the NSA and released as open source software (see:
 <https://www.nsa.gov/what-we-do/research/selinux/>).
 
 Each of the sections that follow will describe a component of SELinux,
-and hopefully they are is some form of logical order.
+and hopefully they are in some form of logical order.
 
 Note: When SELinux is installed, there are three well defined directory
 locations referenced. Two of these will change with the old and new
@@ -24,7 +24,7 @@ The SELinux filesystem that interfaces with the kernel based security server. Th
 
 There are many views on the usefulness of SELinux on Linux based
 systems, this section gives a brief view of what SELinux is good at and
-what it is not (because its not designed to do it).
+what it is not (because it's not designed to do it).
 
 SELinux is not just for military or high security systems where
 Multi-Level Security (MLS) is required (for functionality such as 'no
@@ -55,8 +55,8 @@ and limited to the mimimum privileges required to do their job, so in a
     SELinux may contain any damage that maybe done intentional or
     otherwise. For example if an application is allowed to delete all of
     its data files or database entries and the bug, virus or malicious
-    user gains these privileges then it would be able to do the same,
-    however the good news is that if the policy 'confined' the
+    user gains these privileges then it would be able to do the same.
+    However the good news is that if the policy 'confined' the
     application and data, all your other data should still be there.
 7.  User login sessions can be confined to their own domains. This
     allows clients they run to be given only the privileges they need
@@ -68,17 +68,17 @@ and limited to the mimimum privileges required to do their job, so in a
     sandboxing services.
 9.  SELinux will not stop memory leaks or buffer over-runs (because its
     not designed to do this), however it may contain the damage that may
-    be done.
-10. SELinux will not stop all viruses/malware getting into the system
-    (as there are many ways they could be introduced (including by
+    be caused by these flaws.
+10. SELinux will not stop all viruses/malware getting into the system,
+    as there are many ways they could be introduced (including
     legitimate users), however it should limit the damage or leaks they
     cause.
 11. SELinux will not stop kernel vulnerabilities, however it may limit
     their effects.
-12. It is easy to add new rules to an SELinux policy using tools such as
-    ***audit2allow**(1)* if a user has the relevant permissions, however
-    be aware that this may start opening holes, so check what rules are
-    really required.
+12. If a user has the relevant permissions it is easy to add new rules
+    to a SELinux policy using tools such as ***audit2allow**(1)*.
+    Nevertheless be aware that this may start opening holes, so do
+    double check the necessity of a given rule.
 13. Finally, SELinux cannot stop anything allowed by the security
     policy, so good design is important.
 
