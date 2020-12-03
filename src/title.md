@@ -4,12 +4,9 @@
 # The SELinux Notebook
 <!-- %STYLEEND% -->
 
-<!-- %STYLESTART%(display:block;margin-left:auto;margin-right:auto;) -->
+<!-- %STYLESTART%(display:block;margin-left:auto;margin-right:auto;padding:2em) -->
 ![](./images/selinux-penguin.svg)
 <!-- %STYLEEND% -->
-
-<br/>
-<br/>
 
 **<!-- %DATE% -->**
 <!-- %GITHEAD% -->

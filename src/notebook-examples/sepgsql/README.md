@@ -20,8 +20,6 @@ installed:
 	postgresql-docs
 ```
 
-<br>
-
 ## Installing PostgreSQL + sepgsql and building sample testdb database
 
 For a good intro to sepgsql read the following:

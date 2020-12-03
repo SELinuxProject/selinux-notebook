@@ -20,8 +20,6 @@ Another basic kernel policy build is avilable in the kernel source, see the
 ***flask-files*** - Contains the Fedora 31 policy source initial_sids,
 security_classes and access_vectors flask files.
 
-<br>
-
 ## Building the Kernel Source MDP
 
 **Note** that the kernel mdp `install_policy.sh` script will not build
