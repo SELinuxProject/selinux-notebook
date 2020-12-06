@@ -86,11 +86,6 @@ repository that can be checked out using the following:
 ```
 # Check out the core policy:
 git clone https://github.com/SELinuxProject/refpolicy.git
-
-cd refpolicy
-# Add the contibuted modules (policy/modules/contrib)
-git submodule init
-git submodule update
 ```
 
 A list of releases can be found at <https://github.com/SELinuxProject/refpolicy/releases>
@@ -1265,16 +1260,11 @@ policy a copy of the source is installed at
 
 The basic steps are:
 
-- Install master Reference Policy Source and add the contributed modules:
+- Install master Reference Policy Source:
 
 ```
 # Check out the core policy:
 git clone https://github.com/SELinuxProject/refpolicy.git
-
-cd refpolicy
-# Add the contibuted modules (policy/modules/contrib)
-git submodule init
-git submodule update
 ```
 
 - Edit the *build.conf* file to reflect the policy to be built, the
