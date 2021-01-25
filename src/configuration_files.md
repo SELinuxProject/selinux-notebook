@@ -21,14 +21,14 @@ as follows:
 2. [**Policy Store Configuration Files**](policy_store_config_files.md#policy-store-configuration-files)
    that are managed by the **semanage**(8) and **semodule**(8) commands. These
    are used to build the majority of the
-   [Policy Configuration Files](policy_config_files.md#policy-configuration-files)
+   [**Policy Configuration Files**](policy_config_files.md#policy-configuration-files)
    and should NOT be edited as together they describe the overall 'policy' configuration.
-3. [**Policy Configuration Files**](policy_config_files.md) used by an active
-   (run time) policy/system. Note that there can be multiple policy
-   configurations on a system (e.g. */etc/selinux/targeted* and
+3. [**Policy Configuration Files**](policy_config_files.md#policy-configuration-files)
+   used by an active (run time) policy/system. Note that there can be multiple
+   policy configurations on a system (e.g. */etc/selinux/targeted* and
    */etc/selinux/mls*), however only one can be the active policy.
-4. [**SELinux Filesystem files - Table 6: SELinux filesystem Information**](lsm_selinux.md#selinux-filesystem)
-   located under the */sys/fs/selinux* directory and reflect the current
+4. The [**SELinux Filesystem**](lsm_selinux.md#selinux-filesystem)
+   located under the */sys/fs/selinux* directory and reflects the current
    configuration of SELinux for the active policy. This area is used
    extensively by the libselinux library for userspace object managers and
    other SELinux-aware applications. These files and directories should not

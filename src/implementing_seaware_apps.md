@@ -86,7 +86,8 @@ developing SELinux-aware applications and object managers using
     *libselinux* 2.0.99, with Linux kernel 2.6.37 and above.
 11. There are changes to the way contexts are computed for sockets in
     kernels 2.6.39 and above as described in the
-    [**Computing Security Contexts**](computing_security_contexts.md) section.
+    [**Computing Security Contexts**](computing_security_contexts.md#computing-security-contexts)
+    section.
     The functions affected by this are: ***avc_compute_create**(3)*,
     ***avc_compute_member**(3)*, ***security_compute_create**(3)*,
     ***security_compute_member**(3)* and
