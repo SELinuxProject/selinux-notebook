@@ -373,6 +373,12 @@ will be the intersection of the MLS range of the two contexts.
 See the [**default_range**](default_rules.md#default_range) for details.
 Requires kernel 5.5 minimum.
 
+**Policy: 33**
+
+Implement a more space-efficient form of storing filename transition rules in
+the binary policy (also decreases policy load time). Requires kernel 5.8
+minimum with libsepol version 3.2 minimum.
+
 <!-- %CUTHERE% -->
 
 ---
