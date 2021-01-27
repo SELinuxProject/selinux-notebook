@@ -54,6 +54,7 @@
     - [Modular Policy Support Statements](modular_policy_statements.md#modular-policy-support-statements)
 - [The Reference Policy](reference_policy.md#the-reference-policy)
 - [Implementing SELinux-aware Applications](implementing_seaware_apps.md#implementing-selinux-aware-applications)
+- [Embedded Systems](embedded_systems.md#embedded-systems)
 - [SE for Android](seandroid.md#security-enhancements-for-android)
 - [Appendix A - Object Classes and Permissions](object_classes_permissions.md#appendix-a---object-classes-and-permissions)
 - [Appendix B - *libselinux* API Summary](libselinux_functions.md#appendix-b---libselinux-api-summary)

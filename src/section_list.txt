@@ -53,6 +53,7 @@ xen_statements.md
 modular_policy_statements.md
 reference_policy.md
 implementing_seaware_apps.md
+embedded_systems.md
 seandroid.md
 object_classes_permissions.md
 libselinux_functions.md

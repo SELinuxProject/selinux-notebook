@@ -76,9 +76,9 @@ idea of the scope.
 
 Provides the SELinux userspace function library that is installed on the
 device. It has additional functions to support Android as summarised in
-*external/selinux/README.android*. It is build from a merged upstream version
+*external/selinux/README.android*. It is built from a merged upstream version
 (<https://github.com/SELinuxProject/selinux>) with Android specific additions
-such as:
+(<https://android.googlesource.com/platform/external/selinux/>) such as:
 
 ***selinux_android_setcontext()***
 
@@ -160,7 +160,7 @@ There are no specific updates to support Android except an *Android.bp* file.
 ### ***bootable/recovery***
 
 Changes to manage file labeling on recovery using functions such as
-***selinux_android_file_context_handle()**, ***selabel_lookup**(3)* and
+**selinux_android_file_context_handle()**, ***selabel_lookup**(3)* and
 ***setfscreatecon**(3)*.
 
 ### ***build***
@@ -209,6 +209,10 @@ the [**Policy Build Tools**](#policy-build-tools) section.
 The Android specific object classes are described in the
 [**Android Classes & Permissions**](#android-classes-permissions)
 section.
+
+The [**Embedded Systems - Building A Sample Android Policy**](embedded-systems#building-a-sample-android-policy)
+section explains how to build basic Android policies. These can be explored
+without requiring the full AOSP source and build environment.
 
 ### ***kernel***
 
@@ -1593,4 +1597,4 @@ USERDEBUG : $DEFAULT_SYSTEM_DEV_CERTIFICATE/testkey.x509.pem
 <!-- %CUTHERE% -->
 
 ---
-**[[ PREV ]](implementing_seaware_apps.md)** **[[ TOP ]](#)** **[[ NEXT ]](object_classes_permissions.md)**
+**[[ PREV ]](embedded_systems.md)** **[[ TOP ]](#)** **[[ NEXT ]](object_classes_permissions.md)**
