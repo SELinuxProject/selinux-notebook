@@ -20,6 +20,7 @@
     - [*blk_file*](#blk_file)
     - [*sock_file*](#sock_file)
     - [*fifo_file*](#fifo_file)
+    - [*anon_inode*](#anon_inode)
     - [*fd*](#fd)
   - [Network Object Classes](#network-object-classes)
     - [*node*](#node)
@@ -949,6 +950,33 @@ UNIX domain sockets
 ### *fifo_file*
 
 Named pipes
+
+**Permissions** - Inherit 25
+[**Common File Permissions**](#common-file-permissions):
+
+- *append*, *audit_access*, *create*, *execute*, *execmod*, *getattr*, *ioctl*,
+  *link*, *lock*, *map*, *mounton*, *open*, *quotaon*, *read*, *relabelfrom*,
+  *relabelto*, *rename*, *setattr*, *unlink*, *watch*, *watch_mount*,
+  *watch_sb*, *watch_with_perm*, *watch_reads*, *write*
+
+### *anon_inode*
+
+Control anonymous-inode files via the kernel *anon_inode_getfd_secure()*
+function. Policy controls anonymous inodes by adding a name-based
+[***type_transition***](type_statements.md#type_transition) rule that assigns
+a *type* to anonymous-inode files created in a domain. The *name* used for the
+name-based transition is the name associated with the anonymous inode for file
+listings, for example:
+
+```
+type uffd_t;
+type_transition sysadm_t sysadm_t : anon_inode uffd_t "[userfaultfd]";
+allow sysadm_t uffd_t:anon_inode { create };
+```
+
+Currently only ***userfaultfd**(2)* makes use of this service (from kernel 5.12)
+as described in the patch series
+<https://lore.kernel.org/selinux/20210108222223.952458-1-lokeshgidra@google.com/>
 
 **Permissions** - Inherit 25
 [**Common File Permissions**](#common-file-permissions):

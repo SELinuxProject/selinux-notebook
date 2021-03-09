@@ -471,6 +471,10 @@ however, this is only appropriate for the file classes:
 type_transition source_type target_type : class default_type object_name;
 ```
 
+Kernel 5.12 introduced the 'name transition' rule for anonymous inodes that is
+described with an example in the
+[**anon_inode Object Class**](object_classes_permissions.md#anon_inode) section.
+
 **Where:**
 
 *type_transition*
