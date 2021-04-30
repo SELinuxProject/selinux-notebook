@@ -48,13 +48,13 @@ The *type* identifier.
 *alias*
 
 Optional *alias* keyword that signifies alternate identifiers for the *type_id*
-that are declared in the *alias_id* list.
+that are declared in the *alias_id* list. An alternative way to specify aliases
+is to use the [*typealias*](#typealias) statement.
 
 *alias_id*
 
-One or more *alias* identifiers that have been previously declared by the
-[*typealias*](#typealias) statement. Multiple entries consist of a space
-separated list enclosed in braces '{}'.
+One or more *alias* identifiers. Multiple entries consist of a space separated
+list enclosed in braces '{}'.
 
 *attribute_id*
 
