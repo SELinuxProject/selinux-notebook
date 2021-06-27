@@ -84,7 +84,18 @@ Processes inherit their security context as follows:
    *default_type* (policy version 28) or if a security-aware process,
    by calling ***setexeccon**(3)* if permitted by policy prior to
    invoking exec.
-3. At any time, a security-aware process may invoke ***setcon**(3)* to
+3. If the loaded SELinux policy has the nnp_nosuid_transition policy
+   capability enabled there are potentially two additional permissions
+   that are required to permit a domain transition: nosuid_transition
+   for nosuid mounted filesystems, and nnp_transition for for threads
+   with the no_new_privs flag. If nnp_nosuid_transition policy
+   capability is disabled, such domain transitions are denied but
+   bounded domain transitions are still allowed. In bounded
+   transitions, target domain is only allowed a subset of the
+   permissions of the source domain.  See also
+   [**Linux Security Module and SELinux**](lsm_selinux.md#linux-security-module-and-selinux)
+   section.
+4. At any time, a security-aware process may invoke ***setcon**(3)* to
    switch its security context (if permitted by policy) although this
    practice is generally discouraged - exec-based transitions are
    preferred.
