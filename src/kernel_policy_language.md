@@ -276,7 +276,7 @@ within an *if/else* construct, *optional {rule_list}*, or
 | *type*           |        Yes        |      Yes    |      Yes      |          No            |         No         |        Yes        |
 | *type_change*    |        Yes        |      Yes    |      Yes      |          Yes           |         Yes        |        No         |
 | *type_member*    |        Yes        |      Yes    |      Yes      |          Yes           |         Yes        |        No         |
-| *type_transition*|        Yes        |      Yes    |      Yes      |          Yes           |         Yes        |        No         |
+| *type_transition*|        Yes        |      Yes    |      Yes      |     Yes [^fn_kpl_6]    |         Yes        |        No         |
 | *typealias*      |        Yes        |      Yes    |      Yes      |          No            |         Yes        |        No         |
 | *typeattribute*  |        Yes        |      Yes    |      Yes      |          No            |         Yes        |        No         |
 | *typebounds*     |        Yes        |      Yes    |      Yes      |          No            |         Yes        |        No         |
@@ -334,6 +334,9 @@ these the *semanage.conf* file must have the *expand-check=1* entry present.
 [^fn_kpl_4]: Only if preceded by the *optional* statement.
 
 [^fn_kpl_5]: Only if preceded by the *optional* statement.
+
+[^fn_kpl_6]: 'Name transition rules' are not allowed inside *conditional*
+statements.
 
 <!-- %CUTHERE% -->
 

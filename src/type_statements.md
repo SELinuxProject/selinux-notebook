@@ -516,7 +516,7 @@ Conditional Policy Statements
 
 | *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
-| Yes                     | Yes                     | No                      |
+| Yes (no name transitions) | Yes                   | No                      |
 
 **Example - Domain Transition:**
 
