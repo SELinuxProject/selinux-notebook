@@ -2440,7 +2440,7 @@ where it is used to set the files security context.
 **The macro definition is:**
 
 ```
-gen_context(context[,mls | mcs])
+gen_context(context[,mls,[mcs_categories]])
 ```
 
 **Where:**
@@ -2454,9 +2454,13 @@ gen_context(context[,mls | mcs])
 - The security context to be generated. This can include macros that are
   relevant to a context as shown in the example below.
 
-*mls | mcs*
+*mls*
 
-- MLS or MCS labels if enabled in the policy.
+- MLS labels if MLS enabled in the policy. 
+
+*mcs_categories*
+
+- MCS categories if MCS is enabled. MLS argument is required, but ignored. 
 
 **The macro is valid in:**
 
@@ -2464,7 +2468,23 @@ gen_context(context[,mls | mcs])
 | :-------------------------: | :-----------------------------: | :-------------------------------: |
 |           Yes               |              Yes                |             Yes                   |
 
-**Example Macro:**
+**Example Macro (MCS):**
+
+```
+# This example shows gen_context being used for a custom app
+
+/var/lib/custom_app(/.*)?  gen_context(system_u:object_r:custom_app_t,mls_systemhigh,c9)
+```
+
+**Expanded Macro (MCS):**
+
+```
+# This is the expanded entry built into contexts/files/file_contexts:
+
+/var/lib/custom_app(/.*)?  system_u:object_r:custom_app_t:s0:c9
+```
+
+**Example Macro (MLS):**
 
 ```
 # This example shows gen_context being used to generate a
@@ -2473,7 +2493,7 @@ gen_context(context[,mls | mcs])
 /dev/\.tmp-block-.* -c gen_context(system_u:object_r:fixed_disk_device_t,mls_systemhigh)
 ```
 
-**Expanded Macro:**
+**Expanded Macro (MLS):**
 
 ```
 # This is the expanded entry built into contexts/files/file_contexts:
