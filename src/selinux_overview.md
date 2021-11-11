@@ -92,8 +92,8 @@ The following maybe useful in providing a practical view of SELinux:
     <http://blog.ptsecurity.com/2012/08/selinux-in-practice-dvwa-test.html>,
     and this is a response to the study:
     <http://danwalsh.livejournal.com/56760.html>.
-3.  SELinux services have been added to Andriod. The presentation
-    "Security Enhancements (SE) for Android gives use-cases and
+3.  SELinux services have been added to Android. The presentation
+    "Security Enhancements (SE) for Android" gives use-cases and
     types of Android exploits that SELinux could have overcome. The
     presentation and others are available at:
     <https://events.static.linuxfound.org/sites/events/files/slides/abs2014_seforandroid_smalley.pdf>
