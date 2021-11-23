@@ -28,7 +28,7 @@ controls the state of SELinux using the following parameters:
 SELINUX=enforcing|permissive|disabled
 SELINUXTYPE=policy_name
 SETLOCALDEFS=0|1
-REQUIREUSERS=0|1
+REQUIRESEUSERS=0|1
 AUTORELABEL=0|1
 ```
 
