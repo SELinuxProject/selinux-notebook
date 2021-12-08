@@ -715,9 +715,25 @@ run_init=run_init_t
 
 ## *contexts/openssh_contexts*
 
-**To be determined**
+Used by *openssh* (***ssh**(1)*) for privilege separated processes in the
+preauthentication phase. This is a Red Hat specific policy configuration file.
 
 **The file format is as follows:**
+
+```
+privsep_preauth=[domain]
+```
+
+**Where:**
+
+*privsep_preauth*
+
+- The keyword *privsep_preauth*
+
+*domain*
+
+- The domain type for the privilege separated processes in the
+  preauthentication phase.
 
 **Example file contents:**
 
