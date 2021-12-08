@@ -3081,21 +3081,18 @@ Manage the D-BUS Messaging service that is required to run various services.
 
 ### *context*
 
-Support for the translation daemon ***mcstransd**(8)*. These permissions are
-required to allow translation and querying of level and ranges for MCS and
-MLS systems.
+These permissions are used for SELinux configuration file context entries
+and context translations for MCS/MLS policy.
 
 **Permissions** - 2 unique permissions:
 
 *contains*
 
-- Calculate a MLS/MCS subset - Required to check what the configuration
-  file contains.
+- Check configuration file contains a valid context entry.
 
 *translate*
 
-- Translate a raw MLS/MCS label - Required to allow a domain to translate
-  contexts.
+- Translate a raw label to a meaningful text string.
 
 ### *service*
 
