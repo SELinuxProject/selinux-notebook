@@ -816,9 +816,25 @@ db_schema         *.*       system_u:object_r:sepgsql_schema_t:s0
 
 ## *contexts/snapperd_contexts*
 
-**To be determined**
+Used by ***snapper**(8)* for filesystem snapshot management to set an SELinux
+context on ***btrfs**(8)* subvolumes. This is a Red Hat specific policy
+configuration file.
 
 **The file format is as follows:**
+
+```
+snapperd_data = user:role:type[:range]
+```
+
+**Where:**
+
+*snapperd_data*
+
+- The keyword *snapperd_data*
+
+*user:role:type[:range]*
+
+- The security context including the MLS / MCS *level* or *range* if applicable.
 
 **Example file contents:**
 
