@@ -70,7 +70,7 @@
   - [Performance Event Object Class](#performance-event-object-class)
     - [*perf_event*](#perf_event)
   - [Lockdown Object Class](#lockdown-object-class)
-    - [*lockdown*](#lockdown)
+    - [*lockdown* (Deprecated)](#lockdown-deprecated)
   - [IPC Object Classes](#ipc-object-classes)
     - [*ipc* (Deprecated)](#ipc-deprecated)
     - [*sem*](#sem)
@@ -1674,15 +1674,15 @@ Control ***perf**(1)* events
 
 ## Lockdown Object Class
 
-Note: If the *lockdown* LSM is enabled alongside SELinux, then the
-lockdown access control will take precedence over the SELinux lockdown
-implementation.
+The *lockdown* class and associated SELinux LSM hook (added in kernel 5.6),
+have been removed from kernel 5.16 for the reasons discussed in
+<https://lore.kernel.org/selinux/163292547664.17566.8479687865641275719.stgit@olly/>.
 
-### *lockdown*
+### *lockdown* (Deprecated)
 
 Stop userspace extracting/modify kernel data.
 
-**Permissions** - 6 unique permissions:
+**Permissions** - 2 unique permissions:
 
 *confidentiality*
 
