@@ -41,7 +41,7 @@ The *type* or *typealias* identifier of the parent domain.
 *bounded_domain*
 
 One or more *type* or *typealias* identifiers of the child domains.
-Multiple entries consist of a comma ',' separated list.</td>
+Multiple entries consist of a comma ',' separated list.
 
 **The statement is valid in:**
 

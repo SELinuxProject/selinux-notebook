@@ -160,7 +160,7 @@ A previously declared *common* identifier.
 *perm_set*
 
 One or more optional permission identifiers in a space separated list enclosed
-within braces \'\{\}\'.</td>
+within braces \'\{\}\'.
 
 Note: There must be at least one *common_set* or one *perm_set* defined within
 the statement.

@@ -167,7 +167,7 @@ The SID mapping is not affected. Return 0 on success, -1 with errno set on error
 Log SID table statistics. Log a message with information about the size and
 distribution of the SID table. The audit callback is used to print the message.
 
-avc_sid_to_context*, *avc_sid_to_context_raw* - *avc.h*
+*avc_sid_to_context*, *avc_sid_to_context_raw* - *avc.h*
 
 Get copy of context corresponding to SID. Return a copy of the security context
 corresponding to the input sid in the memory referenced by *ctx*. The caller is
@@ -522,21 +522,21 @@ only the *scon* domain.
 
 *security_compute_create*, *security_compute_create_raw* - *selinux.h*
 
-Compute a labeling decision and set *newcon to refer to it.
+Compute a labeling decision and set *\*newcon* to refer to it.
 Caller must free via ***freecon**(3)*.
 
 *security_compute_create_name*, *security_compute_create_name_raw* - *selinux.h*
 
-This is identical to* ***security_compute_create**(3)* but also takes the name
+This is identical to ***security_compute_create**(3)* but also takes the name
 of the new object in creation as an argument.
 When a *type_transition* rule on the given class and the *scon* / *tcon* pair
-has an object name extension, *newcon* will be returned according to the policy.
+has an object name extension, *\*newcon* will be returned according to the policy.
 Note that this interface is only supported on the kernels 2.6.40 or later.
 For older kernels the object name is ignored.
 
 *security_compute_member*, *security_compute_member_raw* - *selinux.h*
 
-Compute a polyinstantiation member decision and set *newcon to refer to it.
+Compute a polyinstantiation member decision and set *\*newcon* to refer to it.
 Caller must free via ***freecon**(3)*.
 
 *security_compute_relabel*, *security_compute_relabel_raw* - *selinux.h*
@@ -544,7 +544,7 @@ Caller must free via ***freecon**(3)*.
 Compute a relabeling decision and set *\*newcon* to refer to it.
 Caller must free via ***freecon**(3)*.
 
-*security_compute_user*, security_compute_user_raw* (deprecated) - *selinux.h*
+*security_compute_user*, *security_compute_user_raw* (deprecated) - *selinux.h*
 
 Compute the set of reachable user contexts and set *\*con* to refer to the
 NULL-terminated array of contexts. Caller must free via ***freeconary**(3)*.
@@ -918,7 +918,7 @@ Return path to the securetty_types file under the policy root directory.
 
 *selinux_sepgsql_context_path* - *selinux.h*
 
-*Return path to *sepgsql_context* file under the policy root directory.
+Return path to *sepgsql_context* file under the policy root directory.
 
 *selinux_set_callback* - *selinux.h*
 
