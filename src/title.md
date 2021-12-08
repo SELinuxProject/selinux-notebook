@@ -82,6 +82,13 @@ Android.
 **Object Classes and Permissions** - Describes the SELinux object
 classes and permissions.
 
+#### Notebook Examples
+
+The Notebook examples are not embedded into any of the document formats
+described in
+**<https://github.com/SELinuxProject/selinux-notebook/blob/main/BUILD.md>**,
+however they will have links to them in their build directories.
+
 ### Updated Editions
 
 The SELinux Notebook is being maintained as part of the SELinux project, more
