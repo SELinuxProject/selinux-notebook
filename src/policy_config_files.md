@@ -680,11 +680,33 @@ matching of network packets - Never been used.
 
 ## *contexts/openrc_contexts*
 
-**To be determined**
+OpenRC is a dependency-based init system that works with the system-provided
+*init* program, normally */sbin/init*. This config file will only be present
+if *openrc* is installed, see
+[**https://github.com/OpenRC/openrc**](https://github.com/OpenRC/openrc)
 
 **The file format is as follows:**
 
+```
+run_init=[domain]
+```
+
+**Where:**
+
+*run_init*
+
+- The keyword *run_init*. Note that there must not be any spaces around
+  the '=' sign.
+
+*domain*
+
+- The domain type for the process.
+
 **Example file contents:**
+
+```
+run_init=run_init_t
+```
 
 **Supporting libselinux API functions are:**
 
