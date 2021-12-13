@@ -5,7 +5,7 @@
 <!-- %STYLEEND% -->
 
 <!-- %STYLESTART%(display:block;margin-left:auto;margin-right:auto;padding:2em) -->
-![](./images/selinux-penguin.svg)
+![](./images/selinux-penguin.png)
 <!-- %STYLEEND% -->
 
 **<!-- %DATE% -->**
