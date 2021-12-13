@@ -6,7 +6,7 @@ have been documented within the CIL compiler source, available at:
 <https://github.com/SELinuxProject/selinux/tree/master/secilc/docs>
 
 A PDF version is included in this documentation:
-[**CIL Reference Guide**](notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
+[**CIL Reference Guide**](./notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
 
 The CIL compiler source can be found at:
 <https://github.com/SELinuxProject/selinux.git> within the *secilc* and

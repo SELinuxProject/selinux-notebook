@@ -38,7 +38,7 @@ sequences. **Table 1: Database Security Context Information** shows a simple
 database with one table and two columns, each with their object class and
 associated security context (the [**Internal Tables**](#internal-tables)
 section shows these entries from the *testdb* database in the
-[**Notebook sepgsql Example**](notebook-examples/sepgsql/testdb-example.sql).
+[**Notebook sepgsql Example**](./notebook-examples/sepgsql/testdb-example.sql).
 The database object classes and permissions are described in
 [**Appendix A - Object Classes and Permissions**](object_classes_permissions.md#database-object-classes).
 
@@ -88,7 +88,7 @@ The [**https://www.postgresql.org/docs/11/sepgsql.html**](https://www.postgresql
 page contains all the information required to install the *sepgsql* extension.
 
 There are also instructions in the
-[**Notebook sepgsql Example - README**](notebook-examples/sepgsql/README.md)
+[**Notebook sepgsql Example - README**](./notebook-examples/sepgsql/README.md)
 that describes building the example database used in the sections below.
 
 ## *SECURITY LABEL* SQL Command
@@ -207,7 +207,7 @@ is shown in the table below and has been taken from
 
 These are entries taken from a '*SELECT * FROM pg_seclabel;*' command
 that refers to the example *testdb* database built using the
-[**Notebook - testdb-example.sql**](notebook-examples/sepgsql/testdb-example.sql):
+[**Notebook - testdb-example.sql**](./notebook-examples/sepgsql/testdb-example.sql):
 
 ```
 objoid  | classoid | objsubid | provider |          label

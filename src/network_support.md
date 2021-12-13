@@ -349,7 +349,7 @@ netlabelctl calipso add pass doi:16
 **Figure 16:** - *MLS Systems on different networks communicating via a gateway*
 
 There are CIPSO/CALIPSO examples in the
-[***notebook-examples/network/netlabel***](notebook-examples/network/README.md)
+[***notebook-examples/network/netlabel***](./notebook-examples/network/README.md)
 section. The CALIPSO example ***netlabelctl**(8)* commands for loopback are:
 
 ```
@@ -518,7 +518,7 @@ firewall-cmd --add-service ipsec
 ```
 
 There are two simple examples in the
-[***notebook-examples/network/ipsec***](notebook-examples/network/README.md)
+[***notebook-examples/network/ipsec***](./notebook-examples/network/README.md)
 section. These use ***setkey**(8)* and commands directly
 and therefore do not require the IKE daemons.
 

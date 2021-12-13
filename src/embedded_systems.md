@@ -342,7 +342,7 @@ cd refpolicy
 
 For the initial configuration, either replace the current *build.conf*
 file with the sample
-[***build.conf***](notebook-examples/embedded-policy/reference-policy/build.conf)
+[***build.conf***](./notebook-examples/embedded-policy/reference-policy/build.conf)
 or edit the current *build.conf* file to the requirements (e.g. MONOLITHIC = y)
 
 Install the source policy in the build directory:
@@ -367,7 +367,7 @@ make conf
 ```
 
 Replace the current *policy/modules.conf* with the sample
-[***modules.conf***](notebook-examples/embedded-policy/reference-policy/modules.conf)
+[***modules.conf***](./notebook-examples/embedded-policy/reference-policy/modules.conf)
 and run:
 
 ```
@@ -482,7 +482,7 @@ git checkout android-4.1.1_r1
 ```
 
 - Copy the text below into a
-  [*Makefile*](notebook-examples/embedded-policy/android-policy/android-4/Makefile)
+  [*Makefile*](./notebook-examples/embedded-policy/android-policy/android-4/Makefile)
   installed in the *sepolicy* directory.
 
 ```
@@ -517,9 +517,9 @@ Over time the Android policy locked down more and more processes and then
 became more complex as policy version control was required when upgrading.
 The **Brillo** release was their first IoT release and can be built using the
 instructions in the
-[*brillo/Makefile*](notebook-examples/embedded-policy/android-policy/brillo/Makefile)
+[*brillo/Makefile*](./notebook-examples/embedded-policy/android-policy/brillo/Makefile)
 To build a policy containing a device, follow the instructions in the
-[*brillo-device/Makefile*](notebook-examples/embedded-policy/android-policy/brillo-device/Makefile)
+[*brillo-device/Makefile*](./notebook-examples/embedded-policy/android-policy/brillo-device/Makefile)
 as a device policy must be obtained from the Android repository.
 
 Later Android split policy into private and public segments, they also used
@@ -527,7 +527,7 @@ CIL for some policy components as described in the
 [**Android - The SELinux Policy**](seandroid.md#the-selinux-policy) section.
 The **Android 10** release policy is an example where this split policy is used.
 This can be built using the instructions in the
-[*android-10/Makefile*](notebook-examples/embedded-policy/android-policy/android-10/Makefile).
+[*android-10/Makefile*](./notebook-examples/embedded-policy/android-policy/android-10/Makefile).
 
 [^fn_em_1]: An example of this integration is setting a new process context as
 shown in the Zygote code:

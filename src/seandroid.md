@@ -210,7 +210,7 @@ The Android specific object classes are described in the
 [**Android Classes & Permissions**](#android-classes-permissions)
 section.
 
-The [**Embedded Systems - Building A Sample Android Policy**](embedded-systems#building-a-sample-android-policy)
+The [**Embedded Systems - Building A Sample Android Policy**](embedded-systems.md#building-a-sample-android-policy)
 section explains how to build basic Android policies. These can be explored
 without requiring the full AOSP source and build environment.
 
@@ -939,7 +939,7 @@ Usage:
 
 **insertkeys.py** - A helper script for mapping tags in the signature stanzas
 of *mac_permissions.xml* to public keys found in pem files (see the
-[***mac_permissions.xml***](mac_permissions.xml) file section).
+[***mac_permissions.xml***](#mac_permissions.xml) file section).
 The resulting *mac_permissions.xml* file will also be stripped of
 comments and whitespace.
 

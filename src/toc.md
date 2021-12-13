@@ -32,7 +32,7 @@
   - [Policy Configuration Files](policy_config_files.md#policy-configuration-files)
 - [SELinux Policy Languages](policy_languages.md#the-selinux-policy-languages)
   - [CIL Policy Language](cil_overview.md#cil-overview)
-    - [CIL Reference Guide](notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
+    - [CIL Reference Guide](./notebook-examples/selinux-policy/cil/CIL_Reference_Guide.pdf)
   - [Kernel Policy Language](kernel_policy_language.md#kernel-policy-language)
     - [Policy Configuration Statements](policy_config_statements.md#policy-configuration-statements)
     - [Default Rules](default_rules.md#default-object-rules)
