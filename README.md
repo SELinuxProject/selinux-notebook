@@ -69,7 +69,9 @@ See: **<http://www.gnu.org/licenses/fdl-1.3.html>**
 
 Logo designed by [*Máirín Duffy*](http://pookstar.deviantart.com/)
 
-## Building HTML/PDF Versions
+## Building HTML/PDF/EPUB Versions
 
-The [**BUILD.md**](BUILD.md) file has more information on building HTML and PDF
-versions of the notebook as well as alternate ways to view the source markdown.
+The [**BUILD.md**](BUILD.md) file has more information on building HTML, PDF
+and EPUB versions of the notebook as well as alternate ways to view the
+source markdown. Note that the EPUB build will optionally produce a version
+suitable for viewing on a Kindle that supports the "azw3" file format.

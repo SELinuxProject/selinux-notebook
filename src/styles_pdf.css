@@ -48,6 +48,14 @@
 	display: none;
 }
 
+.author {
+	display: none;
+}
+
+.rights {
+	display: none;
+}
+
 html {
 	/* 1em is specified as 16pt, 75% should be 12pt */
 	font-size: 75%;

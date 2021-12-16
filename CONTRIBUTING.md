@@ -10,11 +10,14 @@ project.
 
 ## Make Sure Your Changes Render Correctly
 
-The SELinux Notebook can be viewed in three different formats: Markdown, HTML,
-and PDF.  Your changes need to render correctly in all three formats.  The
-HTML and PDF formatted notebooks can be created using the included Makefile
-and Markdown can be viewed directly via the GitHub source browser or any
-number of Markdown viewers.
+The SELinux Notebook can be viewed in four different formats: Markdown, HTML,
+PDF, and EPUB.  Your changes need to render correctly in all four formats.
+The HTML, PDF, and EPUB formatted notebooks can be created using the included
+Makefile and Markdown can be viewed directly via the GitHub source browser
+or any number of Markdown viewers.
+
+Note that the EPUB build will optionally produce a version suitable for
+viewing on a Kindle that supports the "azw3" file format.
 
 ## Explain Your Work
 

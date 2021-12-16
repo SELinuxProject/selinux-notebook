@@ -29,21 +29,37 @@ Extract from the README:
 > 
 >     % update-mime-database ~/.local/share/mime
 
-# Build HTML or PDF Versions
+# Build HTML, PDF, or EPUB Versions
 
-The SELinux Notebook can be rendered in both HTML and PDF using the included
+The SELinux Notebook can be rendered in HTML, PDF, or EPUB using the included
 Makefile.  In order to build these versions of the notebook, "pandoc" and
 "weasyprint" must be installed on your system; consult your distribution
 documentation for information on installing these packages.
+
+The EPUB build will also produce a Kindle "azw3" formatted version if "calibre"
+is installed on your system (specifically the "ebook-convert" command).
 
 Once the required packages are installed can generate the PDF notebook with the
 following command:
 
 	% make pdf
 
-... and the following will generate the HTML notebook:
+... the following will generate the HTML notebook:
 
 	% make html
 
-The PDF and HTML notebooks will be generated in newly created "pdf" and "html"
-directories.
+... and the following will generate the EPUB notebook:
+
+	% make epub
+
+The PDF, HTML, and EPUB notebooks will be generated in newly created "pdf",
+"html" and "epub" directories.
+
+**Notes:**
+
+- The Notebook examples are not embedded into any of the document formats,
+  however they will have links to them via their build directory.
+- When viewing the Notebook EPUB version, eBook readers do vary on rendering
+  tables, displaying images and resolving links to the examples. For Linux,
+  Foliate was found to be the most consistent, and can be found at:
+  <https://github.com/johnfactotum/foliate>
