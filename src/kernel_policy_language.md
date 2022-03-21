@@ -262,7 +262,7 @@ within an *if/else* construct, *optional {rule_list}*, or
 | *neverallow*     |        Yes        |      Yes    |Yes [^fn_kpl_3]|          No            |         Yes        |        No         |
 | *neverallowxperm*|        Yes        |      Yes    |      Yes      |          No            |         No         |        No         |
 | *nodecon*        |        Yes        |      Yes    |      No       |          No            |         No         |        No         |
-| *optional*       |        No         |      Yes    |      Yes      |          Yes           |         Yes        |        Yes        |
+| *optional*       |        No         |      Yes    |      Yes      |          No            |         Yes        |        No         |
 | *permissive*     |        Yes        |      Yes    |      Yes      |          Yes           |         Yes        |        No         |
 | *policycap*      |        Yes        |      Yes    |      No       |          No            |         No         |        No         |
 | *portcon*        |        Yes        |      Yes    |      No       |          No            |         No         |        No         |

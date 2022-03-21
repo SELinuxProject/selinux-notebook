@@ -190,7 +190,7 @@ Conditional Policy Statements
 
 | *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
-| Yes                     | Yes                     | Yes                     |
+| No                      | Yes                     | No                      |
 
 **Examples:**
 
