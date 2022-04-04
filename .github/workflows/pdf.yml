@@ -1,0 +1,26 @@
+#
+# Github Action to build The SELinux Notebook
+#
+# Copyright (c) 2022 Microsoft Corporation <paulmoore@microsoft.com>
+# Author: Paul Moore <paul@paul-moore.com>
+#
+
+name: PDF build
+on: ["push", "pull_request"]
+
+jobs:
+  pdf:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout from GitHub
+      uses: actions/checkout@v2
+    - name: Setup the build directory
+      uses: ./.github/actions/setup
+    - name: Run the build
+      run: make pdf
+    - name: Archive the rendering
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDF rendering
+        path: ./pdf/SELinux_Notebook.pdf
