@@ -46,6 +46,11 @@ This entry can contain one of three values:
   the global SELinux enforcement mode. It is still possible to have domains
   running in permissive mode and/or object managers running as disabled,
   permissive or enforcing, when the global mode is enforcing or permissive.
+  Note setting *SELINUX=disabled* will be deprecated at some stage, in favor of
+  the existing kernel command line switch *selinux=0*, which allows users to
+  disable SELinux at system boot. See
+  <https://github.com/SELinuxProject/selinux-kernel/wiki/DEPRECATE-runtime-disable>
+  that explains how to achieve this on various Linux distributions.
 
 *SELINUXTYPE*
 

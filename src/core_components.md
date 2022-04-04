@@ -126,7 +126,11 @@ in the audit log. SELinux can also be disabled (at boot time only) by
 setting *SELINUX=disabled*. There is also support for the
 [***permissive***](type_statements.md#permissive) statement that allows a
 domain to run in permissive mode while the others are still confined
-(instead of all or nothing set by *SELINUX=*).
+(instead of all or nothing set by *SELINUX=*). Note setting *SELINUX=disabled*
+will be deprecated at some stage, in favor of the existing kernel command line
+switch *selinux=0*, which allows users to disable SELinux at system boot. See
+<https://github.com/SELinuxProject/selinux-kernel/wiki/DEPRECATE-runtime-disable>
+that explains how to achieve this on various Linux distributions.
 
 <!-- %CUTHERE% -->
 
