@@ -1956,7 +1956,7 @@ object (for the SELinux security server).
 
 - Change a boolean value within the active policy.
 
-*setcheckreqprot*
+*setcheckreqprot* (deprecated)
 
 - Set if SELinux will check original protection mode or modified protection
   mode (read-implies-exec) for *mmap* / *mprotect*.

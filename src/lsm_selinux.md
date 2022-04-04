@@ -515,11 +515,13 @@ or *libsepol* library.
 
 *checkreqprot*
 
-- *0* = Check requested protection applied by kernel.
-  *1* = Check protection requested by application. This is the default.
+- *0* = Check protection applied by kernel (default since kernel v4.4).
+  *1* = Check protection requested by application.
   These apply to the *mmap* and *mprotect* kernel calls. Default value can
   be changed at boot time via the *checkreqprot=* parameter.
-  Requires *security { setcheckreqprot }* permission.
+  Requires *security { setcheckreqprot }* permission. Note *checkreqprot* will
+  be deprecated at some stage, with the default set to 0. See
+  <https://github.com/SELinuxProject/selinux-kernel/wiki/DEPRECATE-checkreqprot>
 
 *commit_pending_bools*
 
