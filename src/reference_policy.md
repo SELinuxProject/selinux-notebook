@@ -1820,7 +1820,9 @@ policy_module(module_name,version)
 *version_number*
 
 - The module version number in M.m.m format (where M = major version number
-  and m = minor version numbers).
+  and m = minor version numbers). Since release 2.20220106 the *version_number*
+  argument is optional. If missing '1' is set as a default to satisfy the
+  policy syntax.
 
 **The macro is valid in:**
 

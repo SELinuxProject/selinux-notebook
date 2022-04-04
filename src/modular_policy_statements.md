@@ -35,7 +35,9 @@ The *module* name.
 *version_number*
 
 The module version number in M.m.m format (where M = major version number
-and m = minor version numbers).
+and m = minor version numbers). Since Reference Policy release 2.20220106
+the *version_number* argument is optional. If missing '1' is set as a default
+to satisfy the policy syntax.
 
 **The statement is valid in:**
 
