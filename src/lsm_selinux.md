@@ -714,6 +714,10 @@ or *libsepol* library.
 - Enables fine-grained labeling of symlinks in pseudo filesystems based
   on *genfscon* rules.
 
+*policy_capabilities/ioctl_skip_cloexec*
+
+- If true always allow FIOCLEX and FIONCLEXE ioctl permissions (from kernel 5.18).
+
 *policy_capabilities/network_peer_controls*
 
 - If true the following *network_peer_controls* are enabled:
