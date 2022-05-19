@@ -487,6 +487,7 @@ The *type_transition* rule keyword.
 One or more source / target *type*, *typealias* or *attribute* identifiers.
 Multiple entries consist of a space separated list enclosed in braces '{}'.
 Entries can be excluded from the list by using the negative operator '-'.
+Since libsepol 3.4 the *self* keyword is supported as a target.
 
 *class*
 
@@ -613,6 +614,7 @@ The *type_change* rule keyword.
 One or more source / target *type*, *typealias* or *attribute* identifiers.
 Multiple entries consist of a space separated list enclosed in braces '{}'.
 Entries can be excluded from the list by using the negative operator '-'.
+Since libsepol 3.4 the *self* keyword is supported as a target.
 
 *class*
 
@@ -685,6 +687,7 @@ The *type_member* rule keyword.
 One or more source / target *type*, *typealias* or *attribute* identifiers.
 Multiple entries consist of a space separated list enclosed in braces '{}'. 
 Entries can be excluded from the list by using the negative operator '-'.
+Since libsepol 3.4 the *self* keyword is supported as a target.
 
 *class*
 
