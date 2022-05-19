@@ -31,7 +31,10 @@ enclosed in braces \'\{\}\'.
 *perm_set*
 
 One or more permissions. Multiple entries consist of a space separated list
-enclosed in braces \'\{\}\'.
+enclosed in braces \'\{\}\'. Since ***checkpolicy**(8)* 3.4 the wildcard
+operator \'\*\' to specify that all permissions are to be included and the
+complement operator \'\~\' to specify all permissions are to be included
+except those explicitly listed are supported.
 
 *expression*
 
@@ -274,7 +277,10 @@ list enclosed in braces \'\{\}\'.
 *perm_set*
 
 One or more permissions. Multiple entries consist of a space separated
-list enclosed in braces \'\{\}\'.
+list enclosed in braces \'\{\}\'. Since ***checkpolicy**(8)* 3.4 the wildcard
+operator \'\*\' to specify that all permissions are to be included and the
+complement operator \'\~\' to specify all permissions are to be included
+except those explicitly listed are supported.
 
 *expression*
 
