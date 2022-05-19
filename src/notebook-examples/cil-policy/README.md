@@ -36,7 +36,7 @@ your policy.
 
 The cil-policy addresses some of the intricacies involved with getting
 started without making assumptions about your environment and
-requirements. You are enouraged to leverage CIL to its full potential
+requirements. You are encouraged to leverage CIL to its full potential
 and to keep its documentation handy.
 
 ## Getting started

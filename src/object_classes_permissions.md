@@ -1382,7 +1382,7 @@ Netlink socket to support RFC 3720 - Internet Small Computer Systems Interface
 
 ### *netlink_fib_lookup_socket*
 
-Netlink socket to Forwarding Informaton Base services.
+Netlink socket to Forwarding Information Base services.
 
 **Permissions** - Inherit 21
 [**Common Socket Permissions**](#common-socket-permissions):
@@ -1480,7 +1480,7 @@ and label packets, SELinux then enforces policy using these packet labels.
 
 *forward_in*
 
-- Allow inbound forwaded packets.
+- Allow inbound forwarded packets.
 
 *forward_out*
 
@@ -1597,7 +1597,7 @@ Internet Control Message Protocol (ICMP)
 - *ieee802154_socket* - For low-rate wireless personal area networks (LR-WPANs).
 - *caif_socket* - Communication CPU to Application CPU Interface
 - *alg_socket* - algorithm interface
-- *nfc_socket* - Near Field Commuications
+- *nfc_socket* - Near Field Communications
 - *vsock_socket* - Virtual Socket protocol
 - *kcm_socket* - Kernel Connection Multiplexor
 - *qipcrtr_socket* - communicating with services running on co-processors in
@@ -2762,11 +2762,11 @@ Manage a database.
 
 *install_module*
 
-- Required to install a dynmic link library.
+- Required to install a dynamic link library.
 
 *load_module*
 
-- Required to load a dynmic link library.
+- Required to load a dynamic link library.
 
 ### *db_table*
 

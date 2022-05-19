@@ -333,7 +333,7 @@
 ;; The individually declared security identifiers have to be authorized to
 ;; associate to be able to combine into valid security contexts.
 ;;
-;; Authorize the sys.id user with s0 lavel association.
+;; Authorize the sys.id user with s0 level association.
 ;;
 
 (userlevel sys.id (s0))

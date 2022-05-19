@@ -1317,7 +1317,7 @@ UNK_PERMS = deny
 
 # Direct admin init
 # Setting this will allow sysadm to directly
-# run init scripts, instead of requring run_init.
+# run init scripts, instead of requiring run_init.
 # This is a build option, as role transitions do
 # not work in conditional policy.
 DIRECT_INITRC = n

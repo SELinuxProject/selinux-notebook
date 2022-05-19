@@ -69,7 +69,7 @@ Using **Figure 24a: SE-PostgreSQL Services**, the database client application
 (that could be provided by an API for Perl/PHP or some other programming
 language) connects to a database and executes SQL commands. As the SQL
 commands are processed by PostgreSQL, each operation performed on an object
-is checked by the object manager (OM) to see if the opration is allowed
+is checked by the object manager (OM) to see if the operation is allowed
 by the security policy or not.
 
 ![](./images/24a-sepostgresql.png)

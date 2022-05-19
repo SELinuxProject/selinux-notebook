@@ -361,13 +361,13 @@ range_transition initrc_t cupsd_exec_t:process s15:c0.c255;
 
 ## *mlsconstrain*
 
-This is decribed in the
+This is described in the
 [**Constraint Statements - *mlsconstrain***](constraint_statements.md#mlsconstrain)
 section.
 
 ## *mlsvalidatetrans*
 
-This is decribed in the
+This is described in the
 [**Constraint Statements - *mlsvalidatetrans***](constraint_statements.md#mlsvalidatetrans)
 section.
 

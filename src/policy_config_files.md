@@ -778,7 +778,7 @@ system_u:object_r:removable_t:s0
 ## *contexts/sepgsql_contexts*
 
 This file contains the default security contexts for SE-PostgreSQL
-database objects and is descibed in ***selabel_db**(5)*.
+database objects and is described in ***selabel_db**(5)*.
 
 **The file format is as follows:**
 
@@ -1059,7 +1059,7 @@ compatible regular expression (PCRE) internal format.
 This file is added by the ***semanage fcontext*** command as described in the
 [*active/file_contexts.local*](policy_store_config_files.md#activefile_contexts.local)
 file section to allow locally defined files to be labeled correctly. The
-***file_contexts**(5)* man page also decribes this file.
+***file_contexts**(5)* man page also describes this file.
 
 **Supporting libselinux API functions are:**
 
@@ -1077,7 +1077,7 @@ contexts on the users home directory and files.
 
 It is fully described in the
 [*active/file_contexts.homedirs*](policy_store_config_files.md#activefile_contexts.homedirs)
-file section. The ***file_contexts**(5)* man page also decribes this
+file section. The ***file_contexts**(5)* man page also describes this
 file.
 
 There may also be a *file_contexts.homedirs.bin* present that is built
@@ -1095,7 +1095,7 @@ Perl compatible regular expression (PCRE) internal format.
 These files allow substitution of file names (*.subs* for local use and
 *.subs_dist* for GNU / Linux distributions use) for the *libselinux*
 function ***selabel_lookup**(3)*. The ***file_contexts**(5)* man page also
-decribes this file.
+describes this file.
 
 The subs files contain a list of space separated path names such as:
 
@@ -1162,7 +1162,7 @@ These optional files are named after the SELinux user they represent.
 Each file has the same format as the
 [*contexts/default_contexts*](#contextsdefault_contexts) file and
 is used to assign the correct context to the SELinux user (generally
-during login). The ***user_contexts**(5)* man page also decribes these
+during login). The ***user_contexts**(5)* man page also describes these
 entries.
 
 **Example file contents** - From the 'targeted` *unconfined_u* file:
@@ -1201,7 +1201,7 @@ and level based on the GNU / Linux login id and service name. It has
 been implemented for SELinux-aware applications such as FreeIPA
 (Identity, Policy Audit - see
 [http://freeipa.org/page/Main_Page](http://freeipa.org/page/Main_Page)
-for details). The ***service_seusers**(5)* man page also decribes these
+for details). The ***service_seusers**(5)* man page also describes these
 entries.
 
 The file name is based on the GNU/Linux user that is used at log in time

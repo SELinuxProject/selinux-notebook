@@ -66,7 +66,7 @@ However note that:
        based on their object class.
 
 The [**Computing Security Contexts**](computing_security_contexts.md#computing-security-contexts)
-section decribes how SELinux computes the security context components based
+section describes how SELinux computes the security context components based
 on a *source context*, *target context* and object *class*.
 
 The examples below show security contexts for processes, directories and files

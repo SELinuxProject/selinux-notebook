@@ -6,7 +6,7 @@ This area contains the following:
 
 ***tools*** - Contains the `build-sepolicy` script and man page. This is used
 to build the kernel and CIL policy files. It does have many hardcoded items.
-Another basic kernel policy build is avilable in the kernel source, see the
+Another basic kernel policy build is available in the kernel source, see the
 *scripts/selinux/mdp* and *Documentation/admin-guide/LSM/SELinux.rst* files.
 
 ***cil*** - Contains the CIL_Reference_Guide, Makefile to build CIL policy

@@ -129,7 +129,7 @@ common database { create drop getattr setattr relabelfrom relabelto }
 
 ## *class* (2)
 
-Inherit and / or associate permissions to a perviously declared *class*
+Inherit and / or associate permissions to a previously declared *class*
 identifier.
 
 **The statement definition is:**

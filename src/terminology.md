@@ -175,7 +175,7 @@ modules
 
 **Mandatory Access Control**
 
-An access control mechanisim enforced by the system. This can be achieved
+An access control mechanism enforced by the system. This can be achieved
 by 'hard-wiring' the operating system and applications or via a policy that
 conforms to a **Policy**. Examples of policy based MAC are **SELinux** and SMACK.
 
@@ -218,7 +218,7 @@ into a binary format for loading into the **Security Server**.
 SELinux users are associated to one or more roles, each role may then be
 associated to one or more **Domain** types.
 
-**Role Based Access Control-Seperation**
+**Role Based Access Control-Separation**
 
 Role-based separation of user home directories. An optional policy tunable is
 required: *tunableif enable_rbacsep*
