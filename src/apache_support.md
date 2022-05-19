@@ -5,7 +5,7 @@
 
 Apache web servers are supported by SELinux using the Apache policy
 modules from the Reference Policy (*httpd* modules), however there is no
-specific Apache object manger. There is though an SELinux-aware shared
+specific Apache object manager. There is though an SELinux-aware shared
 library and policy that will allow finer grained access control when
 using Apache with threads. The additional Apache module is called
 *mod_selinux.so* and has a supporting policy module called *mod_selinux.pp*.

@@ -815,7 +815,7 @@ def usage():
     usage += '\n'
     usage += ' -k\tOutput kernel classes only (exclude # userspace entries in the\n\tsecurity_classes file).\n'
     usage += ' -M\tOutput an MLS policy.\n'
-    usage += ' -c\tOutput a policy in CIL language (otherwise gererate a kernel policy\n\tlanguage policy).\n'
+    usage += ' -c\tOutput a policy in CIL language (otherwise generate a kernel policy\n\tlanguage policy).\n'
     usage += ' -p\tOutput a file containing class and classpermissionsets + their order\n\tfor use by CIL policies.\n'
     usage += ' -s\tOutput a file containing initial SIDs + their order for use by\n\tCIL policies.\n'
     usage += ' -o\tThe output file that will contain the policy source or header file.\n'

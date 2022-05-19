@@ -11,7 +11,7 @@ Usage: build-sepolicy [-k] [-M] [-c|-p|-s] -d flask_directory -o output_file
 	-k	Output kernel classes only (exclude # userspace entries in the
 		security_classes file).
 	-M	Output an MLS policy.
-	-c	Output a policy in CIL language (otherwise gererate a kernel policy
+	-c	Output a policy in CIL language (otherwise generate a kernel policy
 		language policy).
 	-p	Output a file containing class and classpermissionsets + their order
 		for use by CIL policies.

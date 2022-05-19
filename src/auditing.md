@@ -255,7 +255,7 @@ subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 key=(null)
 
 Change boolean value - *MAC_CONFIG_CHANGE* - This event was generated
 when ***setsebool**(8)* was run to change a boolean. Note that the
-bolean name plus new and old values are shown in the
+boolean name plus new and old values are shown in the
 *MAC_CONFIG_CHANGE* type event with the *SYSCALL* event showing what
 process executed the change.
 

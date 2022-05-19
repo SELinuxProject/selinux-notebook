@@ -143,7 +143,7 @@ the netlink socket in its own main loop.
 *avc_netlink_open* - *avc.h*
 
 Release netlink socket fd. Returns ownership of the netlink socket to the
-ibrary.
+library.
 
 *avc_netlink_release_fd* - *avc.h*
 

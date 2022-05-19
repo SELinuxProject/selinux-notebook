@@ -452,7 +452,7 @@ permissive unconfined_t;
 ## *type_transition*
 
 The type_transition rule specifies the default type to be used for
-domain transistion or object creation. Kernels from 2.6.39 with Policy
+domain transition or object creation. Kernels from 2.6.39 with Policy
 versions from 25 also support the 'name transition rule' extension. See the
 [**Computing Security Contexts**](computing_security_contexts.md#computing-security-contexts)
 section for more details. Note than an *allow* rule must be used to authorise

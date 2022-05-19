@@ -168,7 +168,7 @@ There is no man page for '*pp*', however the help text is as follows:
 ```
 Usage: pp [OPTIONS] [IN_FILE [OUT_FILE]]
 
-Read an SELinux policy package (.pp) and output the equivilent CIL.
+Read an SELinux policy package (.pp) and output the equivalent CIL.
 If IN_FILE is not provided or is -, read SELinux policy package from
 standard input. If OUT_FILE is not provided or is -, output CIL to
 standard output.

@@ -39,7 +39,7 @@ The *iomemcon* keyword.
 *addr*
 
 The memory address to apply the context. This may also be a range that consists
-of a start and end address separated by a hypen \'-\'.
+of a start and end address separated by a hyphen \'-\'.
 
 *context*
 
@@ -85,7 +85,7 @@ The *ioportcon* keyword.
 *port*
 
 The *port* to apply the context. This may also be a range that consists of a
-start and end port number separated by a hypen \'-\'.
+start and end port number separated by a hyphen \'-\'.
 
 *context*
 
@@ -130,7 +130,7 @@ The *pcidevicecon* keyword.
 
 *pci_id*
 
-The PCI indentifer.
+The PCI identifier.
 
 *context*
 

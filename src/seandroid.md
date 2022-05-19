@@ -220,7 +220,7 @@ All Android kernels support the Linux Security Module (LSM) and SELinux
 services, however they are based on various versions, therefore the latest
 SELinux enhancements may not always be present. The
 [**Kernel LSM / SELinux Support**](#kernel-lsm-selinux-support) section
-describes the Andriod kernel changes and the
+describes the Android kernel changes and the
 [**Linux Security Module and SELinux**](lsm_selinux.md#linux-security-module-and-selinux)
 section describes the core SELinux services in the kernel.
 
@@ -676,7 +676,7 @@ formats are detailed in the
 [Policy File Formats](#policy-file-formats)
 section.
 
-These comments have been extracted from *system/sepolicy/Andoid.mk*, there
+These comments have been extracted from *system/sepolicy/Android.mk*, there
 are many useful comments in this file regarding its build.
 
 ```
@@ -1199,7 +1199,7 @@ file:
 # user=_isolated will match any isolated service process.
 # Other values of user are matched against the name associated with the process
 # UID.
-# seinfo= matches aginst the seinfo tag for the app, determined from
+# seinfo= matches against the seinfo tag for the app, determined from
 # mac_permissions.xml files.
 # The ':' character is reserved and may not be used in seinfo.
 # name= matches against the package name of the app.
@@ -1571,7 +1571,7 @@ An example *keys.conf* file from *system/sepolicy/private* is as follows:
 # name it after the base file name of the pem file.
 #
 # Each tag (section) then allows one to specify any string found in
-# TARGET_BUILD_VARIANT. Typcially this is user, eng, and userdebug. Another
+# TARGET_BUILD_VARIANT. Typically this is user, eng, and userdebug. Another
 # option is to use ALL which will match ANY TARGET_BUILD_VARIANT string.
 #
 

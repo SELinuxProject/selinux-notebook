@@ -22,7 +22,7 @@ the main emphasis on policy development as this is considered the most difficult
 area.
 The major difference between OpenWrt and Android is that SELinux is not tightly
 integrated in OpenWrt, therefore MAC is addressed in policy rather than also
-adding additional SELinux-awareness to services as in Andriod[^fn_em_1].
+adding additional SELinux-awareness to services as in Android[^fn_em_1].
 
 An alternative MAC service to consider is [**Smack**](http://www.schaufler-ca.com/)
 (Simplified Mandatory Access Control Kernel) as used in the Samsung
@@ -209,7 +209,7 @@ If there is a need to support ***xattr**(7)* filesystems on the target then
 these need to be labeled via the ***file_contexts**(5)* file that would be
 generated as part of the initial policy build.
 
-For example RAM based filesystems will require labeling before use (as Andriod
+For example RAM based filesystems will require labeling before use (as Android
 does). To achieve this either ***setfiles**(8)* or ***restorecon**(8)* will
 need to be run.
 
@@ -471,7 +471,7 @@ basic policy that can be explored as described below that does not require
 obtaining the full AOSP source and build environment.
 
 [**Android - The SELinux Policy**](seandroid.md#the-selinux-policy) section
-descibes how an Android policy is constructed using ***m4**(1)* macros, *\*.te*
+describes how an Android policy is constructed using ***m4**(1)* macros, *\*.te*
 files etc., similar to the
 [**Reference Policy**](reference_policy.md#the-reference-policy).
 
