@@ -1,0 +1,22 @@
+#
+# Github Action to perform a number of context checks
+#
+# Copyright (c) 2022 Microsoft Corporation <paulmoore@microsoft.com>
+# Author: Paul Moore <paul@paul-moore.com>
+#
+
+name: Content Checking
+on: ["push", "pull_request"]
+
+jobs:
+  codespell:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout from github
+      uses: actions/checkout@v2
+    - name: Spellcheck
+      uses: codespell-project/actions-codespell@master
+      with:
+        ignore_words_list: te msdos
+        skip: src/notebook-examples/selinux-policy/tools/build-sepolicy
