@@ -668,6 +668,14 @@ statements):
 semanage port -a -t my_server_port_t -p tcp -r s0 12345
 ```
 
+Only ports that fall outside the local, or ephemeral, port range are
+subject to the additional *name_bind* access check. You can see the
+current ephemeral port range on your system by checking the
+*net.ipv4.ip_local_port_range* sysctl:
+```
+sysctl net.ipv4.ip_local_port_range
+```
+
 ## Labeled Network FileSystem (NFS)
 
 Version 4.2 of NFS supports labeling between client/server and requires
