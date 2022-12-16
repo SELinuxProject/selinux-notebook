@@ -103,7 +103,7 @@ html: $(DEP_FILE_LIST) $(METADATA)
 		--css=$(SRCDIR)/styles_html.css --self-contained \
 		$(HTMLDIR)/.full_document.md -o $(HTMLDIR)/$(HTML_OUT))
 
-#@   epub             build EPUB version
+#@   epub            build EPUB version
 .PHONY: epub
 epub: $(DEP_FILE_LIST) $(METADATA)
 	mkdir -p $(EPUBDIR)
