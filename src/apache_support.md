@@ -41,7 +41,7 @@ stack has the following support:
 and Python do have support for libselinux functions in packages: PHP - with
 the *php-pecl-selinux* package, Python - with the *libselinux-python* package.
 
-The "[A secure web application platform powered by SELinux](http://sepgsql.googlecode.com/files/LCA20090120-lapp-selinux.pdf)"
+The "[A secure web application platform powered by SELinux](https://raw.githubusercontent.com/kaigai/slides/master/20090120_LCA2009_LAPP_SELINUX.pdf)"
 document gives a good overview of the LAPP architecture.
 
 ## *mod_selinux* Overview
