@@ -9,7 +9,7 @@ a fixed 32 bits to permission sets in 256 bit increments: *allowxperm*,
 
 The rules for extended permissions are subject to the 'operation' they
 perform with Policy version 30 and kernels from 4.3 supporting ioctl
-whitelisting (if required to be declared in modular policy, then
+allowlists (if required to be declared in modular policy, then
 libsepol 2.7 minimum is required).
 
 **The common format for Extended Access Vector Rules are:**
@@ -74,7 +74,7 @@ Conditional Policy Statements
 
 ### *ioctl* Operation Rules
 
-Use cases and implementation details for ioctl command whitelisting are
+Use cases and implementation details for ioctl command allowlists are
 described in detail at
 <http://marc.info/?l=selinux&m=143336061925628&w=2>, with the final
 policy format changes shown in the example below with a brief overview
@@ -118,9 +118,8 @@ tclass=udp_socket permissive=0
 
 Notes:
 
-1. Important: The ioctl operation is not 'deny all' ioctl requests
-   (hence whitelisting). It is targeted at the specific
-   source/target/class set of ioctl commands. As no other *allowxperm*
+1. Important: The ioctl operation is not 'deny all', it is targeted at the
+   specific source/target/class set of ioctl commands. As no other *allowxperm*
    rules have been defined in the example, all other ioctl calls may
    continue to use any valid request parameters (provided there are
    *allow* rules for the *ioctl* permission).

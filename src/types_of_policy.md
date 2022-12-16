@@ -348,7 +348,7 @@ Requires kernel 3.14 minimum.
 
 For the *selinux* target platform adds new *xperm* rules as explained in the
 [**Extended Access Vector Rules**](xperm_rules.md#extended-access-vector-rules)
-section. This is to support 'ioctl whitelisting' as explained in the
+section. This is to support ioctl allowlists as explained in the
 [***ioctl* Operation Rules**](xperm_rules.md#ioctl-operation-rules) section.
 Requires kernel 4.3 minimum.
 For modular policy support requires libsepol 2.7 minimum.
