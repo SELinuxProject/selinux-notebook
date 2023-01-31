@@ -89,6 +89,7 @@
     - [*key*](#key)
     - [*memprotect*](#memprotect)
     - [*binder*](#binder)
+    - [*io_uring*](#io_uring)
   - [Capability Object Classes](#capability-object-classes)
     - [*capability*](#capability)
     - [*capability2*](#capability2)
@@ -974,9 +975,15 @@ type_transition sysadm_t sysadm_t : anon_inode uffd_t "[userfaultfd]";
 allow sysadm_t uffd_t:anon_inode { create };
 ```
 
-Currently only ***userfaultfd**(2)* makes use of this service (from kernel 5.12)
-as described in the patch series
-<https://lore.kernel.org/selinux/20210108222223.952458-1-lokeshgidra@google.com/>
+The current implementations that make use of this service are:
+
+- ***userfaultfd**(2)* (from kernel 5.12) described in the patch series
+  <https://lore.kernel.org/selinux/20210108222223.952458-1-lokeshgidra@google.com/>
+
+- ***io_uring**(7)* (from kernel 5.16) described in the patch series
+  <https://lore.kernel.org/all/163172459001.88001.17463922586800990358.stgit@olly/>
+
+
 
 **Permissions** - Inherit 25
 [**Common File Permissions**](#common-file-permissions):
@@ -2142,6 +2149,26 @@ Manage the Binder IPC service.
 
 - Transfer a binder reference to another process (can A transfer a binder
   reference to B?).
+
+### *io_uring*
+
+Manage security-sensitive usages of the *io_uring* subsystem.
+
+**Permission** - 3 unique permissions:
+
+*override_creds*
+
+- Use another process's credentials via an *io_uring* personality (Can A use B's
+  credentials when calling ***io_uring_enter**(2)*?).
+  Personalities are explained in ***io_uring_register**(2)*.
+
+*sqpoll*
+
+- Use an *io_uring* asynchronous polling thread.
+
+*cmd*
+
+- Use *IORING_OP_URING_CMD* on a given file.
 
 ## Capability Object Classes
 
