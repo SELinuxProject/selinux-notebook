@@ -89,6 +89,7 @@
     - [*key*](#key)
     - [*memprotect*](#memprotect)
     - [*binder*](#binder)
+    - [*io_uring*](#io_uring)
     - [*user_namespace*](#user_namespace)
   - [Capability Object Classes](#capability-object-classes)
     - [*capability*](#capability)
@@ -975,9 +976,16 @@ type_transition sysadm_t sysadm_t : anon_inode uffd_t "[userfaultfd]";
 allow sysadm_t uffd_t:anon_inode { create };
 ```
 
-Currently only ***userfaultfd**(2)* makes use of this service (from kernel 5.12)
-as described in the patch series
-<https://lore.kernel.org/selinux/20210108222223.952458-1-lokeshgidra@google.com/>
+The current implementations that make use of this service are:
+
+- ***userfaultfd**(2)* (from kernel 5.12) described in the patch series
+  <https://lore.kernel.org/selinux/20210108222223.952458-1-lokeshgidra@google.com/>
+
+- ***io_uring**(7)* (from kernel 5.16) described in the patch series
+  <https://lore.kernel.org/all/163172459001.88001.17463922586800990358.stgit@olly/>
+
+- ***memfd_secret**(2)* (from kernel 6.0) described in the patch
+  <https://lore.kernel.org/linux-mm/20220125143304.34628-1-cgzones@googlemail.com/>
 
 **Permissions** - Inherit 25
 [**Common File Permissions**](#common-file-permissions):
@@ -2153,6 +2161,29 @@ Manage user namespaces.
 *create*
 
 - Create a new user namespace.
+
+### *io_uring*
+
+Manage security-sensitive usages of the *io_uring* subsystem.
+
+**Permission** - 3 unique permissions:
+
+*override_creds*
+
+- Use another process's credentials via an *io_uring* personality (Can A use B's
+  credentials when submitting a new *io_uring* operation).
+  Personalities are explained in ***io_uring_register**(2)* and can be thought
+  of as credential references, which allow a caller to store a copy of their
+  credentials, including SELinux labels, in an *io_uring* for use by other
+  processes.
+
+*sqpoll*
+
+- Use an *io_uring* asynchronous polling thread.
+
+*cmd*
+
+- Use *IORING_OP_URING_CMD* on a given file.
 
 ## Capability Object Classes
 
