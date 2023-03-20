@@ -22,7 +22,7 @@ functions to compute a security context via the kernel security server.
 
 When security contexts are computed, the different kernel, userspace
 tools and policy versions can influence the outcome. This is because
-patches have been applied over the years that give greater flexiblity in
+patches have been applied over the years that give greater flexibility in
 computing contexts. For example a 2.6.39 kernel with SELinux userspace
 services supporting policy version 26 can influence the computed role.
 
