@@ -184,16 +184,17 @@ The *genfscon* statement is used to allocate a security context to
 filesystems that cannot support any of the other file labeling
 statements (*fs_use_xattr*, *fs_use_task* or *fs_use_trans*). Generally
 a filesystem would have a single default security context assigned by
-*genfscon* from the root (/) that would then be inherited by all files and
-directories on that filesystem. The exception to this is the */proc*
-filesystem, where directories can be labeled with a specific security
-context (as shown in the examples). Note that there is no terminating
-semi-colon on this statement.
+*genfscon* from the root (*/*) that would then be inherited by all files and
+directories on that filesystem. File entries can be, if supported by the
+underlying filesystem, labeled with a specific security context (as shown in
+the examples), which is useful for pseudo filesystems exporting kernel state
+(e.g. *proc*, *sysfs*, *cgroup2*, *securityfs*, *selinuxfs*).
+Note that there is no terminating semi-colon on this statement.
 
 **The statement definition is:**
 
 ```
-genfscon fs_name partial_path fs_context
+genfscon fs_name partial_path [filetype_specifier] fs_context
 ```
 
 **Where:**
@@ -208,8 +209,23 @@ The filesystem name.
 
 *partial_path*
 
-If *fs_name* is *proc*, then the partial path (see the examples). For all other
-types, this must be */*.
+If *fs_name* is a virtual kernel filesystem, then the partial path (see the
+examples). For all other types, this must be */*.
+
+*filetype_specifier*
+
+Optional filetype specifier to apply the context only to a specific file type.
+Valid specifiers are:
+
+- *-b* block device
+- *-c* character device
+- *-d* directory
+- *-p* named pipe
+- *-l* symbolic link
+- *-s* socket
+- *--* regular file
+
+If omitted the context applies to all file types.
 
 *fs_context*
 
@@ -241,14 +257,20 @@ genfscon selinuxfs / system_u:object_r:security_t:s0
 ```
 
 ```
-# The following show some example /proc entries. Note that the
-# /kmsg has the highest sensitivity level assigned (s15) because
-# it is a trusted process.
+# The following examples show pseudo kernel filesystem entries. Note that
+# the /kmsg has the highest sensitivity level assigned (s15) because
+# it is a file containing possibly sensitive information.
+
+genfscon cgroup2 "/user.slice" -d system_u:object_r:cgroup_user_slice_t:s0
 
 genfscon proc / system_u:object_r:proc_t:s0
 genfscon proc /sysvipc system_u:object_r:proc_t:s0
 genfscon proc /fs/openafs system_u:object_r:proc_afs_t:s0
 genfscon proc /kmsg system_u:object_r:proc_kmsg_t:s15:c0.c255
+
+genfscon selinuxfs /booleans/secure_mode_policyload -- system_u:object_r:secure_mode_policyload_boolean_t:s0
+
+genfscon sysfs /devices/system/cpu/online -- system_u:object_r:cpu_online_sysfs_t:s0
 ```
 
 <!-- %CUTHERE% -->
