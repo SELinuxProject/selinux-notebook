@@ -89,6 +89,7 @@
     - [*key*](#key)
     - [*memprotect*](#memprotect)
     - [*binder*](#binder)
+    - [*user_namespace*](#user_namespace)
   - [Capability Object Classes](#capability-object-classes)
     - [*capability*](#capability)
     - [*capability2*](#capability2)
@@ -2142,6 +2143,16 @@ Manage the Binder IPC service.
 
 - Transfer a binder reference to another process (can A transfer a binder
   reference to B?).
+
+### *user_namespace*
+
+Manage user namespaces.
+
+**Permission** - 1 unique permission:
+
+*create*
+
+- Create a new user namespace.
 
 ## Capability Object Classes
 
