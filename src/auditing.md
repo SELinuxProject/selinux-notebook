@@ -3,6 +3,7 @@
 - [AVC Audit Events](#avc-audit-events)
   - [Example Audit Events](#example-audit-events)
 - [General SELinux Audit Events](#general-selinux-audit-events)
+- [Capability Audit Exemptions](#capability-audit-exemptions)
 
 For SELinux there are two main types of audit event:
 
@@ -376,6 +377,100 @@ old-context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 new-context=?: exe="/usr/bin/newrole" hostname=? addr=?
 terminal=/dev/pts/0 res=failed'
 ```
+
+## Capability Audit Exemptions
+
+In the general case a rejected capability check will result in an audit event.
+There are however some instances in the kernel where denied capability checks
+are not audited, which could lead to differences in behavior between enforcing
+and permissive mode.
+
+List of exemptions (no guarantee for completeness)(locations are based on
+kernel v6.5 unless otherwise specified):
+
+- *fs/proc/base.c#L1110*,
+  *fs/proc/base.c#L1129*
+
+  If not granted *CAP_SYS_RESOURCE* the OOM kill score adjustment min value is
+  not set.
+
+- *fs/overlayfs/inode.c#L429*,
+  *fs/xattr.c#L1298*
+
+  If not granted *CAP_SYS_ADMIN* in its namespace extended attributes in the
+  *trusted* namespace are not listed.
+
+- *fs/xfs/xfs_fsmap.c#L894*
+
+  If not granted *CAP_SYS_ADMIN* the XFS data device's *bnobt* is queried
+  instead of *rmapbt*.
+
+- *fs/xfs/xfs_ioctl.c#L1199*,
+  *fs/xfs/xfs_iops.c#L709*
+
+  If not granted *CAP_FOWNER* XFS quota checks on transactions are performed.
+
+- *io_uring/io_uring.c#L3887*
+
+  If not granted *CAP_IPC_LOCK* io_uring operations are accounted against the
+  user's RLIMIT_MEMLOCK limit.
+
+- *kernel/capability.c#L519*
+
+  If not granted *CAP_SYS_PTRACE* tracing an unsafe (e.g. *no_new_privs* set
+  or shared, see *fs/exec.c:check_unsafe_exec()*) task or a coredump of a
+  non-user process is not permitted.
+
+- *kernel/ksyms_common.c#L37*
+
+  If not granted *CAP_SYSLOG* kallsyms information are not shown, except if
+  kernel profiling is enabled and is explicitly not set to paranoid.
+
+- *kernel/ptrace.c#L282*
+
+  If not granted *CAP_SYS_PTRACE* in its namespace several fields in the *PID*
+  directory entry *stat* files are not populated (*startcode*, *endcode*,
+  *startstack*, *kstkesp*, *kstkeip*, *wchan*, *start_data*, *end_data*,
+  *start_brk*, *arg_start*, *arg_end*, *env_start*, *env_end* and
+  *exit_code*).
+
+- *kernel/seccomp.c#L662*
+
+  If not granted *CAP_SYS_ADMIN* in its namespace preparing a seccomp filter
+  running without *no_new_privs* is not permitted.
+
+- *lib/vsprintf.c#L881*
+
+  If not granted *CAP_SYSLOG* restricted pointers are not included in strings
+  formatted via *%pK*.
+
+- *net/vmw_vsock/af_vsock.c#L779*
+
+  If not granted *CAP_NET_ADMIN* in its namespace new *VSOCK* sockets are not
+  marked as trusted.
+
+- *net/sysctl_net.c#L48*
+
+  If not granted *CAP_NET_ADMIN* in its namespace the inodes of
+  */proc/sys/net* have more restricted *DAC* permissions.
+
+- *security/commoncap.c#L1405*
+
+  If not granted *CAP_SYS_ADMIN* allocation of a new virtual mapping are
+  restricted in size to reserve memory for sysadmin.
+
+- *security/integrity/ima/ima_policy.c#L607*
+
+  If not granted *CAP_SETUID* rules regarding foreign *UID*s are not matched.
+
+- *security/integrity/ima/ima_policy.c#L618*
+
+  If not granted *CAP_SETGID* rules regarding foreign *GID*s are not matched.
+
+- *security/landlock/syscalls.c#L413*
+
+  If not granted *CAP_SYS_ADMIN* in its namespace enforcing a Landlock ruleset
+  running without *no_new_privs* is not permitted.
 
 <!-- %CUTHERE% -->
 
