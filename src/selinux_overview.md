@@ -66,7 +66,7 @@ and limited to the minimum privileges required to do their job, so in a
     as they are generally designed to have total access to all
     resources. SELinux can generally overcome these issues by providing
     sandboxing services.
-9.  SELinux will not stop memory leaks or buffer over-runs (because its
+9.  SELinux will not stop memory leaks or buffer over-runs (because it's
     not designed to do this), however it may contain the damage that may
     be caused by these flaws.
 10. SELinux will not stop all viruses/malware getting into the system,
