@@ -217,7 +217,7 @@ role. Multiple entries consist of a space separated list enclosed in braces '{}'
 
 *to_role_id*
 
-One or more *role* or *attribute_role* identifiers that identify the current
+One or more *role* or *attribute_role* identifiers that identify the target
 role. Multiple entries consist of a space separated list enclosed in braces '{}'.
 
 **The statement is valid in:**
