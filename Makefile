@@ -17,6 +17,7 @@ IMAGES = $(SRCDIR)/images
 EXAMPLES = $(SRCDIR)/notebook-examples
 EXAMPLES_EPUB = $(shell echo $(EXAMPLES) | $(SED) 's;/;\\/;g')
 METADATA = $(SRCDIR)/metadata.yaml
+EXAMPLES_GITHUB = $(shell echo https://github.com/SELinuxProject/selinux-notebook/tree/main/src/notebook-examples | $(SED) 's;/;\\/;g')
 
 HTML_OUT = SELinux_Notebook.html
 PDF_OUT = SELinux_Notebook.pdf
@@ -73,6 +74,9 @@ pdf: $(DEP_FILE_LIST) $(METADATA)
 	$(SED) -i 's/](.*\.md#/](#/' $(PDFDIR)/.full_document.md
 	# remove the section file name from all HTML links
 	$(SED) -i 's/href=.*\.md#/href="#/' $(PDFDIR)/.full_document.md
+	# fixup path for examples, directing at the github repo
+	$(SED) -i 's/](.\/notebook-examples/]($(EXAMPLES_GITHUB)/g' \
+		$(PDFDIR)/.full_document.md
 	[ -e $(PDFDIR)/images ] || ln -s $(IMAGES) $(PDFDIR)
 	[ -e $(PDFDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(PDFDIR)
 	(cd $(PDFDIR); $(PANDOC) --pdf-engine=weasyprint $(PANDOC_OPTS) \
@@ -120,8 +124,8 @@ epub: $(DEP_FILE_LIST) $(METADATA)
 	$(SED) -i 's/](.*\.md#/](#/' $(EPUBDIR)/.full_document.md
 	# remove the section file name from all HTML links
 	$(SED) -i 's/href=.*\.md#/href="#/' $(EPUBDIR)/.full_document.md
-	# fixup path for examples, otherwise defaults to file:///EPUB/text
-	$(SED) -i 's/](.\/notebook-examples/](file:\/\/$(EXAMPLES_EPUB)/g' \
+	# fixup path for examples, directing at the github repo
+	$(SED) -i 's/](.\/notebook-examples/]($(EXAMPLES_GITHUB)/g' \
 		$(EPUBDIR)/.full_document.md
 	[ -e $(EPUBDIR)/images ] || ln -s $(IMAGES) $(EPUBDIR)
 	[ -e $(EPUBDIR)/notebook-examples ] || ln -s $(EXAMPLES) $(EPUBDIR)
