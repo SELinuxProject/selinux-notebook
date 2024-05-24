@@ -36,7 +36,7 @@ Note that the targeted policy will have installed the `postgresql` policy
 module.
 
 Must be set to permissive mode for setup - Probably because initially
-database is set to 'unlabled'
+database is set to 'unlabeled'
 
 1. `setenforce 0`
 
