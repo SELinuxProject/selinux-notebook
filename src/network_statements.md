@@ -178,10 +178,14 @@ It is also possible to add SELinux these outside the policy using the
 ***semanage**(8)* *node* command that will associate the node to a security
 context.
 
+Since ***checkpolicy**(8)* 3.7 the subnet and netmask can be specified together
+by using the Classless Inter-Domain Routing (CIDR) notation.
+
 **The statement definition is:**
 
 ```
 nodecon subnet netmask node_context
+nodecon cidr_address node_context
 ```
 
 **Where:**
@@ -199,6 +203,11 @@ Note that the subnet and netmask values are used to ensure that the
 *netmask*
 
 The subnet mask in IPv4 or IPv6 format.
+
+*cidr_address*
+
+The IP address in CIDR notation, consisting of a IPv4 or IPv6 address, and the
+netmask as a number of leading bits, joined by a slash ('/').
 
 *node_context*
 
@@ -224,6 +233,7 @@ Conditional Policy Statements
 # The MLS policy nodecon statement using an IPv4 address:
 
 nodecon 127.0.0.1 255.255.255.255 system_u:object_r:lo_node_t:s0 - s15:c0.c255
+nodecon 127.0.0.1/32              system_u:object_r:lo_node_t:s0 - s15:c0.c255
 ```
 
 ```
@@ -231,6 +241,7 @@ nodecon 127.0.0.1 255.255.255.255 system_u:object_r:lo_node_t:s0 - s15:c0.c255
 # using an IPv6 address:
 
 nodecon ff00:: ff00:: system_u:object_r:multicast_node_t:s0 - s15:c0.c255
+nodecon ff00::/8      system_u:object_r:multicast_node_t:s0 - s15:c0.c255
 ```
 
 ***semanage**(8)* **Command example:**
