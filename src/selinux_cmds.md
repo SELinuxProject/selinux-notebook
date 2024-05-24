@@ -21,7 +21,7 @@ Displays the AVC statistics.
 
 ***chcat**(8)*
 
-Change or remove a catergory from a file or user.
+Change or remove a category from a file or user.
 
 ***chcon**(1)*
 

@@ -295,7 +295,7 @@ Then add the following at the end of the file:
 
 </devices>
 
-<!-- The <seclabel> tag needs to be placed btween the existing
+<!-- The <seclabel> tag needs to be placed between the existing
 	</devices> and </domain> tags -->
 
 	<seclabel type='static' model='selinux' relabel='no'>
