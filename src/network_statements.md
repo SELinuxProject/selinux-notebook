@@ -174,7 +174,7 @@ labeling (see the
 [***node* object class**](object_classes_permissions.md#network-object-classes)
 that represent IPv4 or IPv6 IP addresses and network masks.
 
-It is also possible to add SELinux these outside the policy using the
+It is also possible to add these outside of the policy using the
 ***semanage**(8)* *node* command that will associate the node to a security
 context.
 
