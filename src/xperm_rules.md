@@ -1,16 +1,18 @@
 # Extended Access Vector Rules
 
 - [*ioctl* Operation Rules](#ioctl-operation-rules)
+- [*nlmsg* Operation Rules](#nlmsg-operation-rules)
 
 There are four extended AV rules implemented from Policy version 30
 with the target platform 'selinux' that expand the permission sets from
 a fixed 32 bits to permission sets in 256 bit increments: *allowxperm*,
 *dontauditxperm*, *auditallowxperm* and *neverallowxperm*.
 
-The rules for extended permissions are subject to the 'operation' they
-perform with Policy version 30 and kernels from 4.3 supporting ioctl
-allowlists (if required to be declared in modular policy, then
-libsepol 2.7 minimum is required).
+The rules for extended permissions are subject to the 'operation' they perform.
+
+- `ioctl`: With policy version 30 and kernels from 4.3 (if required to be
+  declared in modular policy, then libsepol 2.7 minimum is required).
+- `nlmsg`: With kernel from 6.13, using the policy capability `netlink_xperm`.
 
 **The common format for Extended Access Vector Rules are:**
 
@@ -33,7 +35,7 @@ Entries can be excluded from the list by using the negative operator \'-\'.
 
 *target_type*
 
-The target_type can have the *self* keyword instead of *type*, *typealias* or
+The *target_type* can have the *self* keyword instead of *type*, *typealias* or
 *attribute* identifiers. This means that the *target_type* is the same as the
 *source_type*.
 
@@ -45,8 +47,8 @@ enclosed in braces \'{}\'.
 *operation*
 
 A key word defining the operation to be implemented by the rule. Currently only
-the *ioctl* operation is supported by the kernel policy language and kernel as
-described in the [*ioctl* Operation Rules](#ioctl-operation-rules) section.
+the *ioctl* and *nlmsg* operations are supported by the kernel policy language
+and kernel as described in the sections below.
 
 *xperm_set*
 
@@ -74,12 +76,13 @@ Conditional Policy Statements
 
 ### *ioctl* Operation Rules
 
-Use cases and implementation details for ioctl command allowlists are
-described in detail at
-<http://marc.info/?l=selinux&m=143336061925628&w=2>, with the final
-policy format changes shown in the example below with a brief overview
-(also see <http://marc.info/?l=selinux&m=143412575302369&w=2>) that is
-the final upstream kernel patch).
+Use cases and implementation details for ioctl command allowlists are described
+in detail in [[PATCH 0/2 v2] selinux: extended permissions for ioctl
+commands](http://marc.info/?l=selinux&m=143336061925628&w=2), with the final
+policy format changes shown in the example below with a brief overview (also
+see [[PATCH 2/2 v6] selinux: extended permissions for
+ioctls](http://marc.info/?l=selinux&m=143412575302369&w=2) that is the final
+upstream kernel patch).
 
 Ioctl calls are generally used to get or set device options. Policy
 versions \> 30 only controls whether an *ioctl* permission is allowed
@@ -134,6 +137,46 @@ Notes:
 5. To decode a numeric ioctl request parameter into the corresponding
    textual identifier see
    <https://www.kernel.org/doc/html/latest/userspace-api/ioctl/ioctl-decoding.html>
+
+### *nlmsg* Operation Rules
+
+The *nlmsg* extended permissions are available on kernel >= 6.13. The policy
+needs to enable the `netlink_xperm` capability.
+
+This permission is available for the following netlink sockets:
+
+- `NETLINK_ROUTE_SOCKET`
+- `NETLINK_TCPDIAG_SOCKET`
+- `NETLINK_XFRM_SOCKET`
+- `NETLINK_AUDIT_SOCKET`
+
+If the basic permission is granted and no extended permissions are defined for
+the tuple (`src_t`, `tgt_t`, `tclass`), then the access is granted:
+```
+allow src_t tgt_t : netlink_route_socket nlmsg;
+```
+
+Otherwise, it is possible to limit which `nlmsg_type` is accepted for each
+netlink socket class. For example to allow only `RTM_GETROUTE`:
+```
+define(`RTM_GETROUTE', `0x12')
+allow src_t tgt_t : netlink_route_socket nlmsg;
+allowxperm src_t tgt_t : netlink_route_socket nlmsg { RTM_GETROUTE };
+```
+
+The permission values (e.g., `0x12` for `RTM_GETROUTE`) can be found in the
+corresponding kernel headers for each netlink class:
+
+- `NETLINK_ROUTE_SOCKET`:
+  [`rtnetlink.h`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/rtnetlink.h?h=v6.11)
+- `NETLINK_TCPDIAG_SOCKET`:
+  [`inet_diag.h`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/inet_diag.h?h=v6.11)
+  and
+  [`sock_diag.h`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/sock_diag.h?h=v6.11)
+- `NETLINK_XFRM_SOCKET`:
+  [`xfrm.h`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/xfrm.h?h=v6.11)
+- `NETLINK_AUDIT_SOCKET`:
+  [`audit.h`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/audit.h?h=v6.11)
 
 <!-- %CUTHERE% -->
 
