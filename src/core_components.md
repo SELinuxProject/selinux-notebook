@@ -94,9 +94,11 @@ SELinux, therefore starting from the bottom:
       [**The Reference Policy**](reference_policy.md#the-reference-policy)
       section. Note that SE for Android also uses high level macros to define
       policy rules.
-   3. using CIL (Common Intermediate Language). An overview can be found
-      in the [**CIL Policy Language**](cil_overview.md#cil-overview)
-      section. The <https://github.com/DefenSec/dssp> is a good example.
+   3. using CIL (Common Intermediate Language). An overview can be
+      found in the [**CIL Policy
+      Language**](cil_overview.md#cil-overview) section. The [dssp
+      project](https://git.defensec.nl/?p=dssp5.git) is a good
+      example.
 5. To be able to compile and link the policy source then load it into the
    security server requires a number of tools (top of **Figure 2**).
 6. To enable system administrators to manage policy, the SELinux
