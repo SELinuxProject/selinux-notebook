@@ -10,16 +10,6 @@ was enhanced by the NSA and released as open source software (see:
 Each of the sections that follow will describe a component of SELinux,
 and hopefully they are in some form of logical order.
 
-Note: When SELinux is installed, there are three well defined directory
-locations referenced. Two of these will change with the old and new
-locations as follows:
-
-| Description | Old Location | New Location |
-| :---------  | :----------- | :----------- |
-The SELinux filesystem that interfaces with the kernel based security server. The new location has been available since Fedora 17. | */selinux* | */sys/fs/selinux* |
-| The SELinux configuration directory that holds the sub-system configuration files and policies. | */etc/selinux* | No change |
-| The SELinux policy store that holds policy modules and configuration details. The new location has been available since Fedora 23. | */etc/selinux/\<SELINUXTYPE\>/module* | */var/lib/selinux/\<SELINUXTYPE\>* |
-
 ## Is SELinux useful
 
 There are many views on the usefulness of SELinux on Linux based
