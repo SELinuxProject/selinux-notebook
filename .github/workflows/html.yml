@@ -20,7 +20,7 @@ jobs:
     - name: Run the build
       run: make html
     - name: Archive the rendering
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: HTML rendering
         path: ./html/SELinux_Notebook.html
