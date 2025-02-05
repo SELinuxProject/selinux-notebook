@@ -20,7 +20,7 @@ jobs:
     - name: Run the build
       run: make epub
     - name: Archive the rendering
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: EPUB rendering
         path: ./epub/SELinux_Notebook.azw3
