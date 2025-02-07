@@ -105,7 +105,7 @@ An simple CIL policy is as follows:
 )
 ```
 
-For more complex CIL policy try these: <https://github.com/DefenSec>
+For more complex CIL policy example, look at <https://git.defensec.nl/?p=dssp5.git>
 
 There is a CIL policy in the Notebook examples with a utility
 that will produce a base policy in either the kernel policy language or
