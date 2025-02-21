@@ -1991,11 +1991,23 @@ Note that while this is defined as a kernel object class, the userspace
 
 This is the overall system object and there is only one instance of this object.
 
-**Permissions** - 6 unique permissions:
+**Permissions** - 10 unique permissions:
+
+*firmware_load*
+
+- Load firmware updates through the Linux firmware API.
 
 *ipc_info*
 
 - Get info about an IPC object.
+
+*kexec_image_load*
+
+- Load a new kernel image for kexec.
+
+*kexec_initramfs_load*
+
+- Load an initrd image for use with *kexec --initrd*
 
 *module_load*
 
@@ -2006,6 +2018,11 @@ This is the overall system object and there is only one instance of this object.
 *module_request*
 
 - Request the kernel to load a module.
+
+*policy_load*
+
+- Load a policy for a kernel module that takes policy from userspace (besides
+  SELinux).  Current examples are IMA, loadpin and zram.
 
 *syslog_console*
 
