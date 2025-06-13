@@ -1,5 +1,6 @@
 # Extended Access Vector Rules
 
+- [Extended Permission Evaluation](#extended-permission-evaluation)
 - [*ioctl* Operation Rules](#ioctl-operation-rules)
 - [*nlmsg* Operation Rules](#nlmsg-operation-rules)
 
@@ -73,6 +74,26 @@ Conditional Policy Statements
 | *if* Statement          | *optional* Statement    | *require* Statement     |
 | ----------------------- | ----------------------- | ----------------------- |
 | No                      | No                      | No                      |
+
+### Extended Permission Evaluation
+
+Extended permission rules are evaluated as follows:
+
+* If no extended permissions are defined, only the resource-level policy is
+  considered.
+
+* If an extended permission rule is defined, the policy is first evaluated
+  according to the high-level resource policy. For example:
+
+  * If an *allowxperm* rule is defined, extended permissions will only be
+    granted if *allow* is granted to the resource. 
+
+  * If an *auditallowxperm* rule is defined, extended audit permissions will only 
+    be granted if *auditallow* is granted to the resource. 
+
+* If any extended permission rule is defined, the resource and operation are fully
+  evaluated according to extended access rules. All undefined permissions within 
+  the available *xperm_set* will be automatically denied.
 
 ### *ioctl* Operation Rules
 
