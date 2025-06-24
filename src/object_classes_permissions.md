@@ -3173,15 +3173,15 @@ Manage ***systemd**(1)* services.
 
 *load*
 
-- Load services
+- Load services.
 
 *reload*
 
-- Restart *systemd* services.
+- Trigger a configuration reload in a systemd service.  Under certain configurations, reloading is equivalent to restarting.
 
 *start*
 
-- Start *systemd* services.
+- (Re)start *systemd* services.
 
 *status*
 
