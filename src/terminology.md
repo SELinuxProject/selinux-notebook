@@ -15,7 +15,7 @@ Access Vector Cache
 
 **BLP**
 
-Bell-La Padula
+Bell-LaPadula
 
 **CC**
 
@@ -181,7 +181,7 @@ conforms to a **Policy**. Examples of policy based MAC are **SELinux** and SMACK
 
 **Multi-Level Security (MLS)**
 
-Based on the Bell-La & Padula model (BLP) for confidentiality in that
+Based on the Bell & LaPadula model (BLP) for confidentiality in that
 (for example) a process running at a 'Confidential' level can read / write at
 their current level but only read down levels or write up levels. While still
 used in this way, it is more commonly used for application separation

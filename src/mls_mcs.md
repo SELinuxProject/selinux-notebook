@@ -17,7 +17,7 @@ context. This section gives a brief introduction to MLS and MCS.
 **Figure 8: Security Levels and Data Flows** shows a simple diagram where
 security levels represent the classification of files within a file server.
 The security levels are strictly hierarchical and conform to the
-[*Bell-La & Padula model*](http://en.wikipedia.org/wiki/Bell-LaPadula_model)
+[*Bell-LaPadula model*](http://en.wikipedia.org/wiki/Bell-LaPadula_model)
 (BLP) in that (in the case of SELinux) a process (running at the
 'Confidential' level) can read / write at their current level but only read
 down levels or write up levels (the assumption here is that the process is
