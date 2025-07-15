@@ -39,7 +39,7 @@ The [**Type Enforcement (TE)**](type_enforcement.md#type-enforcement) and
 covers these in more detail.
 
 **Multi-Level Security** - This is an implementation based on the
-Bell-La Padula (BLP) model, and used by organizations where different
+Bell-LaPadula (BLP) model, and used by organizations where different
 levels of access are required so that restricted information is
 separated from classified information to maintain confidentiality. This
 allows enforcement rules such as 'no write down' and 'no read up' to be
