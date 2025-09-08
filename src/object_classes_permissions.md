@@ -1911,6 +1911,19 @@ Extension of *process* class.
 *nnp_transition*
 
 - Enables SELinux domain transitions to occur under *no_new_privs* (*NNP*).
+- *NNP* is a flag, which a process can set on itself, that ensures that any
+  subsequent execve(2)/fork(2)/clone(2) doesn't lead to the process gaining
+  more privileges than it had before the operation. Strictly restricting
+  SELinux domain transitions under NNP in the same way would be impractical
+  and could often go against the principle of least privilege, so the writer
+  of the policy is given the choice to explicitly allow a given transition
+  under NNP where it makes sense using this permission. For example, a
+  reasonable criterion could be that the target domain and any domains that
+  it can possibly transition into are reasonably confined and it's not
+  possible to "escape" into a domain that has excess permissions (e.g.
+  an unconfined or a permissive domain).
+- See the [original kernel commit's description](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=af63f4193f9fbbbac50fc766417d74735afd87ef)
+  for more details.
 
 *nosuid_transition*
 

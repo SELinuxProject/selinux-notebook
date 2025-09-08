@@ -729,8 +729,9 @@ or *libsepol* library.
 
 - Enables SELinux domain transitions to occur under *no_new_privs* (NNP)
   or on *nosuid* mounts if the corresponding permission (*nnp_transition*
-  for NNP, *nosuid_transition* for *nosuid*, defined in the *process2*
-  security class) is allowed between the old and new contexts.
+  for NNP, *nosuid_transition* for *nosuid*, defined in the
+  [*process2* security class](object_classes_permissions.md#process2))
+  is allowed between the old and new contexts.
 
 *policy_capabilities/open_perms*
 
