@@ -1892,7 +1892,7 @@ An object is instantiated for each process created by the system.
 
 *signull*
 
-- Test for exisitence of another process without sending a signal.
+- Test for existence of another process without sending a signal.
 
 *sigstop*
 
