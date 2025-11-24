@@ -8,7 +8,7 @@ assigned an SELinux user name of *user_u* and administration staff
 under *staff_u*.
 
 There is one special SELinux user defined that must never be associated
-to a Linux user as it a special identity for system processes and
+to a Linux user as it is a special identity for system processes and
 objects, this user is *system_u*.
 
 The SELinux user name is the first component of a
