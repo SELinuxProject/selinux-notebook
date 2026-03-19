@@ -189,6 +189,11 @@ directories on that filesystem. File entries can be, if supported by the
 underlying filesystem, labeled with a specific security context (as shown in
 the examples), which is useful for pseudo filesystems exporting kernel state
 (e.g. *proc*, *sysfs*, *cgroup2*, *securityfs*, *selinuxfs*).
+
+By default, symbolic links (*lnk\_file*) will *not* be labelled according to
+these statements. The policy capability *genfs\_seclabel\_symlinks* can be
+enabled if labelling of symbolic links is required.
+
 Note that there is no terminating semi-colon on this statement.
 
 **The statement definition is:**
