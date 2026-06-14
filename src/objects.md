@@ -62,8 +62,8 @@ which are *allow* rules that (simply) allows processes to be given
 access permissions to an objects resources.
 
 The following allow rule and **Figure 6: The *allow* rule** illustrates 'a
-process can also be an object' as it allows processes running in the
-*unconfined_t* domain, permission to *transition* the external gateway
+process can also be an object', as it allows processes running in the
+*unconfined_t* domain permission to *transition* the external gateway
 application to the *ext_gateway_t* domain once it has been executed:
 
 ```
