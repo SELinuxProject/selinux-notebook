@@ -35,7 +35,7 @@ the /etc/selinux/config file.*
 
 The objective of the policy is to enable the user of the object (the
 subject) access to the minimum permissions needed to complete the task
-(i.e. do not allow write permission if only reading information).
+(e.g. do not allow write permission if only reading information).
 
 These object classes and their associated permissions are built into the
 GNU / Linux kernel and user space object managers by developers and are
