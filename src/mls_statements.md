@@ -15,7 +15,7 @@ component that consists of the following highlighted entries:
 *user:role:type:* ***sensitivity[:category,...] - sensitivity [:category,...]***
 
 These consist of a mandatory hierarchical [**sensitivity**](#sensitivity) and
-optional non-hierarchical [**category**](#category)'s. The combination of the
+optional non-hierarchical [**categories**](#category). The combination of the
 two comprise a [**level**](#level) or security level. Depending on the
 circumstances, there can be one level or a [**range**](#mls-range-definition).
 
