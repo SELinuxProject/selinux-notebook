@@ -53,7 +53,7 @@ permissions are described in
 
 This is a simple example that attempts to explain two points:
 
-1. How a process is given permission to use an object's resource.
+1. How a process is given permission to use an object resource.
 2. By using the *process* object class, show that a process can be
    described as a process or object.
 
