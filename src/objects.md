@@ -35,7 +35,7 @@ the /etc/selinux/config file.*
 
 The objective of the policy is to enable the user of the object (the
 subject) access to the minimum permissions needed to complete the task
-(i.e. do not allow write permission if only reading information).
+(e.g. do not allow write permission if only reading information).
 
 These object classes and their associated permissions are built into the
 GNU / Linux kernel and user space object managers by developers and are
@@ -53,7 +53,7 @@ permissions are described in
 
 This is a simple example that attempts to explain two points:
 
-1. How a process is given permission to use an objects resource.
+1. How a process is given permission to use an object resource.
 2. By using the *process* object class, show that a process can be
    described as a process or object.
 
@@ -62,8 +62,8 @@ which are *allow* rules that (simply) allows processes to be given
 access permissions to an objects resources.
 
 The following allow rule and **Figure 6: The *allow* rule** illustrates 'a
-process can also be an object' as it allows processes running in the
-*unconfined_t* domain, permission to *transition* the external gateway
+process can also be an object', as it allows processes running in the
+*unconfined_t* domain permission to *transition* the external gateway
 application to the *ext_gateway_t* domain once it has been executed:
 
 ```
