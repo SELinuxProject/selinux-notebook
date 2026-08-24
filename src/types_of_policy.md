@@ -206,7 +206,7 @@ section.
 
 ## Binary Policy
 
-This is also know as the kernel policy and is the policy file that is
+This is also known as the kernel policy and is the policy file that is
 loaded into the kernel and is located at
 /etc/selinux/\<SELINUXTYPE\>/policy/policy.\<version\>. Where
 *\<SELINUXTYPE\>* is the policy name specified in the SELinux
